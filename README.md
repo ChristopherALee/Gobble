@@ -1,24 +1,7 @@
-# README
+# Gobble
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**Gobble** is a full-stack single page messaging application inspired by Slack. It uses Ruby on Rails on the backend to produce a 'RESTful' API and React/Redux on the frontend.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<div align="center">
+  <img src="./readme_images/under_construction_pikachu.gif"></img>
+</div>
