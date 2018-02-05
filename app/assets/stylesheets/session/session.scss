@@ -13,13 +13,19 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    box-shadow: 0px 2px 1px #c1c1c1;
+    box-shadow: 0px 1px 1px #c1c1c1;
 
     p {
       font-size: 30px;
+      font-weight: 700;
     }
 
     .session-form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
       .session-form-username {
         margin-bottom: 10px;
 
@@ -34,14 +40,18 @@
 
         .session-form-password-input {
           border: 1px solid #a0a0a2;
-          margin-left: 15px;
+          margin-left: 14px;
         }
       }
 
       input[type='submit'] {
         color: white;
         background-color: #2ea664;
-        width: 100%;
+        width: 400px;
+        height: 50px;
+        margin-top: 10px;
+        font-size: 18px;
+        font-weight: 700;
       }
     }
   }

@@ -182,10 +182,6 @@ class SessionForm extends React.Component {
       <div className='session-form-contents'>
         <p>{processFormText} Gobble</p>
 
-        <div className='session-errors'>
-          {/* {this.renderErrors()} */}
-        </div>
-
         <form className='session-form' onSubmit={this.handleSubmit}>
           <div className='session-form-username'>
             <label>Username</label>
