@@ -64,6 +64,8 @@ class SessionForm extends React.Component {
   }
 
   deleteErrors() {
+    this.setState({['username']: ''});
+    this.setState({['password']: ''});
     this.props.deleteAllErrors();
   }
 
