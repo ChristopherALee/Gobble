@@ -28,19 +28,31 @@
 
       .session-form-username {
         margin-bottom: 10px;
+        font-size: 17px;
 
         .session-form-username-input {
           border: 1px solid #a0a0a2;
           margin-left: 10px;
+          border-radius: 3px;
+          outline: none;
+          height: 30px;
+          font-size: 17px;
+          padding: 0 5px;
         }
       }
 
       .session-form-password {
         margin-bottom: 10px;
+        font-size: 17px;
 
         .session-form-password-input {
           border: 1px solid #a0a0a2;
           margin-left: 14px;
+          border-radius: 3px;
+          outline: none;
+          height: 30px;
+          font-size: 17px;
+          padding: 0 5px;
         }
       }
 
@@ -52,6 +64,14 @@
         margin-top: 10px;
         font-size: 18px;
         font-weight: 700;
+        outline: none;
+        border-radius: 5px;
+        text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+
+        &:hover {
+          cursor: pointer;
+          box-shadow: inset 0 -2px rgba(0,0,0,.25);
+        }
       }
     }
   }
