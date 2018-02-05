@@ -25,7 +25,7 @@ class SessionForm extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.loggedIn) {
-      this.props.history.push('/feed');
+      this.props.history.push('/messages');
     } else {
       this.setState({['usernameValidInput']: 'valid'});
       this.setState({['passwordValidInput']: 'valid'});
@@ -64,8 +64,10 @@ class SessionForm extends React.Component {
   }
 
   deleteErrors() {
-    this.setState({['username']: ''});
-    this.setState({['password']: ''});
+    this.setState({
+      ['username']: '',
+      ['password']: ''
+    });
     this.props.deleteAllErrors();
   }
 
@@ -211,17 +213,18 @@ class SessionForm extends React.Component {
         </form>
 
         <div className='alt-signup-login'>
-          {altText}
-          <Link
-            to={link}
-            className='alt-signup-login-link'
-            onClick={this.deleteErrors}
-            >
-            {altProcessFormText}
-          </Link>
-
+          <div>
+            {altText}
+            <Link
+              to={link}
+              className='alt-signup-login-link'
+              onClick={this.deleteErrors}
+              >
+                {altProcessFormText}
+              </Link>
+          </div>
+          {this.demoLoginButton()}
         </div>
-        {this.demoLoginButton()}
       </div>
     </div>
     );
