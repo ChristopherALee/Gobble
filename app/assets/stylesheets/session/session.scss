@@ -6,6 +6,13 @@
   align-items: center;
 
   .session-form-contents {
-
+    background-color: white;
+    height: 320px;
+    width: 580px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 2px 1px #c1c1c1;
   }
 }

@@ -162,7 +162,7 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    const processFormText = this.props.formType === 'signup' ? 'Join' : 'Log In to';
+    const processFormText = this.props.formType === 'signup' ? 'Join a' : 'Log in to your';
     const altProcessFormText = this.props.formType === 'signup' ? 'Log In' : 'Sign Up';
     const buttonText = this.props.formType === 'signup' ? 'Sign Up' : 'Log In';
 
