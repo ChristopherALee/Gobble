@@ -9,7 +9,7 @@ const App = () => {
   return (
     <div id='iso-app'>
       <header>
-        <h1>gobble</h1>
+        {/* <h1>gobble</h1> */}
       </header>
 
       <Switch>
