@@ -1,4 +1,4 @@
-import { RECEIVE_CURRENT_USER } from '../../actions/session/session_actions';
+import { RECEIVE_CURRENT_USER, LOG_OUT } from '../../actions/session/session_actions';
 import { RECEIVE_SINGLE_USER } from '../../actions/user/user_actions';
 
 const sessionReducer = (state = {currentUser: null}, action) => {
@@ -14,6 +14,10 @@ const sessionReducer = (state = {currentUser: null}, action) => {
         newState = Object.assign({}, state, {currentUser: action.user});
         return newState;
       }
+      break;
+    case LOG_OUT:
+      newState = {};
+      return newState;
     default:
       return state;
   }
