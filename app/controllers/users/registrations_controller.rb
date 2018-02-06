@@ -13,7 +13,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(params.require(:user).permit(:username, :password))
     errors = {}
-    debugger
 
     if @user.save
       sign_in @user

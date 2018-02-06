@@ -7,8 +7,8 @@
 
   .session-form-contents {
     background-color: white;
-    height: 320px;
-    width: 580px;
+    height: 350px;
+    width: 600px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -56,11 +56,17 @@
           margin-top: 5px;
           font-size: 12px;
           color: red;
+
+          ul {
+            li {
+              padding-left: 87px;
+            }
+          }
         }
       }
 
       .session-form-password {
-        margin-bottom: 10px;
+        margin-bottom: 25px;
         font-size: 17px;
 
         .session-form-password-input {
@@ -89,6 +95,13 @@
           margin-top: 5px;
           font-size: 12px;
           color: red;
+
+          ul {
+            li {
+              position: fixed;
+              padding-left: 87px;
+            }
+          }
         }
       }
 
@@ -97,7 +110,7 @@
         background-color: #2ea664;
         width: 400px;
         height: 50px;
-        margin-top: 10px;
+        margin-top: 2and0px;
         font-size: 18px;
         font-weight: 700;
         outline: none;
