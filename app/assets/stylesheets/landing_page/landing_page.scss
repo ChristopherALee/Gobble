@@ -5,16 +5,29 @@
   justify-content: space-evenly;
   align-items: center;
 
-  .landing-page-image {
-    background-image: image_url('landing_page/landing_page_image.png');
-    width: 600px;
-    height: 600px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
+  .landing-page-contents {
+    display: flex;
+    justify-content: space-evenly;
 
-  .landing-page-intro {
-    width: 25%;
+    .landing-page-image {
+      background-image: image_url('landing_page/landing_page_image.png');
+      width: 700px;
+      height: 700px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .landing-page-intro {
+      height: 700px;
+      width: 25%;
+
+      h1 {
+        font-family: "Georgia";
+        font-size: 80px;
+        font-weight: bold;
+        color: #323748;
+      }
+    }
   }
 }
