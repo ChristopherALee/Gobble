@@ -12,13 +12,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     @user = User.new(params.require(:user).permit(:username, :password))
+    errors = {}
     debugger
 
     if @user.save
       sign_in @user
       render '/api/users/show'
     else
-      render json: @user.errors.messages, status: 422
+      errors[:username] = ["Username can't be blank."] if @user.username.length === 0
+      errors[:password] = ["Password must be at least 6 characters."] if @user.password.length < 6
+
+      render json: errors, status: 422
     end
   end
 
