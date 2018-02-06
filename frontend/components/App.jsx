@@ -13,7 +13,9 @@ const App = () => {
         {/* <h1>gobble</h1> */}
       </header>
 
+      
       <Route exact path="/" component={LandingPageContainer}></Route>
+
       <Switch>
         <AuthRoute path='/login' component={SessionFormContainer} />
         <AuthRoute path='/signup' component={SessionFormContainer} />

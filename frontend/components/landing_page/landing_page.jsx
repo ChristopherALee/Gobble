@@ -11,7 +11,9 @@ const LandingPage = (props) => {
 
         <div className="landing-page-intro">
           <h1>Let's Start Gobblin'</h1>
-          <p className="intro-text">When your team needs to kick off a project, hire a new employee, deploy some code, review a sales contract, finalize next year's budget, measure an A/B test, plan your next office opening, and more, Gobble has you covered.</p>
+          <p className="intro-text">
+            Whether you quack, chirp, or gobble, staying in contact with your closest winged buddies (or co-workers) has never been easier. Schedule group flights? Lamp-post hang-outs? Bi-weekly bread buffets at the park? We have you covered. <strong>Start Gobblin', with Gobble.</strong>
+          </p>
 
           <div className="landing-page-signup-login">
             <Link to="/signup">
