@@ -32,6 +32,7 @@ gem 'binding_of_caller'
 gem 'pry-rails'
 gem 'annotate'
 gem 'jquery-rails'
+gem 'devise'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
