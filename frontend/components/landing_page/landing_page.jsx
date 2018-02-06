@@ -11,12 +11,15 @@ const LandingPage = (props) => {
 
         <div className="landing-page-intro">
           <h1>Let's Start Gobblin'</h1>
-          <p>When your team needs to kick off a project, hire a new employee, deploy some code, review a sales contract, finalize next year's budget, measure an A/B test, plan your next office opening, and more, Gobble has you covered.</p>
+          <p className="intro-text">When your team needs to kick off a project, hire a new employee, deploy some code, review a sales contract, finalize next year's budget, measure an A/B test, plan your next office opening, and more, Gobble has you covered.</p>
 
           <div className="landing-page-signup-login">
-            <Link to="/signup" className="landing-page-signup">
-              Get Started
+            <Link to="/signup">
+              <button className="landing-page-signup">
+                GET STARTED
+              </button>
             </Link>
+
 
             <p className="already-gobblin">
               Already Gobblin'? <Link to="/login" className="landing-page-login">Sign In</Link>

@@ -27,6 +27,49 @@
         font-size: 80px;
         font-weight: bold;
         color: #323748;
+        margin-bottom: 20px;
+      }
+
+      .intro-text {
+        color: #5b5e6d;
+        font-size: 20px;
+        font-weight: 400;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+      }
+
+      .landing-page-signup-login {
+        .landing-page-signup {
+          background-color: #3f46ae;
+          color: white;
+          text-decoration: none;
+          padding: 19px 40px 20px;
+          outline: none;
+          border-radius: 5px;
+          font-size: 13px;
+          letter-spacing: 0.5px;
+          transition: 0.1s;
+
+          &:hover {
+            background-color: #1c299d;
+            cursor: pointer;
+          }
+        }
+
+        .already-gobblin {
+          margin-top: 50px;
+          color: #5b5e6d;
+          font-size: 14px;
+          letter-spacing: 0.5px;
+
+          .landing-page-login {
+            color: #3f46ae;
+
+            &:hover {
+              color: #1c299d;
+            }
+          }
+        }
       }
     }
   }
