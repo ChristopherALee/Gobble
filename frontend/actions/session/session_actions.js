@@ -49,6 +49,7 @@ export const signUp = user => dispatch => {
   return (
     SessionApiUtil.signUp(user).then(
       user => {
+        debugger
         return (
           dispatch(receiveCurrentUser(user))
         );

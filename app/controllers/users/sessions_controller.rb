@@ -9,14 +9,27 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    @user = User.find_for_database_authentication(username: params[:user][:username])
+    errors = {}
+
+    if @user && @user.valid_password?(params[:user][:password])
+      sign_in @user
+      render 'api/users/show'
+    else
+      if User.find_by(username: params[:user][:username]) == nil
+        errors[:username] = ['Invalid Username.']
+      end
+
+      errors[:password] = ['Invalid Password.']
+      render json: errors, status: 401
+    end
+  end
 
   # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+  def destroy
+    super
+  end
 
   # protected
 
