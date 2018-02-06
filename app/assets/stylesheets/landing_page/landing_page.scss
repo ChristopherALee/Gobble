@@ -1,0 +1,20 @@
+.landing-page-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  .landing-page-image {
+    background-image: image_url('landing_page/landing_page_image.png');
+    width: 600px;
+    height: 600px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .landing-page-intro {
+    width: 25%;
+  }
+}
