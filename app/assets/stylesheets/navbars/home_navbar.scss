@@ -1,0 +1,16 @@
+.home-navbar-container {
+  border-bottom: 1px solid #ebebeb;
+  height: 69px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  .home-navbar-left {
+    .gobble {
+      font-size: 25px;
+      font-weight: bold;
+      color: #323748;
+      -webkit-font-smoothing: subpixel-antialiased;
+    }
+  }
+}
