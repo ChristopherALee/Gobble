@@ -19,10 +19,10 @@ const HomeNavBar = (props) => {
           </a>
 
           <a href="https://github.com/ChristopherALee" target="_blank">
-            <i class="fab fa-github"></i>
+            <i className="fab fa-github"></i>
           </a>
           <a href="https://www.linkedin.com/in/christopheradamlee/" target="_blank">
-            <i class="fab fa-linkedin-in"></i>
+            <i className="fab fa-linkedin-in"></i>
           </a>
         </div>
       </div>
