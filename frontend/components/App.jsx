@@ -14,7 +14,9 @@ const App = () => {
         {/* <h1>gobble</h1> */}
       </header>
 
-      <Route path="/" component={HomeNavBarContainer}></Route>
+      <Route exact path="/" component={HomeNavBarContainer}></Route>
+      <Route exact path="/login" component={HomeNavBarContainer}></Route>
+      <Route exact path="/signup" component={HomeNavBarContainer}></Route>
       <Route exact path="/" component={LandingPageContainer}></Route>
 
       <Switch>
