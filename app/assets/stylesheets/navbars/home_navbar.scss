@@ -11,11 +11,18 @@
       font-weight: bold;
       color: #323748;
       -webkit-font-smoothing: subpixel-antialiased;
+      user-select: none;
     }
   }
 
   .home-navbar-right {
+    height: 100%;
+
     .home-navbar-links {
+      display: flex;
+      height: 100%;
+      align-items: center;
+
       .cal-logo {
         background-image: image_url('logos/CAL_Logo_url_home_navbar.png');
         background-size: cover;
@@ -26,6 +33,30 @@
 
         &:hover {
           background-image: image_url('logos/CAL_Logo_url_purple.png');
+          cursor: pointer;
+        }
+      }
+
+      .fa-github {
+        width: 40px;
+        height: 40px;
+        color: #6d6f7b;
+        margin: 0 0 1px 30px;
+
+        &:hover {
+          color: #57c49f;
+          cursor: pointer;
+        }
+      }
+
+      .fa-linkedin-in {
+        width: 40px;
+        height: 40px;
+        color: #6d6f7b;
+        margin: 0 0 1px 30px;
+
+        &:hover {
+          color: #ec5b1b;
           cursor: pointer;
         }
       }

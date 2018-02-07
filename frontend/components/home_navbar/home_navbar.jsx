@@ -14,8 +14,15 @@ const HomeNavBar = (props) => {
 
       <div className="home-navbar-right">
         <div className="home-navbar-links">
-          <a href="http://www.christopheradamlee.com/">
+          <a href="http://www.christopheradamlee.com/" target="_blank">
             <div className="cal-logo"></div>
+          </a>
+
+          <a href="https://github.com/ChristopherALee" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/christopheradamlee/" target="_blank">
+            <i class="fab fa-linkedin-in"></i>
           </a>
         </div>
       </div>
