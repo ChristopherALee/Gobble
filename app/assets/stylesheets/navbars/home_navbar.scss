@@ -6,12 +6,27 @@
   align-items: center;
 
   .home-navbar-left {
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    .home-navbar-logo {
+      background-image: image_url('logos/chicken-logo.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 50px;
+      height: 50px;
+      margin-bottom: 6px;
+    }
+
     .gobble {
       font-size: 25px;
       font-weight: bold;
       color: #323748;
       -webkit-font-smoothing: subpixel-antialiased;
       user-select: none;
+      margin-bottom: 5px;
     }
   }
 
