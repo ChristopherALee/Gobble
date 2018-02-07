@@ -14,7 +14,9 @@ const HomeNavBar = (props) => {
 
       <div className="home-navbar-right">
         <div className="home-navbar-links">
-          links
+          <a href="http://www.christopheradamlee.com/">
+            <div className="cal-logo"></div>
+          </a>
         </div>
       </div>
     </div>

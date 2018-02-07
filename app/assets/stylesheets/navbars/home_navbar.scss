@@ -13,4 +13,22 @@
       -webkit-font-smoothing: subpixel-antialiased;
     }
   }
+
+  .home-navbar-right {
+    .home-navbar-links {
+      .cal-logo {
+        background-image: image_url('logos/CAL_Logo_url_home_navbar.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 66px;
+        height: 40px;
+
+        &:hover {
+          background-image: image_url('logos/CAL_Logo_url_purple.png');
+          cursor: pointer;
+        }
+      }
+    }
+  }
 }
