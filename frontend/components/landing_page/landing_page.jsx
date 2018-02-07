@@ -12,7 +12,7 @@ const LandingPage = (props) => {
         <div className="landing-page-intro">
           <h1>Let's Start Gobblin'</h1>
           <p className="intro-text">
-            Whether you quack, chirp, or gobble, staying in contact with your closest winged buddies (or co-workers) has never been easier. Schedule group flights? Lamp-post hang-outs? Bi-weekly bread buffets at the park? We have you covered. <strong>Start Gobblin', with Gobble.</strong>
+            Whether you quack, chirp, or gobble, staying in contact with your closest winged buddies (or co-workers) has never been easier. Schedule group flights? Lamp-post hang-outs? Bi-weekly bread buffets at the park? We've got you covered. <br></br> <strong>Start Gobblin', with Gobble.</strong>
           </p>
 
           <div className="landing-page-signup-login">
