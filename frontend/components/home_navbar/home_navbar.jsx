@@ -4,13 +4,13 @@ import { withRouter, Link } from 'react-router-dom';
 const HomeNavBar = (props) => {
   return (
     <div className="home-navbar-container">
-      <div className="home-navbar-left">
+      <Link to="/" className="home-navbar-left">
         <div className="home-navbar-logo">
 
         </div>
 
         <div className="gobble">gobble</div>
-      </div>
+      </Link>
 
       <div className="home-navbar-right">
         <div className="home-navbar-links">
