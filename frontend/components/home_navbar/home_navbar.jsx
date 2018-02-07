@@ -5,9 +5,7 @@ const HomeNavBar = (props) => {
   return (
     <div className="home-navbar-container">
       <Link to="/" className="home-navbar-left">
-        <div className="home-navbar-logo">
-
-        </div>
+        <div className="home-navbar-logo"></div>
 
         <div className="gobble">gobble</div>
       </Link>
