@@ -5,7 +5,6 @@
 #  id         :integer          not null, primary key
 #  name       :string           not null
 #  creator_id :integer          not null
-#  members    :string           default([]), is an Array
 #  purpose    :string
 #  topic      :string
 #  created_at :datetime         not null

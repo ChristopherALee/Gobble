@@ -12,9 +12,13 @@ Membership.destroy_all
 
 # users
 user1 = User.create({username: 'guest', password: 'password123'})
+user2 = User.create({username: 'chris', password: 'password123'})
+user3 = User.create({username: 'lily', password: 'password123'})
 
 # channels
-channel1 = Channel.create({name: 'bread', creator_id: user1.id, members: [], purpose: 'we like bread', topic: 'bread on the 5th floor!'})
+channel1 = Channel.create({name: 'bread', creator_id: user1.id, purpose: 'we like bread', topic: 'bread on the 5th floor!'})
 
 # memberships
 membership1 = Membership.create({member_id: user1.id, channel_id: channel1.id})
+membership2 = Membership.create({member_id: user2.id, channel_id: channel1.id})
+membership2 = Membership.create({member_id: user3.id, channel_id: channel1.id})
