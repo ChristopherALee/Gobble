@@ -15,13 +15,12 @@
     text-decoration: none;
 
     .home-navbar-logo {
-      background-image: image_url('logos/chicken-logo.png');
+      background-image: image_url('logos/gobble-logo-left.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      width: 50px;
+      width: 40px;
       height: 50px;
-      margin-bottom: 6px;
     }
 
     .gobble {
@@ -30,7 +29,7 @@
       color: #323748;
       -webkit-font-smoothing: subpixel-antialiased;
       user-select: none;
-      margin-bottom: 5px;
+      margin: 0 0 5px 10px;
     }
   }
 
