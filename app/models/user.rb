@@ -32,6 +32,15 @@ class User < ApplicationRecord
   def will_save_change_to_email?
     false
   end
+
+  has_many :memberships,
+    class_name: 'Membership',
+    foreign_key: :member_id
+
+  has_many :channels,
+    through: :memberships,
+    source: :channel
+
   # validates :username, presence: { message: 'Please enter a username.'}, uniqueness: { message: 'This username has already been taken.'}
   # validates :password_digest, :session_token, presence: true
   # validates :session_token, uniqueness: true
