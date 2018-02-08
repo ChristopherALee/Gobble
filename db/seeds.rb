@@ -17,8 +17,16 @@ user3 = User.create({username: 'lily', password: 'password123'})
 
 # channels
 channel1 = Channel.create({name: 'bread', creator_id: user1.id, purpose: 'we like bread', topic: 'bread on the 5th floor!'})
+channel2 = Channel.create({name: 'hangouts', creator_id: user2.id, purpose: 'find random places to perch', topic: '8th street park! now!!'})
+channel3 = Channel.create({name: 'windows', creator_id: user3.id, purpose: 'how do they work?', topic: 'stop crashing into windows'})
 
 # memberships
 membership1 = Membership.create({member_id: user1.id, channel_id: channel1.id})
 membership2 = Membership.create({member_id: user2.id, channel_id: channel1.id})
-membership2 = Membership.create({member_id: user3.id, channel_id: channel1.id})
+membership3 = Membership.create({member_id: user3.id, channel_id: channel1.id})
+membership4 = Membership.create({member_id: user1.id, channel_id: channel2.id})
+membership5 = Membership.create({member_id: user2.id, channel_id: channel2.id})
+membership6 = Membership.create({member_id: user3.id, channel_id: channel2.id})
+membership7 = Membership.create({member_id: user1.id, channel_id: channel3.id})
+membership8 = Membership.create({member_id: user2.id, channel_id: channel3.id})
+membership9 = Membership.create({member_id: user3.id, channel_id: channel3.id})
