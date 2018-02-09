@@ -22,7 +22,15 @@ class ChannelSideBar extends React.Component {
     return (
       <div id="channel-side-bar">
         <div className="user-info-container">
-          {currentUser}
+          <div className="channel-name">
+            Gobble - We Gobblin' Here!
+          </div>
+          <div className="current-username">
+            <div className="active-circle"></div>
+            <div className="username">
+              {currentUser}
+            </div>
+          </div>
         </div>
 
         <div className="side-bar-channels">

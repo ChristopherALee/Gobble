@@ -1,4 +1,33 @@
 #channel-side-bar {
   height: 100%;
   width: 20%;
+  background-color: #4d394b;
+
+  .user-info-container {
+    color: white;
+    padding: 10px 15px;
+
+    .channel-name {
+      font-size: 25px;
+    }
+
+    .current-username {
+      font-size: 14px;
+      color: #ab9ba9;
+      display: flex;
+      padding: 5px;
+      align-items: center;
+
+      .active-circle {
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        background-color: #38978d;
+      }
+
+      .username {
+        margin: 0 0 3px 5px;
+      }
+    }
+  }
 }
