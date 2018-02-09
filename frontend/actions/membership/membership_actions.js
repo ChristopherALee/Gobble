@@ -18,10 +18,10 @@ const receiveSingleMembership = (membership) => {
   };
 };
 
-const deleteMembership = (id) => {
+const deleteMembership = (memberName) => {
   return {
     type: DELETE_MEMBERSHIP,
-    membershipId: id
+    memberName: memberName
   };
 };
 
@@ -51,7 +51,7 @@ export const removeMembership = (id) => dispatch => {
   return (
     MembershipApiUtil.deleteMembership(id).then(
       (membership) => {
-        dispatch(deleteMembership(membership.id));
+        dispatch(deleteMembership(membership.memberName));
         return membership;
       }
     )

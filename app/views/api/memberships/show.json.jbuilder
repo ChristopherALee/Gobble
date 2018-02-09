@@ -1,1 +1,2 @@
-json.extract! @membership, :id, :member_id, :channel_id
+json.memberName @membership.member.username
+json.channelName @membership.channel.name
