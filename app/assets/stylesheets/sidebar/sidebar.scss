@@ -1,6 +1,7 @@
 #channel-side-bar {
   height: 100%;
-  width: 20%;
+  min-width: 340px;
+  width: 340px;
   background-color: #4d394b;
 
   .user-info-container {
