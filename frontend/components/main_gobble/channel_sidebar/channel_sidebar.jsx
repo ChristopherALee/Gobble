@@ -21,7 +21,17 @@ class ChannelSideBar extends React.Component {
 
     return (
       <div id="channel-side-bar">
-        {currentUser}
+        <div className="user-info-container">
+          {currentUser}
+        </div>
+
+        <div className="side-bar-channels">
+
+        </div>
+
+        <div className="side-bar-dms">
+
+        </div>
       </div>
     );
   }

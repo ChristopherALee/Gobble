@@ -9,7 +9,9 @@ class MainGobble extends React.Component {
 
   render() {
     return (
-      <Route path='/messages' component={ChannelSideBarContainer}></Route>
+      <div id="we-gobblin-here">
+        <Route path='/messages' component={ChannelSideBarContainer}></Route>
+      </div>
     );
   }
 }
