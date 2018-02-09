@@ -6,6 +6,7 @@ import { ProtectedRoute } from '../util/protected_route';
 import SessionFormContainer from './session/session_form_container';
 import LandingPageContainer from './landing_page/landing_page_container';
 import HomeNavBarContainer from './home_navbar/home_navbar_container';
+import MainGobbleContainer from './main_gobble/main_gobble_container';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
       <Route exact path="/" component={LandingPageContainer}></Route>
 
       <Switch>
+        <ProtectedRoute path='/messages' component={MainGobbleContainer}/>
         <AuthRoute path='/login' component={SessionFormContainer} />
         <AuthRoute path='/signup' component={SessionFormContainer} />
       </Switch>

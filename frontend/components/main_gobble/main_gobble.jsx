@@ -1,16 +1,17 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Route, Switch, Link, withRouter } from 'react-router-dom';
+import ChannelSideBarContainer from './channel_sidebar/channel_sidebar_container';
 
 class MainGobble extends React.Component {
   constructor(props) {
-
+    super(props);
   }
 
   render() {
     return (
-      null
+      <Route path='/messages' component={ChannelSideBarContainer}></Route>
     );
   }
 }
 
-export default withRouter(MainGobble);
+export default MainGobble;
