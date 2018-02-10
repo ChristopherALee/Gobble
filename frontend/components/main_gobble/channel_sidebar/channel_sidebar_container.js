@@ -13,7 +13,8 @@ const mapStateToProps = (state, ownProps) => {
   }
 
   return {
-    currentUser: currentUser
+    currentUser: currentUser,
+    channels: Object.values(state.entities.channels)
   };
 };
 

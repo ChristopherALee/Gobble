@@ -3,10 +3,10 @@
   min-width: 340px;
   width: 340px;
   background-color: #4d394b;
+  padding: 10px 0 10px 15px;
 
   .user-info-container {
     color: white;
-    padding: 10px 15px;
 
     .channel-name {
       font-size: 25px;
@@ -29,6 +29,16 @@
       .username {
         margin: 0 0 3px 5px;
       }
+    }
+  }
+
+  .side-bar-channels {
+    .channels-header {
+      color: #bfb8be;
+    }
+
+    .channel-list {
+      color: #bfb8be;
     }
   }
 }
