@@ -3,10 +3,10 @@
   min-width: 340px;
   width: 340px;
   background-color: #4d394b;
-  padding: 10px 0 10px 15px;
 
   .user-info-container {
     color: white;
+    padding: 15px;
 
     .channel-name {
       font-size: 25px;
@@ -34,11 +34,22 @@
 
   .side-bar-channels {
     .channels-header {
+      padding: 0 15px;
       color: #bfb8be;
     }
 
     .channel-list {
+      padding: 10px 20px;
       color: #bfb8be;
+
+      li {
+        display: flex;
+
+        div {
+          opacity: 0.5;
+          margin-right: 8px;
+        }
+      }
     }
   }
 }
