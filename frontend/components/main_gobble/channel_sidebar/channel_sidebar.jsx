@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class ChannelSideBar extends React.Component {
   constructor(props) {
@@ -21,8 +22,10 @@ class ChannelSideBar extends React.Component {
       channels = this.props.channels.map((channel, idx) => {
         return (
           <li key={idx}>
-            <div>#</div>
-            {channel.name}
+            <Link to={`/messages/${channel.name}`}>
+              <div>#</div>
+              {channel.name}
+            </Link>
           </li>
         );
       });
@@ -54,7 +57,7 @@ class ChannelSideBar extends React.Component {
         <div className="side-bar-channels">
           <div className="channels-header">
             <p>Channels</p>
-            {/* plus icon to add channel */}
+            <i class="fas fa-plus-circle"></i>
           </div>
 
           <ul className="channel-list">

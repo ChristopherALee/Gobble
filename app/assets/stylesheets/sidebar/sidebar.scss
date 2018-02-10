@@ -34,16 +34,40 @@
 
   .side-bar-channels {
     .channels-header {
+      display: flex;
+      justify-content: space-between;
       padding: 0 15px;
       color: #bfb8be;
+
+      p:hover {
+        color: #f1f7f6;
+      }
+
+      .fa-plus-circle:hover {
+        color: #f1f7f6;
+      }
     }
 
     .channel-list {
-      padding: 10px 20px;
       color: #bfb8be;
+      margin: 3px 0;
 
       li {
         display: flex;
+        align-items: center;
+        padding: 0 20px;
+        height: 26px;
+
+        a {
+          text-decoration: none;
+          color: #bfb8be;
+          display: flex;
+        }
+
+        &:hover {
+          color: #f1f7f6;
+          background-color: #4c9589;
+        }
 
         div {
           opacity: 0.5;
