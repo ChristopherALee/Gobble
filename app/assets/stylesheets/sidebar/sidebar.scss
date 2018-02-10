@@ -41,8 +41,16 @@
       user-select: none;
       cursor: pointer;
 
-      &:hover {
-        p {
+      // &:hover {
+      //   p {
+      //     color: #f1f7f6;
+      //   }
+      // }
+
+      .channels-header-content {
+        width: 100%;
+        
+        &:hover {
           color: #f1f7f6;
         }
       }
