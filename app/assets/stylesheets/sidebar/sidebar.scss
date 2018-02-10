@@ -52,26 +52,36 @@
       color: #bfb8be;
       margin: 3px 0;
 
-      li {
+      a {
+        text-decoration: none;
+        color: #bfb8be;
         display: flex;
-        align-items: center;
-        padding: 0 20px;
-        height: 26px;
-
-        a {
-          text-decoration: none;
-          color: #bfb8be;
-          display: flex;
-        }
 
         &:hover {
           color: #f1f7f6;
-          background-color: #4c9589;
         }
 
-        div {
-          opacity: 0.5;
-          margin-right: 8px;
+        li {
+          display: flex;
+          align-items: center;
+          padding: 0 20px;
+          height: 26px;
+
+
+          &:hover {
+            color: #f1f7f6;
+            // background-color: #4c9589;
+            background-color: #3E313C;
+
+            a {
+              color: #f1f7f6;
+            }
+          }
+
+          div {
+            opacity: 0.5;
+            margin-right: 8px;
+          }
         }
       }
     }

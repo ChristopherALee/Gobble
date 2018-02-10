@@ -21,12 +21,12 @@ class ChannelSideBar extends React.Component {
     if (this.props.channels.length) {
       channels = this.props.channels.map((channel, idx) => {
         return (
-          <li key={idx}>
             <Link to={`/messages/${channel.name}`}>
+            <li key={idx}>
               <div>#</div>
               {channel.name}
+            </li>
             </Link>
-          </li>
         );
       });
     }
