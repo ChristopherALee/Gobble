@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 class ChannelSideBar extends React.Component {
   constructor(props) {
     super(props);
+
+    this.renderChannels = this.renderChannels.bind(this);
   }
 
   componentDidMount() {
@@ -18,16 +20,34 @@ class ChannelSideBar extends React.Component {
 
   renderChannels() {
     let channels;
+    let that = this;
     if (this.props.channels.length) {
       channels = this.props.channels.map((channel, idx) => {
-        return (
-            <Link to={`/messages/${channel.name}`}>
-            <li key={idx}>
+        debugger
+        if (channel.name === that.props.location.pathname.slice(10)) {
+          return (
+            <Link
+              to={`/messages/${channel.name}`}
+              className="active-channel"
+              key={idx}>
+              <li key={idx}>
+                <div>#</div>
+                {channel.name}
+              </li>
+            </Link>
+          );
+        } else {
+          return (
+            <Link
+              to={`/messages/${channel.name}`}
+              key={idx}>
+            <li>
               <div>#</div>
               {channel.name}
             </li>
-            </Link>
+          </Link>
         );
+        }
       });
     }
 
@@ -57,7 +77,7 @@ class ChannelSideBar extends React.Component {
         <div className="side-bar-channels">
           <div className="channels-header">
             <p>Channels</p>
-            <i class="fas fa-plus-circle"></i>
+            <i className="fas fa-plus-circle"></i>
           </div>
 
           <ul className="channel-list">
