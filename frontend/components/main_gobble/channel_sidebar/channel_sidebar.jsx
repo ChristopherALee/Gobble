@@ -10,7 +10,9 @@ class ChannelSideBar extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    this.props.fetchAllChannels();
+    if (this.props.location.pathname !== newProps.location.pathname) {
+      this.props.fetchAllChannels();
+    }
   }
 
   renderChannels() {
