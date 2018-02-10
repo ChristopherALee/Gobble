@@ -38,9 +38,13 @@
       justify-content: space-between;
       padding: 0 15px;
       color: #bfb8be;
+      user-select: none;
+      cursor: pointer;
 
-      p:hover {
-        color: #f1f7f6;
+      &:hover {
+        p {
+          color: #f1f7f6;
+        }
       }
 
       .fa-plus-circle:hover {
@@ -76,7 +80,6 @@
           align-items: center;
           padding: 0 20px;
           height: 26px;
-
 
           &:hover {
             color: #f1f7f6;

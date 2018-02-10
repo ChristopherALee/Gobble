@@ -75,7 +75,7 @@ class ChannelSideBar extends React.Component {
 
         <div className="side-bar-channels">
           <div className="channels-header">
-            <p>Channels</p>
+            <p className="channels-header-content">Channels</p>
             <i className="fas fa-plus-circle"></i>
           </div>
 
