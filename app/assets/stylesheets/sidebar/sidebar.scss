@@ -54,6 +54,11 @@
 
       .active-channel {
         background-color: #4c9589;
+        color: #f1f7f6;
+
+        &:hover {
+          background-color: #4c9589;
+        }
       }
 
       a {
@@ -75,8 +80,6 @@
 
           &:hover {
             color: #f1f7f6;
-            // background-color: #4c9589;
-            background-color: #3E313C;
 
             a {
               color: #f1f7f6;

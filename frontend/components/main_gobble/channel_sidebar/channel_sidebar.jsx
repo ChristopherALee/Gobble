@@ -23,7 +23,6 @@ class ChannelSideBar extends React.Component {
     let that = this;
     if (this.props.channels.length) {
       channels = this.props.channels.map((channel, idx) => {
-        debugger
         if (channel.name === that.props.location.pathname.slice(10)) {
           return (
             <Link
