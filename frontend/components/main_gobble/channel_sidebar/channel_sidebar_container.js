@@ -8,6 +8,7 @@ import {
 import {
   showMenu,
   hideMenu } from '../../../actions/ui/menu_actions';
+import { logout } from '../../../actions/session/session_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let currentUser;
@@ -29,7 +30,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     updateSingleChannel: (channel) => dispatch(updateSingleChannel(channel)),
     removeChannel: (id) => dispatch(removeChannel(id)),
     showMenu: () => dispatch(showMenu()),
-    hideMenu: () => dispatch(hideMenu())
+    hideMenu: () => dispatch(hideMenu()),
+    logout: () => dispatch(logout())
   };
 };
 

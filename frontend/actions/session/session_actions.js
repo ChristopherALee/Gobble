@@ -62,6 +62,7 @@ export const signUp = user => dispatch => {
 };
 
 export const login = user => dispatch => {
+
   return (
     SessionApiUtil.login(user).then(
       currentUser => {

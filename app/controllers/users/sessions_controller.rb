@@ -28,7 +28,11 @@ class Users::SessionsController < Devise::SessionsController
 
   # DELETE /resource/sign_out
   def destroy
-    super
+    if current_user
+      sign_out current_user
+    else
+      render json: ["No one is logged in!"], status: 404
+    end
   end
 
   # protected

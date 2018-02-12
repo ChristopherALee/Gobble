@@ -73,7 +73,7 @@ class SessionForm extends React.Component {
 
   renderUsernameErrors() {
     let usernameErrors;
-
+    
     if (this.props.errors instanceof Array) {
       return null;
     } else if (this.props.errors.username) {

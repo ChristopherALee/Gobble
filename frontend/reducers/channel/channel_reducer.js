@@ -6,6 +6,7 @@ import {
   RECEIVE_ALL_MEMBERSHIPS,
   RECEIVE_SINGLE_MEMBERSHIP,
   DELETE_MEMBERSHIP } from '../../actions/membership/membership_actions';
+import { LOG_OUT } from '../../actions/session/session_actions';
 
 const channelReducer = (state = {}, action) => {
   let newState;
@@ -32,6 +33,9 @@ const channelReducer = (state = {}, action) => {
         (member) => member !== action.membership.memberName
       );
       newState[action.membership.channelName].members = newMembers;
+      return newState;
+    case LOG_OUT:
+      newState = {};
       return newState;
     default:
       return state;

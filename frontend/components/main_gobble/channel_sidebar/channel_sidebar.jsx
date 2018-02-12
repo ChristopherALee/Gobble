@@ -9,6 +9,7 @@ class ChannelSideBar extends React.Component {
     this.gobbleMenu = this.gobbleMenu.bind(this);
     this.renderGobbleMenu = this.renderGobbleMenu.bind(this);
     this.removeGobbleMenu = this.removeGobbleMenu.bind(this);
+    this.logOut = this.logOut.bind(this);
   }
 
   componentDidMount() {
@@ -56,6 +57,10 @@ class ChannelSideBar extends React.Component {
     return channels;
   }
 
+  logOut() {
+    this.props.logout();
+  }
+
   gobbleMenu() {
     if (this.props && this.props.gobbleMenuShown && this.props.currentUser) {
       return (
@@ -68,7 +73,7 @@ class ChannelSideBar extends React.Component {
               {this.props.currentUser.username}
             </div>
           </div>
-          <div className="logout-button">
+          <div className="logout-button" onClick={this.logOut}>
             Sign Out
           </div>
         </div>
