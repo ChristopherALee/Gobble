@@ -6,10 +6,12 @@ class ChannelSideBar extends React.Component {
     super(props);
 
     this.state = {
-      renderGobbleMenu: true
+      renderGobbleMenu: false
     };
 
     this.renderChannels = this.renderChannels.bind(this);
+    this.renderGobbleMenu = this.renderGobbleMenu.bind(this);
+    this.removeGobbleMenu = this.removeGobbleMenu.bind(this);
   }
 
   componentDidMount() {
@@ -72,6 +74,14 @@ class ChannelSideBar extends React.Component {
     }
   }
 
+  renderGobbleMenu() {
+    this.setState({['renderGobbleMenu']: true});
+  }
+
+  removeGobbleMenu() {
+    this.setState({['renderGobbleMenu']: false});
+  }
+
   render() {
     let currentUser;
     if (this.props.currentUser) {
@@ -82,7 +92,7 @@ class ChannelSideBar extends React.Component {
       <div id="channel-side-bar">
         {this.gobbleMenu()}
 
-        <div className="user-info-container">
+        <div className="user-info-container" onClick={this.renderGobbleMenu}>
           <div className="channel-name">
             <div className="channel-name-text">
               Gobble - We Gobblin' Here!
