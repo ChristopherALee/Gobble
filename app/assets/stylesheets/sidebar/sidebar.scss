@@ -3,6 +3,7 @@
   min-width: 340px;
   width: 340px;
   background-color: #4d394b;
+  user-select: none;
 
   .gobble-menu {
     background-color: white;
@@ -15,6 +16,7 @@
     padding: 10px;
     border-radius: 6px;
     border: 1px solid rgba(0,0,0,.15);
+    -webkit-animation: fadein 0.2s;
 
     div {
       margin-bottom: 5px;
