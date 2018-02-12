@@ -75,7 +75,7 @@ class ChannelSideBar extends React.Component {
   }
 
   renderGobbleMenu() {
-    this.setState({['renderGobbleMenu']: true});
+    this.setState({['renderGobbleMenu']: !this.state.renderGobbleMenu});
   }
 
   removeGobbleMenu() {
@@ -88,43 +88,83 @@ class ChannelSideBar extends React.Component {
       currentUser = this.props.currentUser.username;
     }
 
-    return (
-      <div id="channel-side-bar">
-        {this.gobbleMenu()}
+    if (this.state.renderGobbleMenu) {
+      return (
+        <div id="channel-side-bar" onClick={this.renderGobbleMenu}>
+          {this.gobbleMenu()}
 
-        <div className="user-info-container" onClick={this.renderGobbleMenu}>
-          <div className="channel-name">
-            <div className="channel-name-text">
-              Gobble - We Gobblin' Here!
+          <div className="user-info-container" onClick={this.renderGobbleMenu}>
+            <div className="channel-name">
+              <div className="channel-name-text">
+                Gobble - We Gobblin' Here!
+              </div>
+              <div className="angle-down-icon">
+                <i className="fas fa-angle-down"></i>
+              </div>
             </div>
-            <div className="angle-down-icon">
-              <i className="fas fa-angle-down"></i>
+            <div className="current-username">
+              <div className="active-circle"></div>
+              <div className="username">
+                {currentUser}
+              </div>
             </div>
           </div>
-          <div className="current-username">
-            <div className="active-circle"></div>
-            <div className="username">
-              {currentUser}
+
+          <div className="side-bar-channels" onClick={this.removeGobbleMenu}>
+            <div className="channels-header">
+              <p className="channels-header-content">Channels</p>
+              <i className="fas fa-plus-circle"></i>
+            </div>
+
+            <ul className="channel-list" onClick={this.removeGobbleMenu}>
+              {this.renderChannels()}
+            </ul>
+          </div>
+
+          <div className="side-bar-dms" onClick={this.removeGobbleMenu}>
+
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div id="channel-side-bar">
+          {this.gobbleMenu()}
+
+          <div className="user-info-container" onClick={this.renderGobbleMenu}>
+            <div className="channel-name">
+              <div className="channel-name-text">
+                Gobble - We Gobblin' Here!
+              </div>
+              <div className="angle-down-icon">
+                <i className="fas fa-angle-down"></i>
+              </div>
+            </div>
+            <div className="current-username">
+              <div className="active-circle"></div>
+              <div className="username">
+                {currentUser}
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="side-bar-channels">
-          <div className="channels-header">
-            <p className="channels-header-content">Channels</p>
-            <i className="fas fa-plus-circle"></i>
+          <div className="side-bar-channels" onClick={this.removeGobbleMenu}>
+            <div className="channels-header">
+              <p className="channels-header-content">Channels</p>
+              <i className="fas fa-plus-circle"></i>
+            </div>
+
+            <ul className="channel-list" onClick={this.removeGobbleMenu}>
+              {this.renderChannels()}
+            </ul>
           </div>
 
-          <ul className="channel-list">
-            {this.renderChannels()}
-          </ul>
-        </div>
+          <div className="side-bar-dms" onClick={this.removeGobbleMenu}>
 
-        <div className="side-bar-dms">
-
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 
