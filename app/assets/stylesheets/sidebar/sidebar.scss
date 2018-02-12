@@ -39,6 +39,7 @@
         border-radius: 6px;
         color: white;
         cursor: pointer;
+        font-weight: 300;
       }
     }
   }
@@ -60,6 +61,12 @@
     &:hover {
       cursor: pointer;
       background-color: #3e313c;
+
+      .username {
+        color: white;
+        font-weight: 300;
+        letter-spacing: 0.2px;
+      }
     }
 
     .channel-name {
