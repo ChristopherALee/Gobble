@@ -9,10 +9,42 @@
     position: absolute;
     top: 62px;
     left: 15px;
-    width: 309px;
-    min-width: 309px;
-    height: 100px;
+    width: 288px;
+    min-width: 288px;
     z-index: 1;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(0,0,0,.15);
+
+    div {
+      margin-bottom: 5px;
+    }
+
+    .gobble-menu-username {
+      display: flex;
+      align-items: center;
+
+      .gobble-menu-username-text {
+        font-size: 20px;
+        font-weight: bold;
+      }
+    }
+
+    .logout-button {
+      padding: 3px 10px;
+      margin-bottom: 0;
+
+      &:hover {
+        background-color: #2e9ee0;
+        border-radius: 6px;
+        color: white;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .side-bar-contents {
+    height: 100%;
   }
 
   .active-sidebar {
@@ -70,12 +102,6 @@
       color: #bfb8be;
       user-select: none;
       cursor: pointer;
-
-      // &:hover {
-      //   p {
-      //     color: #f1f7f6;
-      //   }
-      // }
 
       .channels-header-content {
         width: 100%;
