@@ -6,7 +6,7 @@
 
   .user-info-container {
     color: white;
-    padding: 15px;
+    padding: 12px;
     user-select: none;
     margin-bottom: 11px;
 
@@ -16,7 +16,15 @@
     }
 
     .channel-name {
-      font-size: 25px;
+      font-size: 23px;
+      display: flex;
+      justify-content: space-between;
+
+      .angle-down-icon {
+        .fa-angle-down {
+          width: 10px;
+        }
+      }
     }
 
     .current-username {

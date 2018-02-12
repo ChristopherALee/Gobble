@@ -63,7 +63,12 @@ class ChannelSideBar extends React.Component {
       <div id="channel-side-bar">
         <div className="user-info-container">
           <div className="channel-name">
-            Gobble - We Gobblin' Here!
+            <div className="channel-name-text">
+              Gobble - We Gobblin' Here!
+            </div>
+            <div className="angle-down-icon">
+              <i className="fas fa-angle-down"></i>
+            </div>
           </div>
           <div className="current-username">
             <div className="active-circle"></div>
