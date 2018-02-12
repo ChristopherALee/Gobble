@@ -4,6 +4,17 @@
   width: 340px;
   background-color: #4d394b;
 
+  .gobble-menu {
+    background-color: white;
+    position: absolute;
+    top: 62px;
+    left: 15px;
+    width: 309px;
+    min-width: 309px;
+    height: 100px;
+    z-index: 1;
+  }
+
   .user-info-container {
     color: white;
     padding: 12px;
