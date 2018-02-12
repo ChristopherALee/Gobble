@@ -90,7 +90,7 @@ class ChannelSideBar extends React.Component {
         <div id="channel-side-bar" onClick={this.removeGobbleMenu}>
           {this.gobbleMenu()}
 
-          <div className="user-info-container">
+          <div className="user-info-container active-sidebar">
             <div className="channel-name">
               <div className="channel-name-text">
                 Gobble - We Gobblin' Here!
