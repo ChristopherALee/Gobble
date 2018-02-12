@@ -5,11 +5,8 @@ class ChannelSideBar extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      renderGobbleMenu: false
-    };
-
     this.renderChannels = this.renderChannels.bind(this);
+    this.gobbleMenu = this.gobbleMenu.bind(this);
     this.renderGobbleMenu = this.renderGobbleMenu.bind(this);
     this.removeGobbleMenu = this.removeGobbleMenu.bind(this);
   }
@@ -60,7 +57,7 @@ class ChannelSideBar extends React.Component {
   }
 
   gobbleMenu() {
-    if (this.state.renderGobbleMenu && this.props.currentUser) {
+    if (this.props && this.props.gobbleMenuShown && this.props.currentUser) {
       return (
         <div className="gobble-menu">
           <p>{this.props.currentUser.username}</p>
@@ -75,11 +72,11 @@ class ChannelSideBar extends React.Component {
   }
 
   renderGobbleMenu() {
-    this.setState({['renderGobbleMenu']: !this.state.renderGobbleMenu});
+    this.props.showMenu();
   }
 
   removeGobbleMenu() {
-    this.setState({['renderGobbleMenu']: false});
+    this.props.hideMenu();
   }
 
   render() {
@@ -88,12 +85,12 @@ class ChannelSideBar extends React.Component {
       currentUser = this.props.currentUser.username;
     }
 
-    if (this.state.renderGobbleMenu) {
+    if (this.props.gobbleMenuShown) {
       return (
-        <div id="channel-side-bar" onClick={this.renderGobbleMenu}>
+        <div id="channel-side-bar" onClick={this.removeGobbleMenu}>
           {this.gobbleMenu()}
 
-          <div className="user-info-container" onClick={this.renderGobbleMenu}>
+          <div className="user-info-container">
             <div className="channel-name">
               <div className="channel-name-text">
                 Gobble - We Gobblin' Here!
@@ -110,18 +107,18 @@ class ChannelSideBar extends React.Component {
             </div>
           </div>
 
-          <div className="side-bar-channels" onClick={this.removeGobbleMenu}>
+          <div className="side-bar-channels">
             <div className="channels-header">
               <p className="channels-header-content">Channels</p>
               <i className="fas fa-plus-circle"></i>
             </div>
 
-            <ul className="channel-list" onClick={this.removeGobbleMenu}>
+            <ul className="channel-list">
               {this.renderChannels()}
             </ul>
           </div>
 
-          <div className="side-bar-dms" onClick={this.removeGobbleMenu}>
+          <div className="side-bar-dms">
 
           </div>
         </div>
@@ -154,7 +151,7 @@ class ChannelSideBar extends React.Component {
               <i className="fas fa-plus-circle"></i>
             </div>
 
-            <ul className="channel-list" onClick={this.removeGobbleMenu}>
+            <ul className="channel-list">
               {this.renderChannels()}
             </ul>
           </div>

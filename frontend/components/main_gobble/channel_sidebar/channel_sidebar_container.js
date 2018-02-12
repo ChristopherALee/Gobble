@@ -5,6 +5,9 @@ import {
   fetchSingleChannel,
   updateSingleChannel,
   removeChannel } from '../../../actions/channel/channel_actions';
+import {
+  showMenu,
+  hideMenu } from '../../../actions/ui/menu_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let currentUser;
@@ -14,7 +17,8 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     currentUser: currentUser,
-    channels: Object.values(state.entities.channels)
+    channels: Object.values(state.entities.channels),
+    gobbleMenuShown: state.ui.menu
   };
 };
 
@@ -23,7 +27,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     fetchAllChannels: () => dispatch(fetchAllChannels()),
     fetchSingleChannel: (id) => dispatch(fetchSingleChannel(id)),
     updateSingleChannel: (channel) => dispatch(updateSingleChannel(channel)),
-    removeChannel: (id) => dispatch(removeChannel(id))
+    removeChannel: (id) => dispatch(removeChannel(id)),
+    showMenu: () => dispatch(showMenu()),
+    hideMenu: () => dispatch(hideMenu())
   };
 };
 
