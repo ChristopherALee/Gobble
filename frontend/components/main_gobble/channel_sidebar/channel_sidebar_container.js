@@ -8,7 +8,9 @@ import {
   removeChannel } from '../../../actions/channel/channel_actions';
 import {
   showMenu,
-  hideMenu } from '../../../actions/ui/menu_actions';
+  hideMenu,
+  showCreateChannelMenu,
+  hideCreateChannelMenu } from '../../../actions/ui/menu_actions';
 import { logout } from '../../../actions/session/session_actions';
 
 const mapStateToProps = (state, ownProps) => {
@@ -33,6 +35,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     removeChannel: (id) => dispatch(removeChannel(id)),
     showMenu: () => dispatch(showMenu()),
     hideMenu: () => dispatch(hideMenu()),
+    showCreateChannelMenu: () => dispatch(showCreateChannelMenu()),
+    hideCreateChannelMenu: () => dispatch(hideCreateChannelMenu()),
     logout: () => dispatch(logout())
   };
 };
