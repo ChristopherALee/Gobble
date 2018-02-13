@@ -143,19 +143,24 @@ class ChannelSideBar extends React.Component {
               <form className="create-channel-form">
                 <label>
                   <p>Name</p>
-                  <input
-                    type="text"
-                    value={this.state.channelName}
-                    onChange={this.handleChange("channelName")}
-                    className="create-channel-form-name-input"/>
+                  <div className="channel-input-container">
+                    <p className="hashtag">#</p>
+                    <input
+                      type="text"
+                      value={this.state.channelName}
+                      onChange={this.handleChange("channelName")}
+                      className="create-channel-form-name-input"/>
+                  </div>
                   </label>
                   <label>
                     <p>Purpose</p>
-                    <input
-                      type="text"
-                      value={this.state.purpose}
-                      onChange={this.handleChange("purpose")}
-                      className="create-channel-form-purpose-input"/>
+                    <div className="channel-input-container">
+                      <input
+                        type="text"
+                        value={this.state.purpose}
+                        onChange={this.handleChange("purpose")}
+                        className="create-channel-form-purpose-input"/>
+                    </div>
                   </label>
 
                   <div className="create-channel-submit-button-container">
