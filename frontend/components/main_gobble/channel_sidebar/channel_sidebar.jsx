@@ -115,6 +115,7 @@ class ChannelSideBar extends React.Component {
       return (
         <div className="create-channel-menu">
           <div className="create-channel-menu-contents">
+            <div className="close-create-channel-menu" onClick={this.removeCreateChannelMenu}>X</div>
             <h1>Create a channel</h1>
             <p>Channels are where your members communicate. They're best when organized around a topic - #bread, for example</p>
 
@@ -223,9 +224,11 @@ class ChannelSideBar extends React.Component {
             </div>
 
             <div className="side-bar-channels">
-              <div className="channels-header" onClick={this.renderCreateChannelMenu}>
+              <div className="channels-header">
                 <p className="channels-header-content">Channels</p>
-                <i className="fas fa-plus-circle"></i>
+                <div className="create-channel-button" onClick={this.renderCreateChannelMenu}>
+                  <i className="fas fa-plus-circle"></i>
+                </div>
               </div>
 
               <ul className="channel-list">

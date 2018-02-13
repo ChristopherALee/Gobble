@@ -27,7 +27,7 @@ const renderCreateChannelMenu = () => {
 const removeCreateChannelMenu = () => {
   return {
     type: REMOVE_CREATE_CHANNEL_MENU,
-    render: true
+    render: false
   };
 };
 
