@@ -17,7 +17,7 @@ class ChannelSideBar extends React.Component {
     this.renderCreateChannelMenu = this.renderCreateChannelMenu.bind(this);
     this.removeCreateChannelMenu = this.removeCreateChannelMenu.bind(this);
     this.logOut = this.logOut.bind(this);
-    this.channelMenuEvent = this.channelMenuEvent.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -111,17 +111,16 @@ class ChannelSideBar extends React.Component {
     this.props.hideMenu();
   }
 
-  channelMenuEvent(e) {
-    e.preventDefault();
-
-    if (e.keyCode === 27) {
-      this.removeCreateChannelMenu();
-    }
-  }
+  // channelMenuEvent(e) {
+  //   e.preventDefault();
+  //
+  //   if (e.keyCode === 27) {
+  //     this.removeCreateChannelMenu();
+  //   }
+  // }
 
   createChannelMenu() {
     if (this.props.createChannelMenuShown) {
-      document.addEventListener('keydown', this.channelMenuEvent);
       return (
         <div className="create-channel-menu">
           <div className="close-create-channel-menu" onClick={this.removeCreateChannelMenu}>
@@ -131,7 +130,7 @@ class ChannelSideBar extends React.Component {
           <div className="create-channel-menu-container">
             <div className="create-channel-menu-contents">
               <h1>Create a channel</h1>
-              <p>Channels are where your members communicate. They're best when organized around a topic - #bread, for example</p>
+              <p className="create-channel-description">Channels are where your members communicate. They're best when organized around a topic - #bread, for example.</p>
 
               <form className="create-channel-form">
                 <label>
@@ -150,13 +149,16 @@ class ChannelSideBar extends React.Component {
                       onChange={this.handleChange("purpose")}
                       className="create-channel-form-purpose-input"/>
                   </label>
+
+                  <div className="create-channel-submit-button-container">
+                    <input type="submit" onSubmit={this.handleSubmit} value="Create Channel"/>
+                  </div>
                 </form>
             </div>
           </div>
         </div>
       );
     } else {
-      document.removeEventListener('keydown', this.channelMenuEvent);
       return null;
     }
   }
