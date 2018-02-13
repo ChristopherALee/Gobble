@@ -3,6 +3,7 @@ import ChannelSideBar from './channel_sidebar';
 import {
   fetchAllChannels,
   fetchSingleChannel,
+  createChannel,
   updateSingleChannel,
   removeChannel } from '../../../actions/channel/channel_actions';
 import {
@@ -27,6 +28,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     fetchAllChannels: () => dispatch(fetchAllChannels()),
     fetchSingleChannel: (id) => dispatch(fetchSingleChannel(id)),
+    createChannel: (channel) => dispatch(createChannel(channel)),
     updateSingleChannel: (channel) => dispatch(updateSingleChannel(channel)),
     removeChannel: (id) => dispatch(removeChannel(id)),
     showMenu: () => dispatch(showMenu()),

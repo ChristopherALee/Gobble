@@ -47,6 +47,17 @@ export const fetchSingleChannel = (id) => dispatch => {
   );
 };
 
+export const createChannel = (channel) => dispatch => {
+  return (
+    ChannelApiUtil.createChannel(channel).then(
+      (channel) => {
+        dispatch(receiveSingleChannel(channel));
+        return channel;
+      }
+    )
+  );
+};
+
 export const updateSingleChannel = (channel) => dispatch => {
   return (
     ChannelApiUtil.updateChannel(channel).then(
