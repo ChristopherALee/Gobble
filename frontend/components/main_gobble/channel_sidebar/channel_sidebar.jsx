@@ -5,6 +5,11 @@ class ChannelSideBar extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      channelName: '',
+      purpose: ''
+    };
+
     this.renderChannels = this.renderChannels.bind(this);
     this.gobbleMenu = this.gobbleMenu.bind(this);
     this.renderGobbleMenu = this.renderGobbleMenu.bind(this);
@@ -22,6 +27,18 @@ class ChannelSideBar extends React.Component {
     if (this.props.location.pathname !== newProps.location.pathname) {
       this.props.fetchAllChannels();
     }
+  }
+
+  handleChange(field) {
+    return (e) => {
+      this.setState({[field]: e.target.value});
+    };
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const channel = Object.assign({}, this.state);
+    this.props.createChannel(channel);
   }
 
   renderChannels() {
@@ -97,7 +114,29 @@ class ChannelSideBar extends React.Component {
     if (this.props.createChannelMenuShown) {
       return (
         <div className="create-channel-menu">
-          Create Channel
+          <div className="create-channel-menu-contents">
+            <h1>Create a channel</h1>
+            <p>Channels are where your members communicate. They're best when organized around a topic - #bread, for example</p>
+
+            <form className="create-channel-form">
+              <label>
+                <p>Name</p>
+                <input
+                  type="text"
+                  value={this.state.channelName}
+                  onChange={this.handleChange("channelName")}
+                  className="create-channel-form-name-input"/>
+              </label>
+              <label>
+                <p>Purpose</p>
+                <input
+                  type="text"
+                  value={this.state.purpose}
+                  onChange={this.handleChange("purpose")}
+                  className="create-channel-form-purpose-input"/>
+              </label>
+            </form>
+          </div>
         </div>
       );
     } else {
