@@ -91,16 +91,35 @@
           border-radius: 5px;
         }
 
+        .create-channel-form-name-input {
+          margin-bottom: 20px;
+        }
+
        .create-channel-submit-button-container {
-         margin-top: 20px;
+         margin-top: 28px;
          display: flex;
          justify-content: flex-end;
 
          input[type="submit"] {
-           cursor: pointer;
-           width: 20%;
+          cursor: pointer;
+          width: 20%;
+          background-color: #cdcece;
+          border: none;
+          color: white;
+          padding: 8px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 180px;
+          height: 50px;
+          font-size: 20px;
+         }
+
+         #green-submit {
+           background-color: #2fa663;
          }
        }
+
       }
     }
   }

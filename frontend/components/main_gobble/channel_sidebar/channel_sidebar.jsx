@@ -119,6 +119,14 @@ class ChannelSideBar extends React.Component {
   //   }
   // }
 
+  activeSubmit() {
+    if (this.state.channelName.length) {
+      return 'green-submit';
+    } else {
+      return null;
+    }
+  }
+
   createChannelMenu() {
     if (this.props.createChannelMenuShown) {
       return (
@@ -151,7 +159,11 @@ class ChannelSideBar extends React.Component {
                   </label>
 
                   <div className="create-channel-submit-button-container">
-                    <input type="submit" onSubmit={this.handleSubmit} value="Create Channel"/>
+                    <input
+                      type="submit"
+                      id={`${this.activeSubmit()}`}
+                      onSubmit={this.handleSubmit}
+                      value="Create Channel"/>
                   </div>
                 </form>
             </div>
