@@ -114,7 +114,9 @@ class ChannelSideBar extends React.Component {
     if (this.props.createChannelMenuShown) {
       return (
         <div className="create-channel-menu">
-          <div className="close-create-channel-menu" onClick={this.removeCreateChannelMenu}>X</div>
+          <div className="close-create-channel-menu" onClick={this.removeCreateChannelMenu}>
+            <i className="fas fa-times"></i>
+          </div>
           <div className="create-channel-menu-container">
             <div className="create-channel-menu-contents">
               <h1>Create a channel</h1>
