@@ -53,6 +53,33 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+
+      h1 {
+        font-size: 34px;
+        font-family: 'Noto Sans', sans-serif;
+        font-weight: 600;
+        color: #2c2d30;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+        line-height: 1.25rem;
+        margin: 0.5rem 0 1rem 0;
+        color: #717274;
+      }
+
+      .create-channel-form {
+        font-family: 'Noto Sans', sans-serif;
+
+        label {
+          p {
+            color: #2c2d30;
+            font-weight: bold;
+            font-size: 16px;
+          }
+        }
+      }
     }
   }
 }
