@@ -114,29 +114,31 @@ class ChannelSideBar extends React.Component {
     if (this.props.createChannelMenuShown) {
       return (
         <div className="create-channel-menu">
-          <div className="create-channel-menu-contents">
-            <div className="close-create-channel-menu" onClick={this.removeCreateChannelMenu}>X</div>
-            <h1>Create a channel</h1>
-            <p>Channels are where your members communicate. They're best when organized around a topic - #bread, for example</p>
+          <div className="close-create-channel-menu" onClick={this.removeCreateChannelMenu}>X</div>
+          <div className="create-channel-menu-container">
+            <div className="create-channel-menu-contents">
+              <h1>Create a channel</h1>
+              <p>Channels are where your members communicate. They're best when organized around a topic - #bread, for example</p>
 
-            <form className="create-channel-form">
-              <label>
-                <p>Name</p>
-                <input
-                  type="text"
-                  value={this.state.channelName}
-                  onChange={this.handleChange("channelName")}
-                  className="create-channel-form-name-input"/>
-              </label>
-              <label>
-                <p>Purpose</p>
-                <input
-                  type="text"
-                  value={this.state.purpose}
-                  onChange={this.handleChange("purpose")}
-                  className="create-channel-form-purpose-input"/>
-              </label>
-            </form>
+              <form className="create-channel-form">
+                <label>
+                  <p>Name</p>
+                  <input
+                    type="text"
+                    value={this.state.channelName}
+                    onChange={this.handleChange("channelName")}
+                    className="create-channel-form-name-input"/>
+                  </label>
+                  <label>
+                    <p>Purpose</p>
+                    <input
+                      type="text"
+                      value={this.state.purpose}
+                      onChange={this.handleChange("purpose")}
+                      className="create-channel-form-purpose-input"/>
+                  </label>
+                </form>
+            </div>
           </div>
         </div>
       );
