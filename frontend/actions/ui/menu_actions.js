@@ -1,5 +1,7 @@
 export const RENDER_MENU = 'RENDER_MENU';
 export const REMOVE_MENU = 'REMOVE_MENU';
+export const RENDER_CREATE_CHANNEL_MENU = 'RENDER_CREATE_CHANNEL_MENU';
+export const REMOVE_CREATE_CHANNEL_MENU = 'REMOVE_CREATE_CHANNEL_MENU';
 
 const renderMenu = () => {
   return {
@@ -15,6 +17,20 @@ const removeMenu = () => {
   };
 };
 
+const renderCreateChannelMenu = () => {
+  return {
+    type: RENDER_CREATE_CHANNEL_MENU,
+    render: true
+  };
+};
+
+const removeCreateChannelMenu = () => {
+  return {
+    type: REMOVE_CREATE_CHANNEL_MENU,
+    render: true
+  };
+};
+
 export const showMenu = () => dispatch => {
   return (
     dispatch(renderMenu())
@@ -24,5 +40,17 @@ export const showMenu = () => dispatch => {
 export const hideMenu = () => dispatch => {
   return (
     dispatch(removeMenu())
+  );
+};
+
+export const showCreateChannelMenu = () => dispatch => {
+  return (
+    dispatch(renderCreateChannelMenu())
+  );
+};
+
+export const hideCreateChannelMenu = () => dispatch => {
+  return (
+    dispatch(removeCreateChannelMenu())
   );
 };

@@ -91,6 +91,18 @@ class ChannelSideBar extends React.Component {
     this.props.hideMenu();
   }
 
+  createChannelMenu() {
+    if (this.props.createChannelMenuShown) {
+      return (
+        <div className="create-channel-menu">
+          Create Channel
+        </div>
+      );
+    } else {
+      return null;
+    }
+  }
+
   render() {
     let currentUser;
     if (this.props.currentUser) {
@@ -100,6 +112,7 @@ class ChannelSideBar extends React.Component {
     if (this.props.gobbleMenuShown) {
       return (
         <div id="channel-side-bar">
+          {this.createChannelMenu()}
           {this.gobbleMenu()}
 
           <div className="side-bar-contents" onClick={this.removeGobbleMenu}>
