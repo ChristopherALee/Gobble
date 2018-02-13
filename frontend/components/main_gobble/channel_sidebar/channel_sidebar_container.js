@@ -22,7 +22,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     currentUser: currentUser,
     channels: Object.values(state.entities.channels),
-    gobbleMenuShown: state.ui.menu
+    gobbleMenuShown: state.ui.menu,
+    createChannelMenuShown: state.ui.createChannelMenu
   };
 };
 

@@ -9,6 +9,8 @@ class ChannelSideBar extends React.Component {
     this.gobbleMenu = this.gobbleMenu.bind(this);
     this.renderGobbleMenu = this.renderGobbleMenu.bind(this);
     this.removeGobbleMenu = this.removeGobbleMenu.bind(this);
+    this.renderCreateChannelMenu = this.renderCreateChannelMenu.bind(this);
+    this.removeCreateChannelMenu = this.removeCreateChannelMenu.bind(this);
     this.logOut = this.logOut.bind(this);
   }
 
@@ -103,6 +105,14 @@ class ChannelSideBar extends React.Component {
     }
   }
 
+  renderCreateChannelMenu() {
+    this.props.showCreateChannelMenu();
+  }
+
+  removeCreateChannelMenu() {
+    this.props.hideCreateChannelMenu();
+  }
+
   render() {
     let currentUser;
     if (this.props.currentUser) {
@@ -112,7 +122,6 @@ class ChannelSideBar extends React.Component {
     if (this.props.gobbleMenuShown) {
       return (
         <div id="channel-side-bar">
-          {this.createChannelMenu()}
           {this.gobbleMenu()}
 
           <div className="side-bar-contents" onClick={this.removeGobbleMenu}>
@@ -153,6 +162,7 @@ class ChannelSideBar extends React.Component {
     } else {
       return (
         <div id="channel-side-bar">
+          {this.createChannelMenu()}
           {this.gobbleMenu()}
 
           <div className="side-bar-contents">
@@ -174,7 +184,7 @@ class ChannelSideBar extends React.Component {
             </div>
 
             <div className="side-bar-channels">
-              <div className="channels-header">
+              <div className="channels-header" onClick={this.renderCreateChannelMenu}>
                 <p className="channels-header-content">Channels</p>
                 <i className="fas fa-plus-circle"></i>
               </div>
