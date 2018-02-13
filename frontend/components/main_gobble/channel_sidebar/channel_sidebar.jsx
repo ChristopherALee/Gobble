@@ -17,6 +17,7 @@ class ChannelSideBar extends React.Component {
     this.renderCreateChannelMenu = this.renderCreateChannelMenu.bind(this);
     this.removeCreateChannelMenu = this.removeCreateChannelMenu.bind(this);
     this.logOut = this.logOut.bind(this);
+    this.channelMenuEvent = this.channelMenuEvent.bind(this);
   }
 
   componentDidMount() {
@@ -110,12 +111,22 @@ class ChannelSideBar extends React.Component {
     this.props.hideMenu();
   }
 
+  channelMenuEvent(e) {
+    e.preventDefault();
+
+    if (e.keyCode === 27) {
+      this.removeCreateChannelMenu();
+    }
+  }
+
   createChannelMenu() {
     if (this.props.createChannelMenuShown) {
+      document.addEventListener('keydown', this.channelMenuEvent);
       return (
         <div className="create-channel-menu">
           <div className="close-create-channel-menu" onClick={this.removeCreateChannelMenu}>
             <i className="fas fa-times"></i>
+            <p>esc</p>
           </div>
           <div className="create-channel-menu-container">
             <div className="create-channel-menu-contents">
@@ -145,6 +156,7 @@ class ChannelSideBar extends React.Component {
         </div>
       );
     } else {
+      document.removeEventListener('keydown', this.channelMenuEvent);
       return null;
     }
   }

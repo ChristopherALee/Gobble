@@ -12,17 +12,22 @@
     right: 80px;
     top: 80px;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
     user-select: none;
+    flex-direction: column;
 
     .fa-times {
       width: 30px;
       height: 30px;
-      color: #717274;
+      color: #969799;
+    }
+
+    p {
+      color: #969799;
     }
 
     &:hover {
@@ -30,6 +35,10 @@
       background-color: #e8e8e8;
 
       .fa-times {
+        color: #2c2d30;
+      }
+
+      p {
         color: #2c2d30;
       }
     }
