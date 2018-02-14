@@ -38,12 +38,16 @@ class ChannelSideBar extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger
+    
     if (this.activeSubmit()) {
       const channel = Object.assign({}, this.state);
       this.props.createChannel({channel: channel}).then(
         (success) => {
           this.removeCreateChannelMenu();
+          this.setState({
+            ['name']: '',
+            ['purpose']: ''
+          });
         }
       );
     }
