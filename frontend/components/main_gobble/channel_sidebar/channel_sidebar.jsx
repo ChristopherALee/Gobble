@@ -25,15 +25,19 @@ class ChannelSideBar extends React.Component {
     this.props.fetchAllChannels();
     let that = this;
 
-    const pusher = new Pusher('416ebb2d74bf61955f19', {
+    this.pusher = new Pusher('416ebb2d74bf61955f19', {
       cluster: 'us2',
       encrypted: true
     });
 
-    const channel = pusher.subscribe('sidebar_channel');
+    const channel = this.pusher.subscribe('sidebar_channel');
     channel.bind('channel_created', function(data) {
       that.props.fetchAllChannels();
     });
+  }
+
+  componentWillUnmount() {
+    this.pusher.unsubscribe('sidebar_channel');
   }
 
   componentWillReceiveProps(newProps) {
