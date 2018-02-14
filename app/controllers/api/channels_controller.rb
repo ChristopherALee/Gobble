@@ -12,7 +12,7 @@ class Api::ChannelsController < ApplicationController
     @channel.creator_id = current_user.id
 
     if @channel.save
-      Pusher.trigger(`#{@channel.name}`, 'channel_created', {})
+      Pusher.trigger('sidebar_channel', 'channel_created', {})
       render 'api/channels/show'
     else
       render json: @channel.errors.messages, status: 422

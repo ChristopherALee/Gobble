@@ -1,3 +1,4 @@
+// globals Pusher
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -22,6 +23,17 @@ class ChannelSideBar extends React.Component {
 
   componentDidMount() {
     this.props.fetchAllChannels();
+    let that = this;
+
+    const pusher = new Pusher('416ebb2d74bf61955f19', {
+      cluster: 'us2',
+      encrypted: true
+    });
+
+    const channel = pusher.subscribe('sidebar_channel');
+    channel.bind('channel_created', function(data) {
+      that.props.fetchAllChannels();
+    });
   }
 
   componentWillReceiveProps(newProps) {
