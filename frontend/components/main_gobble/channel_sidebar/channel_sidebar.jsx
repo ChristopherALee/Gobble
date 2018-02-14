@@ -132,7 +132,7 @@ class ChannelSideBar extends React.Component {
 
   isErrors() {
     if (
-      this.state.name.length > 22
+      this.state.name.length >= 22
       || this.state.name !== this.state.name.toLowerCase()
       || this.state.name.includes(' ')
       || this.state.name.includes('.')
