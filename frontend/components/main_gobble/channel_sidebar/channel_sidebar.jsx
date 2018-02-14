@@ -38,7 +38,7 @@ class ChannelSideBar extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    
+
     if (this.activeSubmit()) {
       const channel = Object.assign({}, this.state);
       this.props.createChannel({channel: channel}).then(
@@ -144,7 +144,7 @@ class ChannelSideBar extends React.Component {
               <p className="create-channel-description">Channels are where your members communicate. They're best when organized around a topic - #bread, for example.</p>
 
               <form className="create-channel-form">
-                <label>
+                <div className="channel-form-input">
                   <p>Name</p>
                   <div className="channel-input-container">
                     <p className="hashtag">#</p>
@@ -154,26 +154,31 @@ class ChannelSideBar extends React.Component {
                       onChange={this.handleChange("name")}
                       className="create-channel-form-name-input"/>
                   </div>
-                  </label>
-                  <label>
+                  <span>Names must be lowercase, without spaces or periods, and shorter than 22 characters.</span>
+                </div>
+                <div className="channel-form-input">
+                  <div className="purpose-container">
                     <p>Purpose</p>
-                    <div className="channel-input-container">
-                      <input
-                        type="text"
-                        value={this.state.purpose}
-                        onChange={this.handleChange("purpose")}
-                        className="create-channel-form-purpose-input"/>
-                    </div>
-                  </label>
-
-                  <div className="create-channel-submit-button-container">
-                    <input
-                      type="submit"
-                      id={`${this.activeSubmit()}`}
-                      onClick={this.handleSubmit}
-                      value="Create Channel"/>
+                    <p id="italic">(optional)</p>
                   </div>
-                </form>
+                  <div className="channel-input-container">
+                    <input
+                      type="text"
+                      value={this.state.purpose}
+                      onChange={this.handleChange("purpose")}
+                      className="create-channel-form-purpose-input"/>
+                  </div>
+                  <span>What's this channel about?</span>
+                </div>
+
+                <div className="create-channel-submit-button-container">
+                  <input
+                    type="submit"
+                    id={`${this.activeSubmit()}`}
+                    onClick={this.handleSubmit}
+                    value="Create Channel"/>
+                </div>
+              </form>
             </div>
           </div>
         </div>

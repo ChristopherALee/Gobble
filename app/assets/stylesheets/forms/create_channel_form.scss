@@ -73,12 +73,36 @@
       .create-channel-form {
         font-family: 'Noto Sans', sans-serif;
 
-        label {
+        .channel-form-input {
+          margin-bottom: 33px;
+
           p {
             color: #2c2d30;
             font-weight: bold;
             font-size: 16px;
             margin: 10px 0;
+          }
+
+          span {
+            font-size: 12px;
+            line-height: 1.25rem;
+            margin: 0.5rem 0 1rem 0;
+            color: #717274;
+            font-family: 'Lato', sans-serif;
+          }
+
+          .purpose-container {
+            display: flex;
+
+            p {
+              margin-right: 5px;
+            }
+
+            #italic {
+              font-weight: lighter;
+              font-style: italic;
+              color: #717274;
+            }
           }
         }
 
