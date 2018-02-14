@@ -13,6 +13,7 @@
 
 class Channel < ApplicationRecord
   validates :name, :creator_id, presence: true
+  validates :name, length: { maximum: 22, message: "Name must be shorter than 22 characters."}
 
   belongs_to :creator,
     class_name: 'User',
@@ -23,6 +24,6 @@ class Channel < ApplicationRecord
     foreign_key: :channel_id
 
   has_many :members,
-    through: :memberships, 
+    through: :memberships,
     source: :member
 end

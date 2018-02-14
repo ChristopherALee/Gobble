@@ -123,8 +123,21 @@ class ChannelSideBar extends React.Component {
   }
 
   activeSubmit() {
-    if (this.state.name.length) {
+    if (this.state.name.length && !this.isErrors()) {
       return 'green-submit';
+    } else {
+      return null;
+    }
+  }
+
+  isErrors() {
+    if (
+      this.state.name.length > 22
+      || this.state.name !== this.state.name.toLowerCase()
+      || this.state.name.includes(' ')
+      || this.state.name.includes('.')
+    ) {
+      return 'channel-input-errors';
     } else {
       return null;
     }
@@ -146,7 +159,7 @@ class ChannelSideBar extends React.Component {
               <form className="create-channel-form">
                 <div className="channel-form-input">
                   <p>Name</p>
-                  <div className="channel-input-container">
+                  <div className={`${this.isErrors()} channel-input-container`}>
                     <p className="hashtag">#</p>
                     <input
                       type="text"
