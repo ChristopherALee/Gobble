@@ -6,7 +6,7 @@ class ChannelSideBar extends React.Component {
     super(props);
 
     this.state = {
-      channelName: '',
+      name: '',
       purpose: ''
     };
 
@@ -38,8 +38,15 @@ class ChannelSideBar extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const channel = Object.assign({}, this.state);
-    this.props.createChannel(channel);
+    debugger
+    if (this.activeSubmit()) {
+      const channel = Object.assign({}, this.state);
+      this.props.createChannel({channel: channel}).then(
+        (success) => {
+          this.removeCreateChannelMenu();
+        }
+      );
+    }
   }
 
   renderChannels() {
@@ -111,16 +118,8 @@ class ChannelSideBar extends React.Component {
     this.props.hideMenu();
   }
 
-  // channelMenuEvent(e) {
-  //   e.preventDefault();
-  //
-  //   if (e.keyCode === 27) {
-  //     this.removeCreateChannelMenu();
-  //   }
-  // }
-
   activeSubmit() {
-    if (this.state.channelName.length) {
+    if (this.state.name.length) {
       return 'green-submit';
     } else {
       return null;
@@ -147,8 +146,8 @@ class ChannelSideBar extends React.Component {
                     <p className="hashtag">#</p>
                     <input
                       type="text"
-                      value={this.state.channelName}
-                      onChange={this.handleChange("channelName")}
+                      value={this.state.name}
+                      onChange={this.handleChange("name")}
                       className="create-channel-form-name-input"/>
                   </div>
                   </label>
@@ -167,7 +166,7 @@ class ChannelSideBar extends React.Component {
                     <input
                       type="submit"
                       id={`${this.activeSubmit()}`}
-                      onSubmit={this.handleSubmit}
+                      onClick={this.handleSubmit}
                       value="Create Channel"/>
                   </div>
                 </form>
