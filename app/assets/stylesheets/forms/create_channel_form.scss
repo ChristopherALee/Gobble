@@ -6,6 +6,7 @@
   width: 100vw;
   display: flex;
   flex-direction: column;
+  -webkit-animation: fadein 0.3s;
 
   .close-create-channel-menu {
     position: absolute;
