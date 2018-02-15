@@ -44,7 +44,6 @@ class Api::ChannelsController < ApplicationController
 
   def messages
     @channel = Channel.find_by(name: params[:name])
-    debugger
     render 'api/channels/messages'
   end
 
