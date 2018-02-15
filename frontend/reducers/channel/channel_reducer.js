@@ -6,6 +6,9 @@ import {
   RECEIVE_ALL_MEMBERSHIPS,
   RECEIVE_SINGLE_MEMBERSHIP,
   DELETE_MEMBERSHIP } from '../../actions/membership/membership_actions';
+  import {
+    RECEIVE_SINGLE_MESSAGE,
+    DELETE_MESSAGE } from '../../actions/message/message_actions';
 import { LOG_OUT } from '../../actions/session/session_actions';
 
 const channelReducer = (state = {}, action) => {
