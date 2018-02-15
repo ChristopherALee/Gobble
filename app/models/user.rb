@@ -41,6 +41,10 @@ class User < ApplicationRecord
     through: :memberships,
     source: :channel
 
+  has_many :messages,
+    class_name: 'Message',
+    foreign_key: :author_id
+
   # validates :username, presence: { message: 'Please enter a username.'}, uniqueness: { message: 'This username has already been taken.'}
   # validates :password_digest, :session_token, presence: true
   # validates :session_token, uniqueness: true

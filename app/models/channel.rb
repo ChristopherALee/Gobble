@@ -9,6 +9,7 @@
 #  topic      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  messages   :string           default([]), is an Array
 #
 
 class Channel < ApplicationRecord
@@ -26,4 +27,8 @@ class Channel < ApplicationRecord
   has_many :members,
     through: :memberships,
     source: :member
+
+  has_many :messages,
+    class_name: 'Message',
+    foreign_key: :channel_id
 end
