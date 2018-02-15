@@ -30,3 +30,8 @@ membership6 = Membership.create({member_id: user3.id, channel_id: channel2.id})
 membership7 = Membership.create({member_id: user1.id, channel_id: channel3.id})
 membership8 = Membership.create({member_id: user2.id, channel_id: channel3.id})
 membership9 = Membership.create({member_id: user3.id, channel_id: channel3.id})
+
+# messages
+message1 = Message.create({author_id: user1.id, channel_id: channel1.id, body: "test"})
+message2 = Message.create({author_id: user2.id, channel_id: channel1.id, body: "test2"})
+message3 = Message.create({author_id: user3.id, channel_id: channel1.id, body: "test3"})
