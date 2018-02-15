@@ -17,7 +17,13 @@ class ChannelMessages extends React.Component {
           <div className="channel-messages-header-left">
             <div className="channel-messages-title">#{channelName}</div>
             <div className="channel-details">
-              <div className="channel-detail-member-ct">{memberCount}</div>
+              <div className="channel-detail-member-ct">
+                <i className="far fa-user"></i>
+                {memberCount}
+              </div>
+
+              <div className="divider">|</div>
+
               <div className="channel-detail-purpose">{purpose}</div>
             </div>
           </div>

@@ -17,10 +17,24 @@
         font-weight: 600;
         font-family: "Noto Sans", sans-serif;
         color: #2c2d30;
+        margin-bottom: 5px;
       }
 
       .channel-details {
         display: flex;
+        color: #717274;
+
+        .channel-detail-member-ct {
+          margin-right: 5px;
+
+          .fa-user {
+            margin-right: 5px;
+          }
+        }
+
+        .channel-detail-purpose {
+          margin-left: 5px;
+        }
       }
     }
 
