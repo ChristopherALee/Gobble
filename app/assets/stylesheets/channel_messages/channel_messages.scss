@@ -30,6 +30,11 @@
           .fa-user {
             margin-right: 5px;
           }
+
+          &:hover {
+            color: #0576b9;
+            cursor: pointer;
+          }
         }
 
         .channel-detail-purpose {
