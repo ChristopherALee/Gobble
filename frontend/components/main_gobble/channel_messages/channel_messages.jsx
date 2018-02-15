@@ -21,10 +21,12 @@ class ChannelMessages extends React.Component {
               <div className="channel-detail-purpose">{purpose}</div>
             </div>
           </div>
-          <div className="channel-messages-header-right">
 
+          <div className="channel-messages-header-right">
+            search
           </div>
         </div>
+
       </div>
     );
   }

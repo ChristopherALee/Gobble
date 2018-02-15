@@ -1,3 +1,31 @@
 #channel-messages {
   width: 100%;
+
+  .channel-messages-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    height: 65px;
+    border-bottom: 1.5px solid #e8e8e8;
+
+    .channel-messages-header-left {
+      margin-left: 15px;
+
+      .channel-messages-title {
+        font-size: 22px;
+        font-weight: 600;
+        font-family: "Noto Sans", sans-serif;
+        color: #2c2d30;
+      }
+
+      .channel-details {
+        display: flex;
+      }
+    }
+
+    .channel-messages-header-right {
+      margin-right: 15px;
+    }
+  }
 }
