@@ -29,7 +29,8 @@ class ChannelMessages extends React.Component {
           </div>
 
           <div className="channel-messages-header-right">
-            search
+            <i className="fas fa-info-circle"></i>
+            <i className="fas fa-cog"></i>
           </div>
         </div>
 

@@ -39,7 +39,19 @@
     }
 
     .channel-messages-header-right {
+      color: #a0a0a2;
       margin-right: 15px;
+
+      .fa-info-circle {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+      }
+
+      .fa-cog {
+        width: 20px;
+        height: 20px;
+      }
     }
   }
 }
