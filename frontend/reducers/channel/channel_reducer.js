@@ -28,7 +28,7 @@ const channelReducer = (state = {}, action) => {
       return newState;
     case RECEIVE_SINGLE_MEMBERSHIP:
       newState = Object.assign({}, state);
-      newState[action.membership.channelName].members.push(action.membership.userId);
+      newState[action.membership.channelName].members.push(action.membership.memberName);
       return newState;
     case DELETE_MEMBERSHIP:
       newState = Object.assign({}, state);

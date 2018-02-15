@@ -47,6 +47,17 @@ export const fetchSingleMembership = (id) => dispatch => {
   );
 };
 
+export const createMembership = (membership) => dispatch => {
+  return (
+    MembershipApiUtil.createMembership(membership).then(
+      (membership) => {
+        dispatch(receiveSingleMembership(membership));
+        return membership;
+      }
+    )
+  );
+};
+
 export const removeMembership = (id) => dispatch => {
   return (
     MembershipApiUtil.deleteMembership(id).then(

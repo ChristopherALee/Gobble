@@ -6,6 +6,7 @@ import {
   createChannel,
   updateSingleChannel,
   removeChannel } from '../../../actions/channel/channel_actions';
+import { createMembership } from '../../../actions/membership/membership_actions';
 import {
   showMenu,
   hideMenu,
@@ -15,13 +16,22 @@ import { logout } from '../../../actions/session/session_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let currentUser;
+  let channels;
+
   if (state.session.currentUser) {
     currentUser = state.session.currentUser;
+    channels = Object.values(state.entities.channels).filter(
+      (channel) => {
+        return (
+          channel.members.includes(currentUser.username)
+        );
+      }
+    );
   }
 
   return {
     currentUser: currentUser,
-    channels: Object.values(state.entities.channels),
+    channels: channels,
     gobbleMenuShown: state.ui.menu,
     createChannelMenuShown: state.ui.createChannelMenu
   };
@@ -34,6 +44,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     createChannel: (channel) => dispatch(createChannel(channel)),
     updateSingleChannel: (channel) => dispatch(updateSingleChannel(channel)),
     removeChannel: (id) => dispatch(removeChannel(id)),
+    createMembership: (membership) => dispatch(createMembership(membership)),
     showMenu: () => dispatch(showMenu()),
     hideMenu: () => dispatch(hideMenu()),
     showCreateChannelMenu: () => dispatch(showCreateChannelMenu()),

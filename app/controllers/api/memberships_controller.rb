@@ -10,9 +10,9 @@ class Api::MembershipsController < ApplicationController
   def create
     @membership = Membership.new(membership_params)
     @membership.member_id = current_user.id
-    
+
     if @membership.save
-      render 'api/membership/show'
+      render 'api/memberships/show'
     else
       render json: @membership.errors.messages, status: 422
     end
@@ -23,14 +23,14 @@ class Api::MembershipsController < ApplicationController
 
     if @membership && @membership.member_id == current_user.id
       @membership.destroy
-      render 'api/membership/show'
+      render 'api/memberships/show'
     else
       render json: ['Cannot leave channel'], status: 403
     end
   end
 
   private
-  def channel_params
+  def membership_params
     params.require(:membership).permit(:channel_id)
   end
 end
