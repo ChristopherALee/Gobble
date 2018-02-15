@@ -5,7 +5,8 @@ import {
   fetchSingleChannel,
   createChannel,
   updateSingleChannel,
-  removeChannel } from '../../../actions/channel/channel_actions';
+  removeChannel,
+  fetchChannelMessages } from '../../../actions/channel/channel_actions';
 import { createMembership } from '../../../actions/membership/membership_actions';
 import {
   showMenu,
@@ -44,6 +45,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     createChannel: (channel) => dispatch(createChannel(channel)),
     updateSingleChannel: (channel) => dispatch(updateSingleChannel(channel)),
     removeChannel: (id) => dispatch(removeChannel(id)),
+    fetchChannelMessages: (channel) => dispatch(fetchChannelMessages(channel)),
     createMembership: (membership) => dispatch(createMembership(membership)),
     showMenu: () => dispatch(showMenu()),
     hideMenu: () => dispatch(hideMenu()),

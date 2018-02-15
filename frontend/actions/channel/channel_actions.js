@@ -3,6 +3,7 @@ import * as ChannelApiUtil from '../../util/channels/channel_api_util';
 export const RECEIVE_ALL_CHANNELS = 'RECEIVE_ALL_CHANNELS';
 export const RECEIVE_SINGLE_CHANNEL = 'RECEIVE_SINGLE_CHANNEL';
 export const DELETE_CHANNEL = 'DELETE_CHANNEL';
+export const RECEIVE_CHANNEL_MESSAGES = 'RECEIVE_CHANNEL_MESSAGES';
 
 const receiveAllChannels = (channels) => {
   return {
@@ -25,6 +26,13 @@ const deleteChannel = (id) => {
   };
 };
 
+const receiveChannelMessages = (messages) => {
+  return {
+    type: RECEIVE_CHANNEL_MESSAGES,
+    messages
+  };
+};
+
 export const fetchAllChannels = () => dispatch => {
   return (
     ChannelApiUtil.fetchAllChannels().then(
@@ -41,6 +49,17 @@ export const fetchSingleChannel = (id) => dispatch => {
     ChannelApiUtil.fetchSingleChannel(id).then(
       (channel) => {
         dispatch(receiveSingleChannel(channel));
+        return channel;
+      }
+    )
+  );
+};
+
+export const fetchChannelMessages = (id) => dispatch => {
+  return (
+    ChannelApiUtil.fetchSingleChannel(id).then(
+      (channel) => {
+        dispatch(receiveChannelMessages(channel));
         return channel;
       }
     )

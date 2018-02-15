@@ -19,10 +19,15 @@ class ChannelSideBar extends React.Component {
     this.removeCreateChannelMenu = this.removeCreateChannelMenu.bind(this);
     this.logOut = this.logOut.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.getChannelMessages = this.getChannelMessages.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchAllChannels();
+    let currentChannel = this.props.location.pathname.slice(10);
+    if (currentChannel) {
+      this.getChannelMessages(currentChannel);
+    }
     let that = this;
 
     this.pusher = new Pusher('416ebb2d74bf61955f19', {
@@ -43,6 +48,11 @@ class ChannelSideBar extends React.Component {
   componentWillReceiveProps(newProps) {
     if (this.props.location.pathname !== newProps.location.pathname) {
       this.props.fetchAllChannels();
+
+      if (newProps.location.pathname.slice(10) !== "") {
+        let newChannel = newProps.location.pathname.slice(10);
+        this.getChannelMessages(newChannel);
+      }
     }
   }
 
@@ -68,6 +78,10 @@ class ChannelSideBar extends React.Component {
         }
       );
     }
+  }
+
+  getChannelMessages(channel) {
+    this.props.fetchChannelMessages(channel);
   }
 
   renderChannels() {
