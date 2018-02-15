@@ -2,7 +2,6 @@ import * as MessageApiUtil from '../../util/messages/message_api_util';
 
 export const RECEIVE_ALL_MESSAGES = 'RECEIVE_ALL_MESSAGES';
 export const RECEIVE_SINGLE_MESSAGE = 'RECEIVE_SINGLE_MESSAGE';
-export const CREATE_MESSAGE = 'CREATE_MESSAGE';
 export const DELETE_MESSAGE = 'DELETE_MESSAGE';
 
 const receiveAllMessages = (messages) => {
