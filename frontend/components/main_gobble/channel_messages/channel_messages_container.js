@@ -13,12 +13,16 @@ const mapStateToProps = (state, ownProps) => {
   }
 
   let currentChannel = ownProps.location.pathname.slice(10);
-  let messageIds = state.entities.channels[currentChannel];
-  let messages = Object.values(state.entities.messages).filter(
-    (message) => {
-      messageIds.includes(message.id);
-    }
-  );
+
+  let messages;
+  if (state.entities.channels[currentChannel]) {
+    let messageIds = state.entities.channels[currentChannel];
+    messages = Object.values(state.entities.messages).filter(
+      (message) => {
+        Object.values(messageIds).includes(message.id);
+      }
+    );
+  }
 
   return {
     currentUser: currentUser,
