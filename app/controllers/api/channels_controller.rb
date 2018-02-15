@@ -23,6 +23,7 @@ class Api::ChannelsController < ApplicationController
     @channel = Channel.find(params[:id])
 
     if @channel && @channel.update
+      Pusher.trigger('sidebar_channel', 'channel_updated', {})
       render 'api/channels/show'
     else
       render json: ['Cannot edit channel'], status: 403
@@ -34,6 +35,7 @@ class Api::ChannelsController < ApplicationController
 
     if @channel && @channel.creator_id == current_user.id
       @channel.destroy
+      Pusher.trigger('sidebar_channel', 'channel_deleted', {})
       render 'api/channels/show'
     else
       render json: ['Cannot delete channel'], status: 403
