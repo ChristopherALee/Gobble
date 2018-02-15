@@ -7,9 +7,24 @@ class ChannelMessages extends React.Component {
   }
 
   render() {
+    const channelName = this.props.currentChannel;
+    const memberCount = this.props.memberCount;
+    const purpose = this.props.purpose;
+
     return (
       <div id="channel-messages">
-        messages
+        <div className="channel-messages-header">
+          <div className="channel-messages-header-left">
+            <div className="channel-messages-title">#{channelName}</div>
+            <div className="channel-details">
+              <div className="channel-detail-member-ct">{memberCount}</div>
+              <div className="channel-detail-purpose">{purpose}</div>
+            </div>
+          </div>
+          <div className="channel-messages-header-right">
+
+          </div>
+        </div>
       </div>
     );
   }
