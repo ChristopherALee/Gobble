@@ -37,6 +37,14 @@ const channelReducer = (state = {}, action) => {
       );
       newState[action.membership.channelName].members = newMembers;
       return newState;
+    case RECEIVE_SINGLE_MESSAGE:
+      newState = Object.assign({}, state);
+      newState[action.message.channelName].messages.push(action.message.id);
+      return newState;
+    case DELETE_MESSAGE:
+      newState = Object.assign({}, state);
+      newState[action.message.channelName].messages = newState[action.message.channelName].messages.filter( (message) => message !== action.message.id);
+      return newState;
     case LOG_OUT:
       newState = {};
       return newState;
