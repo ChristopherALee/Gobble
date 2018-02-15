@@ -13,5 +13,7 @@ Rails.application.routes.draw do
     resources :channels, only: [:index, :create, :show, :update, :destroy]
     resources :memberships, only: [:index, :create, :show, :destroy]
     resources :messages, only: [:index, :create, :show, :update, :destroy]
+
+    get '/channels/:name/messages', to: 'channels#messages'
   end
 end

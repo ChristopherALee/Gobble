@@ -5,7 +5,6 @@ class Api::ChannelsController < ApplicationController
 
   def show
     @channel = Channel.find_by(name: params[:id])
-    render 'api/channels/messages'
   end
 
   def create
@@ -41,6 +40,12 @@ class Api::ChannelsController < ApplicationController
     else
       render json: ['Cannot delete channel'], status: 403
     end
+  end
+
+  def messages
+    @channel = Channel.find_by(name: params[:name])
+    debugger
+    render 'api/channels/messages'
   end
 
   private

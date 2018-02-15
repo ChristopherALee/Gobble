@@ -57,7 +57,7 @@ export const fetchSingleChannel = (id) => dispatch => {
 
 export const fetchChannelMessages = (id) => dispatch => {
   return (
-    ChannelApiUtil.fetchSingleChannel(id).then(
+    ChannelApiUtil.fetchChannelMessages(id).then(
       (channel) => {
         dispatch(receiveChannelMessages(channel));
         return channel;
