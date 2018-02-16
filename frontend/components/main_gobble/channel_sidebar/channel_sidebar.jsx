@@ -1,6 +1,7 @@
 // globals Pusher
 import React from 'react';
 import { Link } from 'react-router-dom';
+import CreateChannelForm from './create_channel_form/create_channel_form';
 
 class ChannelSideBar extends React.Component {
   constructor(props) {
@@ -46,6 +47,10 @@ class ChannelSideBar extends React.Component {
     });
 
     this.channel = this.pusher.subscribe('sidebar_channel');
+    let that = this;
+    this.channel.bind('channel_created', function(data) {
+      that.props.fetchAllChannels();
+    });
   }
 
   componentWillUnmount() {
@@ -83,11 +88,6 @@ class ChannelSideBar extends React.Component {
           this.setState({
             ['name']: '',
             ['purpose']: ''
-          });
-
-          let that = this;
-          this.channel.bind('channel_created', function(data) {
-            that.props.fetchSingleChannel(success.name);
           });
         }
       );
@@ -167,85 +167,6 @@ class ChannelSideBar extends React.Component {
     this.props.hideMenu();
   }
 
-  activeSubmit() {
-    if (this.state.name.length && !this.isErrors()) {
-      return 'green-submit';
-    } else {
-      return null;
-    }
-  }
-
-  isErrors() {
-    if (
-      this.state.name.length >= 22
-      || this.state.name !== this.state.name.toLowerCase()
-      || this.state.name.includes(' ')
-      || this.state.name.includes('.')
-    ) {
-      return 'channel-input-errors';
-    } else {
-      return null;
-    }
-  }
-
-  createChannelMenu() {
-    if (this.props.createChannelMenuShown) {
-      return (
-        <div className="create-channel-menu">
-          <div className="close-create-channel-menu" onClick={this.removeCreateChannelMenu}>
-            <i className="fas fa-times"></i>
-            <p>esc</p>
-          </div>
-          <div className="create-channel-menu-container">
-            <div className="create-channel-menu-contents">
-              <h1>Create a channel</h1>
-              <p className="create-channel-description">Channels are where your members communicate. They're best when organized around a topic - #bread, for example.</p>
-
-              <form className="create-channel-form">
-                <div className="channel-form-input">
-                  <p>Name</p>
-                  <div className={`${this.isErrors()} channel-input-container`}>
-                    <p className="hashtag">#</p>
-                    <input
-                      type="text"
-                      value={this.state.name}
-                      onChange={this.handleChange("name")}
-                      className="create-channel-form-name-input"/>
-                  </div>
-                  <span>Names must be lowercase, without spaces or periods, and shorter than 22 characters.</span>
-                </div>
-                <div className="channel-form-input">
-                  <div className="purpose-container">
-                    <p>Purpose</p>
-                    <p id="italic">(optional)</p>
-                  </div>
-                  <div className="channel-input-container">
-                    <input
-                      type="text"
-                      value={this.state.purpose}
-                      onChange={this.handleChange("purpose")}
-                      className="create-channel-form-purpose-input"/>
-                  </div>
-                  <span>What's this channel about?</span>
-                </div>
-
-                <div className="create-channel-submit-button-container">
-                  <input
-                    type="submit"
-                    id={`${this.activeSubmit()}`}
-                    onClick={this.handleSubmit}
-                    value="Create Channel"/>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      );
-    } else {
-      return null;
-    }
-  }
-
   renderCreateChannelMenu() {
     this.props.showCreateChannelMenu();
   }
@@ -303,7 +224,13 @@ class ChannelSideBar extends React.Component {
     } else {
       return (
         <div id="channel-side-bar">
-          {this.createChannelMenu()}
+          <CreateChannelForm
+            createChannelMenuShown={this.props.createChannelMenuShown}
+            removeCreateChannelMenu={this.removeCreateChannelMenu}
+            createChannel={this.props.createChannel}
+            createMembership={this.props.createMembership}
+            fetchSingleChannel={this.props.fetchSingleChannel}
+          />
           {this.gobbleMenu()}
 
           <div className="side-bar-contents">
