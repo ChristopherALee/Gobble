@@ -24,6 +24,10 @@ class ChannelSideBar extends React.Component {
 
   componentDidMount() {
     this.props.fetchAllChannels();
+    if (this.props.lastVisitedChannel) {
+      debugger
+      this.props.history.push(`/messages/${this.props.lastVisitedChannel}`);
+    }
     let currentChannel = this.props.location.pathname.slice(10);
     if (currentChannel) {
       this.getChannelMessages(currentChannel);
@@ -43,11 +47,14 @@ class ChannelSideBar extends React.Component {
 
   componentWillReceiveProps(newProps) {
     if (this.props.location.pathname !== newProps.location.pathname) {
-      // this.props.fetchAllChannels();
 
       if (newProps.location.pathname.slice(10) !== "") {
         let newChannel = newProps.location.pathname.slice(10);
         this.getChannelMessages(newChannel);
+        this.props.updateUser({
+          username: this.props.currentUser,
+          last_visited_channel: newChannel
+        });
       }
     }
   }

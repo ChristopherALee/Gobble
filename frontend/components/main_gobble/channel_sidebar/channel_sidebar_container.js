@@ -13,11 +13,14 @@ import {
   hideMenu,
   showCreateChannelMenu,
   hideCreateChannelMenu } from '../../../actions/ui/menu_actions';
-import { logout } from '../../../actions/session/session_actions';
+import {
+  logout,
+  updateUser } from '../../../actions/session/session_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let currentUser;
   let channels;
+  let lastVisitedChannel;
 
   if (state.session.currentUser) {
     currentUser = state.session.currentUser;
@@ -28,11 +31,13 @@ const mapStateToProps = (state, ownProps) => {
         );
       }
     );
+    lastVisitedChannel = state.session.currentUser.lastVisitedChannel;
   }
-
+  debugger
   return {
     currentUser: currentUser,
     channels: channels,
+    lastVisitedChannel: lastVisitedChannel,
     gobbleMenuShown: state.ui.menu,
     createChannelMenuShown: state.ui.createChannelMenu
   };
@@ -51,7 +56,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     hideMenu: () => dispatch(hideMenu()),
     showCreateChannelMenu: () => dispatch(showCreateChannelMenu()),
     hideCreateChannelMenu: () => dispatch(hideCreateChannelMenu()),
-    logout: () => dispatch(logout())
+    logout: () => dispatch(logout()),
+    updateUser: (user) => dispatch(updateUser(user)),
   };
 };
 

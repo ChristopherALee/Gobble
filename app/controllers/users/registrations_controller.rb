@@ -44,11 +44,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   def update
-    @user = User.find_by(username: params[:user][:username])
+    @user = User.find_by(username: params[:username][:username])
 
-    @user.last_visited_channel = params[:last_visited_channel]
+    user_params = { last_visited_channel: params[:last_visited_channel] }
 
-    if @user.update
+    if @user.update(user_params)
       render '/api/users/show'
     else
       render json: @user.errors.messages, status: 422
