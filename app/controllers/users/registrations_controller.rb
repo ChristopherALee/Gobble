@@ -11,10 +11,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    @user = User.new(params.require(:user).permit(:username, :password))
     errors = {}
 
-    if @user.save
+    @user = User.find_by(username: params[:user][:username])
+    if @user
+      errors[:username] = ["Username already exists!"]
+      render json: errors, status: 422
+      return
+    end
+
+    @user = User.new(params.require(:user).permit(:username, :password))
+
+    if @user.username.length < 3
+      errors[:username] = ["Username must be at least 3 characters."]
+      errors[:password] = ["Password must be at least 6 characters."] if @user.password.length < 6
+      render json: errors, status: 422
+    elsif @user.save
       sign_in @user
       render '/api/users/show'
     else
