@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import CreateChannelForm from './create_channel_form/create_channel_form';
+import ChannelSearch from './channel_search/channel_search';
 
 class ChannelSideBar extends React.Component {
   constructor(props) {
@@ -202,6 +203,9 @@ class ChannelSideBar extends React.Component {
             createMembership={this.props.createMembership}
             fetchSingleChannel={this.props.fetchSingleChannel}
           />
+
+          <ChannelSearch />
+
           {this.gobbleMenu()}
 
           <div className="side-bar-contents">
