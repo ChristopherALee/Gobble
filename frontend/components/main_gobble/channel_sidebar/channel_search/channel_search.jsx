@@ -11,11 +11,11 @@ class ChannelSearch extends React.Component {
     if (this.props.channelSearchMenuShown) {
       return (
         <div id="channel-search">
+          <div className="close-channel-search-menu" onClick={removeChannelSearchMenu}>
+            <i className="fas fa-times"></i>
+            <p>esc</p>
+          </div>
           <div className="channel-search-container">
-            <div className="close-channel-search-menu" onClick={removeChannelSearchMenu}>
-              <i className="fas fa-times"></i>
-              <p>esc</p>
-            </div>
 
             <div className="search-header">Browse channels</div>
 
