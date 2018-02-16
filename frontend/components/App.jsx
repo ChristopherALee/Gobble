@@ -14,10 +14,9 @@ const App = () => {
       <header>
         {/* <h1>gobble</h1> */}
       </header>
-
+      
       <Route exact path="/login" component={HomeNavBarContainer}></Route>
       <Route exact path="/signup" component={HomeNavBarContainer}></Route>
-      <Route exact path="/" component={LandingPageContainer}></Route>
 
       <Switch>
         <AuthRoute exact path="/" component={HomeNavBarContainer} />
@@ -25,6 +24,9 @@ const App = () => {
         <AuthRoute path='/login' component={SessionFormContainer} />
         <AuthRoute path='/signup' component={SessionFormContainer} />
       </Switch>
+
+      <Route exact path="/" component={LandingPageContainer}></Route>
+
     </div>
   );
 };
