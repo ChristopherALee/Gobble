@@ -6,20 +6,32 @@ class ChannelSearch extends React.Component {
   }
 
   render() {
-    return (
-      <div id="channel-search">
-        <div className="channel-search-container">
-          <div className="search-header">Browse channels</div>
-          <div className="channel-search-bar">
-            <input type="text" placeholder="Search channels" />
-          </div>
+    const removeChannelSearchMenu = this.props.removeChannelSearchMenu;
 
-          <div className="channel-search-list">
+    if (this.props.channelSearchMenuShown) {
+      return (
+        <div id="channel-search">
+          <div className="channel-search-container">
+            <div className="close-channel-search-menu" onClick={removeChannelSearchMenu}>
+              <i className="fas fa-times"></i>
+              <p>esc</p>
+            </div>
 
+            <div className="search-header">Browse channels</div>
+
+            <div className="channel-search-bar">
+              <input type="text" placeholder="Search channels" />
+            </div>
+
+            <div className="channel-search-list">
+
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return null;
+    }
   }
 }
 

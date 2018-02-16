@@ -73,12 +73,12 @@ export const hideCreateChannelMenu = () => dispatch => {
 
 export const showChannelSearchMenu = () => dispatch => {
   return (
-    dispatch(showChannelSearchMenu())
+    dispatch(renderChannelSearchMenu())
   );
 };
 
 export const hideChannelSearchMenu = () => dispatch => {
   return (
-    dispatch(hideChannelSearchMenu())
+    dispatch(removeChannelSearchMenu())
   );
 };

@@ -12,7 +12,9 @@ import {
   showMenu,
   hideMenu,
   showCreateChannelMenu,
-  hideCreateChannelMenu } from '../../../actions/ui/menu_actions';
+  hideCreateChannelMenu,
+  showChannelSearchMenu,
+  hideChannelSearchMenu } from '../../../actions/ui/menu_actions';
 import {
   logout,
   updateUser } from '../../../actions/session/session_actions';
@@ -39,7 +41,8 @@ const mapStateToProps = (state, ownProps) => {
     channels: channels,
     lastVisitedChannel: lastVisitedChannel,
     gobbleMenuShown: state.ui.menu,
-    createChannelMenuShown: state.ui.createChannelMenu
+    createChannelMenuShown: state.ui.createChannelMenu,
+    channelSearchMenuShown: state.ui.channelSearchMenu
   };
 };
 
@@ -56,6 +59,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     hideMenu: () => dispatch(hideMenu()),
     showCreateChannelMenu: () => dispatch(showCreateChannelMenu()),
     hideCreateChannelMenu: () => dispatch(hideCreateChannelMenu()),
+    showChannelSearchMenu: () => dispatch(showChannelSearchMenu()),
+    hideChannelSearchMenu: () => dispatch(hideChannelSearchMenu()),
     logout: () => dispatch(logout()),
     updateUser: (user) => dispatch(updateUser(user)),
   };

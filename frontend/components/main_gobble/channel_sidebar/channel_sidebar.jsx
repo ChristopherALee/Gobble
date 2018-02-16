@@ -14,6 +14,8 @@ class ChannelSideBar extends React.Component {
     this.removeGobbleMenu = this.removeGobbleMenu.bind(this);
     this.renderCreateChannelMenu = this.renderCreateChannelMenu.bind(this);
     this.removeCreateChannelMenu = this.removeCreateChannelMenu.bind(this);
+    this.renderChannelSearchMenu = this.renderChannelSearchMenu.bind(this);
+    this.removeChannelSearchMenu = this.removeChannelSearchMenu.bind(this);
     this.logOut = this.logOut.bind(this);
     this.getChannelMessages = this.getChannelMessages.bind(this);
   }
@@ -147,6 +149,14 @@ class ChannelSideBar extends React.Component {
     this.props.hideCreateChannelMenu();
   }
 
+  renderChannelSearchMenu() {
+    this.props.showChannelSearchMenu();
+  }
+
+  removeChannelSearchMenu() {
+    this.props.hideChannelSearchMenu();
+  }
+
   render() {
     let currentUser;
     if (this.props.currentUser) {
@@ -204,7 +214,10 @@ class ChannelSideBar extends React.Component {
             fetchSingleChannel={this.props.fetchSingleChannel}
           />
 
-          <ChannelSearch />
+          <ChannelSearch
+            channelSearchMenuShown={this.props.channelSearchMenuShown}
+            removeChannelSearchMenu={this.removeChannelSearchMenu}
+          />
 
           {this.gobbleMenu()}
 
@@ -228,7 +241,9 @@ class ChannelSideBar extends React.Component {
 
             <div className="side-bar-channels">
               <div className="channels-header">
-                <p className="channels-header-content">Channels</p>
+                <p className="channels-header-content" onClick={this.renderChannelSearchMenu}>
+                  Channels
+                </p>
                 <div className="create-channel-button" onClick={this.renderCreateChannelMenu}>
                   <i className="fas fa-plus-circle"></i>
                 </div>
