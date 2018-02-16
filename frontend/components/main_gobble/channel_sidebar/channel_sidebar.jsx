@@ -28,7 +28,6 @@ class ChannelSideBar extends React.Component {
     if (currentChannel) {
       this.getChannelMessages(currentChannel);
     }
-    let that = this;
 
     this.pusher = new Pusher('416ebb2d74bf61955f19', {
       cluster: 'us2',
