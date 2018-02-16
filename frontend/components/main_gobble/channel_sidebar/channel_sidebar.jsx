@@ -23,15 +23,22 @@ class ChannelSideBar extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchAllChannels();
-    if (this.props.lastVisitedChannel) {
-      debugger
-      this.props.history.push(`/messages/${this.props.lastVisitedChannel}`);
-    }
-    let currentChannel = this.props.location.pathname.slice(10);
-    if (currentChannel) {
-      this.getChannelMessages(currentChannel);
-    }
+    this.props.fetchAllChannels().then(
+      () => {
+        if (this.props.lastVisitedChannel) {
+          this.props.history.push(`/messages/${this.props.lastVisitedChannel}`);
+        }
+
+        let currentChannel = this.props.location.pathname.slice(10);
+        if (currentChannel) {
+          this.getChannelMessages(currentChannel);
+          this.props.updateUser({
+            username: this.props.currentUser,
+            last_visited_channel: currentChannel
+          });
+        }
+      }
+    );
 
     this.pusher = new Pusher('416ebb2d74bf61955f19', {
       cluster: 'us2',
@@ -47,7 +54,7 @@ class ChannelSideBar extends React.Component {
 
   componentWillReceiveProps(newProps) {
     if (this.props.location.pathname !== newProps.location.pathname) {
-
+      debugger
       if (newProps.location.pathname.slice(10) !== "") {
         let newChannel = newProps.location.pathname.slice(10);
         this.getChannelMessages(newChannel);
