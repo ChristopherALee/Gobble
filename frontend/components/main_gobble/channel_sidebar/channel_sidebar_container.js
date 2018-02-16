@@ -33,7 +33,7 @@ const mapStateToProps = (state, ownProps) => {
     );
     lastVisitedChannel = state.session.currentUser.lastVisitedChannel;
   }
-  debugger
+  
   return {
     currentUser: currentUser,
     channels: channels,

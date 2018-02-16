@@ -54,7 +54,6 @@ class ChannelSideBar extends React.Component {
 
   componentWillReceiveProps(newProps) {
     if (this.props.location.pathname !== newProps.location.pathname) {
-      debugger
       if (newProps.location.pathname.slice(10) !== "") {
         let newChannel = newProps.location.pathname.slice(10);
         this.getChannelMessages(newChannel);
