@@ -48,8 +48,8 @@ class ChannelSideBar extends React.Component {
 
     this.channel = this.pusher.subscribe('sidebar_channel');
     let that = this;
-    this.channel.bind('channel_created', function(data) {
-      that.props.fetchAllChannels();
+    this.channel.bind('membership_created', function(data) {
+      that.props.fetchSingleChannel(data.channel);
     });
   }
 
@@ -101,6 +101,7 @@ class ChannelSideBar extends React.Component {
   renderChannels() {
     let channels;
     let that = this;
+    debugger
     if (this.props.channels.length) {
       channels = this.props.channels.map((channel, idx) => {
         if (channel.name === that.props.location.pathname.slice(10)) {

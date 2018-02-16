@@ -12,6 +12,9 @@ class Api::MembershipsController < ApplicationController
     @membership.member_id = current_user.id
 
     if @membership.save
+      Pusher.trigger('sidebar_channel', 'membership_created', {
+        channel: @membership.channel.name
+        })
       render 'api/memberships/show'
     else
       render json: @membership.errors.messages, status: 422
