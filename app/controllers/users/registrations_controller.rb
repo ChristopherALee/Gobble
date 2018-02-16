@@ -43,9 +43,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    @user = User.find_by(username: params[:user][:username])
+
+    @user.last_visited_channel = params[:last_visited_channel]
+
+    if @user.update
+      render '/api/users/show'
+    else
+      render json: @user.errors.messages, status: 422
+    end
+  end
 
   # DELETE /resource
   # def destroy
