@@ -35,10 +35,7 @@ class ChannelSideBar extends React.Component {
       encrypted: true
     });
 
-    const channel = this.pusher.subscribe('sidebar_channel');
-    channel.bind('channel_created', function(data) {
-      that.props.fetchAllChannels();
-    });
+    this.channel = this.pusher.subscribe('sidebar_channel');
   }
 
   componentWillUnmount() {
@@ -47,7 +44,7 @@ class ChannelSideBar extends React.Component {
 
   componentWillReceiveProps(newProps) {
     if (this.props.location.pathname !== newProps.location.pathname) {
-      this.props.fetchAllChannels();
+      // this.props.fetchAllChannels();
 
       if (newProps.location.pathname.slice(10) !== "") {
         let newChannel = newProps.location.pathname.slice(10);
@@ -74,6 +71,11 @@ class ChannelSideBar extends React.Component {
           this.setState({
             ['name']: '',
             ['purpose']: ''
+          });
+
+          let that = this;
+          this.channel.bind('channel_created', function(data) {
+            that.props.fetchSingleChannel(success.name);
           });
         }
       );
