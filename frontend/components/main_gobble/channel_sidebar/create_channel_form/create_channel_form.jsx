@@ -36,6 +36,7 @@ class CreateChannelForm extends React.Component {
       || this.state.name !== this.state.name.toLowerCase()
       || this.state.name.includes(' ')
       || this.state.name.includes('.')
+      || this.state.name.includes('?')
     ) {
       return 'channel-input-errors';
     } else {
