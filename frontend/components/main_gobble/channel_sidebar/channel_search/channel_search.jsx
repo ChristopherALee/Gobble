@@ -19,7 +19,10 @@ class ChannelSearch extends React.Component {
           <section className="channel-search-section">
 
             <div className="channel-search-container">
-              <div className="search-header">Browse channels</div>
+              <div className="search-header">
+                <h1>Browse channels</h1>
+                <div className="channel-search-create-channel-button">Create Channel</div>
+              </div>
               <div className="channel-search-bar">
                 <input type="text" placeholder="Search channels" />
               </div>

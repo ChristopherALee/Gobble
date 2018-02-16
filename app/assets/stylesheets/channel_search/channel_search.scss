@@ -55,14 +55,26 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      width: 700px;
+      width: 650px;
 
       .search-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         font-size: 34px;
         font-family: 'Noto Sans', sans-serif;
         font-weight: 600;
         color: #2c2d30;
         margin-bottom: 1rem;
+
+        .channel-search-create-channel-button {
+          font-size: 15px;
+          font-weight: 400;
+          color: white;
+          background-color: #2fa663;
+          padding: 10px;
+          border-radius: 4px;
+        }
       }
     }
   }
