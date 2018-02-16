@@ -12,10 +12,6 @@ class CreateChannelForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentWillUnmount() {
-    this.pusher.unsubscribe('sidebar_channel');
-  }
-
   handleChange(field) {
     return (e) => {
       this.setState({[field]: e.target.value});

@@ -7,11 +7,6 @@ class ChannelSideBar extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      name: '',
-      purpose: ''
-    };
-
     this.renderChannels = this.renderChannels.bind(this);
     this.gobbleMenu = this.gobbleMenu.bind(this);
     this.renderGobbleMenu = this.renderGobbleMenu.bind(this);
@@ -19,7 +14,6 @@ class ChannelSideBar extends React.Component {
     this.renderCreateChannelMenu = this.renderCreateChannelMenu.bind(this);
     this.removeCreateChannelMenu = this.removeCreateChannelMenu.bind(this);
     this.logOut = this.logOut.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.getChannelMessages = this.getChannelMessages.bind(this);
   }
 
@@ -70,30 +64,6 @@ class ChannelSideBar extends React.Component {
     }
   }
 
-  handleChange(field) {
-    return (e) => {
-      this.setState({[field]: e.target.value});
-    };
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-
-    if (this.activeSubmit()) {
-      const channel = Object.assign({}, this.state);
-      this.props.createChannel({channel: channel}).then(
-        (success) => {
-          this.props.createMembership({membership: {channel_id: success.id}});
-          this.removeCreateChannelMenu();
-          this.setState({
-            ['name']: '',
-            ['purpose']: ''
-          });
-        }
-      );
-    }
-  }
-
   getChannelMessages(channel) {
     this.props.fetchChannelMessages(channel);
   }
@@ -101,7 +71,7 @@ class ChannelSideBar extends React.Component {
   renderChannels() {
     let channels;
     let that = this;
-    debugger
+
     if (this.props.channels.length) {
       channels = this.props.channels.map((channel, idx) => {
         if (channel.name === that.props.location.pathname.slice(10)) {
