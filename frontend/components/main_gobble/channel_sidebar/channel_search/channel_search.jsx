@@ -15,18 +15,20 @@ class ChannelSearch extends React.Component {
             <i className="fas fa-times"></i>
             <p>esc</p>
           </div>
-          <div className="channel-search-container">
 
-            <div className="search-header">Browse channels</div>
+          <section className="channel-search-section">
 
-            <div className="channel-search-bar">
-              <input type="text" placeholder="Search channels" />
+            <div className="channel-search-container">
+              <div className="search-header">Browse channels</div>
+              <div className="channel-search-bar">
+                <input type="text" placeholder="Search channels" />
+              </div>
+
+              <div className="channel-search-list">
+
+              </div>
             </div>
-
-            <div className="channel-search-list">
-
-            </div>
-          </div>
+          </section>
         </div>
       );
     } else {

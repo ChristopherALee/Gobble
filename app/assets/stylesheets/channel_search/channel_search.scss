@@ -45,7 +45,25 @@
     }
   }
 
-  .channel-search-container {
-    
+  .channel-search-section {
+    display: flex;
+    justify-content: center;
+    padding: 180px 30px 30px 30px;
+
+
+    .channel-search-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 700px;
+
+      .search-header {
+        font-size: 34px;
+        font-family: 'Noto Sans', sans-serif;
+        font-weight: 600;
+        color: #2c2d30;
+        margin-bottom: 1rem;
+      }
+    }
   }
 }
