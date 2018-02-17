@@ -31,7 +31,17 @@ class ChannelSearch extends React.Component {
       );
     });
 
-    return searchedChannels;
+    if (this.state.criteria !== "") {
+      return searchedChannels.map( (channel, idx) => {
+        return (
+          <li key={idx}>
+            {channel.name}
+          </li>
+        );
+      });
+    } else {
+      return null;
+    }
   }
 
   render() {
@@ -60,7 +70,7 @@ class ChannelSearch extends React.Component {
               </div>
 
               <div className="channel-search-list">
-
+                {this.renderSearchedChannels()}
               </div>
             </div>
           </section>
