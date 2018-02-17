@@ -65,7 +65,7 @@
         font-family: 'Noto Sans', sans-serif;
         font-weight: 600;
         color: #2c2d30;
-        margin-bottom: 1rem;
+        margin-bottom: 3rem;
 
         .channel-search-create-channel-button {
           font-size: 15px;
@@ -79,15 +79,22 @@
 
       .channel-search-bar {
         display: flex;
-        padding: 5px;
+        align-items: center;
+        padding: 5px 10px;
         height: 39px;
         width: 100%;
         border: 1px solid #a0a0a2;
         border-radius: 5px;
 
+        .fa-search {
+          color: #a0a0a2;
+        }
+
         input[type="text"] {
+          padding-left: 10px;
           outline: none;
           width: 100%;
+          font-size: 18px;
         }
       }
     }

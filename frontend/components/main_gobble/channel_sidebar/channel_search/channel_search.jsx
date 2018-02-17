@@ -24,6 +24,7 @@ class ChannelSearch extends React.Component {
                 <div className="channel-search-create-channel-button">Create Channel</div>
               </div>
               <div className="channel-search-bar">
+                <i className="fas fa-search"></i>
                 <input type="text" placeholder="Search channels" />
               </div>
 
