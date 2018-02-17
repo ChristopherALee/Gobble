@@ -103,7 +103,31 @@
         width: 100%;
 
         li {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0 15px;
           text-decoration: none;
+          height: 70px;
+          border-top: 1px solid #ededed;
+
+          .search-channel-item-left {
+            display: flex;
+
+            p {
+              color: #717274;
+            }
+
+            .search-channel-item-name {
+              margin-left: 5px;
+              font-weight: bold;
+              color: #2c2d30;
+            }
+          }
+
+          .search-channel-item-right {
+
+          }
         }
       }
     }
