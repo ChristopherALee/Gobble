@@ -70,7 +70,9 @@ class ChannelSearch extends React.Component {
               </div>
 
               <div className="channel-search-list">
-                {this.renderSearchedChannels()}
+                <ul>
+                  {this.renderSearchedChannels()}
+                </ul>
               </div>
             </div>
           </section>

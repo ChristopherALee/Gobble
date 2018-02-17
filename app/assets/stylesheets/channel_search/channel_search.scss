@@ -82,7 +82,7 @@
         align-items: center;
         padding: 5px 10px;
         height: 39px;
-        width: 100%;
+        width: 96.5%;
         border: 1px solid #a0a0a2;
         border-radius: 5px;
 
@@ -101,6 +101,10 @@
       .channel-search-list {
         margin-top: 50px;
         width: 100%;
+
+        li {
+          text-decoration: none;
+        }
       }
     }
   }
