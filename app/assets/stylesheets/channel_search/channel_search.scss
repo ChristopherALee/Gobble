@@ -76,6 +76,20 @@
           border-radius: 4px;
         }
       }
+
+      .channel-search-bar {
+        display: flex;
+        padding: 5px;
+        height: 39px;
+        width: 100%;
+        border: 1px solid #a0a0a2;
+        border-radius: 5px;
+
+        input[type="text"] {
+          outline: none;
+          width: 100%;
+        }
+      }
     }
   }
 }
