@@ -217,7 +217,7 @@ class ChannelSideBar extends React.Component {
           <ChannelSearch
             channelSearchMenuShown={this.props.channelSearchMenuShown}
             removeChannelSearchMenu={this.removeChannelSearchMenu}
-            allChannels={this.props.channels}
+            allChannels={this.props.allChannels}
           />
 
           {this.gobbleMenu()}

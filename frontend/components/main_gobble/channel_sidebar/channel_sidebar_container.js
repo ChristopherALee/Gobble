@@ -36,9 +36,12 @@ const mapStateToProps = (state, ownProps) => {
     lastVisitedChannel = state.session.currentUser.lastVisitedChannel;
   }
 
+  let allChannels = Object.values(state.entities.channels);
+
   return {
     currentUser: currentUser,
     channels: channels,
+    allChannels: allChannels,
     lastVisitedChannel: lastVisitedChannel,
     gobbleMenuShown: state.ui.menu,
     createChannelMenuShown: state.ui.createChannelMenu,
