@@ -45,7 +45,8 @@ class ChannelSearch extends React.Component {
             </div>
 
             <div className="search-channel-item-right">
-              {memberCount}
+              <i className="far fa-user"></i>
+              <div className="search-channel-item-member-ct">{memberCount}</div>
             </div>
           </li>
         );

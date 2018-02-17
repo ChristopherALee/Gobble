@@ -126,7 +126,13 @@
           }
 
           .search-channel-item-right {
+            display: flex;
+            align-items: center;
 
+            .search-channel-item-member-ct {
+              margin-left: 5px;
+              margin-top: 3px;
+            }
           }
         }
       }
