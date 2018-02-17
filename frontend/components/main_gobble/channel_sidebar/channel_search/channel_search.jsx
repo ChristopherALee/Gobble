@@ -3,6 +3,12 @@ import React from 'react';
 class ChannelSearch extends React.Component {
   constructor(props) {
     super(props);
+
+    this.removeChannelSearchMenu = this.removeChannelSearchMenu.bind(this);
+  }
+
+  removeChannelSearchMenu() {
+    this.props.removeChannelSearchMenu();
   }
 
   render() {
@@ -11,7 +17,7 @@ class ChannelSearch extends React.Component {
     if (this.props.channelSearchMenuShown) {
       return (
         <div id="channel-search">
-          <div className="close-channel-search-menu" onClick={removeChannelSearchMenu}>
+          <div className="close-channel-search-menu" onClick={this.removeChannelSearchMenu}>
             <i className="fas fa-times"></i>
             <p>esc</p>
           </div>
