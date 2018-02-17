@@ -4,16 +4,37 @@ class ChannelSearch extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      criteria: ""
+    };
+
     this.removeChannelSearchMenu = this.removeChannelSearchMenu.bind(this);
+    this.renderSearchedChannels = this.renderSearchedChannels.bind(this);
   }
 
   removeChannelSearchMenu() {
     this.props.removeChannelSearchMenu();
   }
 
-  render() {
-    const removeChannelSearchMenu = this.props.removeChannelSearchMenu;
+  handleChange(field) {
+    return (e) => {
+      this.setState({[field]: e.target.value});
+    };
+  }
 
+  renderSearchedChannels() {
+    const allChannels = this.props.allChannels;
+    let criteria = this.state.criteria;
+    let searchedChannels = allChannels.filter((channel) => {
+      return (
+        channel.name.includes(criteria)
+      );
+    });
+
+    return searchedChannels;
+  }
+
+  render() {
     if (this.props.channelSearchMenuShown) {
       return (
         <div id="channel-search">
@@ -31,7 +52,11 @@ class ChannelSearch extends React.Component {
               </div>
               <div className="channel-search-bar">
                 <i className="fas fa-search"></i>
-                <input type="text" placeholder="Search channels" />
+                <input
+                  type="text"
+                  placeholder="Search channels"
+                  onChange={this.handleChange("criteria")}
+                 />
               </div>
 
               <div className="channel-search-list">
