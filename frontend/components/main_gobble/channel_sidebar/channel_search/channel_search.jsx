@@ -93,7 +93,6 @@ class ChannelSearch extends React.Component {
     let criteria = this.state.criteria;
     let currentUser = this.props.currentUser.username;
     let searchedChannels = allChannels.filter((channel) => {
-      debugger
       return (
         channel.name.includes(criteria) && channel.members.includes(currentUser)
       );
@@ -154,12 +153,14 @@ class ChannelSearch extends React.Component {
               </div>
 
               <div className="channel-search-list">
+                <h2>Channels you can join</h2>
                 <ul>
                   {this.renderSearchedChannels()}
                 </ul>
               </div>
 
               <div className="channel-search-belonged-list">
+                <h2>Channels you belong to</h2>
                 <ul>
                   {this.renderBelongedChannels()}
                 </ul>
