@@ -215,6 +215,7 @@ class ChannelSideBar extends React.Component {
           />
 
           <ChannelSearch
+            currentUser={this.props.currentUser}
             channelSearchMenuShown={this.props.channelSearchMenuShown}
             removeChannelSearchMenu={this.removeChannelSearchMenu}
             allChannels={this.props.allChannels}
