@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class ChannelSearch extends React.Component {
   constructor(props) {
@@ -64,27 +65,29 @@ class ChannelSearch extends React.Component {
       let memberCount = channel.members.length;
 
       return (
-        <li key={idx}>
-          <div className="search-channel-item-left">
-            <p className="hashtag">#</p>
-            <div className="search-channel-item-contents">
-              <div className="search-channel-item-name">
-                <p>
-                  {channel.name}
-                </p>
-                <div className="search-channel-item-right">
-                  <i className="far fa-user"></i>
-                  <div className="search-channel-item-member-ct">{memberCount}</div>
+        <Link to={`/messages/${channel.name}`} key={idx} onClick={this.removeChannelSearchMenu}>
+          <li>
+            <div className="search-channel-item-left">
+              <p className="hashtag">#</p>
+              <div className="search-channel-item-contents">
+                <div className="search-channel-item-name">
+                  <p>
+                    {channel.name}
+                  </p>
+                  <div className="search-channel-item-right">
+                    <i className="far fa-user"></i>
+                    <div className="search-channel-item-member-ct">{memberCount}</div>
+                  </div>
                 </div>
+                <p className="search-channel-item-purpose">{channel.purpose}</p>
+                <p className="search-channel-item-created">
+                  Created by <strong>{channel.creatorName}</strong> on {this.dateTimeConversion(channel.created_at)}
+                </p>
               </div>
-              <p className="search-channel-item-purpose">{channel.purpose}</p>
-              <p className="search-channel-item-created">
-                Created by <strong>{channel.creatorName}</strong> on {this.dateTimeConversion(channel.created_at)}
-              </p>
             </div>
-          </div>
 
-        </li>
+          </li>
+        </Link>
       );
     });
   }
@@ -103,27 +106,29 @@ class ChannelSearch extends React.Component {
       let memberCount = channel.members.length;
 
       return (
-        <li key={idx}>
-          <div className="search-channel-item-left">
-            <p className="hashtag">#</p>
-            <div className="search-channel-item-contents">
-              <div className="search-channel-item-name">
-                <p>
-                  {channel.name}
-                </p>
-                <div className="search-channel-item-right">
-                  <i className="far fa-user"></i>
-                  <div className="search-channel-item-member-ct">{memberCount}</div>
+        <Link to={`/messages/${channel.name}`} key={idx} onClick={this.removeChannelSearchMenu}>
+          <li>
+            <div className="search-channel-item-left">
+              <p className="hashtag">#</p>
+              <div className="search-channel-item-contents">
+                <div className="search-channel-item-name">
+                  <p>
+                    {channel.name}
+                  </p>
+                  <div className="search-channel-item-right">
+                    <i className="far fa-user"></i>
+                    <div className="search-channel-item-member-ct">{memberCount}</div>
+                  </div>
                 </div>
+                <p className="search-channel-item-purpose">{channel.purpose}</p>
+                <p className="search-channel-item-created">
+                  Created by <strong>{channel.creatorName}</strong> on {this.dateTimeConversion(channel.created_at)}
+                </p>
               </div>
-              <p className="search-channel-item-purpose">{channel.purpose}</p>
-              <p className="search-channel-item-created">
-                Created by <strong>{channel.creatorName}</strong> on {this.dateTimeConversion(channel.created_at)}
-              </p>
             </div>
-          </div>
 
-        </li>
+          </li>
+        </Link>
       );
     });
   }
