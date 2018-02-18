@@ -76,7 +76,7 @@ class ChannelSearch extends React.Component {
               </div>
               <p className="search-channel-item-purpose">{channel.purpose}</p>
               <p className="search-channel-item-created">
-                Created by {channel.creatorName} on {dateTimeConversion(channel.created_at)}
+                Created by <strong>{channel.creatorName}</strong> on {dateTimeConversion(channel.created_at)}
               </p>
             </div>
           </div>
@@ -115,6 +115,10 @@ class ChannelSearch extends React.Component {
                 <ul>
                   {this.renderSearchedChannels()}
                 </ul>
+              </div>
+
+              <div className="channel-search-belonged-list">
+
               </div>
             </div>
           </section>
