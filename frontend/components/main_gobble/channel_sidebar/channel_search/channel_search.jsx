@@ -31,29 +31,25 @@ class ChannelSearch extends React.Component {
       );
     });
 
-    if (this.state.criteria !== "") {
-      return searchedChannels.map( (channel, idx) => {
-        let memberCount = channel.members.length;
+    return searchedChannels.map( (channel, idx) => {
+      let memberCount = channel.members.length;
 
-        return (
-          <li key={idx}>
-            <div className="search-channel-item-left">
-              <p>#</p>
-              <div className="search-channel-item-name">
-                {channel.name}
-              </div>
+      return (
+        <li key={idx}>
+          <div className="search-channel-item-left">
+            <p>#</p>
+            <div className="search-channel-item-name">
+              {channel.name}
             </div>
+          </div>
 
-            <div className="search-channel-item-right">
-              <i className="far fa-user"></i>
-              <div className="search-channel-item-member-ct">{memberCount}</div>
-            </div>
-          </li>
-        );
-      });
-    } else {
-      return null;
-    }
+          <div className="search-channel-item-right">
+            <i className="far fa-user"></i>
+            <div className="search-channel-item-member-ct">{memberCount}</div>
+          </div>
+        </li>
+      );
+    });
   }
 
   render() {
