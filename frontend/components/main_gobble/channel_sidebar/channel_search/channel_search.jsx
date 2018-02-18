@@ -37,9 +37,10 @@ class ChannelSearch extends React.Component {
       return (
         <li key={idx}>
           <div className="search-channel-item-left">
-            <p>#</p>
-            <div className="search-channel-item-name">
-              {channel.name}
+            <p className="hashtag">#</p>
+            <div className="search-channel-item-contents">
+              <p className="search-channel-item-name">{channel.name}</p>
+              <p className="search-channel-item-purpose">{channel.purpose}</p>
             </div>
           </div>
 

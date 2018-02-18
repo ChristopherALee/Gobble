@@ -114,14 +114,22 @@
           .search-channel-item-left {
             display: flex;
 
-            p {
+            .hashtag {
               color: #717274;
             }
 
-            .search-channel-item-name {
+            .search-channel-item-contents {
               margin-left: 5px;
-              font-weight: bold;
               color: #2c2d30;
+
+              .search-channel-item-name {
+                font-weight: bold;
+              }
+
+              .search-channel-item-purpose {
+                font-size: 13px;
+                margin-top: 3px;
+              }
             }
           }
 
