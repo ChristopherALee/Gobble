@@ -12,16 +12,18 @@ const mapStateToProps = (state, ownProps) => {
     currentUser = state.session.currentUser.username;
   }
 
-  let currentChannel = ownProps.location.pathname.slice(10);
+  let currentChannelName = ownProps.location.pathname.slice(10);
 
+  let currentChannel;
   let messages;
   let memberCount;
   let purpose;
-  if (state.entities.channels[currentChannel]) {
-    memberCount = state.entities.channels[currentChannel].members.length;
-    purpose = state.entities.channels[currentChannel].purpose;
+  if (state.entities.channels[currentChannelName]) {
+    currentChannel = state.entities.channels[currentChannelName];
+    memberCount = currentChannel.members.length;
+    purpose = currentChannel.purpose;
 
-    let messageIds = state.entities.channels[currentChannel];
+    let messageIds = currentChannel.messages;
     messages = Object.values(state.entities.messages).filter(
       (message) => {
         Object.values(messageIds).includes(message.id);
