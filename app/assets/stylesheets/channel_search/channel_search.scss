@@ -113,6 +113,7 @@
 
           .search-channel-item-left {
             display: flex;
+            width: 100%;
 
             .hashtag {
               color: #717274;
@@ -121,27 +122,31 @@
             .search-channel-item-contents {
               margin-left: 5px;
               color: #2c2d30;
+              width: 100%;
 
               .search-channel-item-name {
+                display: flex;
+                justify-content: space-between;
                 font-weight: bold;
+
+                .search-channel-item-right {
+                  display: flex;
+                  align-items: center;
+
+                  .search-channel-item-member-ct {
+                    margin-left: 5px;
+                    margin-top: 3px;
+                  }
+                }
               }
 
               .search-channel-item-purpose {
-                font-size: 13px;
+                font-size: 14px;
                 margin-top: 3px;
               }
             }
           }
 
-          .search-channel-item-right {
-            display: flex;
-            align-items: center;
-
-            .search-channel-item-member-ct {
-              margin-left: 5px;
-              margin-top: 3px;
-            }
-          }
         }
       }
     }

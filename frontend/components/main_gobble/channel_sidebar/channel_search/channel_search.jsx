@@ -65,7 +65,15 @@ class ChannelSearch extends React.Component {
           <div className="search-channel-item-left">
             <p className="hashtag">#</p>
             <div className="search-channel-item-contents">
-              <p className="search-channel-item-name">{channel.name}</p>
+              <div className="search-channel-item-name">
+                <p>
+                  {channel.name}
+                </p>
+                <div className="search-channel-item-right">
+                  <i className="far fa-user"></i>
+                  <div className="search-channel-item-member-ct">{memberCount}</div>
+                </div>
+              </div>
               <p className="search-channel-item-purpose">{channel.purpose}</p>
               <p className="search-channel-item-created">
                 Created by {channel.creatorName} on {dateTimeConversion(channel.created_at)}
@@ -73,10 +81,6 @@ class ChannelSearch extends React.Component {
             </div>
           </div>
 
-          <div className="search-channel-item-right">
-            <i className="far fa-user"></i>
-            <div className="search-channel-item-member-ct">{memberCount}</div>
-          </div>
         </li>
       );
     });
