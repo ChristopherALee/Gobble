@@ -53,9 +53,10 @@ class ChannelSearch extends React.Component {
   renderSearchedChannels() {
     const allChannels = this.props.allChannels;
     let criteria = this.state.criteria;
+    let currentUser = this.props.currentUser.username;
     let searchedChannels = allChannels.filter((channel) => {
       return (
-        channel.name.includes(criteria)
+        channel.name.includes(criteria) && !channel.members.includes(currentUser)
       );
     });
 
