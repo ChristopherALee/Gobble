@@ -12,6 +12,7 @@ class ChannelMessages extends React.Component {
     this.removeGobbleMenu = this.removeGobbleMenu.bind(this);
     this.dateTimeConversion = this.dateTimeConversion.bind(this);
     this.createMembership = this.createMembership.bind(this);
+    this.removeMembership = this.removeMembership.bind(this);
   }
 
   createMembership() {
@@ -21,6 +22,18 @@ class ChannelMessages extends React.Component {
     this.props.createMembership({
       membership: { channel_id: channelId }
     }).then(
+      (success) => {
+        this.props.fetchCurrentUser(currentUsername);
+      }
+    );
+  }
+
+  removeMembership() {
+    const channelId = this.props.currentChannel.id;
+    const currentUsername = this.props.currentUser.username;
+    const membership = this.props.membership;
+
+    this.props.removeMembership(membership[0].membershipId).then(
       (success) => {
         this.props.fetchCurrentUser(currentUsername);
       }
@@ -81,7 +94,7 @@ class ChannelMessages extends React.Component {
     if (this.props.channelSettingsMenuShown) {
       return (
         <div className="channel-messages-settings-menu">
-          <div className="settings-leave-channel">Leave #{currentChannelName}</div>
+          <div className="settings-leave-channel" onClick={this.removeMembership}>Leave #{currentChannelName}</div>
         </div>
       );
     } else {

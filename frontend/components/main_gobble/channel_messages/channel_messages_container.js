@@ -26,10 +26,16 @@ const mapStateToProps = (state, ownProps) => {
   let messages;
   let memberCount;
   let purpose;
+  let membership;
   if (state.entities.channels[currentChannelName]) {
     currentChannel = state.entities.channels[currentChannelName];
     memberCount = currentChannel.members.length;
     purpose = currentChannel.purpose;
+    membership = currentUser.memberships.filter( (membership) => {
+      return (
+        membership["channelId"] === currentChannel.id
+      );
+    });
 
     let messageIds = currentChannel.messages;
     messages = Object.values(state.entities.messages).filter(
@@ -42,6 +48,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     currentUser: currentUser,
     currentChannel: currentChannel,
+    membership: membership,
     messages: messages,
     memberCount: memberCount,
     purpose: purpose,

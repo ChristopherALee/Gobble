@@ -23,7 +23,7 @@ export const createMembership = (membership) => {
 export const updateMembership = (membership) => {
   return $.ajax({
     method: 'PATCH',
-    url: `/api/channels/${membership.id}`,
+    url: `/api/memberships/${membership.id}`,
     data: membership
   });
 };
@@ -31,6 +31,6 @@ export const updateMembership = (membership) => {
 export const deleteMembership = (id) => {
   return $.ajax({
     method: 'DELETE',
-    url: `/api/membership/${id}`
+    url: `/api/memberships/${id}`
   });
 };

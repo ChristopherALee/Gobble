@@ -22,8 +22,8 @@ class Api::MembershipsController < ApplicationController
   end
 
   def destroy
-    @membership = Channel.find(params[:id])
-
+    @membership = Membership.find(params[:id])
+    
     if @membership && @membership.member_id == current_user.id
       @membership.destroy
       render 'api/memberships/show'
