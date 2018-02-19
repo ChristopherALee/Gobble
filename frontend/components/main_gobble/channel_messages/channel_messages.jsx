@@ -5,6 +5,7 @@ class ChannelMessages extends React.Component {
   constructor(props) {
     super(props);
 
+    this.hideAllMenus = this.hideAllMenus.bind(this);
     this.settingsMenu = this.settingsMenu.bind(this);
     this.showChannelSettingsMenu = this.showChannelSettingsMenu.bind(this);
     this.hideChannelSettingsMenu = this.hideChannelSettingsMenu.bind(this);
@@ -135,6 +136,16 @@ class ChannelMessages extends React.Component {
     }
   }
 
+  hideAllMenus() {
+    if (this.props.gobbleMenuShown) {
+      this.props.hideMenu();
+    }
+
+    if (this.props.channelSettingsMenuShown) {
+      this.props.hideChannelSettingsMenu();
+    }
+  }
+
   render() {
     const channel = this.props.currentChannel;
     const memberCount = this.props.memberCount;
@@ -146,10 +157,10 @@ class ChannelMessages extends React.Component {
 
     if (channel) {
       return (
-        <div id="channel-messages" onClick={this.hideChannelSettingsMenu}>
+        <div id="channel-messages">
           {this.settingsMenu()}
 
-          <div className="channel-messages-header">
+          <div className="channel-messages-header" onClick={this.hideAllMenus}>
             <div className="channel-messages-header-left">
               <div className="channel-messages-title">#{channel.name}</div>
               <div className="channel-details">
@@ -172,7 +183,7 @@ class ChannelMessages extends React.Component {
             </div>
           </div>
 
-          <div className="messages">
+          <div className="messages" onClick={this.hideAllMenus}>
 
           </div>
 

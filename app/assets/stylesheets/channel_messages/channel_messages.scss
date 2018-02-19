@@ -87,6 +87,7 @@
     background-color: white;
     z-index: 2;
     box-shadow: 0 5px 10px rgba(0,0,0,.12);
+    -webkit-animation: fadein 0.2s;
 
     .settings-leave-channel {
       padding: 10px;
