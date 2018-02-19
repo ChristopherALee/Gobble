@@ -21,20 +21,24 @@ class ChannelSideBar extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchAllChannels().then(
-      () => {
-        if (this.props.lastVisitedChannel) {
-          this.props.history.push(`/messages/${this.props.lastVisitedChannel}`);
-        }
+    this.props.fetchCurrentUser(this.props.currentUser.username).then(
+      (success) => {
+        this.props.fetchAllChannels().then(
+          () => {
+            if (this.props.lastVisitedChannel !== this.props.history.location.pathname.slice(10)) {
+              this.props.history.push(`/messages/${this.props.lastVisitedChannel}`);
+            }
 
-        let currentChannel = this.props.location.pathname.slice(10);
-        if (currentChannel) {
-          this.getChannelMessages(currentChannel);
-          this.props.updateUser({
-            username: this.props.currentUser,
-            last_visited_channel: currentChannel
-          });
-        }
+            let currentChannel = this.props.location.pathname.slice(10);
+            if (currentChannel) {
+              this.getChannelMessages(currentChannel);
+              this.props.updateUser({
+                username: this.props.currentUser,
+                last_visited_channel: currentChannel
+              });
+            }
+          }
+        );
       }
     );
 

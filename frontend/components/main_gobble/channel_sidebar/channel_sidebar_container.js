@@ -17,7 +17,8 @@ import {
   hideChannelSearchMenu } from '../../../actions/ui/menu_actions';
 import {
   logout,
-  updateUser } from '../../../actions/session/session_actions';
+  updateUser,
+  fetchCurrentUser } from '../../../actions/session/session_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let currentUser;
@@ -66,6 +67,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     hideChannelSearchMenu: () => dispatch(hideChannelSearchMenu()),
     logout: () => dispatch(logout()),
     updateUser: (user) => dispatch(updateUser(user)),
+    fetchCurrentUser: (username) => dispatch(fetchCurrentUser(username))
   };
 };
 

@@ -54,7 +54,6 @@ class ChannelMessages extends React.Component {
     const purpose = this.props.purpose;
 
     if (channel) {
-      debugger
       if (this.props.currentUser.subscribedChannels && this.props.currentUser.subscribedChannels.includes(channel.id)) {
         return (
           <div id="channel-messages">
