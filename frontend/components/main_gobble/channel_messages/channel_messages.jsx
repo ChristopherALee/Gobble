@@ -38,7 +38,7 @@ class ChannelMessages extends React.Component {
     const channel = this.props.currentChannel;
     const memberCount = this.props.memberCount;
     const purpose = this.props.purpose;
-    
+
     if (channel) {
       if (this.props.currentUser.subscribedChannels && this.props.currentUser.subscribedChannels.includes(channel.id)) {
         return (
@@ -94,6 +94,7 @@ class ChannelMessages extends React.Component {
               <div className="join-channel-content">
                 <h3>You are viewing <strong>#{channel.name}</strong></h3>
                 <p>Created by {channel.creatorName} on {this.dateTimeConversion(channel.created_at)}</p>
+                <div className="channel-messages-join-channel-button">Join Channel</div>
               </div>
             </div>
           </div>
