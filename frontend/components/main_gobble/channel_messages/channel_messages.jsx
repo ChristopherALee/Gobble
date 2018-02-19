@@ -25,6 +25,8 @@ class ChannelMessages extends React.Component {
       (success) => {
         this.props.fetchCurrentUser(currentUsername);
       }
+    ).then(
+      this.hideChannelSettingsMenu()
     );
   }
 
@@ -37,6 +39,8 @@ class ChannelMessages extends React.Component {
       (success) => {
         this.props.fetchCurrentUser(currentUsername);
       }
+    ).then(
+      this.hideChannelSettingsMenu()
     );
   }
 
