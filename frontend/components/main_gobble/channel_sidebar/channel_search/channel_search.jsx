@@ -12,6 +12,7 @@ class ChannelSearch extends React.Component {
     this.removeChannelSearchMenu = this.removeChannelSearchMenu.bind(this);
     this.renderSearchedChannels = this.renderSearchedChannels.bind(this);
     this.renderBelongedChannels = this.renderBelongedChannels.bind(this);
+    this.renderAllChannels = this.renderAllChannels.bind(this);
     this.dateTimeConversion = this.dateTimeConversion.bind(this);
   }
 
@@ -133,6 +134,97 @@ class ChannelSearch extends React.Component {
     });
   }
 
+  renderAllChannels() {
+    const allChannels = this.props.allChannels;
+    let criteria = this.state.criteria;
+    let currentUser = this.props.currentUser.username;
+    let notBelongedChannels = allChannels.filter((channel) => {
+      return (
+        channel.name.includes(criteria) && !channel.members.includes(currentUser)
+      );
+    });
+    let belongedChannels = allChannels.filter((channel) => {
+      return (
+        channel.name.includes(criteria) && channel.members.includes(currentUser)
+      );
+    });
+
+    let searchedNotBelongedChannels = notBelongedChannels.map( (channel, idx) => {
+      let memberCount = channel.members.length;
+
+      return (
+        <Link to={`/messages/${channel.name}`} key={idx} onClick={this.removeChannelSearchMenu}>
+          <li>
+            <div className="search-channel-item-left">
+              <p className="hashtag">#</p>
+              <div className="search-channel-item-contents">
+                <div className="search-channel-item-name">
+                  <p>
+                    {channel.name}
+                  </p>
+                  <div className="search-channel-item-right">
+                    <i className="far fa-user"></i>
+                    <div className="search-channel-item-member-ct">{memberCount}</div>
+                  </div>
+                </div>
+                <p className="search-channel-item-purpose">{channel.purpose}</p>
+                <p className="search-channel-item-created">
+                  Created by <strong>{channel.creatorName}</strong> on {this.dateTimeConversion(channel.created_at)}
+                </p>
+              </div>
+            </div>
+
+          </li>
+        </Link>
+      );
+    });
+
+    let searchedBelongedChannels = belongedChannels.map( (channel, idx) => {
+      let memberCount = channel.members.length;
+
+      return (
+        <Link to={`/messages/${channel.name}`} key={idx} onClick={this.removeChannelSearchMenu}>
+          <li>
+            <div className="search-channel-item-left">
+              <p className="hashtag">#</p>
+              <div className="search-channel-item-contents">
+                <div className="search-channel-item-name">
+                  <p>
+                    {channel.name}
+                  </p>
+                  <div className="search-channel-item-right">
+                    <i className="far fa-user"></i>
+                    <div className="search-channel-item-member-ct">{memberCount}</div>
+                  </div>
+                </div>
+                <p className="search-channel-item-purpose">{channel.purpose}</p>
+                <p className="search-channel-item-created">
+                  Created by <strong>{channel.creatorName}</strong> on {this.dateTimeConversion(channel.created_at)}
+                </p>
+              </div>
+            </div>
+          </li>
+        </Link>
+      );
+    });
+
+    return (
+      <div className="channel-lists">
+        <h2>Channels you can join</h2>
+        <div className="channel-join">
+          <ul>
+            {searchedNotBelongedChannels}
+          </ul>
+        </div>
+
+        <h2>Channels you belong to</h2>
+        <ul>
+          {searchedBelongedChannels}
+        </ul>
+      </div>
+    );
+  }
+
   render() {
     if (this.props.channelSearchMenuShown) {
       return (
@@ -158,19 +250,20 @@ class ChannelSearch extends React.Component {
                  />
               </div>
 
+              {/* <h2>Channels you can join</h2>
               <div className="channel-search-list">
-                <h2>Channels you can join</h2>
                 <ul>
                   {this.renderSearchedChannels()}
                 </ul>
               </div>
 
+              <h2>Channels you belong to</h2>
               <div className="channel-search-belonged-list">
-                <h2>Channels you belong to</h2>
                 <ul>
                   {this.renderBelongedChannels()}
                 </ul>
-              </div>
+              </div> */}
+              {this.renderAllChannels()}
             </div>
           </section>
         </div>
