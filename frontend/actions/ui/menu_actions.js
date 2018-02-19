@@ -4,6 +4,8 @@ export const RENDER_CREATE_CHANNEL_MENU = 'RENDER_CREATE_CHANNEL_MENU';
 export const REMOVE_CREATE_CHANNEL_MENU = 'REMOVE_CREATE_CHANNEL_MENU';
 export const RENDER_CHANNEL_SEARCH_MENU = 'RENDER_CHANNEL_SEARCH_MENU';
 export const REMOVE_CHANNEL_SEARCH_MENU = 'REMOVE_CHANNEL_SEARCH_MENU';
+export const RENDER_CHANNEL_SETTINGS_MENU = 'RENDER_CHANNEL_SETTINGS_MENU';
+export const REMOVE_CHANNEL_SETTINGS_MENU = 'REMOVE_CHANNEL_SETTINGS_MENU';
 
 const renderMenu = () => {
   return {
@@ -47,6 +49,20 @@ const removeChannelSearchMenu = () => {
   };
 };
 
+const renderChannelSettingsMenu = () => {
+  return {
+    type: RENDER_CHANNEL_SETTINGS_MENU,
+    render: true
+  };
+};
+
+const removeChannelSettingsMenu = () => {
+  return {
+    type: REMOVE_CHANNEL_SETTINGS_MENU,
+    render: false
+  };
+};
+
 export const showMenu = () => dispatch => {
   return (
     dispatch(renderMenu())
@@ -80,5 +96,17 @@ export const showChannelSearchMenu = () => dispatch => {
 export const hideChannelSearchMenu = () => dispatch => {
   return (
     dispatch(removeChannelSearchMenu())
+  );
+};
+
+export const showChannelSettingsMenu = () => dispatch => {
+  return (
+    dispatch(renderChannelSettingsMenu())
+  );
+};
+
+export const hideChannelSettingsMenu = () => dispatch => {
+  return (
+    dispatch(removeChannelSettingsMenu())
   );
 };

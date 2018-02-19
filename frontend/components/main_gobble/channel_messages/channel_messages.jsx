@@ -5,6 +5,7 @@ class ChannelMessages extends React.Component {
   constructor(props) {
     super(props);
 
+    this.settingsMenu = this.settingsMenu.bind(this);
     this.removeGobbleMenu = this.removeGobbleMenu.bind(this);
     this.dateTimeConversion = this.dateTimeConversion.bind(this);
     this.createMembership = this.createMembership.bind(this);
@@ -53,6 +54,16 @@ class ChannelMessages extends React.Component {
     this.props.hideMenu();
   }
 
+  settingsMenu() {
+    let currentChannelName = this.props.currentChannel.name;
+
+    return (
+      <div className="channel-messages-settings-menu">
+        <div class="settings-leave-channel">Leave #{currentChannelName}</div>
+      </div>
+    );
+  }
+
   render() {
     const channel = this.props.currentChannel;
     const memberCount = this.props.memberCount;
@@ -85,6 +96,10 @@ class ChannelMessages extends React.Component {
               </div>
 
             </div>
+          );
+        } else if (true) {
+          return (
+
           );
         } else {
           return (
