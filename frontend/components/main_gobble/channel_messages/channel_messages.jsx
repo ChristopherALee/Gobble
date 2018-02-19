@@ -90,11 +90,18 @@ class ChannelMessages extends React.Component {
 
   settingsMenu() {
     let currentChannelName = this.props.currentChannel.name;
+    let currentChannelId = this.props.currentChannel.id;
 
-    if (this.props.channelSettingsMenuShown) {
+    if (this.props.channelSettingsMenuShown && (this.props.currentUser.subscribedChannels && this.props.currentUser.subscribedChannels.includes(currentChannelId))) {
       return (
         <div className="channel-messages-settings-menu">
           <div className="settings-leave-channel" onClick={this.removeMembership}>Leave #{currentChannelName}</div>
+        </div>
+      );
+    } else if (this.props.channelSettingsMenuShown && (this.props.currentUser.subscribedChannels && !this.props.currentUser.subscribedChannels.includes(currentChannelId))) {
+      return (
+        <div className="channel-messages-settings-menu">
+          <div className="settings-leave-channel" onClick={this.createMembership}>Join #{currentChannelName}</div>
         </div>
       );
     } else {
