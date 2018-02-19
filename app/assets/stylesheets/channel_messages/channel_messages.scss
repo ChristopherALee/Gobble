@@ -48,6 +48,10 @@
       color: #a0a0a2;
       margin-right: 15px;
 
+      .activeButton {
+        color: #0576b9;
+      }
+
       .fa-info-circle {
         width: 20px;
         height: 20px;
@@ -66,6 +70,38 @@
         &:hover {
           color: #0576b9;
           cursor: pointer;
+        }
+      }
+    }
+
+  }
+
+  .channel-messages-settings-menu {
+    width: 200px;
+    height: 43px;
+    border: 1px solid #e8e8e8;
+    border-radius: 6px;
+    position: absolute;
+    right: 15px;
+    top: 54px;
+    background-color: white;
+    z-index: 2;
+    box-shadow: 0 5px 10px rgba(0,0,0,.12);
+
+    .settings-leave-channel {
+      padding: 10px;
+      display: flex;
+
+      p {
+        width: 100%;
+        padding: 3px 10px;
+
+        &:hover {
+          cursor: pointer;
+          background-color: #2d9ee0;
+          color: white;
+          border-radius: 6px;
+          font-weight: 200;
         }
       }
     }

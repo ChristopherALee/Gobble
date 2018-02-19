@@ -99,13 +99,17 @@ class ChannelMessages extends React.Component {
     if (this.props.channelSettingsMenuShown && (this.props.currentUser.subscribedChannels && this.props.currentUser.subscribedChannels.includes(currentChannelId))) {
       return (
         <div className="channel-messages-settings-menu">
-          <div className="settings-leave-channel" onClick={this.removeMembership}>Leave #{currentChannelName}</div>
+          <div className="settings-leave-channel" onClick={this.removeMembership}>
+            <p>Leave #{currentChannelName}</p>
+          </div>
         </div>
       );
     } else if (this.props.channelSettingsMenuShown && (this.props.currentUser.subscribedChannels && !this.props.currentUser.subscribedChannels.includes(currentChannelId))) {
       return (
         <div className="channel-messages-settings-menu">
-          <div className="settings-leave-channel" onClick={this.createMembership}>Join #{currentChannelName}</div>
+          <div className="settings-leave-channel" onClick={this.createMembership}>
+            <p>Join #{currentChannelName}</p>
+          </div>
         </div>
       );
     } else {
@@ -133,6 +137,10 @@ class ChannelMessages extends React.Component {
     const channel = this.props.currentChannel;
     const memberCount = this.props.memberCount;
     const purpose = this.props.purpose;
+    let activeButton;
+    if (this.props.channelSettingsMenuShown) {
+      activeButton = "activeButton";
+    }
 
     if (channel) {
       return (
@@ -156,7 +164,7 @@ class ChannelMessages extends React.Component {
 
             <div className="channel-messages-header-right">
               <i className="fas fa-info-circle"></i>
-              <div className="channel-settings" onClick={this.toggleChannelSettingsMenu}>
+              <div className={`channel-settings ${activeButton}`} onClick={this.toggleChannelSettingsMenu}>
                 <i className="fas fa-cog"></i>
               </div>
             </div>
