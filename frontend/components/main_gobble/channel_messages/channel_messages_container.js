@@ -9,7 +9,7 @@ import ChannelMessages from './channel_messages';
 const mapStateToProps = (state, ownProps) => {
   let currentUser;
   if (state.session.currentUser) {
-    currentUser = state.session.currentUser.username;
+    currentUser = state.session.currentUser;
   }
 
   let currentChannelName = ownProps.location.pathname.slice(10);
