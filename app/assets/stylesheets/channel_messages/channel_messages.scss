@@ -59,4 +59,13 @@
       }
     }
   }
+
+  #channel-messages-join-channel-container {
+    position: absolute;
+    width: 78%;
+    bottom: 0;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+  }
 }
