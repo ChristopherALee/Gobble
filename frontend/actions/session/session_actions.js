@@ -90,6 +90,17 @@ export const logout = () => dispatch => {
   );
 };
 
+export const fetchCurrentUser = (userId) => dispatch => {
+  return (
+    UserApiUtil.fetchSingleUser(userId).then(
+      (user) => {
+        dispatch(receiveCurrentUser(user));
+        return user;
+      }
+    )
+  );
+};
+
 export const updateUser = (user) => dispatch => {
   return (
     UserApiUtil.updateUser(user).then(

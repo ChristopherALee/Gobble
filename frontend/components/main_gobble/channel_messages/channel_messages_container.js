@@ -4,6 +4,10 @@ import {
   createMessage,
   updateMessage,
   destroyMessage } from '../../../actions/message/message_actions';
+import {
+  createMembership,
+  removeMembership } from '../../../actions/membership/membership_actions';
+import { fetchCurrentUser } from '../../../actions/session/session_actions';
 import ChannelMessages from './channel_messages';
 
 const mapStateToProps = (state, ownProps) => {
@@ -45,7 +49,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     fetchSingleMessage: (message) => dispatch(fetchSingleMessage(message)),
     createMessage: (message) => dispatch(createMessage(message)),
     updateMessage: (message) => dispatch(updateMessage(message)),
-    destroyMessage: (id) => dispatch(destroyMessage(id))
+    destroyMessage: (id) => dispatch(destroyMessage(id)),
+    createMembership: (membership) => dispatch(createMembership(membership)),
+    removeMembership: (membershipId) => dispatch(removeMembership(membershipId)),
+    fetchCurrentUser: (userId) => dispatch(fetchCurrentUser(userId))
   };
 };
 

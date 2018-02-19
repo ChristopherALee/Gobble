@@ -6,6 +6,20 @@ class ChannelMessages extends React.Component {
     super(props);
 
     this.dateTimeConversion = this.dateTimeConversion.bind(this);
+    this.createMembership = this.createMembership.bind(this);
+  }
+
+  createMembership() {
+    let channelId = this.props.currentChannel.id;
+    let currentUsername = this.props.currentUser.username;
+
+    this.props.createMembership({
+      membership: { channel_id: channelId }
+    }).then(
+      (success) => {
+        this.props.fetchCurrentUser(currentUsername);
+      }
+    );
   }
 
   dateTimeConversion(dateTime) {
@@ -40,6 +54,7 @@ class ChannelMessages extends React.Component {
     const purpose = this.props.purpose;
 
     if (channel) {
+      debugger
       if (this.props.currentUser.subscribedChannels && this.props.currentUser.subscribedChannels.includes(channel.id)) {
         return (
           <div id="channel-messages">
@@ -94,7 +109,12 @@ class ChannelMessages extends React.Component {
               <div className="join-channel-content">
                 <h3>You are viewing <strong>#{channel.name}</strong></h3>
                 <p>Created by {channel.creatorName} on {this.dateTimeConversion(channel.created_at)}</p>
-                <div className="channel-messages-join-channel-button">Join Channel</div>
+                <div
+                  className="channel-messages-join-channel-button"
+                  onClick={this.createMembership}
+                  >
+                  Join Channel
+                </div>
               </div>
             </div>
           </div>
