@@ -6,6 +6,8 @@ class ChannelMessages extends React.Component {
     super(props);
 
     this.settingsMenu = this.settingsMenu.bind(this);
+    this.showChannelSettingsMenu = this.showChannelSettingsMenu.bind(this);
+    this.hideChannelSettingsMenu = this.hideChannelSettingsMenu.bind(this);
     this.removeGobbleMenu = this.removeGobbleMenu.bind(this);
     this.dateTimeConversion = this.dateTimeConversion.bind(this);
     this.createMembership = this.createMembership.bind(this);
@@ -57,11 +59,23 @@ class ChannelMessages extends React.Component {
   settingsMenu() {
     let currentChannelName = this.props.currentChannel.name;
 
-    return (
-      <div className="channel-messages-settings-menu">
-        <div class="settings-leave-channel">Leave #{currentChannelName}</div>
-      </div>
-    );
+    if (this.props.channelSettingsMenuShown) {
+      return (
+        <div className="channel-messages-settings-menu">
+          <div className="settings-leave-channel">Leave #{currentChannelName}</div>
+        </div>
+      );
+    } else {
+      return null;
+    }
+  }
+
+  showChannelSettingsMenu() {
+    this.props.showChannelSettingsMenu();
+  }
+
+  hideChannelSettingsMenu() {
+    this.props.hideChannelSettingsMenu();
   }
 
   render() {
@@ -71,9 +85,11 @@ class ChannelMessages extends React.Component {
 
     if (channel) {
       if (this.props.currentUser.subscribedChannels && this.props.currentUser.subscribedChannels.includes(channel.id)) {
-        if (this.props.gobbleMenuShown) {
+        if (this.props.channelSettingsMenuShown) {
           return (
-            <div id="channel-messages" onClick={this.removeGobbleMenu}>
+            <div id="channel-messages" onClick={this.hideChannelSettingsMenu}>
+              {this.settingsMenu()}
+
               <div className="channel-messages-header">
                 <div className="channel-messages-header-left">
                   <div className="channel-messages-title">#{channel.name}</div>
@@ -91,19 +107,19 @@ class ChannelMessages extends React.Component {
 
                 <div className="channel-messages-header-right">
                   <i className="fas fa-info-circle"></i>
-                  <i className="fas fa-cog"></i>
+                  <div className="channel-settings">
+                    <i className="fas fa-cog"></i>
+                  </div>
                 </div>
               </div>
 
             </div>
           );
-        } else if (true) {
-          return (
-
-          );
         } else {
           return (
             <div id="channel-messages">
+              {this.settingsMenu()}
+
               <div className="channel-messages-header">
                 <div className="channel-messages-header-left">
                   <div className="channel-messages-title">#{channel.name}</div>
@@ -121,7 +137,9 @@ class ChannelMessages extends React.Component {
 
                 <div className="channel-messages-header-right">
                   <i className="fas fa-info-circle"></i>
-                  <i className="fas fa-cog"></i>
+                  <div className="channel-settings" onClick={this.showChannelSettingsMenu}>
+                    <i className="fas fa-cog"></i>
+                  </div>
                 </div>
               </div>
 
@@ -129,9 +147,11 @@ class ChannelMessages extends React.Component {
           );
         }
       } else {
-        if (this.props.gobbleMenuShown) {
+        if (this.props.channelSettingsMenuShown) {
           return (
-            <div id="channel-messages" onClick={this.removeGobbleMenu}>
+            <div id="channel-messages" onClick={this.hideChannelSettingsMenu}>
+              {this.settingsMenu()}
+
               <div className="channel-messages-header">
                 <div className="channel-messages-header-left">
                   <div className="channel-messages-title">#{channel.name}</div>
@@ -149,7 +169,9 @@ class ChannelMessages extends React.Component {
 
                 <div className="channel-messages-header-right">
                   <i className="fas fa-info-circle"></i>
-                  <i className="fas fa-cog"></i>
+                  <div className="channel-settings">
+                    <i className="fas fa-cog"></i>
+                  </div>
                 </div>
               </div>
 
@@ -170,6 +192,8 @@ class ChannelMessages extends React.Component {
         } else {
           return (
             <div id="channel-messages">
+              {this.settingsMenu()}
+
               <div className="channel-messages-header">
                 <div className="channel-messages-header-left">
                   <div className="channel-messages-title">#{channel.name}</div>
@@ -187,7 +211,9 @@ class ChannelMessages extends React.Component {
 
                 <div className="channel-messages-header-right">
                   <i className="fas fa-info-circle"></i>
-                  <i className="fas fa-cog"></i>
+                  <div className="channel-settings" onClick={this.showChannelSettingsMenu}>
+                    <i className="fas fa-cog"></i>
+                  </div>
                 </div>
               </div>
 

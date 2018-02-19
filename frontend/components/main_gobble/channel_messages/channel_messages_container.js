@@ -8,7 +8,10 @@ import {
   createMembership,
   removeMembership } from '../../../actions/membership/membership_actions';
 import { fetchCurrentUser } from '../../../actions/session/session_actions';
-import { hideMenu } from '../../../actions/ui/menu_actions';
+import {
+  hideMenu,
+  showChannelSettingsMenu,
+  hideChannelSettingsMenu } from '../../../actions/ui/menu_actions';
 import ChannelMessages from './channel_messages';
 
 const mapStateToProps = (state, ownProps) => {
@@ -42,7 +45,8 @@ const mapStateToProps = (state, ownProps) => {
     messages: messages,
     memberCount: memberCount,
     purpose: purpose,
-    gobbleMenuShown: state.ui.menu
+    gobbleMenuShown: state.ui.menu,
+    channelSettingsMenuShown: state.ui.channelSettingsMenu
   };
 };
 
@@ -55,7 +59,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     createMembership: (membership) => dispatch(createMembership(membership)),
     removeMembership: (membershipId) => dispatch(removeMembership(membershipId)),
     fetchCurrentUser: (userId) => dispatch(fetchCurrentUser(userId)),
-    hideMenu: () => dispatch(hideMenu())
+    hideMenu: () => dispatch(hideMenu()),
+    showChannelSettingsMenu: () => dispatch(showChannelSettingsMenu()),
+    hideChannelSettingsMenu: () => dispatch(hideChannelSettingsMenu())
   };
 };
 
