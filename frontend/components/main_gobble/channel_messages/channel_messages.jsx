@@ -5,6 +5,7 @@ class ChannelMessages extends React.Component {
   constructor(props) {
     super(props);
 
+    this.removeGobbleMenu = this.removeGobbleMenu.bind(this);
     this.dateTimeConversion = this.dateTimeConversion.bind(this);
     this.createMembership = this.createMembership.bind(this);
   }
@@ -48,6 +49,10 @@ class ChannelMessages extends React.Component {
     );
   }
 
+  removeGobbleMenu() {
+    this.props.hideMenu();
+  }
+
   render() {
     const channel = this.props.currentChannel;
     const memberCount = this.props.memberCount;
@@ -55,69 +60,137 @@ class ChannelMessages extends React.Component {
 
     if (channel) {
       if (this.props.currentUser.subscribedChannels && this.props.currentUser.subscribedChannels.includes(channel.id)) {
-        return (
-          <div id="channel-messages">
-            <div className="channel-messages-header">
-              <div className="channel-messages-header-left">
-                <div className="channel-messages-title">#{channel.name}</div>
-                <div className="channel-details">
-                  <div className="channel-detail-member-ct">
-                    <i className="far fa-user"></i>
-                    {memberCount}
+        if (this.props.gobbleMenuShown) {
+          return (
+            <div id="channel-messages" onClick={this.removeGobbleMenu}>
+              <div className="channel-messages-header">
+                <div className="channel-messages-header-left">
+                  <div className="channel-messages-title">#{channel.name}</div>
+                  <div className="channel-details">
+                    <div className="channel-detail-member-ct">
+                      <i className="far fa-user"></i>
+                      {memberCount}
+                    </div>
+
+                    <div className="divider">|</div>
+
+                    <div className="channel-detail-purpose">{purpose}</div>
                   </div>
+                </div>
 
-                  <div className="divider">|</div>
-
-                  <div className="channel-detail-purpose">{purpose}</div>
+                <div className="channel-messages-header-right">
+                  <i className="fas fa-info-circle"></i>
+                  <i className="fas fa-cog"></i>
                 </div>
               </div>
 
-              <div className="channel-messages-header-right">
-                <i className="fas fa-info-circle"></i>
-                <i className="fas fa-cog"></i>
-              </div>
             </div>
+          );
+        } else {
+          return (
+            <div id="channel-messages">
+              <div className="channel-messages-header">
+                <div className="channel-messages-header-left">
+                  <div className="channel-messages-title">#{channel.name}</div>
+                  <div className="channel-details">
+                    <div className="channel-detail-member-ct">
+                      <i className="far fa-user"></i>
+                      {memberCount}
+                    </div>
 
-          </div>
-        );
+                    <div className="divider">|</div>
+
+                    <div className="channel-detail-purpose">{purpose}</div>
+                  </div>
+                </div>
+
+                <div className="channel-messages-header-right">
+                  <i className="fas fa-info-circle"></i>
+                  <i className="fas fa-cog"></i>
+                </div>
+              </div>
+
+            </div>
+          );
+        }
       } else {
-        return (
-          <div id="channel-messages">
-            <div className="channel-messages-header">
-              <div className="channel-messages-header-left">
-                <div className="channel-messages-title">#{channel.name}</div>
-                <div className="channel-details">
-                  <div className="channel-detail-member-ct">
-                    <i className="far fa-user"></i>
-                    {memberCount}
+        if (this.props.gobbleMenuShown) {
+          return (
+            <div id="channel-messages" onClick={this.removeGobbleMenu}>
+              <div className="channel-messages-header">
+                <div className="channel-messages-header-left">
+                  <div className="channel-messages-title">#{channel.name}</div>
+                  <div className="channel-details">
+                    <div className="channel-detail-member-ct">
+                      <i className="far fa-user"></i>
+                      {memberCount}
+                    </div>
+
+                    <div className="divider">|</div>
+
+                    <div className="channel-detail-purpose">{purpose}</div>
                   </div>
+                </div>
 
-                  <div className="divider">|</div>
-
-                  <div className="channel-detail-purpose">{purpose}</div>
+                <div className="channel-messages-header-right">
+                  <i className="fas fa-info-circle"></i>
+                  <i className="fas fa-cog"></i>
                 </div>
               </div>
 
-              <div className="channel-messages-header-right">
-                <i className="fas fa-info-circle"></i>
-                <i className="fas fa-cog"></i>
-              </div>
-            </div>
-
-            <div id="channel-messages-join-channel-container">
-              <div className="join-channel-content">
-                <h3>You are viewing <strong>#{channel.name}</strong></h3>
-                <p>Created by {channel.creatorName} on {this.dateTimeConversion(channel.created_at)}</p>
-                <div
-                  className="channel-messages-join-channel-button"
-                  onClick={this.createMembership}
-                  >
-                  Join Channel
+              <div id="channel-messages-join-channel-container">
+                <div className="join-channel-content">
+                  <h3>You are viewing <strong>#{channel.name}</strong></h3>
+                  <p>Created by {channel.creatorName} on {this.dateTimeConversion(channel.created_at)}</p>
+                  <div
+                    className="channel-messages-join-channel-button"
+                    onClick={this.createMembership}
+                    >
+                      Join Channel
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        );
+            );
+        } else {
+          return (
+            <div id="channel-messages">
+              <div className="channel-messages-header">
+                <div className="channel-messages-header-left">
+                  <div className="channel-messages-title">#{channel.name}</div>
+                  <div className="channel-details">
+                    <div className="channel-detail-member-ct">
+                      <i className="far fa-user"></i>
+                      {memberCount}
+                    </div>
+
+                    <div className="divider">|</div>
+
+                    <div className="channel-detail-purpose">{purpose}</div>
+                  </div>
+                </div>
+
+                <div className="channel-messages-header-right">
+                  <i className="fas fa-info-circle"></i>
+                  <i className="fas fa-cog"></i>
+                </div>
+              </div>
+
+              <div id="channel-messages-join-channel-container">
+                <div className="join-channel-content">
+                  <h3>You are viewing <strong>#{channel.name}</strong></h3>
+                  <p>Created by {channel.creatorName} on {this.dateTimeConversion(channel.created_at)}</p>
+                  <div
+                    className="channel-messages-join-channel-button"
+                    onClick={this.createMembership}
+                    >
+                      Join Channel
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+        }
       }
     } else {
       return null;
