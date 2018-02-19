@@ -99,16 +99,16 @@ class ChannelMessages extends React.Component {
     if (this.props.channelSettingsMenuShown && (this.props.currentUser.subscribedChannels && this.props.currentUser.subscribedChannels.includes(currentChannelId))) {
       return (
         <div className="channel-messages-settings-menu">
-          <div className="settings-leave-channel" onClick={this.removeMembership}>
-            <p>Leave #{currentChannelName}</p>
+          <div className="settings-leave-channel">
+            <p onClick={this.removeMembership}>Leave #{currentChannelName}</p>
           </div>
         </div>
       );
     } else if (this.props.channelSettingsMenuShown && (this.props.currentUser.subscribedChannels && !this.props.currentUser.subscribedChannels.includes(currentChannelId))) {
       return (
         <div className="channel-messages-settings-menu">
-          <div className="settings-leave-channel" onClick={this.createMembership}>
-            <p>Join #{currentChannelName}</p>
+          <div className="settings-leave-channel">
+            <p onClick={this.createMembership}>Join #{currentChannelName}</p>
           </div>
         </div>
       );
@@ -122,7 +122,9 @@ class ChannelMessages extends React.Component {
   }
 
   hideChannelSettingsMenu() {
-    this.props.hideChannelSettingsMenu();
+    if (this.props.channelSettingsMenuShown) {
+      this.props.hideChannelSettingsMenu();
+    }
   }
 
   toggleChannelSettingsMenu() {
@@ -144,7 +146,7 @@ class ChannelMessages extends React.Component {
 
     if (channel) {
       return (
-        <div id="channel-messages">
+        <div id="channel-messages" onClick={this.hideChannelSettingsMenu}>
           {this.settingsMenu()}
 
           <div className="channel-messages-header">
@@ -168,6 +170,10 @@ class ChannelMessages extends React.Component {
                 <i className="fas fa-cog"></i>
               </div>
             </div>
+          </div>
+
+          <div className="messages">
+
           </div>
 
           {this.joinChannelFooter(channel)}

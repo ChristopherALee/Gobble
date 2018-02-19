@@ -80,6 +80,19 @@ class ChannelSideBar extends React.Component {
     let that = this;
 
     if (this.props.channels.length) {
+      channels = this.props.channels.sort((a, b) => {
+        let channelName1 = a.name;
+        let channelName2 = b.name;
+
+        if (channelName1 < channelName2) {
+          return -1;
+        } else if (channelName1 > channelName2) {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
+
       channels = this.props.channels.map((channel, idx) => {
         if (channel.name === that.props.location.pathname.slice(10)) {
           return (
@@ -104,7 +117,7 @@ class ChannelSideBar extends React.Component {
             </li>
           </Link>
         );
-        }
+       }
       });
     }
 
@@ -133,7 +146,7 @@ class ChannelSideBar extends React.Component {
         </div>
       );
     } else {
-      return null;
+      return (<div></div>);
     }
   }
 
