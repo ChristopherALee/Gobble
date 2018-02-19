@@ -112,6 +112,12 @@
 
         ul a {
           text-decoration: none;
+
+          &:hover {
+            & + a li {
+              border: 1px solid transparent;
+            }
+          }
         }
 
         li {
@@ -125,10 +131,6 @@
           border-top: 1px solid #ededed;
 
           &:hover {
-            & + li {
-              border: 1px solid transparent;
-            }
-
             background-color: #eaf5fc;
             border-radius: 6px;
             border: 1px solid #cbe7f7;
