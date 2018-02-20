@@ -159,9 +159,42 @@
     flex-direction: column-reverse;
     height: calc(100% - 145px);
 
-    .message-container {
+    .messages-container {
+      height: 100%;
+      display: flex;
+      flex-direction: column-reverse;
+      padding: 10px;
+      overflow-y: scroll;
+
       ul {
         text-decoration: none;
+
+        li {
+          display: flex;
+
+          .user-profile-pic {
+            display: flex;
+            align-items: center;
+          }
+
+          .message-content {
+            .message-author-timestamp {
+              display: flex;
+
+              .message-author-name {
+
+              }
+
+              .message-timestamp {
+
+              }
+            }
+
+            .message-body {
+
+            }
+          }
+        }
       }
     }
   }
