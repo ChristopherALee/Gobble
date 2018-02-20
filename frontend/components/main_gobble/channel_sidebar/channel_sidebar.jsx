@@ -224,6 +224,8 @@ class ChannelSideBar extends React.Component {
       return (
         <div id="channel-side-bar">
           <CreateChannelForm
+            currentUser={this.props.currentUser}
+            fetchCurrentUser={this.props.fetchCurrentUser}
             createChannelMenuShown={this.props.createChannelMenuShown}
             removeCreateChannelMenu={this.removeCreateChannelMenu}
             createChannel={this.props.createChannel}
@@ -236,6 +238,7 @@ class ChannelSideBar extends React.Component {
             channelSearchMenuShown={this.props.channelSearchMenuShown}
             removeChannelSearchMenu={this.removeChannelSearchMenu}
             allChannels={this.props.allChannels}
+            renderCreateChannelMenu={this.renderCreateChannelMenu}
           />
 
           {this.gobbleMenu()}

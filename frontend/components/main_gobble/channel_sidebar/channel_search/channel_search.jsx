@@ -9,6 +9,7 @@ class ChannelSearch extends React.Component {
       criteria: ""
     };
 
+    this.showCreateChannelMenu = this.showCreateChannelMenu.bind(this);
     this.removeChannelSearchMenu = this.removeChannelSearchMenu.bind(this);
     this.renderAllChannels = this.renderAllChannels.bind(this);
     this.dateTimeConversion = this.dateTimeConversion.bind(this);
@@ -141,6 +142,10 @@ class ChannelSearch extends React.Component {
     );
   }
 
+  showCreateChannelMenu() {
+    this.props.renderCreateChannelMenu();
+  }
+
   render() {
     if (this.props.channelSearchMenuShown) {
       return (
@@ -155,7 +160,7 @@ class ChannelSearch extends React.Component {
             <div className="channel-search-container">
               <div className="search-header">
                 <h1>Browse channels</h1>
-                <div className="channel-search-create-channel-button">Create Channel</div>
+                <div className="channel-search-create-channel-button" onClick={this.showCreateChannelMenu}>Create Channel</div>
               </div>
               <div className="channel-search-bar">
                 <i className="fas fa-search"></i>
