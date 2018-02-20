@@ -157,7 +157,7 @@
   .messages {
     display: flex;
     flex-direction: column-reverse;
-    height: calc(100% - 145px);
+    height: calc(100% - 147px);
 
     .messages-container {
       height: 100%;
@@ -217,18 +217,22 @@
   }
 
   .message-input {
-    position: fixed;
-    bottom: 0;
+    // position: fixed;
     height: 80px;
-    width: 78.5%;
+    // width: 78.5%;
 
-    input {
-      border: 2px solid rgba(160,160,162,.7);
-      margin: 0 50px;
-      height: 40px;
-      border-radius: 6px;
-      width: 92%;
+    .message-input-container {
+      width: 100%;
+
+      input {
+        border: 2px solid rgba(160,160,162,.7);
+        margin: 0 26px;
+        height: 40px;
+        border-radius: 6px;
+        width: 97%;
+      }
     }
+
   }
 }
 
