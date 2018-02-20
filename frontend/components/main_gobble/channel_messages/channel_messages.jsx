@@ -183,16 +183,16 @@ class ChannelMessages extends React.Component {
     let hour;
     let minutes;
     let amOrPm;
-    if (dateTime.slice(14, 15) === "0") {
-      hour = dateTime.slice(15,16);
-      minutes = dateTime.slice(17, 19);
+    if (dateTime.slice(11, 12) === "0") {
+      hour = dateTime.slice(12,13);
+      minutes = dateTime.slice(14, 16);
       amOrPm = "am";
     } else {
-      hour = dateTime.slice(14, 16);
-      minutes = dateTime.slice(17, 19);
+      hour = dateTime.slice(11, 13);
+      minutes = dateTime.slice(14, 16);
       amOrPm = "pm";
     }
-
+    
     return (
       `${month} ${day}, ${year} at ${hour}:${minutes}${amOrPm}`
     );
