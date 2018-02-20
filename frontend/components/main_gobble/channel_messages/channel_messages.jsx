@@ -192,7 +192,7 @@ class ChannelMessages extends React.Component {
       minutes = dateTime.slice(14, 16);
       amOrPm = "pm";
     }
-    
+
     return (
       `${month} ${day}, ${year} at ${hour}:${minutes}${amOrPm}`
     );
@@ -270,7 +270,9 @@ class ChannelMessages extends React.Component {
           </div>
 
           <div className="message-input">
-            <input type="text" placeholder="type here"/>
+            <div className="message-input-container">
+              <input type="text" placeholder={`Message #${channel.name}`}/>
+            </div>
           </div>
 
           {this.joinChannelFooter(channel)}

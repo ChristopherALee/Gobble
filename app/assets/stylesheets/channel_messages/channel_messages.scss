@@ -163,7 +163,6 @@
       height: 100%;
       display: flex;
       flex-direction: column-reverse;
-      padding: 10px;
       overflow-y: scroll;
       padding: 0 20px;
 
@@ -221,7 +220,15 @@
     position: fixed;
     bottom: 0;
     height: 80px;
-    width: 100%;
+    width: 78.5%;
+
+    input {
+      border: 2px solid rgba(160,160,162,.7);
+      margin: 0 50px;
+      height: 40px;
+      border-radius: 6px;
+      width: 92%;
+    }
   }
 }
 
