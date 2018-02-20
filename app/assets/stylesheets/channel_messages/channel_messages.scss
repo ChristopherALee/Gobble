@@ -187,11 +187,14 @@
           }
 
           .message-content {
+            width: 100%;
+            word-break: break-all;
             margin-left: 10px;
 
             .message-author-timestamp {
               display: flex;
               align-items: center;
+              min-width: 350px;
 
               .message-author-name {
 
