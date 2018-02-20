@@ -14,6 +14,8 @@ class ChannelMessages extends React.Component {
     this.dateTimeConversion = this.dateTimeConversion.bind(this);
     this.createMembership = this.createMembership.bind(this);
     this.removeMembership = this.removeMembership.bind(this);
+    this.dateTimeConversion = this.dateTimeConversion.bind(this);
+    this.renderMessages = this.renderMessages.bind(this);
   }
 
   createMembership() {
@@ -157,6 +159,58 @@ class ChannelMessages extends React.Component {
     );
   }
 
+  dateTimeConversion(dateTime) {
+    const months = {
+      "01": "January",
+      "02": "February",
+      "03": "March",
+      "04": "April",
+      "05": "May",
+      "06": "June",
+      "07": "July",
+      "08": "August",
+      "09": "September",
+      "10": "October",
+      "11": "November",
+      "12": "December"
+    };
+
+    let year = dateTime.slice(0, 4);
+    let numMonth = dateTime.slice(5, 7);
+    let month = months[numMonth];
+    let day = dateTime.slice(8, 10);
+
+    return (
+      `${month} ${day}, ${year}`
+    );
+  }
+
+  renderMessages() {
+    let messages = this.props.messages;
+    
+    messages = messages.map((message, idx) => {
+      let timeStamp = this.dateTimeConversion(message.created_at);
+
+      return (
+        <li key={idx}>
+          <div className="user-profile-pic"></div>
+          <div className="message-container">
+            <div className="message-author-timestamp">
+              <div className="message-author-name"><strong>{message.authorName}</strong></div>
+              <div className="message-timestamp">{timeStamp}</div>
+            </div>
+
+            <div className="message-content">
+              {message.body}
+            </div>
+          </div>
+        </li>
+      );
+    });
+
+    return messages;
+  }
+
   render() {
     const channel = this.props.currentChannel;
     const memberCount = this.props.memberCount;
@@ -195,7 +249,7 @@ class ChannelMessages extends React.Component {
           </div>
 
           <div className="messages" onClick={this.hideAllMenus}>
-
+            {this.renderMessages()}
           </div>
 
           {this.joinChannelFooter(channel)}

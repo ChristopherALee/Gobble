@@ -40,7 +40,9 @@ const mapStateToProps = (state, ownProps) => {
     let messageIds = currentChannel.messages;
     messages = Object.values(state.entities.messages).filter(
       (message) => {
-        Object.values(messageIds).includes(message.id);
+        return (
+          Object.values(messageIds).includes(message.id)
+        );
       }
     );
   }
