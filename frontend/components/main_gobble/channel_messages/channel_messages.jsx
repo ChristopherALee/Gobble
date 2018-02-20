@@ -187,7 +187,7 @@ class ChannelMessages extends React.Component {
 
   renderMessages() {
     let messages = this.props.messages;
-    
+
     messages = messages.map((message, idx) => {
       let timeStamp = this.dateTimeConversion(message.created_at);
 
@@ -249,7 +249,15 @@ class ChannelMessages extends React.Component {
           </div>
 
           <div className="messages" onClick={this.hideAllMenus}>
-            {this.renderMessages()}
+            <div className="messages-container">
+              <ul>
+                {this.renderMessages()}
+              </ul>
+            </div>
+          </div>
+
+          <div className="message-input">
+            <input type="text" placeholder="type here"/>
           </div>
 
           {this.joinChannelFooter(channel)}

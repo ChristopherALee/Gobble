@@ -153,6 +153,25 @@
       }
     }
   }
+
+  .messages {
+    display: flex;
+    flex-direction: column-reverse;
+    height: calc(100% - 145px);
+
+    .message-container {
+      ul {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .message-input {
+    position: fixed;
+    bottom: 0;
+    height: 80px;
+    width: 100%;
+  }
 }
 
 #channel-messages-blank-channel {
