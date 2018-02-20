@@ -40,6 +40,7 @@ export const fetchSingleMessage = (message) => dispatch => {
   return (
     MessageApiUtil.fetchSingleMessage(message).then(
       (message) => {
+        debugger
         dispatch(receiveSingleMessage(message));
         return message;
       }

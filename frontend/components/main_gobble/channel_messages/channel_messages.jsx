@@ -5,17 +5,54 @@ class ChannelMessages extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      body: ""
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.createMembership = this.createMembership.bind(this);
+    this.removeMembership = this.removeMembership.bind(this);
+    this.dateTimeConversion = this.dateTimeConversion.bind(this);
+    this.renderMessages = this.renderMessages.bind(this);
+    this.getChannelMessages = this.getChannelMessages.bind(this);
+    this.getChannelMessage = this.getChannelMessage.bind(this);
+
+    // UI functions
     this.hideAllMenus = this.hideAllMenus.bind(this);
     this.settingsMenu = this.settingsMenu.bind(this);
     this.showChannelSettingsMenu = this.showChannelSettingsMenu.bind(this);
     this.hideChannelSettingsMenu = this.hideChannelSettingsMenu.bind(this);
     this.toggleChannelSettingsMenu = this.toggleChannelSettingsMenu.bind(this);
     this.removeGobbleMenu = this.removeGobbleMenu.bind(this);
-    this.dateTimeConversion = this.dateTimeConversion.bind(this);
-    this.createMembership = this.createMembership.bind(this);
-    this.removeMembership = this.removeMembership.bind(this);
-    this.dateTimeConversion = this.dateTimeConversion.bind(this);
-    this.renderMessages = this.renderMessages.bind(this);
+  }
+
+  handleChange(field) {
+    return (e) => {
+      this.setState({ [field]: e.target.value });
+    };
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const channel = this.props.currentChannel.name;
+
+    this.props.createMessage({message: {
+      body: this.state.body,
+      channel_id: this.props.currentChannel.id
+    }}).then(
+      (success) => {
+        this.setState({['body']: ""});
+      }
+    );
+  }
+
+  getChannelMessages(channel) {
+    this.props.fetchChannelMessages(channel);
+  }
+
+  getChannelMessage(message) {
+    this.props.fetchSingleMessage(message);
   }
 
   createMembership() {
@@ -271,7 +308,14 @@ class ChannelMessages extends React.Component {
 
           <div className="message-input">
             <div className="message-input-container">
-              <input type="text" placeholder={`Message #${channel.name}`}/>
+              <form onSubmit={this.handleSubmit}>
+                <input
+                  type="text"
+                  value={this.state.body}
+                  placeholder={`Message #${channel.name}`}
+                  onChange={this.handleChange("body")}
+                />
+              </form>
             </div>
           </div>
 

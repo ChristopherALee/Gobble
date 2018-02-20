@@ -7,6 +7,7 @@ import {
 import {
   createMembership,
   removeMembership } from '../../../actions/membership/membership_actions';
+import { fetchChannelMessages } from '../../../actions/channel/channel_actions';
 import { fetchCurrentUser } from '../../../actions/session/session_actions';
 import {
   hideMenu,
@@ -61,6 +62,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
+    fetchChannelMessages: (channel) => dispatch(fetchChannelMessages(channel)),
     fetchSingleMessage: (message) => dispatch(fetchSingleMessage(message)),
     createMessage: (message) => dispatch(createMessage(message)),
     updateMessage: (message) => dispatch(updateMessage(message)),

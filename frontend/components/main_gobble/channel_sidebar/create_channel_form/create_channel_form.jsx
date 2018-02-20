@@ -46,7 +46,7 @@ class CreateChannelForm extends React.Component {
     if (this.activeSubmit()) {
       const channel = Object.assign({}, this.state);
       const currentUser = this.props.currentUser;
-      
+
       this.props.createChannel({channel: channel}).then(
         (success) => {
           this.props.createMembership({membership: {channel_id: success.id}}).then(

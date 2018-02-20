@@ -15,6 +15,7 @@ const messageReducer = (state = {}, action) => {
       return newState;
     case RECEIVE_SINGLE_MESSAGE:
       newState = Object.assign({}, state, {[action.message.id]: action.message});
+      debugger
       return newState;
     case DELETE_MESSAGE:
       newState = Object.assign({}, state);
