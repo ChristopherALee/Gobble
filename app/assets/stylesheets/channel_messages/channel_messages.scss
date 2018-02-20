@@ -154,3 +154,33 @@
     }
   }
 }
+
+#channel-messages-blank-channel {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  .blank-channel-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .blank-channel-chicken-image {
+      background-image: image_url("chicken_images/shocked-chicken.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 250px;
+      height: 250px;
+    }
+
+    h2 {
+      color: #2c2d30;
+      font-size: 25px;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+  }
+}

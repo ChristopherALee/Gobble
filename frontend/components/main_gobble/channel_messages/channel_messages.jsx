@@ -146,6 +146,17 @@ class ChannelMessages extends React.Component {
     }
   }
 
+  renderBlankChannel() {
+    return (
+      <div id="channel-messages-blank-channel">
+        <div className="blank-channel-container">
+          <div className="blank-channel-chicken-image"></div>
+          <h2>Gah! Nothing's here! Click a channel on the left to view!</h2>
+        </div>
+      </div>
+    );
+  }
+
   render() {
     const channel = this.props.currentChannel;
     const memberCount = this.props.memberCount;
@@ -189,6 +200,10 @@ class ChannelMessages extends React.Component {
 
           {this.joinChannelFooter(channel)}
         </div>
+      );
+    } else if (this.props.location.pathname === "/messages" || this.props.location.pathname === "/messages/") {
+      return (
+        this.renderBlankChannel()
       );
     } else {
       return null;
