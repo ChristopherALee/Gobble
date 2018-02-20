@@ -193,7 +193,7 @@ class ChannelMessages extends React.Component {
 
       return (
         <li key={idx}>
-          <div className="user-profile-pic"><strong>img_here</strong></div>
+          <div className="user-profile-pic"></div>
           <div className="message-content">
             <div className="message-author-timestamp">
               <div className="message-author-name"><strong>{message.authorName}</strong></div>
