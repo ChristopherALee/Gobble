@@ -66,6 +66,18 @@ class ChannelSearch extends React.Component {
       );
     });
 
+    notBelongedChannels = notBelongedChannels.sort((a, b) => {
+      let channelName1 = a.name;
+      let channelName2 = b.name;
+
+      if (channelName1 < channelName2) {
+        return -1;
+      } else if (channelName1 > channelName2) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
     let searchedNotBelongedChannels = notBelongedChannels.map( (channel, idx) => {
       let memberCount = channel.members.length;
 
@@ -96,6 +108,18 @@ class ChannelSearch extends React.Component {
       );
     });
 
+    belongedChannels = belongedChannels.sort((a, b) => {
+      let channelName1 = a.name;
+      let channelName2 = b.name;
+
+      if (channelName1 < channelName2) {
+        return -1;
+      } else if (channelName1 > channelName2) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
     let searchedBelongedChannels = belongedChannels.map( (channel, idx) => {
       let memberCount = channel.members.length;
 
