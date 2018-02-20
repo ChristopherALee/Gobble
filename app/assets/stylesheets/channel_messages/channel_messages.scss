@@ -165,12 +165,14 @@
       flex-direction: column-reverse;
       padding: 10px;
       overflow-y: scroll;
+      padding: 0 30px;
 
       ul {
         text-decoration: none;
 
         li {
           display: flex;
+          margin-top: 20px;
 
           .user-profile-pic {
             display: flex;
@@ -178,20 +180,28 @@
           }
 
           .message-content {
+            margin-left: 10px;
+
             .message-author-timestamp {
               display: flex;
+              align-items: center;
 
               .message-author-name {
 
               }
 
               .message-timestamp {
-
+                margin-left: 8px;
+                color: #717274;
+                font-size: 14px;
               }
             }
 
             .message-body {
-
+              color: #2c2d30;
+              line-height: 1.4;
+              word-wrap: break-word;
+              display: inline-block;
             }
           }
         }
