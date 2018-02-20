@@ -12,7 +12,7 @@ class Api::MessagesController < ApplicationController
     @message.author_id = current_user.id
 
     if @message.save
-      Pusher.trigger('channel_messages', 'message_created', {})
+      Pusher.trigger('channel_messages', 'message_created', {channelName: @message.channel.name})
       render 'api/messages/show'
     else
       render json: @message.errors.messages, status: 422

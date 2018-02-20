@@ -17,6 +17,7 @@ class ChannelMessages extends React.Component {
     this.renderMessages = this.renderMessages.bind(this);
     this.getChannelMessages = this.getChannelMessages.bind(this);
     this.getChannelMessage = this.getChannelMessage.bind(this);
+    this.fetchSingleChannel = this.fetchSingleChannel.bind(this);
 
     // UI functions
     this.hideAllMenus = this.hideAllMenus.bind(this);
@@ -25,6 +26,24 @@ class ChannelMessages extends React.Component {
     this.hideChannelSettingsMenu = this.hideChannelSettingsMenu.bind(this);
     this.toggleChannelSettingsMenu = this.toggleChannelSettingsMenu.bind(this);
     this.removeGobbleMenu = this.removeGobbleMenu.bind(this);
+  }
+
+  componentDidMount() {
+    this.pusher = new Pusher('416ebb2d74bf61955f19', {
+      cluster: 'us2',
+      encrypted: true
+    });
+
+    this.channel = this.pusher.subscribe('channel_messages');
+    let that = this;
+    this.channel.bind('message_created', function(data) {
+      that.fetchSingleChannel(data.channelName);
+      that.getChannelMessages(that.props.currentChannel.name);
+    });
+  }
+
+  componentWillUnmount() {
+    this.channel = this.pusher.unsubscribe('channel_messages');
   }
 
   handleChange(field) {
@@ -45,6 +64,10 @@ class ChannelMessages extends React.Component {
         this.setState({['body']: ""});
       }
     );
+  }
+
+  fetchSingleChannel(channel) {
+    this.props.fetchSingleChannel(channel);
   }
 
   getChannelMessages(channel) {

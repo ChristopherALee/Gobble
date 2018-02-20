@@ -39,7 +39,6 @@ const channelReducer = (state = {}, action) => {
       return newState;
     case RECEIVE_SINGLE_MESSAGE:
       newState = Object.assign({}, state);
-      debugger
       newState[action.message.channelName].messages.push(action.message.id);
       return newState;
     case DELETE_MESSAGE:
