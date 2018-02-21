@@ -6,7 +6,8 @@ class ChannelMessages extends React.Component {
     super(props);
 
     this.state = {
-      body: ""
+      body: "",
+      newMessages: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -88,9 +89,11 @@ class ChannelMessages extends React.Component {
           this.state.body === ""
           && (document.getElementById("messages-container").scrollTop < (document.getElementById("messages-container").scrollHeight / 2))
         ) {
+          this.setState({['newMessages']: true});
+        } else if (this.state.body === "") {
           document.getElementById("scroll-identifier").scrollIntoView({
-            behavior: "smooth"
-          });
+           behavior: "smooth"
+         });
         }
       }
     );
@@ -241,6 +244,22 @@ class ChannelMessages extends React.Component {
     );
   }
 
+  renderNewMessageBanner() {
+    if (
+      this.state.newMessages &&
+      (document.getElementById("messages-container") !== null) &&
+      document.getElementById("messages-container").scrollTop < (document.getElementById("messages-container").scrollHeight / 2)) {
+        debugger
+      return (
+        <div id="new-message-banner">
+          <p>New messages in #{this.props.currentChannel.name} (click here to scroll down)</p>
+        </div>
+      );
+    } else {
+      return null;
+    }
+  }
+
   dateTimeConversion(dateTime) {
     const months = {
       "01": "January",
@@ -349,6 +368,10 @@ class ChannelMessages extends React.Component {
           </div>
 
           <div className="messages" onClick={this.hideAllMenus}>
+            <div id="new-message-banner-container">
+              {this.renderNewMessageBanner()}
+            </div>
+
             <div id="messages-container">
               <ul>
                 {this.renderMessages()}
