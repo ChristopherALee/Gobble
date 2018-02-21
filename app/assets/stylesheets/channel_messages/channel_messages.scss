@@ -280,5 +280,19 @@
 }
 
 #new-message-banner {
-  position: fixed;
+  position: sticky;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #2d9ee0;
+  color: white;
+  padding: 10px;
+
+  &:hover {
+    cursor: pointer;
+
+    p {
+      text-decoration: underline;
+    }
+  }
 }
