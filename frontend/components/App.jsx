@@ -14,15 +14,15 @@ const App = () => {
       <header>
         {/* <h1>gobble</h1> */}
       </header>
-      
+
       <Route exact path="/login" component={HomeNavBarContainer}></Route>
       <Route exact path="/signup" component={HomeNavBarContainer}></Route>
 
       <Switch>
         <AuthRoute exact path="/" component={HomeNavBarContainer} />
-        <ProtectedRoute path='/messages' component={MainGobbleContainer}/>
         <AuthRoute path='/login' component={SessionFormContainer} />
         <AuthRoute path='/signup' component={SessionFormContainer} />
+        <ProtectedRoute path='/' component={MainGobbleContainer}/>
       </Switch>
 
       <Route exact path="/" component={LandingPageContainer}></Route>

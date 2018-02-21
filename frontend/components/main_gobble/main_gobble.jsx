@@ -8,6 +8,16 @@ class MainGobble extends React.Component {
     super(props);
   }
 
+  componentWillReceiveProps(newProps) {
+    if (this.props.location.pathname !== newProps.location.pathname) {
+      let newPath = newProps.location.pathname;
+
+      if (!newPath.includes("messages")) {
+        this.props.history.push("/messages");
+      }
+    }
+  }
+
   render() {
     return (
       <div id="we-gobblin-here">
