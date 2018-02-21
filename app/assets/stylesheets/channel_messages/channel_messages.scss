@@ -111,8 +111,8 @@
   }
 
   #channel-messages-join-channel-container {
-    position: absolute;
-    width: 78%;
+    position: sticky;
+    width: 100%;
     bottom: 0;
     height: 150px;
     display: flex;
