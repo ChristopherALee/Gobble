@@ -9,11 +9,12 @@
 ## Development Timeline
 1. **[DONE]** User Authentication
 2. **[DONE]** Landing Page
-3. **[In-Progress]** Channels
-4. Messages via Pusher gem
-  4. Channel Group Messages
+3. **[DONE]** Channels
+4. **[In-Progress]** Messages via Pusher gem
+  4. **[DONE]** Channel Group Messages
   4. Direct Messages
-5. User Photo Uploads via Paperclip gem
-  5. User profile photo
-  5. User photo messaging
-6. Channel Search
+5. Online/Offline User Activity
+6. User Photo Uploads via Paperclip gem
+  6. User profile photo
+  6. User photo messaging
+7. Channel Search
