@@ -83,11 +83,13 @@ class ChannelMessages extends React.Component {
 
   getChannelMessages(channel) {
     this.props.fetchChannelMessages(channel).then(
-      (success) => (
-        document.getElementById("scroll-identifier").scrollIntoView({
-          behavior: "smooth"
-        })
-      )
+      (success) => {
+        if (this.state.body === "") {
+          document.getElementById("scroll-identifier").scrollIntoView({
+            behavior: "smooth"
+          });
+        }
+      }
     );
   }
 
