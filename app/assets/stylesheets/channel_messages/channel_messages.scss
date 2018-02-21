@@ -1,4 +1,5 @@
 #channel-messages {
+  overflow-x: hidden;
   width: 100%;
 
   .channel-messages-header {
@@ -155,8 +156,8 @@
   }
 
   .messages {
-    display: flex;
-    flex-direction: column-reverse;
+    // display: flex;
+    // flex-direction: column-reverse;
     height: calc(100% - 127px);
 
     .messages-container {
@@ -172,7 +173,7 @@
         li:first-child {
           margin-top: 20px;
         }
-        
+
         li {
           display: flex;
           margin-bottom: 20px;

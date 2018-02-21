@@ -62,6 +62,9 @@ class ChannelMessages extends React.Component {
     }}).then(
       (success) => {
         this.setState({['body']: ""});
+        document.getElementById("scroll-identifier").scrollIntoView({
+          behavior: "smooth"
+        });
       }
     );
   }
@@ -71,7 +74,13 @@ class ChannelMessages extends React.Component {
   }
 
   getChannelMessages(channel) {
-    this.props.fetchChannelMessages(channel);
+    this.props.fetchChannelMessages(channel).then(
+      (success) => (
+        document.getElementById("scroll-identifier").scrollIntoView({
+          behavior: "smooth"
+        })
+      )
+    );
   }
 
   getChannelMessage(message) {
@@ -325,6 +334,7 @@ class ChannelMessages extends React.Component {
             <div className="messages-container">
               <ul>
                 {this.renderMessages()}
+                <div id="scroll-identifier"></div>
               </ul>
             </div>
           </div>
