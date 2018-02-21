@@ -29,8 +29,13 @@ class ChannelSideBar extends React.Component {
               this.props.history.push(`/messages/${this.props.lastVisitedChannel}`);
             }
 
+            let allChannels = this.props.allChannels.map((channel) => {
+              return (
+                channel.name
+              );
+            });
             let currentChannel = this.props.location.pathname.slice(10);
-            if (currentChannel) {
+            if (allChannels.includes(currentChannel)) {
               this.getChannelMessages(currentChannel);
               this.props.updateUser({
                 username: this.props.currentUser,
@@ -60,7 +65,12 @@ class ChannelSideBar extends React.Component {
 
   componentWillReceiveProps(newProps) {
     if (this.props.location.pathname !== newProps.location.pathname) {
-      if (newProps.location.pathname.slice(10) !== "") {
+      let newPath = newProps.location.pathname.slice(10);
+      let allChannels = this.props.allChannels.map((channel) => channel.name);
+
+      if (!allChannels.includes(newPath)) {
+        this.props.history.push(`/messages/${this.props.currentUser.lastVisitedChannel}`);
+      } else if (newPath !== "") {
         let newChannel = newProps.location.pathname.slice(10);
         this.getChannelMessages(newChannel);
         this.props.updateUser({
