@@ -46,6 +46,15 @@ class ChannelMessages extends React.Component {
     this.channel = this.pusher.unsubscribe('channel_messages');
   }
 
+  // componentWillUpdate(prevProps, prevState) {
+  //   if (this.props.location.pathname !== prevProps.location.pathname) {
+  //     debugger
+  //     document.getElementById("scroll-identifier").scrollIntoView({
+  //       behavior: "auto"
+  //     });
+  //   }
+  // }
+
   handleChange(field) {
     return (e) => {
       this.setState({ [field]: e.target.value });
@@ -272,9 +281,14 @@ class ChannelMessages extends React.Component {
 
     messages = messages.map((message, idx) => {
       let timeStamp = this.dateTimeConversion(message.created_at);
+      let lastMessage;
+
+      if (idx === messages.length - 1) {
+        lastMessage = "last-message";
+      }
 
       return (
-        <li key={idx}>
+        <li id={lastMessage} key={idx}>
           <div className="user-profile-pic"></div>
           <div className="message-content">
             <div className="message-author-timestamp">
