@@ -85,9 +85,14 @@ class ChannelMessages extends React.Component {
   getChannelMessages(channel) {
     this.props.fetchChannelMessages(channel).then(
       (success) => {
+        const scrollHeight = document.getElementById("messages-container").scrollHeight;
+        const scrollTop = document.getElementById("messages-container").scrollTop;
+        const bottomHeight = scrollHeight - scrollTop;
+        const containerHeight = document.getElementById("messages-container").clientHeight + 500;
+
         if (
           this.state.body === ""
-          && (document.getElementById("messages-container").scrollTop < (document.getElementById("messages-container").scrollHeight / 2))
+          && (bottomHeight > containerHeight)
         ) {
           this.setState({['newMessages']: true});
         } else if (this.state.body === "") {
@@ -245,11 +250,7 @@ class ChannelMessages extends React.Component {
   }
 
   renderNewMessageBanner() {
-    if (
-      this.state.newMessages &&
-      (document.getElementById("messages-container") !== null) &&
-      document.getElementById("messages-container").scrollTop < (document.getElementById("messages-container").scrollHeight / 2)) {
-        debugger
+    if (this.state.newMessages) {
       return (
         <div id="new-message-banner">
           <p>New messages in #{this.props.currentChannel.name} (click here to scroll down)</p>
