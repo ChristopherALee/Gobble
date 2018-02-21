@@ -84,7 +84,10 @@ class ChannelMessages extends React.Component {
   getChannelMessages(channel) {
     this.props.fetchChannelMessages(channel).then(
       (success) => {
-        if (this.state.body === "") {
+        if (
+          this.state.body === ""
+          && (document.getElementById("messages-container").scrollTop < (document.getElementById("messages-container").scrollHeight / 2))
+        ) {
           document.getElementById("scroll-identifier").scrollIntoView({
             behavior: "smooth"
           });
@@ -346,7 +349,7 @@ class ChannelMessages extends React.Component {
           </div>
 
           <div className="messages" onClick={this.hideAllMenus}>
-            <div className="messages-container">
+            <div id="messages-container">
               <ul>
                 {this.renderMessages()}
                 <div id="scroll-identifier"></div>
