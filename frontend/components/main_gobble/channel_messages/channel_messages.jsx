@@ -46,14 +46,13 @@ class ChannelMessages extends React.Component {
     this.channel = this.pusher.unsubscribe('channel_messages');
   }
 
-  // componentWillUpdate(prevProps, prevState) {
-  //   if (this.props.location.pathname !== prevProps.location.pathname) {
-  //     debugger
-  //     document.getElementById("scroll-identifier").scrollIntoView({
-  //       behavior: "auto"
-  //     });
-  //   }
-  // }
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      document.getElementById("scroll-identifier").scrollIntoView({
+        behavior: "instant"
+      });
+    }
+  }
 
   handleChange(field) {
     return (e) => {
