@@ -27,6 +27,7 @@ class ChannelMessages extends React.Component {
     this.hideChannelSettingsMenu = this.hideChannelSettingsMenu.bind(this);
     this.toggleChannelSettingsMenu = this.toggleChannelSettingsMenu.bind(this);
     this.removeGobbleMenu = this.removeGobbleMenu.bind(this);
+    this.scrollToBottom = this.scrollToBottom.bind(this);
   }
 
   componentDidMount() {
@@ -261,6 +262,13 @@ class ChannelMessages extends React.Component {
     }
   }
 
+  scrollToBottom() {
+    document.getElementById("scroll-identifier").scrollIntoView({
+     behavior: "smooth"
+   });
+   this.setState({["newMessages"]: false});
+  }
+
   dateTimeConversion(dateTime) {
     const months = {
       "01": "January",
@@ -369,7 +377,7 @@ class ChannelMessages extends React.Component {
           </div>
 
           <div className="messages" onClick={this.hideAllMenus}>
-            <div id="new-message-banner-container">
+            <div id="new-message-banner-container" onClick={this.scrollToBottom}>
               {this.renderNewMessageBanner()}
             </div>
 
