@@ -175,7 +175,7 @@ class ChannelMessages extends React.Component {
   }
 
   joinChannelFooter(channel) {
-    if (this.props.currentUser.subscribedChannels && this.props.currentUser.subscribedChannels.includes(channel.id)) {
+    if (this.props.currentUser.subscribedChannels && this.props.currentUser.subscribedChannels.includes(channel.name)) {
       return null;
     } else {
       return (
