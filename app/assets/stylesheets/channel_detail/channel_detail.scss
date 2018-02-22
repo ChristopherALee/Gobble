@@ -3,8 +3,20 @@
   min-width: 300px;
 
   .channel-detail-container {
-    .channel-detail-about-banner {
+    border-left: 1px solid #e8e8e8;
+    height: 100%;
 
+    .channel-detail-about-banner {
+      background-color: #f9f9f9;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      padding-left: 15px;
+      font-size: 18px;
+
+      h2 {
+        letter-spacing: 0.5px;
+      }
     }
   }
 }
