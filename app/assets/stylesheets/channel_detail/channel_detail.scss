@@ -13,9 +13,38 @@
       align-items: center;
       padding-left: 15px;
       font-size: 18px;
+      font-weight: 800;
+      border-bottom: 1px solid #e8e8e8;
 
       h2 {
         letter-spacing: 0.5px;
+      }
+    }
+
+    .channel-details-content-container {
+      padding: 20px 15px;
+      border-bottom: 1px solid #e8e8e8;
+
+      .channel-details-content-header {
+        margin-bottom: 18px;
+
+        p {
+          font-size: 21px;
+
+        }
+      }
+
+      .channel-details-content {
+        h3 {
+          font-weight: 700;
+          color: #717274;
+          font-size: 13px;
+          margin-bottom: 5px;
+        }
+
+        p:nth-child(2) {
+          margin-bottom: 20px;
+        }
       }
     }
   }

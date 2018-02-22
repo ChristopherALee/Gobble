@@ -56,7 +56,7 @@ class ChannelDetail extends React.Component {
         <div id="channel-detail">
           <div className="channel-detail-container">
             <section className="channel-detail-about-banner">
-              <h2><strong>About #{currentChannel.name}</strong></h2>
+              <h2>About #{currentChannel.name}</h2>
             </section>
 
             <section className="channel-details-content-container">
