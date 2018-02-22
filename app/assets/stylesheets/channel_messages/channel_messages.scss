@@ -231,23 +231,30 @@
 
     .message-input-container {
       width: 100%;
+      display: flex;
+      justify-content: center;
 
-      input {
-        border: 2px solid rgba(160,160,162,.7);
-        margin: 0 26px;
-        height: 40px;
-        border-radius: 6px;
-        width: 97%;
-        padding: 0 10px;
-        outline: none;
-        font-size: 13px;
+      form {
+        width: 100%;
+        display: flex;
+        justify-content: center;
 
-        &:focus {
-          border: 2px solid rgba(113,114,116,1);
+        input {
+          border: 2px solid rgba(160,160,162,.7);
+          margin: 0 26px;
+          height: 40px;
+          border-radius: 6px;
+          width: 97%;
+          padding: 0 10px;
+          outline: none;
+          font-size: 13px;
+
+          &:focus {
+            border: 2px solid rgba(113,114,116,1);
+          }
         }
       }
     }
-
   }
 }
 
