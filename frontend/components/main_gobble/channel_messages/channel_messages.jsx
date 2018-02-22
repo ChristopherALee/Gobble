@@ -298,7 +298,7 @@ class ChannelMessages extends React.Component {
       minutes = dateTime.slice(14, 16);
       amOrPm = "am";
     } else {
-      hour = dateTime.slice(11, 13);
+      hour = String(parseInt(dateTime.slice(11, 13)) - 12);
       minutes = dateTime.slice(14, 16);
       amOrPm = "pm";
     }
