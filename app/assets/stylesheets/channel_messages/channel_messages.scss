@@ -188,8 +188,9 @@
             align-items: center;
 
             // temp until paperclip
-            background-image: image_url("chicken_images/goofy-chicken.png");
-            background-size: cover;
+            background-image: image_url("logos/gobble-logo-left.png");
+            // background-image: image_url("chicken_images/goofy-chicken.png");
+            background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
             width: 50px;

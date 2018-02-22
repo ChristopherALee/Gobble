@@ -130,8 +130,9 @@
           margin-bottom: 12px;
 
           .channel-member-picture {
-            background-image: image_url("chicken_images/goofy-chicken.png");
-            background-size: cover;
+            // background-image: image_url("chicken_images/goofy-chicken.png");
+            background-image: image_url("logos/gobble-logo-left.png");
+            background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
             width: 30px;
