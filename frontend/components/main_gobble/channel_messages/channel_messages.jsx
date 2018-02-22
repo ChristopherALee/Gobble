@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Route, Link, withRouter } from 'react-router-dom';
+import ChannelDetailContainer from '../channel_detail/channel_detail_container';
 
 class ChannelMessages extends React.Component {
   constructor(props) {
@@ -7,7 +8,8 @@ class ChannelMessages extends React.Component {
 
     this.state = {
       body: "",
-      newMessages: false
+      newMessages: false,
+      newMessageBannerShown: "hidden"
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -102,6 +104,7 @@ class ChannelMessages extends React.Component {
           && (bottomHeight > containerHeight)
         ) {
           this.setState({['newMessages']: true});
+          this.setState({["newMessageBannerShown"]: "shown"});
         } else if (this.state.body === "") {
           document.getElementById("scroll-identifier").scrollIntoView({
            behavior: "smooth"
@@ -272,7 +275,10 @@ class ChannelMessages extends React.Component {
     document.getElementById("scroll-identifier").scrollIntoView({
      behavior: "smooth"
    });
-   this.setState({["newMessages"]: false});
+   this.setState({
+     ["newMessages"]: false,
+     ["newMessageBannerShown"]: "hidden"
+   });
   }
 
   dateTimeConversion(dateTime) {
@@ -383,16 +389,20 @@ class ChannelMessages extends React.Component {
           </div>
 
           <div className="messages" onClick={this.hideAllMenus}>
-            <div id="new-message-banner-container" onClick={this.scrollToBottom}>
-              {this.renderNewMessageBanner()}
+            <div className="messages-root-container">
+              <div id="new-message-banner-container" className={this.state.newMessageBannerShown} onClick={this.scrollToBottom}>
+                {this.renderNewMessageBanner()}
+              </div>
+
+              <div id="messages-container">
+                <ul>
+                  {this.renderMessages()}
+                  <div id="scroll-identifier"></div>
+                </ul>
+              </div>
             </div>
 
-            <div id="messages-container">
-              <ul>
-                {this.renderMessages()}
-                <div id="scroll-identifier"></div>
-              </ul>
-            </div>
+            <Route path='/messages' component={ChannelDetailContainer}></Route>
           </div>
 
           <div className="message-input">

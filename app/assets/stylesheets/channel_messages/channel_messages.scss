@@ -156,9 +156,14 @@
   }
 
   .messages {
-    // display: flex;
-    // flex-direction: column-reverse;
+    display: flex;
+    justify-content: space-between;
     height: calc(100% - 127px);
+
+    .messages-root-container {
+      width: calc(100% - 500px);
+      min-width: 350px;
+    }
 
     #messages-container {
       height: 100%;
@@ -286,6 +291,10 @@
       margin-top: 10px;
     }
   }
+}
+
+.hidden {
+  display: none;
 }
 
 #new-message-banner-container {
