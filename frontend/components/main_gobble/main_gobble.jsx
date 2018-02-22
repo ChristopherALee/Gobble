@@ -8,6 +8,10 @@ class MainGobble extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.fetchAllUsers();
+  }
+
   componentWillReceiveProps(newProps) {
     if (this.props.location.pathname !== newProps.location.pathname) {
       let newPath = newProps.location.pathname;
