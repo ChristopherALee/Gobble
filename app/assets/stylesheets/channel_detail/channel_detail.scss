@@ -18,6 +18,7 @@
 
       h2 {
         letter-spacing: 0.5px;
+        color: #2c2d30;
       }
     }
 
@@ -27,13 +28,31 @@
 
       .channel-details-content-header {
         margin-bottom: 18px;
+        display: flex;
+        justify-content: space-between;
 
         &:hover {
           cursor: pointer;
         }
 
-        p {
-          font-size: 21px;
+        .channel-details-content-header-right {
+          display: flex;
+          align-items: center;
+
+          .fa-info-circle {
+            color: #a0a0a2;
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+          }
+
+          p {
+            font-size: 21px;
+            color: #2c2d30;
+          }
+        }
+
+        .channel-details-content-header-left {
 
         }
       }
@@ -52,7 +71,7 @@
       }
 
     }
-    .expanded {
+    .collapsed {
       .channel-details-content-header {
         margin: 0;
       }

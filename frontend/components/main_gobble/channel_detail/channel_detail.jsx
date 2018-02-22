@@ -6,12 +6,14 @@ class ChannelDetail extends React.Component {
     super(props);
 
     this.state = {
-      channelDetails: "collapsed",
-      members: "collapsed"
+      channelDetails: "expanded",
+      members: "expanded"
     };
 
     this.dateTimeConversion = this.dateTimeConversion.bind(this);
     this.toggleExpand = this.toggleExpand.bind(this);
+    this.toggleExpandIcons = this.toggleExpandIcons.bind(this);
+    this.toggleChannelDetailExpand = this.toggleChannelDetailExpand.bind(this);
   }
 
   dateTimeConversion(dateTime) {
@@ -78,7 +80,14 @@ class ChannelDetail extends React.Component {
 
             <section className={`channel-details-content-container ${this.state.channelDetails}`}>
               <div className="channel-details-content-header" onClick={this.toggleExpand("channelDetails")}>
-                <p>Channel Details</p>
+                <div className="channel-details-content-header-right">
+                  <i className="fas fa-info-circle"></i>
+                  <p>Channel Details</p>
+                </div>
+
+                <div className="channel-details-content-header-left">
+                  <i className="fas fa-sort-down"></i>
+                </div>
               </div>
 
               <div className="channel-details-content">
@@ -86,7 +95,7 @@ class ChannelDetail extends React.Component {
                 <p>{currentChannel.purpose}</p>
 
                 <h3>Created</h3>
-                <p>Created by {currentChannel.creatorName} on {this.dateTimeConversion(currentChannel.created_at)}</p>
+                <p>Created by <strong>{currentChannel.creatorName}</strong> on {this.dateTimeConversion(currentChannel.created_at)}</p>
               </div>
             </section>
           </div>
