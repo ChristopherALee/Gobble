@@ -279,21 +279,25 @@
   }
 }
 
-#new-message-banner {
-  position: sticky;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  background-color: #2d9ee0;
-  color: white;
-  padding: 10px;
+#new-message-banner-container {
+  position: relative;
+  
+  #new-message-banner {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #2d9ee0;
+    color: white;
+    padding: 10px;
 
-  &:hover {
-    cursor: pointer;
-    background-color: #2ea7ee;
+    &:hover {
+      cursor: pointer;
+      background-color: #2ea7ee;
 
-    p {
-      text-decoration: underline;
+      p {
+        text-decoration: underline;
+      }
     }
   }
 }
