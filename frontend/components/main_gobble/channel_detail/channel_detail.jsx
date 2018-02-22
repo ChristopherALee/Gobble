@@ -5,7 +5,13 @@ class ChannelDetail extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      channelDetails: "collapsed",
+      members: "collapsed"
+    };
+
     this.dateTimeConversion = this.dateTimeConversion.bind(this);
+    this.toggleExpand = this.toggleExpand.bind(this);
   }
 
   dateTimeConversion(dateTime) {
@@ -47,6 +53,17 @@ class ChannelDetail extends React.Component {
     );
   }
 
+  toggleExpand(section) {
+    return (e) => {
+      e.preventDefault();
+      if (this.state[section] === "collapsed") {
+        this.setState({[section]: "expanded"});
+      } else {
+        this.setState({[section]: "collapsed"});
+      }
+    };
+  }
+
   render() {
     const currentChannel = this.props.currentChannel;
     const currentChannelMembers = this.props.currentChannelMembers;
@@ -59,8 +76,8 @@ class ChannelDetail extends React.Component {
               <h2>About #{currentChannel.name}</h2>
             </section>
 
-            <section className="channel-details-content-container">
-              <div className="channel-details-content-header">
+            <section className={`channel-details-content-container ${this.state.channelDetails}`}>
+              <div className="channel-details-content-header" onClick={this.toggleExpand("channelDetails")}>
                 <p>Channel Details</p>
               </div>
 

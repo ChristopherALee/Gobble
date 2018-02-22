@@ -28,6 +28,10 @@
       .channel-details-content-header {
         margin-bottom: 18px;
 
+        &:hover {
+          cursor: pointer;
+        }
+
         p {
           font-size: 21px;
 
@@ -45,6 +49,16 @@
         p:nth-child(2) {
           margin-bottom: 20px;
         }
+      }
+
+    }
+    .expanded {
+      .channel-details-content-header {
+        margin: 0;
+      }
+
+      .channel-details-content {
+        display: none;
       }
     }
   }
