@@ -1,6 +1,7 @@
 #channel-detail {
   width: 500px;
   min-width: 300px;
+  user-select: none;
 
   .channel-detail-container {
     border-left: 1px solid #e8e8e8;
@@ -85,12 +86,17 @@
   }
 
   .channel-members-content-container {
+    height: 100%;
     padding: 20px 15px;
 
     .channel-members-content-header {
       display: flex;
       justify-content: space-between;
       margin-bottom: 18px;
+
+      &:hover {
+        cursor: pointer;
+      }
 
       .channel-members-content-header-left {
         display: flex;
@@ -110,6 +116,9 @@
     }
 
     .channel-members-content {
+      height: 100%;
+      -webkit-animation: slideUp 0.5s;
+
       ul {
         li {
           display: flex;
@@ -133,6 +142,15 @@
           }
         }
       }
+    }
+  }
+  .collapsed {
+    .channel-members-content-header {
+      margin: 0;
+    }
+
+    .channel-members-content {
+      display: none;
     }
   }
 }

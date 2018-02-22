@@ -113,7 +113,9 @@ class ChannelDetail extends React.Component {
             </section>
 
             <section className={`channel-members-content-container ${this.state.members}`}>
-              <div className="channel-members-content-header">
+              <div
+                className="channel-members-content-header"
+                onClick={this.toggleExpand("members")}>
                 <div className="channel-members-content-header-left">
                   <i className="far fa-user"></i>
                   <p>{this.props.currentChannelMembers.length} Members</p>
