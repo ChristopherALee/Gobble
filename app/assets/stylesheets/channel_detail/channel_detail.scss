@@ -92,6 +92,7 @@
     .channel-members-content-header {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       margin-bottom: 18px;
 
       &:hover {
@@ -112,6 +113,9 @@
           font-size: 21px;
           color: #2c2d30;
         }
+      }
+
+      .channel-members-content-header-right {
       }
     }
 
@@ -153,4 +157,22 @@
       display: none;
     }
   }
+}
+
+.channel-detail-triangle {
+  width: 5px;
+  height: 5px;
+  margin-right: 8px;
+}
+
+.triangle-down {
+  border-right: 3px solid #2c2d30;
+  border-bottom: 3px solid #2c2d30;
+  transform: rotate(45deg);
+}
+
+.triangle-right {
+  border-bottom: 3px solid #2c2d30;
+  border-left: 3px solid #2c2d30;
+  transform: rotate(45deg);
 }

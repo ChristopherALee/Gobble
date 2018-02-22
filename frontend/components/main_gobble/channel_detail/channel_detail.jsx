@@ -65,6 +65,14 @@ class ChannelDetail extends React.Component {
     };
   }
 
+  toggleExpandIcon(section) {
+    if (this.state[section] === "expanded") {
+      return "triangle-down";
+    } else {
+      return "triangle-right";
+    }
+  }
+
   renderChannelMembers() {
     return this.props.currentChannelMembers.map((member) => {
       return (
@@ -99,7 +107,7 @@ class ChannelDetail extends React.Component {
                 </div>
 
                 <div className="channel-details-content-header-right">
-                  <i className="fas fa-sort-down"></i>
+                  <div className={`channel-detail-triangle ${this.toggleExpandIcon("channelDetails")}`}></div>
                 </div>
               </div>
 
@@ -122,7 +130,7 @@ class ChannelDetail extends React.Component {
                 </div>
 
                 <div className="channel-members-content-header-right">
-                  <i className="fas fa-sort-down"></i>
+                  <div className={`channel-detail-triangle ${this.toggleExpandIcon("members")}`}></div>
                 </div>
               </div>
 
