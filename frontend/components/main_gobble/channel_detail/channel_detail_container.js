@@ -14,7 +14,7 @@ const mapStateToProps = (state, ownProps) => {
       (user) => currentChannelMemberNames.includes(user.username)
     );
   }
-  
+
   return {
     currentChannel: currentChannel,
     currentChannelMembers: currentChannelMembers

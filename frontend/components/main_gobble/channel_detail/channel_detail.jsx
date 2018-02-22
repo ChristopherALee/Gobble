@@ -12,8 +12,7 @@ class ChannelDetail extends React.Component {
 
     this.dateTimeConversion = this.dateTimeConversion.bind(this);
     this.toggleExpand = this.toggleExpand.bind(this);
-    this.toggleExpandIcons = this.toggleExpandIcons.bind(this);
-    this.toggleChannelDetailExpand = this.toggleChannelDetailExpand.bind(this);
+    this.renderChannelMembers = this.renderChannelMembers.bind(this);
   }
 
   dateTimeConversion(dateTime) {
@@ -66,6 +65,18 @@ class ChannelDetail extends React.Component {
     };
   }
 
+  renderChannelMembers() {
+    return this.props.currentChannelMembers.map((member) => {
+      return (
+        <li key={member.id}>
+          <div className="channel-member-status"></div>
+          <div className="channel-member-picture"></div>
+          <p>{member.username}</p>
+        </li>
+      );
+    });
+  }
+
   render() {
     const currentChannel = this.props.currentChannel;
     const currentChannelMembers = this.props.currentChannelMembers;
@@ -79,13 +90,15 @@ class ChannelDetail extends React.Component {
             </section>
 
             <section className={`channel-details-content-container ${this.state.channelDetails}`}>
-              <div className="channel-details-content-header" onClick={this.toggleExpand("channelDetails")}>
-                <div className="channel-details-content-header-right">
+              <div
+                className="channel-details-content-header"
+                onClick={this.toggleExpand("channelDetails")}>
+                <div className="channel-details-content-header-left">
                   <i className="fas fa-info-circle"></i>
                   <p>Channel Details</p>
                 </div>
 
-                <div className="channel-details-content-header-left">
+                <div className="channel-details-content-header-right">
                   <i className="fas fa-sort-down"></i>
                 </div>
               </div>
@@ -96,6 +109,25 @@ class ChannelDetail extends React.Component {
 
                 <h3>Created</h3>
                 <p>Created by <strong>{currentChannel.creatorName}</strong> on {this.dateTimeConversion(currentChannel.created_at)}</p>
+              </div>
+            </section>
+
+            <section className={`channel-members-content-container ${this.state.members}`}>
+              <div className="channel-members-content-header">
+                <div className="channel-members-content-header-left">
+                  <i className="far fa-user"></i>
+                  <p>{this.props.currentChannelMembers.length} Members</p>
+                </div>
+
+                <div className="channel-members-content-header-right">
+                  <i className="fas fa-sort-down"></i>
+                </div>
+              </div>
+
+              <div className="channel-members-content">
+                <ul>
+                  {this.renderChannelMembers()}
+                </ul>
               </div>
             </section>
           </div>

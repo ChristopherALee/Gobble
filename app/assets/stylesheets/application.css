@@ -38,6 +38,11 @@
    100% {transform: translateY(0)}
  }
 
+ @-webkit-keyframes slideLeft {
+   0% {transform: translateX(100%)}
+   100% {transform: translateX(0)}
+ }
+
 html {
   font-family: 'Lato', sans-serif;
 }
