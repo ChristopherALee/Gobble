@@ -9,7 +9,9 @@ class ChannelMessages extends React.Component {
     this.state = {
       body: "",
       newMessages: false,
-      newMessageBannerShown: "hidden"
+      newMessageBannerShown: "hidden",
+      channelDetailShown: true,
+      currentUserMessaged: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -79,6 +81,7 @@ class ChannelMessages extends React.Component {
       channel_id: this.props.currentChannel.id
     }}).then(
       (success) => {
+        this.setState({["currentUserMessaged"]: true});
         this.setState({['body']: ""});
         document.getElementById("scroll-identifier").scrollIntoView({
           behavior: "smooth"
@@ -92,26 +95,36 @@ class ChannelMessages extends React.Component {
   }
 
   getChannelMessages(channel) {
-    this.props.fetchChannelMessages(channel).then(
-      (success) => {
-        const scrollHeight = document.getElementById("messages-container").scrollHeight;
-        const scrollTop = document.getElementById("messages-container").scrollTop;
-        const bottomHeight = scrollHeight - scrollTop;
-        const containerHeight = document.getElementById("messages-container").clientHeight + 500;
+    if (this.state.currentUserMessaged && this.state.body === "") {
+      document.getElementById("scroll-identifier").scrollIntoView({
+       behavior: "smooth"
+     });
+   } else {
+     this.props.fetchChannelMessages(channel).then(
+       (success) => {
+         const scrollHeight = document.getElementById("messages-container").scrollHeight;
+         const scrollTop = document.getElementById("messages-container").scrollTop;
+         const bottomHeight = scrollHeight - scrollTop;
+         const containerHeight = document.getElementById("messages-container").clientHeight + 500;
 
-        if (
-          this.state.body === ""
-          && (bottomHeight > containerHeight)
-        ) {
-          this.setState({['newMessages']: true});
-          this.setState({["newMessageBannerShown"]: "shown"});
-        } else if (this.state.body === "") {
-          document.getElementById("scroll-identifier").scrollIntoView({
-           behavior: "smooth"
-         });
-        }
-      }
-    );
+         if (
+           this.state.body === ""
+           && (bottomHeight > containerHeight)
+           && !this.state.currentUserMessaged
+         ) {
+           this.setState({['newMessages']: true});
+           this.setState({["newMessageBannerShown"]: "shown"});
+         } else if (this.state.body === "") {
+           document.getElementById("scroll-identifier").scrollIntoView({
+             behavior: "smooth"
+           });
+         }
+         
+         this.setState({["currentUserMessaged"]: false});
+       }
+     );
+   }
+
   }
 
   getChannelMessage(message) {
@@ -144,32 +157,6 @@ class ChannelMessages extends React.Component {
       }
     ).then(
       this.hideChannelSettingsMenu()
-    );
-  }
-
-  dateTimeConversion(dateTime) {
-    const months = {
-      "01": "January",
-      "02": "February",
-      "03": "March",
-      "04": "April",
-      "05": "May",
-      "06": "June",
-      "07": "July",
-      "08": "August",
-      "09": "September",
-      "10": "October",
-      "11": "November",
-      "12": "December"
-    };
-
-    let year = dateTime.slice(0, 4);
-    let numMonth = dateTime.slice(5, 7);
-    let month = months[numMonth];
-    let day = dateTime.slice(8, 10);
-
-    return (
-      `${month} ${day}, ${year}`
     );
   }
 
@@ -356,8 +343,13 @@ class ChannelMessages extends React.Component {
     const memberCount = this.props.memberCount;
     const purpose = this.props.purpose;
     let activeButton;
+    let activeDetailButton;
     if (this.props.channelSettingsMenuShown) {
       activeButton = "activeButton";
+    }
+
+    if (this.state.channelDetailShown) {
+      activeDetailButton = "activeButton";
     }
 
     if (channel) {
@@ -381,7 +373,10 @@ class ChannelMessages extends React.Component {
             </div>
 
             <div className="channel-messages-header-right">
-              <i className="fas fa-info-circle"></i>
+              <div className={`channel-detail-button ${activeDetailButton}`}>
+                <i className="fas fa-info-circle"></i>
+              </div>
+
               <div className={`channel-settings ${activeButton}`} onClick={this.toggleChannelSettingsMenu}>
                 <i className="fas fa-cog"></i>
               </div>
