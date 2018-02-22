@@ -110,7 +110,29 @@
     }
 
     .channel-members-content {
-      
+      ul {
+        li {
+          display: flex;
+          align-items: center;
+          margin-bottom: 12px;
+
+          .channel-member-picture {
+            background-image: image_url("chicken_images/goofy-chicken.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+          }
+
+          p {
+            font-weight: 600;
+            font-size: 16px;
+            color: #2c2d30;
+          }
+        }
+      }
     }
   }
 }
