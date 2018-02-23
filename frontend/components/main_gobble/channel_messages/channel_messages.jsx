@@ -10,7 +10,7 @@ class ChannelMessages extends React.Component {
       body: "",
       newMessages: false,
       newMessageBannerShown: "hidden",
-      channelDetailShown: true,
+      channelDetailShown: false,
       currentUserMessaged: false
     };
 
@@ -32,6 +32,8 @@ class ChannelMessages extends React.Component {
     this.toggleChannelSettingsMenu = this.toggleChannelSettingsMenu.bind(this);
     this.removeGobbleMenu = this.removeGobbleMenu.bind(this);
     this.scrollToBottom = this.scrollToBottom.bind(this);
+    this.toggleChannelDetail = this.toggleChannelDetail.bind(this);
+    this.renderChannelDetail = this.renderChannelDetail.bind(this);
   }
 
   componentDidMount() {
@@ -119,7 +121,7 @@ class ChannelMessages extends React.Component {
              behavior: "smooth"
            });
          }
-         
+
          this.setState({["currentUserMessaged"]: false});
        }
      );
@@ -268,6 +270,24 @@ class ChannelMessages extends React.Component {
    });
   }
 
+  toggleChannelDetail() {
+    if (this.state.channelDetailShown) {
+      this.setState({["channelDetailShown"]: false});
+    } else {
+      this.setState({["channelDetailShown"]: true});
+    }
+  }
+
+  renderChannelDetail() {
+    if (this.state.channelDetailShown) {
+      return (
+        <Route path='/messages' component={ChannelDetailContainer}></Route>
+      );
+    } else {
+      return null;
+    }
+  }
+
   dateTimeConversion(dateTime) {
     const months = {
       "01": "January",
@@ -361,7 +381,7 @@ class ChannelMessages extends React.Component {
             <div className="channel-messages-header-left">
               <div className="channel-messages-title">#{channel.name}</div>
               <div className="channel-details">
-                <div className="channel-detail-member-ct">
+                <div className="channel-detail-member-ct" onClick={this.toggleChannelDetail}>
                   <i className="far fa-user"></i>
                   {memberCount}
                 </div>
@@ -373,7 +393,9 @@ class ChannelMessages extends React.Component {
             </div>
 
             <div className="channel-messages-header-right">
-              <div className={`channel-detail-button ${activeDetailButton}`}>
+              <div
+                className={`channel-detail-button ${activeDetailButton}`}
+                onClick={this.toggleChannelDetail}>
                 <i className="fas fa-info-circle"></i>
               </div>
 
@@ -397,7 +419,8 @@ class ChannelMessages extends React.Component {
               </div>
             </div>
 
-            <Route path='/messages' component={ChannelDetailContainer}></Route>
+            {/* <Route path='/messages' component={ChannelDetailContainer}></Route> */}
+            {this.renderChannelDetail()}
           </div>
 
           <div className="message-input">
