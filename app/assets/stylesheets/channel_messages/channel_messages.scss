@@ -9,6 +9,7 @@
     position: sticky;
     height: 65px;
     border-bottom: 1.5px solid #e8e8e8;
+    user-select: none;
 
     .channel-messages-header-left {
       margin-left: 15px;
@@ -25,8 +26,13 @@
         display: flex;
         color: #717274;
 
+        .divider {
+          user-select: none;
+        }
+
         .channel-detail-member-ct {
           margin-right: 5px;
+          user-select: none;
 
           .fa-user {
             margin-right: 5px;
@@ -161,8 +167,13 @@
     height: calc(100% - 127px);
 
     .messages-root-container {
-      width: calc(100% - 500px);
+      // width: calc(100% - 500px);
+      width: 100%;
       min-width: 375px;
+    }
+
+    #channel-detail {
+      height: 105%;
     }
 
     #messages-container {

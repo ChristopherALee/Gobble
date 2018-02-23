@@ -417,24 +417,24 @@ class ChannelMessages extends React.Component {
                   <div id="scroll-identifier"></div>
                 </ul>
               </div>
+              
+              <div className="message-input">
+                <div className="message-input-container">
+                  <form onSubmit={this.handleSubmit}>
+                    <input
+                      type="text"
+                      value={this.state.body}
+                      placeholder={`Message #${channel.name}`}
+                      onChange={this.handleChange("body")}
+                    />
+                  </form>
+                </div>
+              </div>
             </div>
 
-            {/* <Route path='/messages' component={ChannelDetailContainer}></Route> */}
             {this.renderChannelDetail()}
           </div>
 
-          <div className="message-input">
-            <div className="message-input-container">
-              <form onSubmit={this.handleSubmit}>
-                <input
-                  type="text"
-                  value={this.state.body}
-                  placeholder={`Message #${channel.name}`}
-                  onChange={this.handleChange("body")}
-                />
-              </form>
-            </div>
-          </div>
 
           {this.joinChannelFooter(channel)}
         </div>
