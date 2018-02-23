@@ -187,8 +187,8 @@ class ChannelMessages extends React.Component {
   settingsMenu() {
     let currentChannelName = this.props.currentChannel.name;
     let currentChannelId = this.props.currentChannel.id;
-
-    if (this.props.channelSettingsMenuShown && (this.props.currentUser.subscribedChannels && this.props.currentUser.subscribedChannels.includes(currentChannelId))) {
+    
+    if (this.props.channelSettingsMenuShown && (this.props.currentUser.subscribedChannels && this.props.currentUser.subscribedChannels.includes(currentChannelName))) {
       return (
         <div className="channel-messages-settings-menu">
           <div className="settings-leave-channel">
@@ -196,7 +196,7 @@ class ChannelMessages extends React.Component {
           </div>
         </div>
       );
-    } else if (this.props.channelSettingsMenuShown && (this.props.currentUser.subscribedChannels && !this.props.currentUser.subscribedChannels.includes(currentChannelId))) {
+    } else if (this.props.channelSettingsMenuShown && (this.props.currentUser.subscribedChannels && !this.props.currentUser.subscribedChannels.includes(currentChannelName))) {
       return (
         <div className="channel-messages-settings-menu">
           <div className="settings-leave-channel">
@@ -417,7 +417,7 @@ class ChannelMessages extends React.Component {
                   <div id="scroll-identifier"></div>
                 </ul>
               </div>
-              
+
               <div className="message-input">
                 <div className="message-input-container">
                   <form onSubmit={this.handleSubmit}>
