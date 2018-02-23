@@ -1,6 +1,6 @@
-import React from 'react';
-import { Route, Link, withRouter } from 'react-router-dom';
-import ChannelDetailContainer from '../channel_detail/channel_detail_container';
+import React from "react";
+import { Route, Link, withRouter } from "react-router-dom";
+import ChannelDetailContainer from "../channel_detail/channel_detail_container";
 
 class ChannelMessages extends React.Component {
   constructor(props) {
@@ -37,26 +37,26 @@ class ChannelMessages extends React.Component {
   }
 
   componentDidMount() {
-    this.pusher = new Pusher('416ebb2d74bf61955f19', {
-      cluster: 'us2',
+    this.pusher = new Pusher("416ebb2d74bf61955f19", {
+      cluster: "us2",
       encrypted: true
     });
 
-    this.channel = this.pusher.subscribe('channel_messages');
+    this.channel = this.pusher.subscribe("channel_messages");
     let that = this;
-    this.channel.bind('message_created', function(data) {
+    this.channel.bind("message_created", function(data) {
       that.fetchSingleChannel(data.channelName);
       that.getChannelMessages(that.props.currentChannel.name);
     });
   }
 
   componentWillUnmount() {
-    this.channel = this.pusher.unsubscribe('channel_messages');
+    this.channel = this.pusher.unsubscribe("channel_messages");
   }
 
   componentWillReceiveProps(newProps) {
     if (this.props.location.pathname !== newProps.location.pathname) {
-      this.setState({["newMessages"]: false});
+      this.setState({ ["newMessages"]: false });
     }
   }
 
@@ -71,7 +71,7 @@ class ChannelMessages extends React.Component {
   }
 
   handleChange(field) {
-    return (e) => {
+    return e => {
       this.setState({ [field]: e.target.value });
     };
   }
@@ -80,18 +80,20 @@ class ChannelMessages extends React.Component {
     e.preventDefault();
     const channel = this.props.currentChannel.name;
 
-    this.props.createMessage({message: {
-      body: this.state.body,
-      channel_id: this.props.currentChannel.id
-    }}).then(
-      (success) => {
-        this.setState({["currentUserMessaged"]: true});
-        this.setState({['body']: ""});
+    this.props
+      .createMessage({
+        message: {
+          body: this.state.body,
+          channel_id: this.props.currentChannel.id
+        }
+      })
+      .then(success => {
+        this.setState({ ["currentUserMessaged"]: true });
+        this.setState({ ["body"]: "" });
         document.getElementById("scroll-identifier").scrollIntoView({
           behavior: "smooth"
         });
-      }
-    );
+      });
   }
 
   fetchSingleChannel(channel) {
@@ -101,34 +103,34 @@ class ChannelMessages extends React.Component {
   getChannelMessages(channel) {
     if (this.state.currentUserMessaged && this.state.body === "") {
       document.getElementById("scroll-identifier").scrollIntoView({
-       behavior: "smooth"
-     });
-   } else {
-     this.props.fetchChannelMessages(channel).then(
-       (success) => {
-         const scrollHeight = document.getElementById("messages-container").scrollHeight;
-         const scrollTop = document.getElementById("messages-container").scrollTop;
-         const bottomHeight = scrollHeight - scrollTop;
-         const containerHeight = document.getElementById("messages-container").clientHeight + 500;
+        behavior: "smooth"
+      });
+    } else {
+      this.props.fetchChannelMessages(channel).then(success => {
+        const scrollHeight = document.getElementById("messages-container")
+          .scrollHeight;
+        const scrollTop = document.getElementById("messages-container")
+          .scrollTop;
+        const bottomHeight = scrollHeight - scrollTop;
+        const containerHeight =
+          document.getElementById("messages-container").clientHeight + 500;
 
-         if (
-           this.state.body === ""
-           && (bottomHeight > containerHeight)
-           && !this.state.currentUserMessaged
-         ) {
-           this.setState({['newMessages']: true});
-           this.setState({["newMessageBannerShown"]: "shown"});
-         } else if (this.state.body === "") {
-           document.getElementById("scroll-identifier").scrollIntoView({
-             behavior: "smooth"
-           });
-         }
+        if (
+          this.state.body === "" &&
+          bottomHeight > containerHeight &&
+          !this.state.currentUserMessaged
+        ) {
+          this.setState({ ["newMessages"]: true });
+          this.setState({ ["newMessageBannerShown"]: "shown" });
+        } else if (this.state.body === "") {
+          document.getElementById("scroll-identifier").scrollIntoView({
+            behavior: "smooth"
+          });
+        }
 
-         this.setState({["currentUserMessaged"]: false});
-       }
-     );
-   }
-
+        this.setState({ ["currentUserMessaged"]: false });
+      });
+    }
   }
 
   getChannelMessage(message) {
@@ -139,15 +141,14 @@ class ChannelMessages extends React.Component {
     let channelId = this.props.currentChannel.id;
     let currentUsername = this.props.currentUser.username;
 
-    this.props.createMembership({
-      membership: { channel_id: channelId }
-    }).then(
-      (success) => {
+    this.props
+      .createMembership({
+        membership: { channel_id: channelId }
+      })
+      .then(success => {
         this.props.fetchCurrentUser(currentUsername);
-      }
-    ).then(
-      this.hideChannelSettingsMenu()
-    );
+      })
+      .then(this.hideChannelSettingsMenu());
   }
 
   removeMembership() {
@@ -155,13 +156,12 @@ class ChannelMessages extends React.Component {
     const currentUsername = this.props.currentUser.username;
     const membership = this.props.membership;
 
-    this.props.removeMembership(membership[0].membershipId).then(
-      (success) => {
+    this.props
+      .removeMembership(membership[0].membershipId)
+      .then(success => {
         this.props.fetchCurrentUser(currentUsername);
-      }
-    ).then(
-      this.hideChannelSettingsMenu()
-    );
+      })
+      .then(this.hideChannelSettingsMenu());
   }
 
   removeGobbleMenu() {
@@ -169,15 +169,26 @@ class ChannelMessages extends React.Component {
   }
 
   joinChannelFooter(channel) {
-    if (this.props.currentUser.subscribedChannels && this.props.currentUser.subscribedChannels.includes(channel.name)) {
+    if (
+      this.props.currentUser.subscribedChannels &&
+      this.props.currentUser.subscribedChannels.includes(channel.name)
+    ) {
       return null;
     } else {
       return (
         <div id="channel-messages-join-channel-container">
           <div className="join-channel-content">
-            <h3>You are viewing <strong>#{channel.name}</strong></h3>
-            <p>Created by {channel.creatorName} on {this.dateTimeConversion(channel.created_at)}</p>
-            <div className="channel-messages-join-channel-button" onClick={this.createMembership}>
+            <h3>
+              You are viewing <strong>#{channel.name}</strong>
+            </h3>
+            <p>
+              Created by {channel.creatorName} on{" "}
+              {this.dateTimeConversion(channel.created_at)}
+            </p>
+            <div
+              className="channel-messages-join-channel-button"
+              onClick={this.createMembership}
+            >
               Join Channel
             </div>
           </div>
@@ -190,7 +201,11 @@ class ChannelMessages extends React.Component {
     let currentChannelName = this.props.currentChannel.name;
     let currentChannelId = this.props.currentChannel.id;
 
-    if (this.props.channelSettingsMenuShown && (this.props.currentUser.subscribedChannels && this.props.currentUser.subscribedChannels.includes(currentChannelName))) {
+    if (
+      this.props.channelSettingsMenuShown &&
+      (this.props.currentUser.subscribedChannels &&
+        this.props.currentUser.subscribedChannels.includes(currentChannelName))
+    ) {
       return (
         <div className="channel-messages-settings-menu">
           <div className="settings-leave-channel">
@@ -198,7 +213,11 @@ class ChannelMessages extends React.Component {
           </div>
         </div>
       );
-    } else if (this.props.channelSettingsMenuShown && (this.props.currentUser.subscribedChannels && !this.props.currentUser.subscribedChannels.includes(currentChannelName))) {
+    } else if (
+      this.props.channelSettingsMenuShown &&
+      (this.props.currentUser.subscribedChannels &&
+        !this.props.currentUser.subscribedChannels.includes(currentChannelName))
+    ) {
       return (
         <div className="channel-messages-settings-menu">
           <div className="settings-leave-channel">
@@ -243,7 +262,7 @@ class ChannelMessages extends React.Component {
     return (
       <div id="channel-messages-blank-channel">
         <div className="blank-channel-container">
-          <div className="blank-channel-chicken-image"></div>
+          <div className="blank-channel-chicken-image" />
           <h2>Gah! Nothing's here! Click a channel on the left to view!</h2>
         </div>
       </div>
@@ -254,7 +273,10 @@ class ChannelMessages extends React.Component {
     if (this.state.newMessages) {
       return (
         <div id="new-message-banner">
-          <p>New messages in #{this.props.currentChannel.name} (click here to scroll down)</p>
+          <p>
+            New messages in #{this.props.currentChannel.name} (click here to
+            scroll down)
+          </p>
         </div>
       );
     } else {
@@ -264,27 +286,25 @@ class ChannelMessages extends React.Component {
 
   scrollToBottom() {
     document.getElementById("scroll-identifier").scrollIntoView({
-     behavior: "smooth"
-   });
-   this.setState({
-     ["newMessages"]: false,
-     ["newMessageBannerShown"]: "hidden"
-   });
+      behavior: "instant"
+    });
+    this.setState({
+      ["newMessages"]: false,
+      ["newMessageBannerShown"]: "hidden"
+    });
   }
 
   toggleChannelDetail() {
     if (this.state.channelDetailShown) {
-      this.setState({["channelDetailShown"]: false});
+      this.setState({ ["channelDetailShown"]: false });
     } else {
-      this.setState({["channelDetailShown"]: true});
+      this.setState({ ["channelDetailShown"]: true });
     }
   }
 
   renderChannelDetail() {
     if (this.state.channelDetailShown) {
-      return (
-        <Route path='/messages' component={ChannelDetailContainer}></Route>
-      );
+      return <Route path="/messages" component={ChannelDetailContainer} />;
     } else {
       return null;
     }
@@ -315,7 +335,7 @@ class ChannelMessages extends React.Component {
     let minutes;
     let amOrPm;
     if (dateTime.slice(11, 12) === "0") {
-      hour = dateTime.slice(12,13);
+      hour = dateTime.slice(12, 13);
       minutes = dateTime.slice(14, 16);
       amOrPm = "am";
     } else {
@@ -324,9 +344,7 @@ class ChannelMessages extends React.Component {
       amOrPm = "pm";
     }
 
-    return (
-      `${month} ${day}, ${year} at ${hour}:${minutes}${amOrPm}`
-    );
+    return `${month} ${day}, ${year} at ${hour}:${minutes}${amOrPm}`;
   }
 
   renderMessages() {
@@ -342,16 +360,16 @@ class ChannelMessages extends React.Component {
 
       return (
         <li id={lastMessage} key={idx}>
-          <div className="user-profile-pic"></div>
+          <div className="user-profile-pic" />
           <div className="message-content">
             <div className="message-author-timestamp">
-              <div className="message-author-name"><strong>{message.authorName}</strong></div>
+              <div className="message-author-name">
+                <strong>{message.authorName}</strong>
+              </div>
               <div className="message-timestamp">{timeStamp}</div>
             </div>
 
-            <div className="message-body">
-              {message.body}
-            </div>
+            <div className="message-body">{message.body}</div>
           </div>
         </li>
       );
@@ -383,8 +401,11 @@ class ChannelMessages extends React.Component {
             <div className="channel-messages-header-left">
               <div className="channel-messages-title">#{channel.name}</div>
               <div className="channel-details">
-                <div className="channel-detail-member-ct" onClick={this.toggleChannelDetail}>
-                  <i className="far fa-user"></i>
+                <div
+                  className="channel-detail-member-ct"
+                  onClick={this.toggleChannelDetail}
+                >
+                  <i className="far fa-user" />
                   {memberCount}
                 </div>
 
@@ -397,26 +418,34 @@ class ChannelMessages extends React.Component {
             <div className="channel-messages-header-right">
               <div
                 className={`channel-detail-button ${activeDetailButton}`}
-                onClick={this.toggleChannelDetail}>
-                <i className="fas fa-info-circle"></i>
+                onClick={this.toggleChannelDetail}
+              >
+                <i className="fas fa-info-circle" />
               </div>
 
-              <div className={`channel-settings ${activeButton}`} onClick={this.toggleChannelSettingsMenu}>
-                <i className="fas fa-cog"></i>
+              <div
+                className={`channel-settings ${activeButton}`}
+                onClick={this.toggleChannelSettingsMenu}
+              >
+                <i className="fas fa-cog" />
               </div>
             </div>
           </div>
 
           <div className="messages" onClick={this.hideAllMenus}>
             <div className="messages-root-container">
-              <div id="new-message-banner-container" className={this.state.newMessageBannerShown} onClick={this.scrollToBottom}>
+              <div
+                id="new-message-banner-container"
+                className={this.state.newMessageBannerShown}
+                onClick={this.scrollToBottom}
+              >
                 {this.renderNewMessageBanner()}
               </div>
 
               <div id="messages-container">
                 <ul>
                   {this.renderMessages()}
-                  <div id="scroll-identifier"></div>
+                  <div id="scroll-identifier" />
                 </ul>
               </div>
 
@@ -437,14 +466,14 @@ class ChannelMessages extends React.Component {
             {this.renderChannelDetail()}
           </div>
 
-
           {this.joinChannelFooter(channel)}
         </div>
       );
-    } else if (this.props.location.pathname === "/messages" || this.props.location.pathname === "/messages/") {
-      return (
-        this.renderBlankChannel()
-      );
+    } else if (
+      this.props.location.pathname === "/messages" ||
+      this.props.location.pathname === "/messages/"
+    ) {
+      return this.renderBlankChannel();
     } else {
       return null;
     }

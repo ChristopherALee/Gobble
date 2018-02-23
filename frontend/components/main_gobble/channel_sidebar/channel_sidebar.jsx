@@ -1,8 +1,8 @@
 // globals Pusher
-import React from 'react';
-import { Link } from 'react-router-dom';
-import CreateChannelForm from './create_channel_form/create_channel_form';
-import ChannelSearch from './channel_search/channel_search';
+import React from "react";
+import { Link } from "react-router-dom";
+import CreateChannelForm from "./create_channel_form/create_channel_form";
+import ChannelSearch from "./channel_search/channel_search";
 
 class ChannelSideBar extends React.Component {
   constructor(props) {
@@ -21,55 +21,58 @@ class ChannelSideBar extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchCurrentUser(this.props.currentUser.username).then(
-      (success) => {
-        this.props.fetchAllChannels().then(
-          () => {
-            if (this.props.lastVisitedChannel !== this.props.history.location.pathname.slice(10)) {
-              this.props.history.push(`/messages/${this.props.lastVisitedChannel}`);
-            }
-
-            let allChannels = this.props.allChannels.map((channel) => {
-              return (
-                channel.name
-              );
-            });
-            let currentChannel = this.props.location.pathname.slice(10);
-            if (allChannels.includes(currentChannel)) {
-              this.getChannelMessages(currentChannel);
-              this.props.updateUser({
-                username: this.props.currentUser,
-                last_visited_channel: currentChannel
-              });
-            }
+    this.props
+      .fetchCurrentUser(this.props.currentUser.username)
+      .then(success => {
+        this.props.fetchAllChannels().then(() => {
+          if (
+            this.props.lastVisitedChannel !==
+            this.props.history.location.pathname.slice(10)
+          ) {
+            this.props.history.push(
+              `/messages/${this.props.lastVisitedChannel}`
+            );
           }
-        );
-      }
-    );
 
-    this.pusher = new Pusher('416ebb2d74bf61955f19', {
-      cluster: 'us2',
+          let allChannels = this.props.allChannels.map(channel => {
+            return channel.name;
+          });
+          let currentChannel = this.props.location.pathname.slice(10);
+          if (allChannels.includes(currentChannel)) {
+            this.getChannelMessages(currentChannel);
+            this.props.updateUser({
+              username: this.props.currentUser,
+              last_visited_channel: currentChannel
+            });
+          }
+        });
+      });
+
+    this.pusher = new Pusher("416ebb2d74bf61955f19", {
+      cluster: "us2",
       encrypted: true
     });
 
-    this.channel = this.pusher.subscribe('sidebar_channel');
+    this.channel = this.pusher.subscribe("sidebar_channel");
     let that = this;
-    this.channel.bind('membership_created', function(data) {
+    this.channel.bind("membership_created", function(data) {
       that.props.fetchSingleChannel(data.channel);
     });
   }
 
   componentWillUnmount() {
-    this.pusher.unsubscribe('sidebar_channel');
+    this.pusher.unsubscribe("sidebar_channel");
   }
 
   componentWillReceiveProps(newProps) {
     if (this.props.location.pathname !== newProps.location.pathname) {
       let newPath = newProps.location.pathname.slice(10);
-      let allChannels = this.props.allChannels.map((channel) => channel.name);
+      let allChannels = this.props.allChannels.map(channel => channel.name);
 
       if (!allChannels.includes(newPath)) {
-        this.props.history.push(`/messages/${this.props.currentUser.lastVisitedChannel}`);
+        this.props.history.push(
+          `/messages/${this.props.currentUser.lastVisitedChannel}`
+        );
       } else if (newPath !== "") {
         let newChannel = newProps.location.pathname.slice(10);
         this.getChannelMessages(newChannel);
@@ -109,7 +112,8 @@ class ChannelSideBar extends React.Component {
             <Link
               to={`/messages/${channel.name}`}
               className="active-channel"
-              key={idx}>
+              key={idx}
+            >
               <li key={idx}>
                 <div>#</div>
                 {channel.name}
@@ -118,16 +122,14 @@ class ChannelSideBar extends React.Component {
           );
         } else {
           return (
-            <Link
-              to={`/messages/${channel.name}`}
-              key={idx}>
-            <li>
-              <div>#</div>
-              {channel.name}
-            </li>
-          </Link>
-        );
-       }
+            <Link to={`/messages/${channel.name}`} key={idx}>
+              <li>
+                <div>#</div>
+                {channel.name}
+              </li>
+            </Link>
+          );
+        }
       });
     }
 
@@ -143,9 +145,7 @@ class ChannelSideBar extends React.Component {
       return (
         <div className="gobble-menu">
           <div className="gobble-menu-username">
-            <div className="gobble-menu-username-profile-photo">
-              *(picture)
-            </div>
+            <div className="gobble-menu-username-profile-photo">*(picture)</div>
             <div className="gobble-menu-username-text">
               {this.props.currentUser.username}
             </div>
@@ -156,7 +156,7 @@ class ChannelSideBar extends React.Component {
         </div>
       );
     } else {
-      return (<div></div>);
+      return <div />;
     }
   }
 
@@ -202,31 +202,25 @@ class ChannelSideBar extends React.Component {
                   Gobble - We Gobblin' Here!
                 </div>
                 <div className="angle-down-icon">
-                  <i className="fas fa-angle-down"></i>
+                  <i className="fas fa-angle-down" />
                 </div>
               </div>
               <div className="current-username">
-                <div className="active-circle"></div>
-                <div className="username">
-                  {currentUser}
-                </div>
+                <div className="active-circle" />
+                <div className="username">{currentUser}</div>
               </div>
             </div>
 
             <div className="side-bar-channels">
               <div className="channels-header">
                 <p className="channels-header-content">Channels</p>
-                <i className="fas fa-plus-circle"></i>
+                <i className="fas fa-plus-circle" />
               </div>
 
-              <ul className="channel-list">
-                {this.renderChannels()}
-              </ul>
+              <ul className="channel-list">{this.renderChannels()}</ul>
             </div>
 
-            <div className="side-bar-dms">
-
-            </div>
+            <div className="side-bar-dms" />
           </div>
         </div>
       );
@@ -254,41 +248,44 @@ class ChannelSideBar extends React.Component {
           {this.gobbleMenu()}
 
           <div className="side-bar-contents">
-            <div className="user-info-container" onClick={this.renderGobbleMenu}>
+            <div
+              className="user-info-container"
+              onClick={this.renderGobbleMenu}
+            >
               <div className="channel-name">
                 <div className="channel-name-text">
                   Gobble - We Gobblin' Here!
                 </div>
                 <div className="angle-down-icon">
-                  <i className="fas fa-angle-down"></i>
+                  <i className="fas fa-angle-down" />
                 </div>
               </div>
               <div className="current-username">
-                <div className="active-circle"></div>
-                <div className="username">
-                  {currentUser}
-                </div>
+                <div className="active-circle" />
+                <div className="username">{currentUser}</div>
               </div>
             </div>
 
             <div className="side-bar-channels">
               <div className="channels-header">
-                <p className="channels-header-content" onClick={this.renderChannelSearchMenu}>
+                <p
+                  className="channels-header-content"
+                  onClick={this.renderChannelSearchMenu}
+                >
                   Channels
                 </p>
-                <div className="create-channel-button" onClick={this.renderCreateChannelMenu}>
-                  <i className="fas fa-plus-circle"></i>
+                <div
+                  className="create-channel-button"
+                  onClick={this.renderCreateChannelMenu}
+                >
+                  <i className="fas fa-plus-circle" />
                 </div>
               </div>
 
-              <ul className="channel-list">
-                {this.renderChannels()}
-              </ul>
+              <ul className="channel-list">{this.renderChannels()}</ul>
             </div>
 
-            <div className="side-bar-dms">
-
-            </div>
+            <div className="side-bar-dms" />
           </div>
         </div>
       );

@@ -55,7 +55,6 @@
         }
 
         .channel-details-content-header-right {
-
         }
       }
 
@@ -73,7 +72,6 @@
           margin-bottom: 20px;
         }
       }
-
     }
     .collapsed {
       .channel-details-content-header {
@@ -121,7 +119,7 @@
     }
 
     .channel-members-content {
-      height: 100%;
+      // height: 100%;
       -webkit-animation: slideLeft 0.5s;
 
       ul {

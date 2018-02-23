@@ -1,5 +1,5 @@
-import { connect } from 'react-redux';
-import ChannelDetail from './channel_detail';
+import { connect } from "react-redux";
+import ChannelDetail from "./channel_detail";
 
 const mapStateToProps = (state, ownProps) => {
   let currentChannelName = ownProps.location.pathname.slice(10);
@@ -10,8 +10,8 @@ const mapStateToProps = (state, ownProps) => {
   if (allChannels.length !== 0 && ownProps.location.pathname.slice(10) !== "") {
     currentChannel = state.entities.channels[currentChannelName];
     currentChannelMemberNames = currentChannel.members;
-    currentChannelMembers = Object.values(state.entities.users).filter(
-      (user) => currentChannelMemberNames.includes(user.username)
+    currentChannelMembers = Object.values(state.entities.users).filter(user =>
+      currentChannelMemberNames.includes(user.username)
     );
   }
 
@@ -22,12 +22,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-
-  };
+  return {};
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ChannelDetail);
+export default connect(mapStateToProps, mapDispatchToProps)(ChannelDetail);

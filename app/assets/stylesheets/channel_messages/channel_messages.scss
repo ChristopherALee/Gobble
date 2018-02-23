@@ -82,7 +82,6 @@
         }
       }
     }
-
   }
 
   .channel-messages-settings-menu {
@@ -95,7 +94,7 @@
     top: 54px;
     background-color: white;
     z-index: 2;
-    box-shadow: 0 5px 10px rgba(0,0,0,.12);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
     -webkit-animation: fadein 0.2s;
 
     .settings-leave-channel {
@@ -148,7 +147,7 @@
       }
 
       .channel-messages-join-channel-button {
-        text-shadow: 0 1px 1px rgba(0,0,0,.1);
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
         background-color: #2ea664;
         color: white;
         padding: 10px 13px;
@@ -157,7 +156,7 @@
 
         &:hover {
           cursor: pointer;
-          box-shadow: inset 0 -2px rgba(0,0,0,.25);
+          box-shadow: inset 0 -2px rgba(0, 0, 0, 0.25);
         }
       }
     }
@@ -223,7 +222,6 @@
               min-width: 350px;
 
               .message-author-name {
-
               }
 
               .message-timestamp {
@@ -259,7 +257,7 @@
         justify-content: center;
 
         input {
-          border: 2px solid rgba(160,160,162,.7);
+          border: 2px solid rgba(160, 160, 162, 0.7);
           margin: 0 26px;
           height: 40px;
           border-radius: 6px;
@@ -269,7 +267,7 @@
           font-size: 13px;
 
           &:focus {
-            border: 2px solid rgba(113,114,116,1);
+            border: 2px solid rgba(113, 114, 116, 1);
           }
         }
       }
