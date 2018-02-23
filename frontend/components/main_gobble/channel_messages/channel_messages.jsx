@@ -187,7 +187,7 @@ class ChannelMessages extends React.Component {
   settingsMenu() {
     let currentChannelName = this.props.currentChannel.name;
     let currentChannelId = this.props.currentChannel.id;
-    
+
     if (this.props.channelSettingsMenuShown && (this.props.currentUser.subscribedChannels && this.props.currentUser.subscribedChannels.includes(currentChannelName))) {
       return (
         <div className="channel-messages-settings-menu">

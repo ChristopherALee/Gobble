@@ -74,7 +74,20 @@ class ChannelDetail extends React.Component {
   }
 
   renderChannelMembers() {
-    return this.props.currentChannelMembers.map((member) => {
+    const currentChannelMembers = this.props.currentChannelMembers.sort((a, b) => {
+      let memberA = a.username;
+      let memberB = b.username;
+
+      if (memberA < memberB) {
+        return -1;
+      } else if (memberA > memberB) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+
+    return currentChannelMembers.map((member) => {
       return (
         <li key={member.id}>
           <div className="channel-member-status"></div>
