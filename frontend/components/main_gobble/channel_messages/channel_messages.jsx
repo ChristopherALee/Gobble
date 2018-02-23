@@ -62,9 +62,11 @@ class ChannelMessages extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (this.props.location.pathname !== prevProps.location.pathname) {
-      document.getElementById("scroll-identifier").scrollIntoView({
-        behavior: "instant"
-      });
+      if (this.props.currentChannel) {
+        document.getElementById("scroll-identifier").scrollIntoView({
+          behavior: "instant"
+        });
+      }
     }
   }
 
