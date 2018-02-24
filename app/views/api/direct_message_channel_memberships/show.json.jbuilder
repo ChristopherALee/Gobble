@@ -1,0 +1,2 @@
+json.memberName @direct_message_channel_membership.member.username
+json.directMessageId @direct_message_channel_membership.direct_message_channel.id
