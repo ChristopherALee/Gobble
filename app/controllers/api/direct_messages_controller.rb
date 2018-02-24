@@ -12,7 +12,7 @@ class Api::DirectMessagesController < ApplicationController
     @direct_message.author_id = current_user.id
 
     if @direct_message.save
-      Pusher.trigger('direct_messages', 'message_created', {channelName: @direct_message.channel.name})
+      Pusher.trigger('direct_messages', 'message_created', {})
       render 'api/direct_messages/show'
     else
       render json: @direct_message.errors.messages, status: 422
