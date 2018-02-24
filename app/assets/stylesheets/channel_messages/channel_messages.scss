@@ -118,8 +118,8 @@
   }
 
   #channel-messages-join-channel-container {
-    position: sticky;
-    width: 100%;
+    position: fixed;
+    width: calc(100% - 340px);
     bottom: 0;
     height: 150px;
     display: flex;
