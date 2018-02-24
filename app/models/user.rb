@@ -46,7 +46,7 @@ class User < ApplicationRecord
     class_name: 'Message',
     foreign_key: :author_id
 
-  has_many :created_channels
+  has_many :created_channels,
     class_name: 'Channel',
     foreign_key: :creator_id
 
@@ -55,14 +55,14 @@ class User < ApplicationRecord
     foreign_key: :member_id
 
   has_many :direct_message_channels,
-    through: :direct_message_channel_memberships
+    through: :direct_message_channel_memberships,
     source: :direct_message_channel
 
   has_many :direct_messages,
     class_name: 'DirectMessage',
     foreign_key: :author_id
 
-  has_many :created_direct_message_channels
+  has_many :created_direct_message_channels,
     class_name: 'DirectMessageChannel',
     foreign_key: :creator_id
 
