@@ -10,5 +10,13 @@
 #
 
 class DirectMessageChannelMembership < ApplicationRecord
-  
+  validates :member_id, :direct_message_channel_id, presence: true
+
+  belongs_to :member,
+    class_name: 'User',
+    foreign_key: :member_id
+
+  belongs_to :direct_message_channel,
+    class_name: 'DirectMessageChannel',
+    foreign_key: :direct_message_channel_id
 end

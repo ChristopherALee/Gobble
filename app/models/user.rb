@@ -46,6 +46,26 @@ class User < ApplicationRecord
     class_name: 'Message',
     foreign_key: :author_id
 
+  has_many :created_channels
+    class_name: 'Channel',
+    foreign_key: :creator_id
+
+  has_many :direct_message_channel_memberships,
+    class_name: 'DirectMessageChannelMembership',
+    foreign_key: :member_id
+
+  has_many :direct_message_channels,
+    through: :direct_message_channel_memberships
+    source: :direct_message_channel
+
+  has_many :direct_messages,
+    class_name: 'DirectMessage',
+    foreign_key: :author_id
+
+  has_many :created_direct_message_channels
+    class_name: 'DirectMessageChannel',
+    foreign_key: :creator_id
+
   # validates :username, presence: { message: 'Please enter a username.'}, uniqueness: { message: 'This username has already been taken.'}
   # validates :password_digest, :session_token, presence: true
   # validates :session_token, uniqueness: true
