@@ -9,6 +9,11 @@
 User.destroy_all
 Channel.destroy_all
 Membership.destroy_all
+Message.destroy_all
+
+DirectMessageChannel.destroy_all
+DirectMessageChannelMembership.destroy_all
+DirectMessage.destroy_all
 
 # users
 user1 = User.create({username: 'guest', password: 'password123'})
@@ -57,3 +62,12 @@ message21 = Message.create({author_id: user3.id, channel_id: channel1.id, body: 
 message22 = Message.create({author_id: user1.id, channel_id: channel1.id, body: "test22"})
 message23 = Message.create({author_id: user2.id, channel_id: channel1.id, body: "test23"})
 message24 = Message.create({author_id: user3.id, channel_id: channel1.id, body: "test24"})
+
+# Direct Messaging
+direct_message_channel1 = DirectMessageChannel.create({creator_id: user1.id})
+
+direct_message_channel_membership1 = DirectMessageChannelMembership.create({member_id: user1.id, direct_message_channel_id: direct_message_channel1.id})
+direct_message_channel_membership2 = DirectMessageChannelMembership.create({member_id: user2.id, direct_message_channel_id: direct_message_channel1.id})
+
+direct_message1 = DirectMessage.create({author_id: user1.id, direct_message_channel_id: direct_message_channel1.id, body: "Hi there!"})
+direct_message2 = DirectMessage.create({author_id: user2.id, direct_message_channel_id: direct_message_channel1.id, body: "Oh hey!"})

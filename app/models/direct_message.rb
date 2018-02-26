@@ -11,7 +11,7 @@
 #
 
 class DirectMessage < ApplicationRecord
-  validates :author_id, :direct_message_channel_id, :body presence: true
+  validates :author_id, :direct_message_channel_id, :body, presence: true
 
   belongs_to :author,
     class_name: 'User',

@@ -1,6 +1,6 @@
 class Api::DirectMessageChannelsController < ApplicationController
   def index
-    @direct_message_channels = DirectMessageChannels.all
+    @direct_message_channels = DirectMessageChannel.all
   end
 
   def show
