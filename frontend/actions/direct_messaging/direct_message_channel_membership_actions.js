@@ -1,4 +1,4 @@
-import * as DirectMessageChannelMembershipApiUtil from "../../util/direct_messages/direct_message_channel_membership";
+import * as DirectMessageChannelMembershipApiUtil from "../../util/direct_messages/direct_message_channel_membership_api_util";
 
 export const RECEIVE_ALL_DIRECT_MESSAGE_CHANNEL_MEMBERSHIPS =
   "RECEIVE_ALL_DIRECT_MESSAGE_CHANNEL_MEMBERSHIPS";

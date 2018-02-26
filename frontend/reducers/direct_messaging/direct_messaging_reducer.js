@@ -6,3 +6,5 @@ const directMessagingReducer = combineReducers({
   directMessagingChannels: directMessagingChannelsReducer,
   directMessagingMessages: directMessagesReducer
 });
+
+export default directMessagingReducer;
