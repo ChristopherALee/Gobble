@@ -20,5 +20,7 @@ Rails.application.routes.draw do
     resources :direct_message_channels, only: [:index, :show, :create, :destroy]
     resources :direct_message_channel_memberships, only: [:index, :create, :show, :destroy]
     resources :direct_messages, only: [:index, :create, :show, :update, :destroy]
+
+    get '/direct_message_channels/:id/messages', to: 'direct_message_channels#messages'
   end
 end

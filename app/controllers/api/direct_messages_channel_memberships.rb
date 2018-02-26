@@ -9,7 +9,7 @@ class Api::DirectMessageChannelMembershipsController < ApplicationController
 
   def create
     @direct_message_channel_membership = DirectMessageChannelMemberships.new(membership_params)
-    @direct_message_channel_membership.member_id = current_user.id
+    # @direct_message_channel_membership.member_id = current_user.id
 
     if @direct_message_channel_membership.save
       Pusher.trigger('sidebar_dm', 'membership_created', {
