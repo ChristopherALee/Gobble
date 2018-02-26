@@ -50,7 +50,6 @@ class ChannelSideBar extends React.Component {
         });
 
         this.props.fetchAllDirectMessageChannels().then(() => {
-          debugger;
           let currentDm = this.props.history.location.pathname.slice(13);
           this.getDirectMessages(currentDm);
         });
