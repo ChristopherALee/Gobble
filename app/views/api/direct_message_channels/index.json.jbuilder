@@ -1,4 +1,4 @@
-@direct_message_channels do |channel|
+@direct_message_channels.each do |channel|
   json.set! channel.id do
     json.extract! channel, :id, :creator_id, :created_at
     json.creatorName channel.creator.username

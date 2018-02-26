@@ -26,21 +26,21 @@ const removeDirectMessage = message => {
 };
 
 export const fetchAllDirectMessages = () => dispatch => {
-  DirectMessageApiUtil.fetchAllDirectMessages().then(messages => {
+  return DirectMessageApiUtil.fetchAllDirectMessages().then(messages => {
     dispatch(receiveAllDirectMessages(messages));
     return messages;
   });
 };
 
 export const fetchSingleDirectMessage = id => dispatch => {
-  DirectMessageApiUtil.fetchSingleDirectMessage(id).then(message => {
+  return DirectMessageApiUtil.fetchSingleDirectMessage(id).then(message => {
     dispatch(receiveSingleDirectMessage(message));
     return message;
   });
 };
 
 export const deleteDirectMessage = id => dispatch => {
-  DirectMessageApiUtil.deleteDirectMessage(id).then(message => {
+  return DirectMessageApiUtil.deleteDirectMessage(id).then(message => {
     dispatch(removeDirectMessage(message));
     return message;
   });

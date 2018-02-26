@@ -29,23 +29,25 @@ const receiveDirectMessageChannelMessages = messages => {
 };
 
 export const fetchAllDirectMessageChannels = () => dispatch => {
-  DirectMessageChannelApiUtil.fetchAllDirectMessageChannels().then(channels => {
-    dispatch(receiveAllDirectMessageChannels(channels));
-    return channels;
-  });
-};
-
-export const fetchSingleDirectMessageChannel = channel => dispatch => {
-  DirectMessageChannelApiUtil.fetchSingleDirectMessageChannel(channel).then(
-    channel => {
-      dispatch(receiveSingleDirectMessageChannel(channel));
-      return channel;
+  return DirectMessageChannelApiUtil.fetchAllDirectMessageChannels().then(
+    channels => {
+      dispatch(receiveAllDirectMessageChannels(channels));
+      return channels;
     }
   );
 };
 
+export const fetchSingleDirectMessageChannel = channel => dispatch => {
+  return DirectMessageChannelApiUtil.fetchSingleDirectMessageChannel(
+    channel
+  ).then(channel => {
+    dispatch(receiveSingleDirectMessageChannel(channel));
+    return channel;
+  });
+};
+
 export const fetchDirectMessageChannelMessages = id => dispatch => {
-  DirectMessageChannelApiUtil.fetchDirectMessageChannelMessages(id).then(
+  return DirectMessageChannelApiUtil.fetchDirectMessageChannelMessages(id).then(
     channel => {
       dispatch(receiveDirectMessageChannelMessages(channel));
       return channel;

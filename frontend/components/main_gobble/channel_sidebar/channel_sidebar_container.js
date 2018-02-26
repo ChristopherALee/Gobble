@@ -33,6 +33,7 @@ const mapStateToProps = (state, ownProps) => {
   let currentUser;
   let channels;
   let lastVisitedChannel;
+  let directMessagingChannels;
 
   if (state.session.currentUser) {
     currentUser = state.session.currentUser;
@@ -40,6 +41,10 @@ const mapStateToProps = (state, ownProps) => {
       return channel.members.includes(currentUser.username);
     });
     lastVisitedChannel = state.session.currentUser.lastVisitedChannel;
+
+    directMessagingChannels = Object.values(
+      state.entities.directMessaging.directMessagingChannels
+    );
   }
 
   let allChannels = Object.values(state.entities.channels);
@@ -49,6 +54,7 @@ const mapStateToProps = (state, ownProps) => {
     channels: channels,
     allChannels: allChannels,
     lastVisitedChannel: lastVisitedChannel,
+    directMessagingChannels: directMessagingChannels,
     gobbleMenuShown: state.ui.menu,
     createChannelMenuShown: state.ui.createChannelMenu,
     channelSearchMenuShown: state.ui.channelSearchMenu

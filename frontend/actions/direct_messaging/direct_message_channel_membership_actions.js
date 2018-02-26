@@ -29,7 +29,7 @@ const removeDirectMessageChannelMembership = membership => {
 };
 
 export const fetchAllDirectMessageChannelMemberships = () => dispatch => {
-  DirectMessageChannelMembershipApiUtil.fetchAllDirectMessageChannelMemberships().then(
+  return DirectMessageChannelMembershipApiUtil.fetchAllDirectMessageChannelMemberships().then(
     memberships => {
       dispatch(receiveAllDirectMessageChannelMemberships(memberships));
       return memberships;
@@ -38,7 +38,7 @@ export const fetchAllDirectMessageChannelMemberships = () => dispatch => {
 };
 
 export const fetchSingleDirectMessageChannelMembership = id => dispatch => {
-  DirectMessageChannelMembershipApiUtil.fetchSingleDirectMessageChannelMembership(
+  return DirectMessageChannelMembershipApiUtil.fetchSingleDirectMessageChannelMembership(
     id
   ).then(membership => {
     dispatch(receiveSingleDirectMessageChannelMembership(membership));
@@ -47,7 +47,7 @@ export const fetchSingleDirectMessageChannelMembership = id => dispatch => {
 };
 
 export const createDirectMessageChannelMembership = membership => dispatch => {
-  DirectMessageChannelMembershipApiUtil.createDirectMessageChannelMembership(
+  return DirectMessageChannelMembershipApiUtil.createDirectMessageChannelMembership(
     membership
   ).then(membership => {
     dispatch(receiveSingleDirectMessageChannelMembership(membership));
@@ -56,7 +56,7 @@ export const createDirectMessageChannelMembership = membership => dispatch => {
 };
 
 export const deleteDirectMessageChannelMembership = id => dispatch => {
-  DirectMessageChannelMembershipApiUtil.deleteDirectMessageChannelMembership(
+  return DirectMessageChannelMembershipApiUtil.deleteDirectMessageChannelMembership(
     id
   ).then(membership => {
     dispatch(deleteDirectMessageChannelMembership(membership));

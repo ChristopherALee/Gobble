@@ -30,6 +30,11 @@ class Api::DirectMessageChannelsController < ApplicationController
     end
   end
 
+  def messages
+    @direct_message_channel = DirectMessageChannel.find(params[:id])
+    render 'api/direct_message_channels/messages'
+  end
+
   private
   def direct_channel_params
     params.require(:direct_message_channel).permit(:id)
