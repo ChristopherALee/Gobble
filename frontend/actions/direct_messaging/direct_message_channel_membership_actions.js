@@ -46,6 +46,15 @@ export const fetchSingleDirectMessageChannelMembership = id => dispatch => {
   });
 };
 
+export const createDirectMessageChannelMembership = membership => dispatch => {
+  DirectMessageChannelMembershipApiUtil.createDirectMessageChannelMembership(
+    membership
+  ).then(membership => {
+    dispatch(receiveSingleDirectMessageChannelMembership(membership));
+    return membership;
+  });
+};
+
 export const deleteDirectMessageChannelMembership = id => dispatch => {
   DirectMessageChannelMembershipApiUtil.deleteDirectMessageChannelMembership(
     id
