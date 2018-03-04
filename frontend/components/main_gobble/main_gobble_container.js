@@ -1,11 +1,9 @@
-import { connect } from 'react-redux';
-import MainGobble from './main_gobble';
-import { fetchAllUsers } from '../../actions/user/user_actions';
+import { connect } from "react-redux";
+import MainGobble from "./main_gobble";
+import { fetchAllUsers } from "../../actions/user/user_actions";
 
 const mapStateToProps = (state, ownProps) => {
-  return {
-
-  };
+  return {};
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
@@ -14,7 +12,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(MainGobble);
+export default connect(null, mapDispatchToProps)(MainGobble);
