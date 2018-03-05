@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./app/assets/images/logos/gobble_readme_logo2.png"></img>
+  <img src="./app/assets/images/logos/gobble_readme_logo3.png"></img>
 </div>
 
 ## Background
