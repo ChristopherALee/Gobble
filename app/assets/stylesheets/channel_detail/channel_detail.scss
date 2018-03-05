@@ -119,7 +119,8 @@
     }
 
     .channel-members-content {
-      // height: 100%;
+      height: 100%;
+      overflow-y: scroll;
       -webkit-animation: slideLeft 0.5s;
 
       ul {
