@@ -336,7 +336,7 @@ class ChannelMessages extends React.Component {
     let amOrPm;
     const hourInt = parseInt(dateTime.slice(11, 13));
 
-    if (hourInt < 13) {
+    if (hourInt < 12) {
       amOrPm = "am";
       if (parseInt(dateTime.slice(11, 13)) < 10) {
         hour = dateTime.slice(12, 13);
