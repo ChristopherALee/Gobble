@@ -190,7 +190,10 @@ class ChannelSideBar extends React.Component {
                 <i className="fas fa-plus-circle" />
               </div>
 
-              <ul className="channel-list">{this.renderChannels()}</ul>
+              <ChannelList
+                channels={this.props.channels}
+                pathname={this.props.location.pathname}
+              />
             </div>
 
             <div className="side-bar-dms">
@@ -198,7 +201,10 @@ class ChannelSideBar extends React.Component {
                 <p className="dms-header-content">Direct Messages</p>
               </div>
 
-              <ul className="dms-list">{this.renderDirectMessages()}</ul>
+              <DirectMessageList
+                directMessagingChannels={this.props.directMessagingChannels}
+                pathname={this.props.location.pathname}
+              />
             </div>
           </div>
         </div>
