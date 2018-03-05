@@ -3,13 +3,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import CreateChannelForm from "./create_channel_form/create_channel_form";
 import ChannelSearch from "./channel_search/channel_search";
+import ChannelList from "./channels_dms/channel_list";
+import DirectMessageList from "./channels_dms/dm_list";
 
 class ChannelSideBar extends React.Component {
   constructor(props) {
     super(props);
 
-    this.renderChannels = this.renderChannels.bind(this);
-    this.renderDirectMessages = this.renderDirectMessages.bind(this);
     this.gobbleMenu = this.gobbleMenu.bind(this);
     this.renderGobbleMenu = this.renderGobbleMenu.bind(this);
     this.removeGobbleMenu = this.removeGobbleMenu.bind(this);
@@ -50,8 +50,10 @@ class ChannelSideBar extends React.Component {
         });
 
         this.props.fetchAllDirectMessageChannels().then(() => {
-          let currentDm = this.props.history.location.pathname.slice(13);
-          this.getDirectMessages(currentDm);
+          if (this.props.location.pathname.includes("/dm/")) {
+            let currentDm = this.props.history.location.pathname.slice(13);
+            this.getDirectMessages(currentDm);
+          }
         });
       });
 
@@ -105,106 +107,6 @@ class ChannelSideBar extends React.Component {
 
   getChannelMessages(channel) {
     this.props.fetchChannelMessages(channel);
-  }
-
-  renderChannels() {
-    let channels;
-    let that = this;
-
-    if (this.props.channels.length) {
-      channels = this.props.channels.sort((a, b) => {
-        let channelName1 = a.name;
-        let channelName2 = b.name;
-
-        if (channelName1 < channelName2) {
-          return -1;
-        } else if (channelName1 > channelName2) {
-          return 1;
-        } else {
-          return 0;
-        }
-      });
-
-      channels = this.props.channels.map((channel, idx) => {
-        if (channel.name === that.props.location.pathname.slice(10)) {
-          return (
-            <Link
-              to={`/messages/${channel.name}`}
-              className="active-channel"
-              key={idx}
-            >
-              <li key={idx}>
-                <div>#</div>
-                {channel.name}
-              </li>
-            </Link>
-          );
-        } else {
-          return (
-            <Link to={`/messages/${channel.name}`} key={idx}>
-              <li>
-                <div>#</div>
-                {channel.name}
-              </li>
-            </Link>
-          );
-        }
-      });
-    }
-
-    return channels;
-  }
-
-  renderDirectMessages() {
-    let directMessages;
-    let that = this;
-
-    if (this.props.directMessagingChannels.length) {
-      directMessages = this.props.channels.sort((a, b) => {
-        let channelName1 = a.name;
-        let channelName2 = b.name;
-
-        if (channelName1 < channelName2) {
-          return -1;
-        } else if (channelName1 > channelName2) {
-          return 1;
-        } else {
-          return 0;
-        }
-      });
-
-      directMessages = this.props.directMessagingChannels.map(
-        (channel, idx) => {
-          let recipients = channel.members
-            .filter(member => member !== channel.creatorName)
-            .join("");
-
-          if (channel.id === parseInt(that.props.location.pathname.slice(15))) {
-            return (
-              <Link
-                to={`/messages/dm/${channel.id}`}
-                className="active-channel"
-                key={idx}
-              >
-                <li>
-                  <div>{recipients}</div>
-                </li>
-              </Link>
-            );
-          } else {
-            return (
-              <Link to={`/messages/dm/${channel.id}`} key={idx}>
-                <li>
-                  <div>{recipients}</div>
-                </li>
-              </Link>
-            );
-          }
-        }
-      );
-    }
-
-    return directMessages;
   }
 
   logOut() {
@@ -359,7 +261,10 @@ class ChannelSideBar extends React.Component {
                 </div>
               </div>
 
-              <ul className="channel-list">{this.renderChannels()}</ul>
+              <ChannelList
+                channels={this.props.channels}
+                pathname={this.props.location.pathname}
+              />
             </div>
 
             <div className="side-bar-dms">
@@ -367,7 +272,10 @@ class ChannelSideBar extends React.Component {
                 <p className="dms-header-content">Direct Messages</p>
               </div>
 
-              <ul className="dms-list">{this.renderDirectMessages()}</ul>
+              <DirectMessageList
+                directMessagingChannels={this.props.directMessagingChannels}
+                pathname={this.props.location.pathname}
+              />
             </div>
           </div>
         </div>
