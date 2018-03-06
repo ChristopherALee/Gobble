@@ -18,6 +18,9 @@ class ChannelSideBar extends React.Component {
     this.removeCreateChannelMenu = this.removeCreateChannelMenu.bind(this);
     this.renderChannelSearchMenu = this.renderChannelSearchMenu.bind(this);
     this.removeChannelSearchMenu = this.removeChannelSearchMenu.bind(this);
+    this.renderDirectMessageMenu = this.renderDirectMessageMenu.bind(this);
+    this.removeDirectMessageMenu = this.removeDirectMessageMenu.bind(this);
+
     this.logOut = this.logOut.bind(this);
     this.getChannelMessages = this.getChannelMessages.bind(this);
     this.getDirectMessages = this.getDirectMessages.bind(this);

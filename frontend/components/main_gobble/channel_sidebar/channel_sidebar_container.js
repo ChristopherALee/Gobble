@@ -21,7 +21,9 @@ import {
   showCreateChannelMenu,
   hideCreateChannelMenu,
   showChannelSearchMenu,
-  hideChannelSearchMenu
+  hideChannelSearchMenu,
+  showDirectMessageMenu,
+  hideDirectMessageMenu
 } from "../../../actions/ui/menu_actions";
 import {
   logout,
@@ -64,7 +66,8 @@ const mapStateToProps = (state, ownProps) => {
     directMessagingChannels: directMessagingChannels,
     gobbleMenuShown: state.ui.menu,
     createChannelMenuShown: state.ui.createChannelMenu,
-    channelSearchMenuShown: state.ui.channelSearchMenu
+    channelSearchMenuShown: state.ui.channelSearchMenu,
+    directMessageMenuShown: state.ui.directMessageMenu
   };
 };
 
@@ -91,6 +94,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     hideCreateChannelMenu: () => dispatch(hideCreateChannelMenu()),
     showChannelSearchMenu: () => dispatch(showChannelSearchMenu()),
     hideChannelSearchMenu: () => dispatch(hideChannelSearchMenu()),
+    showDirectMessageMenu: () => dispatch(showDirectMessageMenu()),
+    hideDirectMessageMenu: () => dispatch(hideDirectMessageMenu()),
     logout: () => dispatch(logout()),
     updateUser: user => dispatch(updateUser(user)),
     fetchCurrentUser: username => dispatch(fetchCurrentUser(username)),
