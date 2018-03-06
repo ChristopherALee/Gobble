@@ -19,9 +19,15 @@ const DirectMessageList = props => {
     });
 
     directMessages = directMessages.map((channel, idx) => {
-      let recipients = channel.members
-        .filter(member => member !== channel.creatorName)
-        .join("");
+      let recipients = channel.members.filter(
+        member => member !== props.currentUser
+      );
+
+      if (recipients.length === 1) {
+        recipients = recipients.join("");
+      } else {
+        recipients = recipients.join(", ");
+      }
 
       if (channel.id === parseInt(props.pathname.slice(15))) {
         return (

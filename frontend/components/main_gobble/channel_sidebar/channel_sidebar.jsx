@@ -202,6 +202,7 @@ class ChannelSideBar extends React.Component {
               </div>
 
               <DirectMessageList
+                currentUser={this.props.currentUser.username}
                 directMessagingChannels={this.props.directMessagingChannels}
                 pathname={this.props.location.pathname}
               />
@@ -282,6 +283,7 @@ class ChannelSideBar extends React.Component {
               </div>
 
               <DirectMessageList
+                currentUser={this.props.currentUser.username}
                 directMessagingChannels={this.props.directMessagingChannels}
                 pathname={this.props.location.pathname}
               />
