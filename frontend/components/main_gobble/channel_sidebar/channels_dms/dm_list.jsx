@@ -37,6 +37,7 @@ const DirectMessageList = props => {
             key={idx}
           >
             <li>
+              <div className="active-circle" />
               <div>{recipients}</div>
             </li>
           </Link>
@@ -45,6 +46,7 @@ const DirectMessageList = props => {
         return (
           <Link to={`/messages/dm/${channel.id}`} key={idx}>
             <li>
+              <div className="active-circle" />
               <div>{recipients}</div>
             </li>
           </Link>
