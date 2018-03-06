@@ -31,12 +31,15 @@ import {
 
 const mapStateToProps = (state, ownProps) => {
   let currentUser;
+  let allUsers;
   let channels;
   let lastVisitedChannel;
   let directMessagingChannels;
 
   if (state.session.currentUser) {
     currentUser = state.session.currentUser;
+    allUsers = Object.values(state.entities.users);
+
     channels = Object.values(state.entities.channels).filter(channel => {
       return channel.members.includes(currentUser.username);
     });
@@ -53,6 +56,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     currentUser: currentUser,
+    allUsers: allUsers,
     channels: channels,
     allChannels: allChannels,
     lastVisitedChannel: lastVisitedChannel,
