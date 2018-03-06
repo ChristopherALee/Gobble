@@ -44,7 +44,9 @@ const mapStateToProps = (state, ownProps) => {
 
     directMessagingChannels = Object.values(
       state.entities.directMessaging.directMessagingChannels
-    );
+    ).filter(dmChannel => {
+      return dmChannel.members.includes(currentUser.username);
+    });
   }
 
   let allChannels = Object.values(state.entities.channels);
