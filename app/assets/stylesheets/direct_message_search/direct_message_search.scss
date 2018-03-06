@@ -44,4 +44,54 @@
       }
     }
   }
+
+  .user-search-section {
+    display: flex;
+    justify-content: center;
+    padding: 180px 30px 0px 30px;
+
+    .user-search-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 650px;
+
+      .user-search-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 34px;
+        font-family: "Noto Sans", sans-serif;
+        font-weight: 600;
+        color: #2c2d30;
+        margin-bottom: 3rem;
+      }
+
+      .user-search-bar {
+        display: flex;
+        align-items: center;
+        padding: 5px 10px;
+        height: 39px;
+        width: 96.5%;
+        border: 1px solid #a0a0a2;
+        border-radius: 5px;
+        transition: 0.2s;
+
+        &:focus-within {
+          border: 1px solid #717274;
+        }
+
+        .fa-search {
+          color: #a0a0a2;
+        }
+
+        input[type="text"] {
+          padding-left: 10px;
+          outline: none;
+          width: 100%;
+          font-size: 18px;
+        }
+      }
+    }
+  }
 }

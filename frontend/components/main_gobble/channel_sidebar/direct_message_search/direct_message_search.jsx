@@ -32,22 +32,24 @@ class DirectMessageSearch extends React.Component {
           </section>
 
           <section className="user-search-section">
-            <div className="user-search-header">
-              <h1>Direct Messages</h1>
-            </div>
+            <div className="user-search-container">
+              <div className="user-search-header">
+                <h1>Direct Messages</h1>
+              </div>
 
-            <div className="user-search-bar">
-              <i className="fas fa-search" />
-              <input
-                type="text"
-                placeholder="Find or start a conversation"
-                onChange={this.handleChange("criteria")}
-              />
-            </div>
-          </section>
+              <div className="user-search-bar">
+                <i className="fas fa-search" />
+                <input
+                  type="text"
+                  placeholder="Find or start a conversation"
+                  onChange={this.handleChange("criteria")}
+                />
+              </div>
 
-          <section className="user-list">
-            <p>user list</p>
+              <div className="user-list">
+                <p>user list</p>
+              </div>
+            </div>
           </section>
         </div>
       );

@@ -89,6 +89,11 @@
         width: 96.5%;
         border: 1px solid #a0a0a2;
         border-radius: 5px;
+        transition: 0.2s;
+
+        &:focus-within {
+          border: 1px solid #717274;
+        }
 
         .fa-search {
           color: #a0a0a2;
