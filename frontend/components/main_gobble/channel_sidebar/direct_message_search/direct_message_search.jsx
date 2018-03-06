@@ -1,6 +1,6 @@
 import React from "react";
 
-class UserSearch extends React.Component {
+class DirectMessageSearch extends React.Component {
   constructor(props) {
     super(props);
 
@@ -54,4 +54,4 @@ class UserSearch extends React.Component {
   }
 }
 
-export default UserSearch;
+export default DirectMessageSearch;

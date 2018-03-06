@@ -5,7 +5,7 @@ import CreateChannelForm from "./create_channel_form/create_channel_form";
 import ChannelSearch from "./channel_search/channel_search";
 import ChannelList from "./channels_dms/channel_list";
 import DirectMessageList from "./channels_dms/dm_list";
-import UserSearch from "./user_search/user_search";
+import DirectMessageSearch from "./direct_message_search/direct_message_search";
 
 class ChannelSideBar extends React.Component {
   constructor(props) {
@@ -243,7 +243,7 @@ class ChannelSideBar extends React.Component {
             renderCreateChannelMenu={this.renderCreateChannelMenu}
           />
 
-          <UserSearch
+          <DirectMessageSearch
             currentUser={this.props.currentUser}
             fetchCurrentUser={this.props.fetchCurrentUser}
             fetchAllUsers={this.props.fetchAllUsers}
