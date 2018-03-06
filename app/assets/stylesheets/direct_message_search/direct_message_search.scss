@@ -1,0 +1,47 @@
+#dm-user-search {
+  position: absolute;
+  z-index: 2;
+  background-color: white;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  -webkit-animation: fadein 0.3s;
+
+  .close-channel-search-menu {
+    position: absolute;
+    right: 80px;
+    top: 80px;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    flex-direction: column;
+
+    .fa-times {
+      width: 30px;
+      height: 30px;
+      color: #969799;
+    }
+
+    p {
+      color: #969799;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: #e8e8e8;
+
+      .fa-times {
+        color: #2c2d30;
+      }
+
+      p {
+        color: #2c2d30;
+      }
+    }
+  }
+}

@@ -23,7 +23,10 @@ class DirectMessageSearch extends React.Component {
     if (this.props.directMessageMenuShown) {
       return (
         <div id="dm-user-search">
-          <section className="close-channel-search-menu">
+          <section
+            className="close-channel-search-menu"
+            onClick={this.props.hideDirectMessageMenu}
+          >
             <i className="fas fa-times" />
             <p>esc</p>
           </section>

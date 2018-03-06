@@ -249,6 +249,7 @@ class ChannelSideBar extends React.Component {
             fetchAllUsers={this.props.fetchAllUsers}
             users={this.props.allUsers}
             directMessageMenuShown={this.props.directMessageMenuShown}
+            hideDirectMessageMenu={this.removeDirectMessageMenu}
           />
 
           {this.gobbleMenu()}
