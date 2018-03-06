@@ -13,7 +13,7 @@
     width: 288px;
     min-width: 288px;
     z-index: 1;
-    padding: 10px;
+    padding: 15px 10px;
     border-radius: 6px;
     border: 1px solid rgba(0,0,0,.15);
     -webkit-animation: fadein 0.2s;
@@ -25,6 +25,7 @@
     .gobble-menu-username {
       display: flex;
       align-items: center;
+      padding: 0 10px;
 
       .gobble-menu-username-text {
         font-size: 20px;
