@@ -6,8 +6,11 @@ import {
   RENDER_CHANNEL_SEARCH_MENU,
   REMOVE_CHANNEL_SEARCH_MENU,
   RENDER_CHANNEL_SETTINGS_MENU,
-  REMOVE_CHANNEL_SETTINGS_MENU } from '../actions/ui/menu_actions';
-import { LOG_OUT } from '../actions/session/session_actions';
+  REMOVE_CHANNEL_SETTINGS_MENU,
+  RENDER_DIRECT_MESSAGE_MENU,
+  REMOVE_DIRECT_MESSAGE_MENU
+} from "../actions/ui/menu_actions";
+import { LOG_OUT } from "../actions/session/session_actions";
 
 const uiReducer = (state = {}, action) => {
   let newState;
@@ -15,28 +18,42 @@ const uiReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RENDER_MENU:
-      newState = Object.assign({}, state, {menu: action.render});
+      newState = Object.assign({}, state, { menu: action.render });
       return newState;
     case REMOVE_MENU:
-      newState = Object.assign({}, state, {menu: action.render});
+      newState = Object.assign({}, state, { menu: action.render });
       return newState;
     case RENDER_CREATE_CHANNEL_MENU:
-      newState = Object.assign({}, state, {createChannelMenu: action.render});
+      newState = Object.assign({}, state, { createChannelMenu: action.render });
       return newState;
     case REMOVE_CREATE_CHANNEL_MENU:
-      newState = Object.assign({}, state, {createChannelMenu: action.render});
+      newState = Object.assign({}, state, { createChannelMenu: action.render });
       return newState;
     case RENDER_CHANNEL_SEARCH_MENU:
-      newState = Object.assign({}, state, {channelSearchMenu: action.render});
+      newState = Object.assign({}, state, { channelSearchMenu: action.render });
       return newState;
     case REMOVE_CHANNEL_SEARCH_MENU:
-      newState = Object.assign({}, state, {channelSearchMenu: action.render});
+      newState = Object.assign({}, state, { channelSearchMenu: action.render });
       return newState;
     case RENDER_CHANNEL_SETTINGS_MENU:
-      newState = Object.assign({}, state, {channelSettingsMenu: action.render});
+      newState = Object.assign({}, state, {
+        channelSettingsMenu: action.render
+      });
       return newState;
     case REMOVE_CHANNEL_SETTINGS_MENU:
-      newState = Object.assign({}, state, {channelSettingsMenu: action.render});
+      newState = Object.assign({}, state, {
+        channelSettingsMenu: action.render
+      });
+      return newState;
+    case RENDER_DIRECT_MESSAGE_MENU:
+      newState = Object.assign({}, state, {
+        directMessageMenu: action.render
+      });
+      return newState;
+    case REMOVE_DIRECT_MESSAGE_MENU:
+      newState = Object.assign({}, state, {
+        directMessageMenu: action.render
+      });
       return newState;
     case LOG_OUT:
       newState = {};
