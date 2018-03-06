@@ -9,6 +9,10 @@ class UserSearch extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.props.fetchAllUsers();
+  }
+
   handleChange(field) {
     return e => {
       this.setState({ [field]: e.target.value });

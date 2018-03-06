@@ -235,6 +235,7 @@ class ChannelSideBar extends React.Component {
           <UserSearch
             currentUser={this.props.currentUser}
             fetchCurrentUser={this.props.fetchCurrentUser}
+            fetchAllUsers={this.props.fetchAllUsers}
             users={this.props.allUsers}
             userSearchMenuShown={false}
           />

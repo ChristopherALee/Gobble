@@ -28,6 +28,7 @@ import {
   updateUser,
   fetchCurrentUser
 } from "../../../actions/session/session_actions";
+import { fetchAllUsers } from "../../../actions/user/user_actions";
 
 const mapStateToProps = (state, ownProps) => {
   let currentUser;
@@ -92,7 +93,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     hideChannelSearchMenu: () => dispatch(hideChannelSearchMenu()),
     logout: () => dispatch(logout()),
     updateUser: user => dispatch(updateUser(user)),
-    fetchCurrentUser: username => dispatch(fetchCurrentUser(username))
+    fetchCurrentUser: username => dispatch(fetchCurrentUser(username)),
+    fetchAllUsers: () => dispatch(fetchAllUsers())
   };
 };
 
