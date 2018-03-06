@@ -158,6 +158,14 @@ class ChannelSideBar extends React.Component {
     this.props.hideChannelSearchMenu();
   }
 
+  renderDirectMessageMenu() {
+    this.props.showDirectMessageMenu();
+  }
+
+  removeDirectMessageMenu() {
+    this.props.hideDirectMessageMenu();
+  }
+
   render() {
     let currentUser;
     if (this.props.currentUser) {
@@ -285,8 +293,16 @@ class ChannelSideBar extends React.Component {
 
             <div className="side-bar-dms">
               <div className="dms-header">
-                <p className="dms-header-content">Direct Messages</p>
-                <div className="create-dm-button">
+                <p
+                  className="dms-header-content"
+                  onClick={this.renderDirectMessageMenu}
+                >
+                  Direct Messages
+                </p>
+                <div
+                  className="create-dm-button"
+                  onClick={this.renderDirectMessageMenu}
+                >
                   <i className="fas fa-plus-circle" />
                 </div>
               </div>

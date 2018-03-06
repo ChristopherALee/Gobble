@@ -1,11 +1,13 @@
-export const RENDER_MENU = 'RENDER_MENU';
-export const REMOVE_MENU = 'REMOVE_MENU';
-export const RENDER_CREATE_CHANNEL_MENU = 'RENDER_CREATE_CHANNEL_MENU';
-export const REMOVE_CREATE_CHANNEL_MENU = 'REMOVE_CREATE_CHANNEL_MENU';
-export const RENDER_CHANNEL_SEARCH_MENU = 'RENDER_CHANNEL_SEARCH_MENU';
-export const REMOVE_CHANNEL_SEARCH_MENU = 'REMOVE_CHANNEL_SEARCH_MENU';
-export const RENDER_CHANNEL_SETTINGS_MENU = 'RENDER_CHANNEL_SETTINGS_MENU';
-export const REMOVE_CHANNEL_SETTINGS_MENU = 'REMOVE_CHANNEL_SETTINGS_MENU';
+export const RENDER_MENU = "RENDER_MENU";
+export const REMOVE_MENU = "REMOVE_MENU";
+export const RENDER_CREATE_CHANNEL_MENU = "RENDER_CREATE_CHANNEL_MENU";
+export const REMOVE_CREATE_CHANNEL_MENU = "REMOVE_CREATE_CHANNEL_MENU";
+export const RENDER_CHANNEL_SEARCH_MENU = "RENDER_CHANNEL_SEARCH_MENU";
+export const REMOVE_CHANNEL_SEARCH_MENU = "REMOVE_CHANNEL_SEARCH_MENU";
+export const RENDER_CHANNEL_SETTINGS_MENU = "RENDER_CHANNEL_SETTINGS_MENU";
+export const REMOVE_CHANNEL_SETTINGS_MENU = "REMOVE_CHANNEL_SETTINGS_MENU";
+export const RENDER_DIRECT_MESSAGE_MENU = "RENDER_DIRECT_MESSAGE_MENU";
+export const REMOVE_DIRECT_MESSAGE_MENU = "REMOVE_DIRECT_MESSAGE_MENU";
 
 const renderMenu = () => {
   return {
@@ -63,50 +65,56 @@ const removeChannelSettingsMenu = () => {
   };
 };
 
+const renderDirectMessageMenu = () => {
+  return {
+    type: RENDER_DIRECT_MESSAGE_MENU,
+    render: true
+  };
+};
+
+const removeDirectMessageMenu = () => {
+  return {
+    type: REMOVE_DIRECT_MESSAGE_MENU,
+    render: false
+  };
+};
+
 export const showMenu = () => dispatch => {
-  return (
-    dispatch(renderMenu())
-  );
+  return dispatch(renderMenu());
 };
 
 export const hideMenu = () => dispatch => {
-  return (
-    dispatch(removeMenu())
-  );
+  return dispatch(removeMenu());
 };
 
 export const showCreateChannelMenu = () => dispatch => {
-  return (
-    dispatch(renderCreateChannelMenu())
-  );
+  return dispatch(renderCreateChannelMenu());
 };
 
 export const hideCreateChannelMenu = () => dispatch => {
-  return (
-    dispatch(removeCreateChannelMenu())
-  );
+  return dispatch(removeCreateChannelMenu());
 };
 
 export const showChannelSearchMenu = () => dispatch => {
-  return (
-    dispatch(renderChannelSearchMenu())
-  );
+  return dispatch(renderChannelSearchMenu());
 };
 
 export const hideChannelSearchMenu = () => dispatch => {
-  return (
-    dispatch(removeChannelSearchMenu())
-  );
+  return dispatch(removeChannelSearchMenu());
 };
 
 export const showChannelSettingsMenu = () => dispatch => {
-  return (
-    dispatch(renderChannelSettingsMenu())
-  );
+  return dispatch(renderChannelSettingsMenu());
 };
 
 export const hideChannelSettingsMenu = () => dispatch => {
-  return (
-    dispatch(removeChannelSettingsMenu())
-  );
+  return dispatch(removeChannelSettingsMenu());
+};
+
+export const showDirectMessageMenu = () => dispatch => {
+  return dispatch(renderDirectMessageMenu());
+};
+
+export const hideDirectMessageMenu = () => dispatch => {
+  return dispatch(removeDirectMessageMenu());
 };
