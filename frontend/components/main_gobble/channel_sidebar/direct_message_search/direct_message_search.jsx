@@ -20,7 +20,7 @@ class DirectMessageSearch extends React.Component {
   }
 
   render() {
-    if (this.props.userSearchMenuShown) {
+    if (this.props.directMessageMenuShown) {
       return (
         <div id="dm-user-search">
           <section className="close-channel-search-menu">
