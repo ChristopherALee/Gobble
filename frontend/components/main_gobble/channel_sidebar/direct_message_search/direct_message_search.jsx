@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class DirectMessageSearch extends React.Component {
   constructor(props) {
@@ -7,6 +8,8 @@ class DirectMessageSearch extends React.Component {
     this.state = {
       criteria: ""
     };
+
+    this.renderUsers = this.renderUsers.bind(this);
   }
 
   componentDidMount() {
@@ -17,6 +20,38 @@ class DirectMessageSearch extends React.Component {
     return e => {
       this.setState({ [field]: e.target.value });
     };
+  }
+
+  renderUsers() {
+    let users = this.props.users;
+    let criteria = this.state.criteria;
+    let currentUser = this.props.currentUser.username;
+
+    users = users
+      .filter(user => user.username !== currentUser)
+      .sort((a, b) => {
+        let userA = a.username;
+        let userB = b.username;
+
+        if (userA < userB) {
+          return -1;
+        } else if (userA > userB) {
+          return 1;
+        } else {
+          return 0;
+        }
+      })
+      .map(user => {
+        return (
+          <li>
+            <div className="search-user-item-container">
+              <p>{user.username}</p>
+            </div>
+          </li>
+        );
+      });
+
+    return <div className="user-list">{users}</div>;
   }
 
   render() {
@@ -46,9 +81,7 @@ class DirectMessageSearch extends React.Component {
                 />
               </div>
 
-              <div className="user-list">
-                <p>user list</p>
-              </div>
+              {this.renderUsers()}
             </div>
           </section>
         </div>
