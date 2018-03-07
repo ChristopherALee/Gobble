@@ -98,9 +98,6 @@
         width: 100%;
         overflow-y: scroll;
 
-        ul {
-        }
-
         li {
           display: flex;
           align-items: center;
@@ -116,6 +113,10 @@
             border-radius: 6px;
             border: 1px solid #cbe7f7;
             cursor: pointer;
+
+            & + li {
+              border: 1px solid transparent;
+            }
           }
 
           .search-user-item-container {

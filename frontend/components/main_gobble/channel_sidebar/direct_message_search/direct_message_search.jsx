@@ -44,7 +44,7 @@ class DirectMessageSearch extends React.Component {
       .map(user => {
         if (user.username.toLowerCase().includes(criteria.toLowerCase())) {
           return (
-            <li>
+            <li key={user.id}>
               <div className="search-user-item-container">
                 <p>{user.username}</p>
               </div>
