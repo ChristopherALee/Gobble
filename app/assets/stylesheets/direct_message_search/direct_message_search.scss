@@ -51,14 +51,12 @@
     padding: 180px 30px 0px 30px;
 
     .user-search-container {
+      display: flex;
       flex-direction: column;
       justify-content: center;
       width: 650px;
 
       .user-search-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
         font-size: 34px;
         font-family: "Noto Sans", sans-serif;
         font-weight: 600;
