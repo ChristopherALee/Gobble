@@ -80,13 +80,19 @@ class DirectMessageSearch extends React.Component {
                 <h1>Direct Messages</h1>
               </div>
 
-              <div className="user-search-bar">
-                <i className="fas fa-search" />
-                <input
-                  type="text"
-                  placeholder="Find or start a conversation"
-                  onChange={this.handleChange("criteria")}
-                />
+              <div className="user-search-bar-container">
+                <div className="user-search-bar">
+                  <i className="fas fa-search" />
+                  <input
+                    type="text"
+                    placeholder="Find or start a conversation"
+                    onChange={this.handleChange("criteria")}
+                  />
+                </div>
+
+                <div className="direct-message-go-button">
+                  <p>Go</p>
+                </div>
               </div>
 
               {this.renderUsers()}
