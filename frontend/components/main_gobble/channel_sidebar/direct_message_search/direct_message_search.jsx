@@ -51,7 +51,11 @@ class DirectMessageSearch extends React.Component {
         );
       });
 
-    return <div className="user-list">{users}</div>;
+    return (
+      <div className="user-list">
+        <ul>{users}</ul>
+      </div>
+    );
   }
 
   render() {

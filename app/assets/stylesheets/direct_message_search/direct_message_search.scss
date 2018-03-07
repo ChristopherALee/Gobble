@@ -71,6 +71,7 @@
         display: flex;
         align-items: center;
         padding: 5px 10px;
+        min-height: 39px;
         height: 39px;
         width: 96.5%;
         border: 1px solid #a0a0a2;
@@ -90,6 +91,40 @@
           outline: none;
           width: 100%;
           font-size: 18px;
+        }
+      }
+
+      .user-list {
+        margin-top: 25px;
+        width: 100%;
+        overflow-y: scroll;
+
+        ul {
+        }
+
+        li {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0 15px;
+          text-decoration: none;
+          height: 70px;
+          border: 1px solid transparent;
+          border-top: 1px solid #ededed;
+
+          &:hover {
+            background-color: #eaf5fc;
+            border-radius: 6px;
+            border: 1px solid #cbe7f7;
+            cursor: pointer;
+          }
+
+          .search-user-item-container {
+            p {
+              font-size: 16px;
+              font-weight: 600;
+            }
+          }
         }
       }
     }
