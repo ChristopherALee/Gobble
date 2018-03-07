@@ -42,13 +42,17 @@ class DirectMessageSearch extends React.Component {
         }
       })
       .map(user => {
-        return (
-          <li>
-            <div className="search-user-item-container">
-              <p>{user.username}</p>
-            </div>
-          </li>
-        );
+        if (user.username.toLowerCase().includes(criteria.toLowerCase())) {
+          return (
+            <li>
+              <div className="search-user-item-container">
+                <p>{user.username}</p>
+              </div>
+            </li>
+          );
+        } else {
+          return null;
+        }
       });
 
     return (
