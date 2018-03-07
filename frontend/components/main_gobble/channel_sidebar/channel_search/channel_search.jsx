@@ -183,7 +183,9 @@ class ChannelSearch extends React.Component {
         </div>
 
         <h2>Channels you belong to</h2>
-        <ul>{searchedBelongedChannels}</ul>
+        <div className="channel-belonged">
+          <ul>{searchedBelongedChannels}</ul>
+        </div>
       </div>
     );
   }

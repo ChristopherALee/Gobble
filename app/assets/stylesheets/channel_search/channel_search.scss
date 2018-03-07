@@ -51,9 +51,6 @@
     padding: 180px 30px 0px 30px;
 
     .channel-search-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
       width: 650px;
 
       .search-header {
@@ -118,6 +115,7 @@
       .channel-search-belonged-list,
       .channel-lists {
         margin-top: 25px;
+        height: calc(100% - 156px);
         width: 100%;
         overflow-y: scroll;
 
