@@ -92,25 +92,29 @@ class ChannelSearch extends React.Component {
           >
             <li>
               <div className="search-channel-item-left">
-                <p className="hashtag">#</p>
-                <div className="search-channel-item-contents">
-                  <div className="search-channel-item-name">
-                    <p>{channel.name}</p>
-                    <div className="search-channel-item-right">
-                      <i className="far fa-user" />
-                      <div className="search-channel-item-member-ct">
-                        {memberCount}
+                <div className="search-channel-item-container">
+                  <p className="hashtag">#</p>
+                  <div className="search-channel-item-contents">
+                    <div className="search-channel-item-name">
+                      <p>{channel.name}</p>
+                      <div className="search-channel-item-right">
+                        <i className="far fa-user" />
+                        <div className="search-channel-item-member-ct">
+                          {memberCount}
+                        </div>
                       </div>
                     </div>
+                    <p className="search-channel-item-purpose">
+                      {channel.purpose}
+                    </p>
+                    <p className="search-channel-item-created">
+                      Created by <strong>{channel.creatorName}</strong> on{" "}
+                      {this.dateTimeConversion(channel.created_at)}
+                    </p>
                   </div>
-                  <p className="search-channel-item-purpose">
-                    {channel.purpose}
-                  </p>
-                  <p className="search-channel-item-created">
-                    Created by <strong>{channel.creatorName}</strong> on{" "}
-                    {this.dateTimeConversion(channel.created_at)}
-                  </p>
                 </div>
+
+                <i className="fas fa-reply" />
               </div>
             </li>
           </Link>
