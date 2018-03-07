@@ -113,6 +113,12 @@
         width: 100%;
         overflow-y: scroll;
 
+        .user-list-header {
+          color: #717274;
+          font-size: 14px;
+          margin-bottom: 10px;
+        }
+
         li {
           display: flex;
           align-items: center;
