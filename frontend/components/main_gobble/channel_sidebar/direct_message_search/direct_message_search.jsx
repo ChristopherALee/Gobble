@@ -48,6 +48,8 @@ class DirectMessageSearch extends React.Component {
               <div className="search-user-item-container">
                 <p>{user.username}</p>
               </div>
+
+              <i className="fas fa-reply" />
             </li>
           );
         } else {
@@ -57,6 +59,7 @@ class DirectMessageSearch extends React.Component {
 
     return (
       <div className="user-list">
+        <p>Add users to direct message</p>
         <ul>{users}</ul>
       </div>
     );

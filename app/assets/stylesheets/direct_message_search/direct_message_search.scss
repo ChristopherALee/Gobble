@@ -109,7 +109,7 @@
       }
 
       .user-list {
-        margin-top: 25px;
+        margin-top: 40px;
         width: 100%;
         overflow-y: scroll;
 
@@ -123,6 +123,11 @@
           border: 1px solid transparent;
           border-top: 1px solid #ededed;
 
+          .fa-reply {
+            display: none;
+            color: #0576b9;
+          }
+
           &:hover {
             background-color: #eaf5fc;
             border-radius: 6px;
@@ -131,6 +136,10 @@
 
             & + li {
               border: 1px solid transparent;
+            }
+
+            .fa-reply {
+              display: block;
             }
           }
 
