@@ -143,6 +143,7 @@ class DirectMessageSearch extends React.Component {
                       type="text"
                       placeholder="Find or start a conversation"
                       onChange={this.handleChange("criteria")}
+                      value={this.state.criteria}
                     />
                   </div>
                 </div>
