@@ -13,6 +13,7 @@ class DirectMessageSearch extends React.Component {
     this.renderUsers = this.renderUsers.bind(this);
     this.renderSelectedUsers = this.renderSelectedUsers.bind(this);
     this.selectUser = this.selectUser.bind(this);
+    this.closeReset = this.closeReset.bind(this);
   }
 
   componentDidMount() {
@@ -23,6 +24,14 @@ class DirectMessageSearch extends React.Component {
     return e => {
       this.setState({ [field]: e.target.value });
     };
+  }
+
+  closeReset() {
+    this.setState({
+      criteria: "",
+      selectedUsers: new Set()
+    });
+    this.props.hideDirectMessageMenu();
   }
 
   selectUser(user) {
@@ -91,7 +100,7 @@ class DirectMessageSearch extends React.Component {
         <div id="dm-user-search">
           <section
             className="close-channel-search-menu"
-            onClick={this.props.hideDirectMessageMenu}
+            onClick={this.closeReset}
           >
             <i className="fas fa-times" />
             <p>esc</p>
