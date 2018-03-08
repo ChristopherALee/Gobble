@@ -1,19 +1,20 @@
 class Api::DirectMessageChannelMembershipsController < ApplicationController
   def index
-    @direct_message_channel_memberships = DirectMessageChannelMemberships.all
+    @direct_message_channel_memberships = DirectMessageChannelMembership.all
   end
 
   def show
-    @direct_message_channel_membership = DirectMessageChannelMemberships.find(params[:id])
+    @direct_message_channel_membership = DirectMessageChannelMembership.find(params[:id])
   end
 
   def create
-    @direct_message_channel_membership = DirectMessageChannelMemberships.new(membership_params)
+    debugger
+    @direct_message_channel_membership = DirectMessageChannelMembership.new(direct_message_channel_membership_params)
     # @direct_message_channel_membership.member_id = current_user.id
-
+    debugger
     if @direct_message_channel_membership.save
       Pusher.trigger('sidebar_dm', 'membership_created', {
-        channel: @direct_message_channel_membership.channel.id
+        channel: @direct_message_channel_membership.direct_message_channel.id
         })
       render 'api/direct_message_channel_memberships/show'
     else
@@ -22,7 +23,7 @@ class Api::DirectMessageChannelMembershipsController < ApplicationController
   end
 
   def destroy
-    @direct_message_channel_membership = DirectMessageChannelMemberships.find(params[:id])
+    @direct_message_channel_membership = DirectMessageChannelMembership.find(params[:id])
 
     if @direct_message_channel_membership && @direct_message_channel_membership.member_id == current_user.id
       @direct_message_channel_membership.destroy
@@ -34,6 +35,7 @@ class Api::DirectMessageChannelMembershipsController < ApplicationController
 
   private
   def direct_message_channel_membership_params
+    debugger
     params.require(:direct_message_channel_membership).permit(:direct_message_channel_id, :member_id)
   end
 end

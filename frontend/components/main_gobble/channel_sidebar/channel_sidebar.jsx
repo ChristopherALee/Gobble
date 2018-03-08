@@ -256,9 +256,9 @@ class ChannelSideBar extends React.Component {
             users={this.props.allUsers}
             directMessageMenuShown={this.props.directMessageMenuShown}
             hideDirectMessageMenu={this.removeDirectMessageMenu}
-            createDirectMessageChannel={this.createDirectMessageChannel}
+            createDirectMessageChannel={this.props.createDirectMessageChannel}
             createDirectMessageChannelMembership={
-              this.createDirectMessageChannelMembership
+              this.props.createDirectMessageChannelMembership
             }
           />
 

@@ -8,9 +8,9 @@ class Api::DirectMessageChannelsController < ApplicationController
   end
 
   def create
-    @direct_message_channel = DirectChannel.new(direct_channel_params)
+    @direct_message_channel = DirectMessageChannel.new
+    
     @direct_message_channel.creator_id = current_user.id
-
     if @direct_message_channel.save
       Pusher.trigger('sidebar_dm', 'dm_created', {})
       render 'api/direct_message_channels/show'
@@ -37,6 +37,6 @@ class Api::DirectMessageChannelsController < ApplicationController
 
   private
   def direct_channel_params
-    params.require(:direct_message_channel).permit(:id)
+    params.require(:direct_message_channel)
   end
 end

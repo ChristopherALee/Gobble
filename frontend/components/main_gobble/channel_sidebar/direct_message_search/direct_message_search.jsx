@@ -16,6 +16,9 @@ class DirectMessageSearch extends React.Component {
     this.deSelectUser = this.deSelectUser.bind(this);
     this.closeReset = this.closeReset.bind(this);
     this.activeGoButton = this.activeGoButton.bind(this);
+    this.createDirectMessageChannel = this.createDirectMessageChannel.bind(
+      this
+    );
   }
 
   componentDidMount() {
@@ -26,6 +29,37 @@ class DirectMessageSearch extends React.Component {
     return e => {
       this.setState({ [field]: e.target.value });
     };
+  }
+
+  createDirectMessageChannel() {
+    const users = Array.from(this.state.selectedUsers);
+
+    this.props
+      .createDirectMessageChannel({
+        direct_message_channel: {
+          creator_name: this.props.currentUser.username
+        }
+      })
+      .then(success => {
+        debugger;
+        this.props.createDirectMessageChannelMembership({
+          direct_message_channel_membership: {
+            direct_message_channel_id: success.id,
+            member_id: this.props.currentUser.id
+          }
+        });
+
+        users.forEach(user => {
+          this.props.createDirectMessageChannelMembership({
+            direct_message_channel_membership: {
+              direct_message_channel_id: success.id,
+              member_id: user.id
+            }
+          });
+        });
+
+        this.setState({ ["criteria"]: "" });
+      });
   }
 
   activeGoButton() {
@@ -158,6 +192,7 @@ class DirectMessageSearch extends React.Component {
 
                 <div
                   className={`direct-message-go-button ${this.activeGoButton()}`}
+                  onClick={this.createDirectMessageChannel}
                 >
                   <p>Go</p>
                 </div>
