@@ -10,12 +10,15 @@ class ChannelSearch extends React.Component {
     };
 
     this.showCreateChannelMenu = this.showCreateChannelMenu.bind(this);
-    this.removeChannelSearchMenu = this.removeChannelSearchMenu.bind(this);
+    this.closeReset = this.closeReset.bind(this);
     this.renderAllChannels = this.renderAllChannels.bind(this);
     this.dateTimeConversion = this.dateTimeConversion.bind(this);
   }
 
-  removeChannelSearchMenu() {
+  closeReset() {
+    this.setState({
+      criteria: ""
+    });
     this.props.removeChannelSearchMenu();
   }
 
@@ -88,7 +91,7 @@ class ChannelSearch extends React.Component {
           <Link
             to={`/messages/${channel.name}`}
             key={idx}
-            onClick={this.removeChannelSearchMenu}
+            onClick={this.closeReset}
           >
             <li>
               <div className="search-channel-item-left">
@@ -142,7 +145,7 @@ class ChannelSearch extends React.Component {
         <Link
           to={`/messages/${channel.name}`}
           key={idx}
-          onClick={this.removeChannelSearchMenu}
+          onClick={this.closeReset}
         >
           <li>
             <div className="search-channel-item-left">
@@ -198,10 +201,7 @@ class ChannelSearch extends React.Component {
     if (this.props.channelSearchMenuShown) {
       return (
         <div id="channel-search">
-          <div
-            className="close-channel-search-menu"
-            onClick={this.removeChannelSearchMenu}
-          >
+          <div className="close-channel-search-menu" onClick={this.closeReset}>
             <i className="fas fa-times" />
             <p>esc</p>
           </div>
