@@ -109,14 +109,13 @@ class DirectMessageSearch extends React.Component {
   renderSelectedUsers() {
     return Array.from(this.state.selectedUsers).map(user => {
       return (
-        <div className="selected-user-item" key={user.id}>
+        <div
+          className="selected-user-item"
+          key={user.id}
+          onClick={this.deSelectUser(user)}
+        >
           <p className="selected-user-username">{user.username}</p>
-          <p
-            className="remove-selected-user-button"
-            onClick={this.deSelectUser(user)}
-          >
-            X
-          </p>
+          <p className="remove-selected-user-button">X</p>
         </div>
       );
     });

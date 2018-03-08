@@ -93,16 +93,16 @@
               padding: 5px 10px;
               border-radius: 5px;
 
+              &:hover {
+                cursor: pointer;
+              }
+
               .selected-user-username {
                 margin-right: 10px;
               }
 
               .remove-selected-user-button {
                 font-size: 10px;
-
-                &:hover {
-                  cursor: pointer;
-                }
               }
             }
           }
