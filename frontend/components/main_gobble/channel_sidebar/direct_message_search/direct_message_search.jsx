@@ -13,6 +13,7 @@ class DirectMessageSearch extends React.Component {
     this.renderUsers = this.renderUsers.bind(this);
     this.renderSelectedUsers = this.renderSelectedUsers.bind(this);
     this.selectUser = this.selectUser.bind(this);
+    this.deSelectUser = this.deSelectUser.bind(this);
     this.closeReset = this.closeReset.bind(this);
   }
 
@@ -40,6 +41,14 @@ class DirectMessageSearch extends React.Component {
       newState.selectedUsers.add(user);
       this.setState(newState);
       this.setState({ ["criteria"]: "" });
+    };
+  }
+
+  deSelectUser(user) {
+    return e => {
+      let newState = Object.assign({}, this.state);
+      newState.selectedUsers.delete(user);
+      this.setState(newState);
     };
   }
 
@@ -90,7 +99,17 @@ class DirectMessageSearch extends React.Component {
 
   renderSelectedUsers() {
     return Array.from(this.state.selectedUsers).map(user => {
-      return <p key={user.id}>{user.username}</p>;
+      return (
+        <div className="selected-user-item" key={user.id}>
+          <p className="selected-user-username">{user.username}</p>
+          <p
+            className="remove-selected-user-button"
+            onClick={this.deSelectUser(user)}
+          >
+            X
+          </p>
+        </div>
+      );
     });
   }
 

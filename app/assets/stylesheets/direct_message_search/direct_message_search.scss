@@ -78,8 +78,32 @@
           flex-wrap: wrap;
 
           .search-user-added {
+            margin-top: 3px;
             display: flex;
             flex-wrap: wrap;
+
+            .selected-user-item {
+              display: flex;
+              align-items: center;
+              margin-right: 5px;
+              margin-bottom: 5px;
+              background-color: #2d9ee0;
+              color: white;
+              padding: 5px 10px;
+              border-radius: 5px;
+
+              .selected-user-username {
+                margin-right: 10px;
+              }
+
+              .remove-selected-user-button {
+                font-size: 10px;
+
+                &:hover {
+                  cursor: pointer;
+                }
+              }
+            }
           }
 
           .search-bar-container {
