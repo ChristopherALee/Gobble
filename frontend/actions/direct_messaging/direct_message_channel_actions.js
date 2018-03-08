@@ -54,3 +54,12 @@ export const fetchDirectMessageChannelMessages = id => dispatch => {
     }
   );
 };
+
+export const createDirectMessageChannel = channel => dispatch => {
+  return DirectMessageChannelApiUtil.createDirectMessageChannel(channel).then(
+    channel => {
+      dispatch(receiveSingleDirectMessageChannel(channel));
+      return channel;
+    }
+  );
+};

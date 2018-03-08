@@ -12,7 +12,8 @@ import { createMembership } from "../../../actions/membership/membership_actions
 import {
   fetchAllDirectMessageChannels,
   fetchSingleDirectMessageChannel,
-  fetchDirectMessageChannelMessages
+  fetchDirectMessageChannelMessages,
+  createDirectMessageChannel
 } from "../../../actions/direct_messaging/direct_message_channel_actions";
 import { createDirectMessageChannelMembership } from "../../../actions/direct_messaging/direct_message_channel_membership_actions";
 import {
@@ -86,6 +87,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(fetchSingleDirectMessageChannel(id)),
     fetchDirectMessageChannelMessages: channel =>
       dispatch(fetchDirectMessageChannelMessages(channel)),
+    createDirectMessageChannel: channel =>
+      dispatch(createDirectMessageChannel(channel)),
     createDirectMessageChannelMembership: membership =>
       dispatch(createDirectMessageChannelMembership(membership)),
     showMenu: () => dispatch(showMenu()),

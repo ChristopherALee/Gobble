@@ -67,9 +67,15 @@ class ChannelSideBar extends React.Component {
     });
 
     this.channel = this.pusher.subscribe("sidebar_channel");
+    this.dmChannel = this.pusher.subscribe("sidebar_dm");
     let that = this;
+
     this.channel.bind("membership_created", function(data) {
       that.props.fetchSingleChannel(data.channel);
+    });
+
+    this.dmChannel.bind("membership_created", function(data) {
+      that.props.fetchSingleDirectMessageChannel(data.channel);
     });
   }
 
@@ -250,6 +256,10 @@ class ChannelSideBar extends React.Component {
             users={this.props.allUsers}
             directMessageMenuShown={this.props.directMessageMenuShown}
             hideDirectMessageMenu={this.removeDirectMessageMenu}
+            createDirectMessageChannel={this.createDirectMessageChannel}
+            createDirectMessageChannelMembership={
+              this.createDirectMessageChannelMembership
+            }
           />
 
           {this.gobbleMenu()}

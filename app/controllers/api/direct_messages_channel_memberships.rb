@@ -13,7 +13,7 @@ class Api::DirectMessageChannelMembershipsController < ApplicationController
 
     if @direct_message_channel_membership.save
       Pusher.trigger('sidebar_dm', 'membership_created', {
-        channel: @direct_message_channel_membership.channel.name
+        channel: @direct_message_channel_membership.channel.id
         })
       render 'api/direct_message_channel_memberships/show'
     else
@@ -34,6 +34,6 @@ class Api::DirectMessageChannelMembershipsController < ApplicationController
 
   private
   def direct_message_channel_membership_params
-    params.require(:direct_message_channel_membership).permit(:direct_message_channel_id)
+    params.require(:direct_message_channel_membership).permit(:direct_message_channel_id, :member_id)
   end
 end
