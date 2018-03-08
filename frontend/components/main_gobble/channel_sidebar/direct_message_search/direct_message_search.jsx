@@ -15,6 +15,7 @@ class DirectMessageSearch extends React.Component {
     this.selectUser = this.selectUser.bind(this);
     this.deSelectUser = this.deSelectUser.bind(this);
     this.closeReset = this.closeReset.bind(this);
+    this.activeGoButton = this.activeGoButton.bind(this);
   }
 
   componentDidMount() {
@@ -25,6 +26,14 @@ class DirectMessageSearch extends React.Component {
     return e => {
       this.setState({ [field]: e.target.value });
     };
+  }
+
+  activeGoButton() {
+    if (this.state.selectedUsers.size) {
+      return "active-go";
+    } else {
+      return "inactive-go";
+    }
   }
 
   closeReset() {
@@ -148,7 +157,9 @@ class DirectMessageSearch extends React.Component {
                   </div>
                 </div>
 
-                <div className="direct-message-go-button">
+                <div
+                  className={`direct-message-go-button ${this.activeGoButton()}`}
+                >
                   <p>Go</p>
                 </div>
               </div>
