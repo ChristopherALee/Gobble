@@ -6,10 +6,13 @@ class DirectMessageSearch extends React.Component {
     super(props);
 
     this.state = {
-      criteria: ""
+      criteria: "",
+      selectedUsers: new Set()
     };
 
     this.renderUsers = this.renderUsers.bind(this);
+    this.renderSelectedUsers = this.renderSelectedUsers.bind(this);
+    this.selectUser = this.selectUser.bind(this);
   }
 
   componentDidMount() {
@@ -22,11 +25,20 @@ class DirectMessageSearch extends React.Component {
     };
   }
 
+  selectUser(user) {
+    return e => {
+      let newState = Object.assign({}, this.state);
+      newState.selectedUsers.add(user);
+      this.setState(newState);
+      this.setState({ ["criteria"]: "" });
+    };
+  }
+
   renderUsers() {
     let users = this.props.users;
     let criteria = this.state.criteria;
     let currentUser = this.props.currentUser.username;
-
+    let that = this;
     users = users
       .filter(user => user.username !== currentUser)
       .sort((a, b) => {
@@ -42,9 +54,12 @@ class DirectMessageSearch extends React.Component {
         }
       })
       .map(user => {
-        if (user.username.toLowerCase().includes(criteria.toLowerCase())) {
+        if (
+          user.username.toLowerCase().includes(criteria.toLowerCase()) &&
+          !that.state.selectedUsers.has(user)
+        ) {
           return (
-            <li key={user.id}>
+            <li key={user.id} onClick={this.selectUser(user)}>
               <div className="search-user-item-container">
                 <p>{user.username}</p>
               </div>
@@ -62,6 +77,12 @@ class DirectMessageSearch extends React.Component {
         <ul>{users}</ul>
       </div>
     );
+  }
+
+  renderSelectedUsers() {
+    return Array.from(this.state.selectedUsers).map(user => {
+      return <p key={user.id}>{user.username}</p>;
+    });
   }
 
   render() {
@@ -85,42 +106,7 @@ class DirectMessageSearch extends React.Component {
               <div className="user-search-bar-container">
                 <div className="user-search-bar">
                   <div className="search-user-added">
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
-                    <p>chris</p>
+                    {this.renderSelectedUsers()}
                   </div>
 
                   <div className="search-bar-container">
