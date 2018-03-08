@@ -84,12 +84,53 @@ class DirectMessageSearch extends React.Component {
 
               <div className="user-search-bar-container">
                 <div className="user-search-bar">
-                  <i className="fas fa-search" />
-                  <input
-                    type="text"
-                    placeholder="Find or start a conversation"
-                    onChange={this.handleChange("criteria")}
-                  />
+                  <div className="search-user-added">
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                    <p>chris</p>
+                  </div>
+
+                  <div className="search-bar-container">
+                    <i className="fas fa-search" />
+                    <input
+                      type="text"
+                      placeholder="Find or start a conversation"
+                      onChange={this.handleChange("criteria")}
+                    />
+                  </div>
                 </div>
 
                 <div className="direct-message-go-button">
