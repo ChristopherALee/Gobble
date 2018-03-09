@@ -12,7 +12,39 @@ import {
 import { fetchCurrentUser } from "../../../actions/session/session_actions";
 
 const mapStateToProps = (state, ownProps) => {
-  return {};
+  let currentUser;
+  if (state.session.currentUser) {
+    currentUser = state.session.currentUser;
+  }
+
+  let currentDmChannelId = ownProps.location.pathname.slice(13);
+
+  let currentDmChannel, messages, memberCount, membership;
+  if (
+    state.entities.directMessaging.directMessagingChannels[currentDmChannelId]
+  ) {
+    currentDmChannel =
+      state.entities.directMessaging.directMessagingChannels[
+        currentDmChannelId
+      ];
+
+    memberCount = currentDmChannel.members.length;
+
+    membership = currentUser.directMessageMemberships.filter(membership => {
+      return membership["channelId"] === currentDmChannel.id;
+    });
+
+    let messageIds = currentDmChannel.messages;
+    messages = Object.values(
+      state.entities.directMessaging.directMessagingMessages
+    ).filter(message => {
+      return Object.values(messageIds).includes(message.id);
+    });
+  }
+
+  return {
+    currentUser
+  };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
