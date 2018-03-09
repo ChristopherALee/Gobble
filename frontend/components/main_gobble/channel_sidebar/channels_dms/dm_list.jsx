@@ -32,7 +32,6 @@ const DirectMessageList = props => {
         return 0;
       }
     });
-    debugger;
 
     directMessages = directMessages.map((channel, idx) => {
       let recipients = channel.members.filter(
