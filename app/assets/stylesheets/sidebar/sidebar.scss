@@ -207,6 +207,13 @@
         &:hover {
           background-color: #4c9589;
         }
+
+        .dm-member-count {
+          background-color: #ffffff9e;
+          color: #4c9589;
+          padding: 1px 2px;
+          border-radius: 3px;
+        }
       }
 
       a {
@@ -235,7 +242,22 @@
             }
           }
 
+          .dm-member-count {
+            background-color: #ffffff9e;
+            color: #4c394b;
+            padding: 1px 2px;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            p {
+              padding: 0 3px;
+            }
+          }
+
           .active-circle {
+            margin-right: 8px;
             height: 10px;
             width: 10px;
             border-radius: 50%;
@@ -249,8 +271,11 @@
             background-color: white;
           }
 
-          div {
+          .dm-member-count {
             margin-right: 8px;
+          }
+
+          .recipients {
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;

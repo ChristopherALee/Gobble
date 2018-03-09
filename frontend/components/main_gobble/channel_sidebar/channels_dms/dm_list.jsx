@@ -38,34 +38,66 @@ const DirectMessageList = props => {
         member => member !== props.currentUser
       );
 
-      if (recipients.length === 1) {
+      let recipientCount = recipients.length;
+
+      if (recipientCount === 1) {
         recipients = recipients.join("");
       } else {
         recipients = recipients.join(", ");
       }
 
       if (channel.id === parseInt(props.pathname.slice(13))) {
-        return (
-          <Link
-            to={`/messages/dm/${channel.id}`}
-            className="active-channel"
-            key={idx}
-          >
-            <li>
-              <div className="hovered-active-circle" />
-              <div>{recipients}</div>
-            </li>
-          </Link>
-        );
+        if (recipientCount === 1) {
+          return (
+            <Link
+              to={`/messages/dm/${channel.id}`}
+              className="active-channel"
+              key={idx}
+            >
+              <li>
+                <div className="hovered-active-circle" />
+                <div className="recipients">{recipients}</div>
+              </li>
+            </Link>
+          );
+        } else {
+          return (
+            <Link
+              to={`/messages/dm/${channel.id}`}
+              className="active-channel"
+              key={idx}
+            >
+              <li>
+                <div className="dm-member-count">
+                  <p>{recipientCount}</p>
+                </div>
+                <div className="recipients">{recipients}</div>
+              </li>
+            </Link>
+          );
+        }
       } else {
-        return (
-          <Link to={`/messages/dm/${channel.id}`} key={idx}>
-            <li>
-              <div className="active-circle" />
-              <div>{recipients}</div>
-            </li>
-          </Link>
-        );
+        if (recipientCount === 1) {
+          return (
+            <Link to={`/messages/dm/${channel.id}`} key={idx}>
+              <li>
+                <div className="active-circle" />
+                <div className="recipients">{recipients}</div>
+              </li>
+            </Link>
+          );
+        } else {
+          return (
+            <Link to={`/messages/dm/${channel.id}`} key={idx}>
+              <li>
+                <div className="dm-member-count">
+                  <p>{recipientCount}</p>
+                </div>
+                <div className="recipients">{recipients}</div>
+              </li>
+            </Link>
+          );
+        }
       }
     });
   }
