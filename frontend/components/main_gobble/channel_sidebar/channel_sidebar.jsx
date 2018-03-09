@@ -140,7 +140,7 @@ class ChannelSideBar extends React.Component {
         </div>
       );
     } else {
-      return <div />;
+      return null;
     }
   }
 
@@ -206,7 +206,9 @@ class ChannelSideBar extends React.Component {
             <div className="side-bar-channels">
               <div className="channels-header">
                 <p className="channels-header-content">Channels</p>
-                <i className="fas fa-plus-circle" />
+                <div className="create-channel-button">
+                  <i className="fas fa-plus-circle" />
+                </div>
               </div>
 
               <ChannelList
@@ -218,6 +220,9 @@ class ChannelSideBar extends React.Component {
             <div className="side-bar-dms">
               <div className="dms-header">
                 <p className="dms-header-content">Direct Messages</p>
+                <div className="create-dm-button">
+                  <i className="fas fa-plus-circle" />
+                </div>
               </div>
 
               <DirectMessageList
