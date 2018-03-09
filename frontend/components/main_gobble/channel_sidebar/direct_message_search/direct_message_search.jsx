@@ -33,32 +33,55 @@ class DirectMessageSearch extends React.Component {
 
   createDirectMessageChannel() {
     const users = Array.from(this.state.selectedUsers);
+    const usernames = users.map(user => user.username);
+    usernames.push(this.props.currentUser.username);
 
-    this.props
-      .createDirectMessageChannel({
-        direct_message_channel: {
-          creator_name: this.props.currentUser.username
-        }
-      })
-      .then(success => {
-        this.props.createDirectMessageChannelMembership({
-          direct_message_channel_membership: {
-            direct_message_channel_id: success.id,
-            member_id: this.props.currentUser.id
-          }
+    if (
+      this.props.directMessagingChannels.some(channel => {
+        return channel.members.every(member => {
+          return usernames.includes(member);
         });
+      })
+    ) {
+      let existingDm;
+      this.props.directMessagingChannels.forEach(channel => {
+        if (
+          channel.members.every(member => {
+            return usernames.includes(member);
+          })
+        ) {
+          existingDm = channel.id;
+        }
+      });
 
-        users.forEach(user => {
+      this.props.history.push(`/messages/dm/${existingDm}`);
+    } else {
+      this.props
+        .createDirectMessageChannel({
+          direct_message_channel: {
+            creator_name: this.props.currentUser.username
+          }
+        })
+        .then(success => {
           this.props.createDirectMessageChannelMembership({
             direct_message_channel_membership: {
               direct_message_channel_id: success.id,
-              member_id: user.id
+              member_id: this.props.currentUser.id
             }
           });
-        });
 
-        this.setState({ ["criteria"]: "" });
-      });
+          users.forEach(user => {
+            this.props.createDirectMessageChannelMembership({
+              direct_message_channel_membership: {
+                direct_message_channel_id: success.id,
+                member_id: user.id
+              }
+            });
+          });
+        });
+    }
+
+    this.setState({ ["criteria"]: "" });
   }
 
   activeGoButton() {
