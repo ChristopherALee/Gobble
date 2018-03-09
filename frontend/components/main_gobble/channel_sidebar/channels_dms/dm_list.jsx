@@ -29,7 +29,7 @@ const DirectMessageList = props => {
         recipients = recipients.join(", ");
       }
 
-      if (channel.id === parseInt(props.pathname.slice(15))) {
+      if (channel.id === parseInt(props.pathname.slice(13))) {
         return (
           <Link
             to={`/messages/dm/${channel.id}`}
@@ -37,7 +37,7 @@ const DirectMessageList = props => {
             key={idx}
           >
             <li>
-              <div className="active-circle" />
+              <div className="hovered-active-circle" />
               <div>{recipients}</div>
             </li>
           </Link>
