@@ -4,19 +4,35 @@ import { Link } from "react-router-dom";
 const DirectMessageList = props => {
   let directMessages;
 
-  if (props.directMessagingChannels.length) {
-    directMessages = props.directMessagingChannels.sort((a, b) => {
-      let channelName1 = a.name;
-      let channelName2 = b.name;
-
-      if (channelName1 < channelName2) {
+  const regSort = arr => {
+    return arr.sort((a, b) => {
+      if (a < b) {
         return -1;
-      } else if (channelName1 > channelName2) {
+      } else if (a > b) {
         return 1;
       } else {
         return 0;
       }
     });
+  };
+
+  if (props.directMessagingChannels.length) {
+    directMessages = props.directMessagingChannels.sort((a, b) => {
+      let sortedMembersA = regSort(a.members);
+      let sortedMembersB = regSort(b.members);
+
+      let channelName1 = a.name;
+      let channelName2 = b.name;
+
+      if (sortedMembersA[0] < sortedMembersB[0]) {
+        return -1;
+      } else if (sortedMembersA[0] > sortedMembersB[0]) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+    debugger;
 
     directMessages = directMessages.map((channel, idx) => {
       let recipients = channel.members.filter(

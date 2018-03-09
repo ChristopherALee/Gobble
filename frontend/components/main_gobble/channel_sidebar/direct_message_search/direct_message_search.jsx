@@ -38,17 +38,17 @@ class DirectMessageSearch extends React.Component {
 
     if (
       this.props.directMessagingChannels.some(channel => {
-        return usernames.every(member => {
-          return channel.members.includes(member);
-        });
+        return (
+          usernames.every(member => channel.members.includes(member)) &&
+          channel.members.every(member => usernames.includes(member))
+        );
       })
     ) {
       let existingDm;
       this.props.directMessagingChannels.forEach(channel => {
         if (
-          usernames.every(member => {
-            return channel.members.includes(member);
-          })
+          usernames.every(member => channel.members.includes(member)) &&
+          channel.members.every(member => usernames.includes(member))
         ) {
           existingDm = channel.id;
         }
