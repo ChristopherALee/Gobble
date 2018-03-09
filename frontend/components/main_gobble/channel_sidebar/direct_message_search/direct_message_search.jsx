@@ -55,6 +55,7 @@ class DirectMessageSearch extends React.Component {
       });
 
       this.props.history.push(`/messages/dm/${existingDm}`);
+      this.closeReset();
     } else {
       this.props
         .createDirectMessageChannel({
@@ -78,10 +79,11 @@ class DirectMessageSearch extends React.Component {
               }
             });
           });
+
+          this.props.history.push(`/messages/dm/${success.id}`);
+          this.closeReset();
         });
     }
-
-    this.setState({ ["criteria"]: "" });
   }
 
   activeGoButton() {
