@@ -24,7 +24,12 @@ class Api::DirectMessageChannelMembershipsController < ApplicationController
     @direct_message_channel_membership = DirectMessageChannelMembership.find(params[:id])
 
     if @direct_message_channel_membership && @direct_message_channel_membership.member_id == current_user.id
+      Pusher.trigger('sidebar_dm', 'membership_removed', {
+        channel: @direct_message_channel_membership.direct_message_channel.id
+        })
+        
       @direct_message_channel_membership.destroy
+
       render 'api/direct_message_channel_memberships/show'
     else
       render json: ['Cannot leave channel'], status: 403

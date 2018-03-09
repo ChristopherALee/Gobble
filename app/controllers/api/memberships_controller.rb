@@ -23,9 +23,14 @@ class Api::MembershipsController < ApplicationController
 
   def destroy
     @membership = Membership.find(params[:id])
-    
+
     if @membership && @membership.member_id == current_user.id
+      Pusher.trigger('sidebar_channel', 'membership_removed', {
+        channel: @membership.channel.name
+        })
+
       @membership.destroy
+
       render 'api/memberships/show'
     else
       render json: ['Cannot leave channel'], status: 403
