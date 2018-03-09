@@ -1,21 +1,25 @@
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import {
   fetchSingleMessage,
   createMessage,
   updateMessage,
-  destroyMessage } from '../../../actions/message/message_actions';
+  destroyMessage
+} from "../../../actions/message/message_actions";
 import {
   createMembership,
-  removeMembership } from '../../../actions/membership/membership_actions';
+  removeMembership
+} from "../../../actions/membership/membership_actions";
 import {
   fetchChannelMessages,
-  fetchSingleChannel } from '../../../actions/channel/channel_actions';
-import { fetchCurrentUser } from '../../../actions/session/session_actions';
+  fetchSingleChannel
+} from "../../../actions/channel/channel_actions";
+import { fetchCurrentUser } from "../../../actions/session/session_actions";
 import {
   hideMenu,
   showChannelSettingsMenu,
-  hideChannelSettingsMenu } from '../../../actions/ui/menu_actions';
-import ChannelMessages from './channel_messages';
+  hideChannelSettingsMenu
+} from "../../../actions/ui/menu_actions";
+import ChannelMessages from "./channel_messages";
 
 const mapStateToProps = (state, ownProps) => {
   let currentUser;
@@ -34,20 +38,14 @@ const mapStateToProps = (state, ownProps) => {
     currentChannel = state.entities.channels[currentChannelName];
     memberCount = currentChannel.members.length;
     purpose = currentChannel.purpose;
-    membership = currentUser.memberships.filter( (membership) => {
-      return (
-        membership["channelId"] === currentChannel.id
-      );
+    membership = currentUser.memberships.filter(membership => {
+      return membership["channelId"] === currentChannel.id;
     });
 
     let messageIds = currentChannel.messages;
-    messages = Object.values(state.entities.messages).filter(
-      (message) => {
-        return (
-          Object.values(messageIds).includes(message.id)
-        );
-      }
-    );
+    messages = Object.values(state.entities.messages).filter(message => {
+      return Object.values(messageIds).includes(message.id);
+    });
   }
 
   return {
@@ -64,22 +62,19 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    fetchChannelMessages: (channel) => dispatch(fetchChannelMessages(channel)),
-    fetchSingleMessage: (message) => dispatch(fetchSingleMessage(message)),
-    createMessage: (message) => dispatch(createMessage(message)),
-    updateMessage: (message) => dispatch(updateMessage(message)),
-    destroyMessage: (id) => dispatch(destroyMessage(id)),
-    fetchSingleChannel: (channel) => dispatch(fetchSingleChannel(channel)),
-    createMembership: (membership) => dispatch(createMembership(membership)),
-    removeMembership: (membershipId) => dispatch(removeMembership(membershipId)),
-    fetchCurrentUser: (userId) => dispatch(fetchCurrentUser(userId)),
+    fetchChannelMessages: channel => dispatch(fetchChannelMessages(channel)),
+    fetchSingleMessage: message => dispatch(fetchSingleMessage(message)),
+    createMessage: message => dispatch(createMessage(message)),
+    updateMessage: message => dispatch(updateMessage(message)),
+    destroyMessage: id => dispatch(destroyMessage(id)),
+    fetchSingleChannel: channel => dispatch(fetchSingleChannel(channel)),
+    createMembership: membership => dispatch(createMembership(membership)),
+    removeMembership: membershipId => dispatch(removeMembership(membershipId)),
+    fetchCurrentUser: userId => dispatch(fetchCurrentUser(userId)),
     hideMenu: () => dispatch(hideMenu()),
     showChannelSettingsMenu: () => dispatch(showChannelSettingsMenu()),
     hideChannelSettingsMenu: () => dispatch(hideChannelSettingsMenu())
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ChannelMessages);
+export default connect(mapStateToProps, mapDispatchToProps)(ChannelMessages);

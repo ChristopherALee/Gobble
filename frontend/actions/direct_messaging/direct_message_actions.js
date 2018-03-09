@@ -45,3 +45,10 @@ export const deleteDirectMessage = id => dispatch => {
     return message;
   });
 };
+
+export const createDirectMessage = message => dispatch => {
+  return DirectMessageApiUtil.createDirectMessage(message).then(message => {
+    dispatch(receiveSingleDirectMessage(message));
+    return message;
+  });
+};
