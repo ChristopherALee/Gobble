@@ -41,7 +41,6 @@ class DirectMessageSearch extends React.Component {
         }
       })
       .then(success => {
-        debugger;
         this.props.createDirectMessageChannelMembership({
           direct_message_channel_membership: {
             direct_message_channel_id: success.id,

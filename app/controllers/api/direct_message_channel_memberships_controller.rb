@@ -8,10 +8,8 @@ class Api::DirectMessageChannelMembershipsController < ApplicationController
   end
 
   def create
-    debugger
     @direct_message_channel_membership = DirectMessageChannelMembership.new(direct_message_channel_membership_params)
-    # @direct_message_channel_membership.member_id = current_user.id
-    debugger
+
     if @direct_message_channel_membership.save
       Pusher.trigger('sidebar_dm', 'membership_created', {
         channel: @direct_message_channel_membership.direct_message_channel.id
@@ -35,7 +33,6 @@ class Api::DirectMessageChannelMembershipsController < ApplicationController
 
   private
   def direct_message_channel_membership_params
-    debugger
     params.require(:direct_message_channel_membership).permit(:direct_message_channel_id, :member_id)
   end
 end

@@ -27,6 +27,8 @@ class ChannelSideBar extends React.Component {
   }
 
   componentDidMount() {
+    let that = this;
+
     this.props
       .fetchCurrentUser(this.props.currentUser.username)
       .then(success => {
@@ -54,8 +56,8 @@ class ChannelSideBar extends React.Component {
         });
 
         this.props.fetchAllDirectMessageChannels().then(() => {
-          if (this.props.location.pathname.includes("/dm/")) {
-            let currentDm = this.props.history.location.pathname.slice(13);
+          if (that.props.location.pathname.includes("/dm/")) {
+            let currentDm = that.props.history.location.pathname.slice(13);
             this.getDirectMessages(currentDm);
           }
         });
@@ -68,7 +70,6 @@ class ChannelSideBar extends React.Component {
 
     this.channel = this.pusher.subscribe("sidebar_channel");
     this.dmChannel = this.pusher.subscribe("sidebar_dm");
-    let that = this;
 
     this.channel.bind("membership_created", function(data) {
       that.props.fetchSingleChannel(data.channel);
