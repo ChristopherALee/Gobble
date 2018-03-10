@@ -43,7 +43,11 @@ const mapStateToProps = (state, ownProps) => {
   }
 
   return {
-    currentUser
+    currentUser,
+    currentDmChannel,
+    membership,
+    messages,
+    memberCount
   };
 };
 
