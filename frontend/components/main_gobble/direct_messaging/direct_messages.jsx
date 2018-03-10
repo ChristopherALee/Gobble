@@ -99,7 +99,7 @@ class DirectMessages extends React.Component {
 
       return (
         <div id="direct-messages-container">
-          <section className="direct-messages-header">
+          <section id="direct-messages-header">
             <div className="direct-messages-header-left">
               <div className="direct-message-recipients">{recipients}</div>
               <div className="direct-message-recipient-status">
@@ -118,7 +118,7 @@ class DirectMessages extends React.Component {
             </div>
           </section>
 
-          <section className="direct-messages">
+          <section id="direct-messages">
             <div className="direct-messages-root-container">
               <div className="direct-messages-container">
                 <ul>
