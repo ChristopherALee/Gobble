@@ -27,7 +27,15 @@ class DirectMessages extends React.Component {
                 <p>Online</p>
               </div>
             </div>
-            <div className="direct-messages-header-right">header right</div>
+            <div className="direct-messages-header-right">
+              <div className={`direct-message-detail-button`}>
+                <i className="fas fa-info-circle" />
+              </div>
+
+              <div className={`direct-message-settings`}>
+                <i className="fas fa-cog" />
+              </div>
+            </div>
           </section>
 
           <section className="direct-messages">
