@@ -463,7 +463,7 @@ class ChannelMessages extends React.Component {
 
               <div id="messages-container">
                 <ul>
-                  {this.renderMessages()}
+                  {/* {this.renderMessages()} */}
                   <div id="scroll-identifier" />
                 </ul>
               </div>
