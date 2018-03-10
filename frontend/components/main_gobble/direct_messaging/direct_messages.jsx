@@ -4,8 +4,41 @@ class DirectMessages extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      body: ""
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+
     this.renderMessages = this.renderMessages.bind(this);
     this.dateTimeConversion = this.dateTimeConversion.bind(this);
+  }
+
+  handleChange(field) {
+    return e => {
+      this.setState({ [field]: e.target.value });
+    };
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const channel = this.props.currentChannel.name;
+
+    // this.props
+    //   .createMessage({
+    //     message: {
+    //       body: this.state.body,
+    //       channel_id: this.props.currentChannel.id
+    //     }
+    //   })
+    //   .then(success => {
+    //     this.setState({ ["currentUserMessaged"]: true });
+    //     this.setState({ ["body"]: "" });
+    //     document.getElementById("scroll-identifier").scrollIntoView({
+    //       behavior: "smooth"
+    //     });
+    //   });
   }
 
   dateTimeConversion(dateTime) {
@@ -126,7 +159,18 @@ class DirectMessages extends React.Component {
                   <div id="scroll-identifier" />
                 </ul>
               </div>
-              <div className="message-input">input</div>
+              <div className="message-input">
+                <div className="message-input-container">
+                  <form onSubmit={this.handleSubmit}>
+                    <input
+                      type="text"
+                      value={this.state.body}
+                      placeholder={`Message ${recipients}`}
+                      onChange={this.handleChange("body")}
+                    />
+                  </form>
+                </div>
+              </div>
             </div>
           </section>
         </div>
