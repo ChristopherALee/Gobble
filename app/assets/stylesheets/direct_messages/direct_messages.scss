@@ -1,0 +1,26 @@
+#direct-messages-container {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  width: 100%;
+
+  .direct-messages-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    height: 65px;
+    border-bottom: 1.5px solid #e8e8e8;
+    user-select: none;
+
+    .direct-messages-header-left {
+      min-width: 275px;
+      margin-left: 15px;
+    }
+
+    .direct-messages-header-right {
+      display: flex;
+      color: #a0a0a2;
+      margin-right: 15px;
+    }
+  }
+}

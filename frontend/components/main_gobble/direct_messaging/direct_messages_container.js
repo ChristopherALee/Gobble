@@ -35,11 +35,14 @@ const mapStateToProps = (state, ownProps) => {
     });
 
     let messageIds = currentDmChannel.messages;
-    messages = Object.values(
-      state.entities.directMessaging.directMessagingMessages
-    ).filter(message => {
-      return Object.values(messageIds).includes(message.id);
-    });
+
+    if (messageIds) {
+      messages = Object.values(
+        state.entities.directMessaging.directMessagingMessages
+      ).filter(message => {
+        return Object.values(messageIds).includes(message.id);
+      });
+    }
   }
 
   return {
