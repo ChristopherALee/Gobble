@@ -15,6 +15,33 @@
     .direct-messages-header-left {
       min-width: 275px;
       margin-left: 15px;
+
+      .direct-message-recipients {
+        margin-bottom: 8px;
+        font-size: 22px;
+        font-weight: 600;
+        font-family: "Noto Sans", sans-serif;
+        color: #2c2d30;
+      }
+
+      .direct-message-recipient-status {
+        display: flex;
+        align-items: center;
+
+        .active-circle {
+          margin-right: 8px;
+          height: 10px;
+          width: 10px;
+          border-radius: 50%;
+          background-color: #93cc93;
+        }
+
+        p {
+          font-size: 12px;
+          color: #717274;
+          letter-spacing: 0.3px;
+        }
+      }
     }
 
     .direct-messages-header-right {

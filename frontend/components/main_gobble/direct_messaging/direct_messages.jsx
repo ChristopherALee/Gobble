@@ -19,17 +19,23 @@ class DirectMessages extends React.Component {
 
       return (
         <div id="direct-messages-container">
-          <div className="direct-messages-header">
-            <div className="direct-messages-header-left">{recipients}</div>
+          <section className="direct-messages-header">
+            <div className="direct-messages-header-left">
+              <div className="direct-message-recipients">{recipients}</div>
+              <div className="direct-message-recipient-status">
+                <div className="active-circle" />
+                <p>Online</p>
+              </div>
+            </div>
             <div className="direct-messages-header-right">header right</div>
-          </div>
+          </section>
 
-          <div className="direct-messages">
+          <section className="direct-messages">
             <div className="direct-messages-root-container">
               <div className="direct-messages">messages</div>
               <div className="message-input">input</div>
             </div>
-          </div>
+          </section>
         </div>
       );
     } else {
