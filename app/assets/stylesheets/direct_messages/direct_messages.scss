@@ -14,14 +14,19 @@
 
     .direct-messages-header-left {
       min-width: 275px;
-      margin-left: 15px;
+      // margin-left: 15px;
+      margin: 0 15px;
 
       .direct-message-recipients {
-        margin-bottom: 8px;
+        // margin-bottom: 8px;
+        height: 28px;
         font-size: 22px;
         font-weight: 600;
         font-family: "Noto Sans", sans-serif;
         color: #2c2d30;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       .direct-message-recipient-status {

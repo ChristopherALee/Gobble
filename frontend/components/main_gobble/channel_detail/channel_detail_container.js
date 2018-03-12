@@ -15,9 +15,15 @@ const mapStateToProps = (state, ownProps) => {
     );
   }
 
+  let currentUser;
+  if (state.session.currentUser) {
+    currentUser = state.session.currentUser;
+  }
+
   return {
     currentChannel: currentChannel,
-    currentChannelMembers: currentChannelMembers
+    currentChannelMembers: currentChannelMembers,
+    currentUser: currentUser
   };
 };
 

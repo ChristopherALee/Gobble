@@ -140,10 +140,17 @@
             margin-right: 10px;
           }
 
-          p {
+          .channel-member-username {
             font-weight: 600;
             font-size: 16px;
             color: #2c2d30;
+            display: flex;
+
+            .channel-member-currentUser {
+              margin-left: 5px;
+              font-size: 14px;
+              color: #a0a0a2;
+            }
           }
         }
       }

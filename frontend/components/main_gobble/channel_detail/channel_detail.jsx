@@ -72,6 +72,7 @@ class ChannelDetail extends React.Component {
   }
 
   renderChannelMembers() {
+    const currentUser = this.props.currentUser;
     const currentChannelMembers = this.props.currentChannelMembers.sort(
       (a, b) => {
         let memberA = a.username;
@@ -88,13 +89,26 @@ class ChannelDetail extends React.Component {
     );
 
     return currentChannelMembers.map(member => {
-      return (
-        <li key={member.id}>
-          <div className="channel-member-status" />
-          <div className="channel-member-picture" />
-          <p>{member.username}</p>
-        </li>
-      );
+      if (member.username === currentUser.username) {
+        return (
+          <li key={member.id}>
+            <div className="channel-member-status" />
+            <div className="channel-member-picture" />
+            <div className="channel-member-username">
+              {member.username}{" "}
+              <p className="channel-member-currentUser">(you)</p>
+            </div>
+          </li>
+        );
+      } else {
+        return (
+          <li key={member.id}>
+            <div className="channel-member-status" />
+            <div className="channel-member-picture" />
+            <div className="channel-member-username">{member.username}</div>
+          </li>
+        );
+      }
     });
   }
 
