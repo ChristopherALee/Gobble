@@ -35,7 +35,6 @@ const mapStateToProps = (state, ownProps) => {
     });
 
     let messageIds = currentDmChannel.directMessages;
-    debugger;
     if (messageIds) {
       messages = Object.values(
         state.entities.directMessaging.directMessagingMessages
@@ -44,8 +43,6 @@ const mapStateToProps = (state, ownProps) => {
       });
     }
   }
-
-  debugger;
 
   return {
     currentUser,

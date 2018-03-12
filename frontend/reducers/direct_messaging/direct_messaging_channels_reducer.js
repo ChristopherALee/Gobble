@@ -42,7 +42,9 @@ const directMessagingChannelsReducer = (state = {}, action) => {
       return newState;
     case RECEIVE_SINGLE_DIRECT_MESSAGE:
       newState = Object.assign({}, state);
-      newState[action.message.channelId].messages.push(action.message.id);
+      newState[action.message.direct_message_channel_id].directMessages.push(
+        action.message.id
+      );
       return newState;
     case REMOVE_DIRECT_MESSAGE:
       newState = Object.assign({}, state);

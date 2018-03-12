@@ -5,7 +5,8 @@ class DirectMessages extends React.Component {
     super(props);
 
     this.state = {
-      body: ""
+      body: "",
+      currentUserMessaged: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -23,22 +24,22 @@ class DirectMessages extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const channel = this.props.currentChannel.name;
+    const channel = this.props.currentDmChannel.name;
 
-    // this.props
-    //   .createMessage({
-    //     message: {
-    //       body: this.state.body,
-    //       channel_id: this.props.currentChannel.id
-    //     }
-    //   })
-    //   .then(success => {
-    //     this.setState({ ["currentUserMessaged"]: true });
-    //     this.setState({ ["body"]: "" });
-    //     document.getElementById("scroll-identifier").scrollIntoView({
-    //       behavior: "smooth"
-    //     });
-    //   });
+    this.props
+      .createDirectMessage({
+        direct_message: {
+          body: this.state.body,
+          direct_message_channel_id: this.props.currentDmChannel.id
+        }
+      })
+      .then(success => {
+        this.setState({ ["currentUserMessaged"]: true });
+        this.setState({ ["body"]: "" });
+        document.getElementById("scroll-identifier").scrollIntoView({
+          behavior: "smooth"
+        });
+      });
   }
 
   dateTimeConversion(dateTime) {
@@ -90,7 +91,7 @@ class DirectMessages extends React.Component {
 
   renderMessages() {
     let messages = this.props.messages;
-    debugger;
+
     messages = messages.map((message, idx) => {
       let timeStamp = this.dateTimeConversion(message.created_at);
       let lastMessage;
