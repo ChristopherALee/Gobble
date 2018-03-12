@@ -272,7 +272,10 @@ class ChannelMessages extends React.Component {
       <div id="channel-messages-blank-channel">
         <div className="blank-channel-container">
           <div className="blank-channel-chicken-image" />
-          <h2>Gah! Nothing's here! Click a channel on the left to view!</h2>
+          <h2>
+            Gah! Nothing's here! Search a channel or direct message someone on
+            the left!
+          </h2>
         </div>
       </div>
     );

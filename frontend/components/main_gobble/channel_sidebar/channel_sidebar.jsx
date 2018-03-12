@@ -265,9 +265,12 @@ class ChannelSideBar extends React.Component {
             fetchCurrentUser={this.props.fetchCurrentUser}
             createChannelMenuShown={this.props.createChannelMenuShown}
             removeCreateChannelMenu={this.removeCreateChannelMenu}
+            channelSearchMenuShown={this.props.channelSearchMenuShown}
+            removeChannelSearchMenu={this.removeChannelSearchMenu}
             createChannel={this.props.createChannel}
             createMembership={this.props.createMembership}
             fetchSingleChannel={this.props.fetchSingleChannel}
+            history={this.props.history}
           />
 
           <ChannelSearch

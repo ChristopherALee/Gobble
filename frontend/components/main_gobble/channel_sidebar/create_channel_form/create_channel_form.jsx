@@ -1,26 +1,26 @@
-import React from 'react';
+import React from "react";
 
 class CreateChannelForm extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      name: '',
-      purpose: ''
+      name: "",
+      purpose: ""
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(field) {
-    return (e) => {
-      this.setState({[field]: e.target.value});
+    return e => {
+      this.setState({ [field]: e.target.value });
     };
   }
 
   activeSubmit() {
     if (this.state.name.length && !this.isErrors()) {
-      return 'green-submit';
+      return "green-submit";
     } else {
       return null;
     }
@@ -28,13 +28,13 @@ class CreateChannelForm extends React.Component {
 
   isErrors() {
     if (
-      this.state.name.length >= 22
-      || this.state.name !== this.state.name.toLowerCase()
-      || this.state.name.includes(' ')
-      || this.state.name.includes('.')
-      || this.state.name.includes('?')
+      this.state.name.length >= 22 ||
+      this.state.name !== this.state.name.toLowerCase() ||
+      this.state.name.includes(" ") ||
+      this.state.name.includes(".") ||
+      this.state.name.includes("?")
     ) {
-      return 'channel-input-errors';
+      return "channel-input-errors";
     } else {
       return null;
     }
@@ -47,20 +47,23 @@ class CreateChannelForm extends React.Component {
       const channel = Object.assign({}, this.state);
       const currentUser = this.props.currentUser;
 
-      this.props.createChannel({channel: channel}).then(
-        (success) => {
-          this.props.createMembership({membership: {channel_id: success.id}}).then(
-            (success) => {
-              this.props.fetchCurrentUser(currentUser.username);
+      this.props.createChannel({ channel: channel }).then(success => {
+        this.props
+          .createMembership({ membership: { channel_id: success.id } })
+          .then(success2 => {
+            this.props
+              .fetchCurrentUser(currentUser.username)
+              .then(() => this.props.history.push(`/messages/${success.name}`));
+            if (this.props.channelSearchMenuShown) {
+              this.props.removeChannelSearchMenu();
             }
-          );
-          this.props.removeCreateChannelMenu();
-          this.setState({
-            ['name']: '',
-            ['purpose']: ''
+            this.props.removeCreateChannelMenu();
+            this.setState({
+              ["name"]: "",
+              ["purpose"]: ""
+            });
           });
-        }
-      );
+      });
     }
   }
 
@@ -68,14 +71,20 @@ class CreateChannelForm extends React.Component {
     if (this.props.createChannelMenuShown) {
       return (
         <div className="create-channel-menu">
-          <div className="close-create-channel-menu" onClick={this.props.removeCreateChannelMenu}>
-            <i className="fas fa-times"></i>
+          <div
+            className="close-create-channel-menu"
+            onClick={this.props.removeCreateChannelMenu}
+          >
+            <i className="fas fa-times" />
             <p>esc</p>
           </div>
           <div className="create-channel-menu-container">
             <div className="create-channel-menu-contents">
               <h1>Create a channel</h1>
-              <p className="create-channel-description">Channels are where your members communicate. They're best when organized around a topic - #bread, for example.</p>
+              <p className="create-channel-description">
+                Channels are where your members communicate. They're best when
+                organized around a topic - #bread, for example.
+              </p>
 
               <form className="create-channel-form">
                 <div className="channel-form-input">
@@ -86,9 +95,13 @@ class CreateChannelForm extends React.Component {
                       type="text"
                       value={this.state.name}
                       onChange={this.handleChange("name")}
-                      className="create-channel-form-name-input"/>
+                      className="create-channel-form-name-input"
+                    />
                   </div>
-                  <span>Names must be lowercase, without spaces or periods, and shorter than 22 characters.</span>
+                  <span>
+                    Names must be lowercase, without spaces or periods, and
+                    shorter than 22 characters.
+                  </span>
                 </div>
                 <div className="channel-form-input">
                   <div className="purpose-container">
@@ -100,7 +113,8 @@ class CreateChannelForm extends React.Component {
                       type="text"
                       value={this.state.purpose}
                       onChange={this.handleChange("purpose")}
-                      className="create-channel-form-purpose-input"/>
+                      className="create-channel-form-purpose-input"
+                    />
                   </div>
                   <span>What's this channel about?</span>
                 </div>
@@ -110,7 +124,8 @@ class CreateChannelForm extends React.Component {
                     type="submit"
                     id={`${this.activeSubmit()}`}
                     onClick={this.handleSubmit}
-                    value="Create Channel"/>
+                    value="Create Channel"
+                  />
                 </div>
               </form>
             </div>

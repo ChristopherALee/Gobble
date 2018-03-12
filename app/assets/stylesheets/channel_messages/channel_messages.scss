@@ -286,6 +286,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 10px;
 
     .blank-channel-chicken-image {
       background-image: image_url("chicken_images/shocked-chicken.png");
@@ -301,6 +302,7 @@
       font-size: 25px;
       font-weight: 600;
       margin-top: 10px;
+      text-align: center;
     }
   }
 }
