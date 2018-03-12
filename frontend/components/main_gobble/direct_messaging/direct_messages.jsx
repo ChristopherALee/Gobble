@@ -16,6 +16,25 @@ class DirectMessages extends React.Component {
     this.dateTimeConversion = this.dateTimeConversion.bind(this);
   }
 
+  componentDidMount() {
+    this.pusher = new Pusher("416ebb2d74bf61955f19", {
+      cluster: "us2",
+      encrypted: true
+    });
+
+    this.dmChannel = this.pusher.subscribe("direct_messages");
+    let that = this;
+    this.dmChannel.bind("message_created", function(data) {
+      that.props
+        .fetchSingleDirectMessageChannel(data.directMessageChannelId)
+        .then(
+          that.props.fetchDirectMessageChannelMessages(
+            that.props.currentDmChannel.id
+          )
+        );
+    });
+  }
+
   handleChange(field) {
     return e => {
       this.setState({ [field]: e.target.value });
