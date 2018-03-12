@@ -42,24 +42,24 @@ class ChannelMessages extends React.Component {
       encrypted: true
     });
 
-    this.channel = this.pusher.subscribe("sidebar_channel");
-    this.channel.bind("membership_created", function(data) {
-      that.props.fetchSingleChannel(data.channel);
-    });
-    this.channel.bind("membership_removed", function(data) {
-      that.props.fetchSingleChannel(data.channel);
-    });
+    // this.channel = this.pusher.subscribe("sidebar_channel");
+    // this.channel.bind("membership_created", function(data) {
+    //   that.props.fetchSingleChannel(data.channel);
+    // });
+    // this.channel.bind("membership_removed", function(data) {
+    //   that.props.fetchSingleChannel(data.channel);
+    // });
 
     this.channelMessages = this.pusher.subscribe("channel_messages");
     let that = this;
     this.channelMessages.bind("message_created", function(data) {
-      that.props.fetchSingleChannel(data.channelName);
-      that.props.fetchChannelMessages(that.props.currentChannel.name);
+      // that.props.fetchSingleChannel(data.channelName);
+      that.getChannelMessages(that.props.currentChannel.name);
     });
   }
 
   componentWillUnmount() {
-    this.channel = this.pusher.unsubscribe("sidebar_channel");
+    // this.channel = this.pusher.unsubscribe("sidebar_channel");
     this.channelMessages = this.pusher.unsubscribe("channel_messages");
   }
 

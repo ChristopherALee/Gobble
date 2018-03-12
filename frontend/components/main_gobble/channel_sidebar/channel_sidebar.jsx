@@ -72,6 +72,9 @@ class ChannelSideBar extends React.Component {
     this.channel.bind("membership_created", function(data) {
       that.props.fetchSingleChannel(data.channel);
     });
+    this.channel.bind("membership_removed", function(data) {
+      that.props.fetchSingleChannel(data.channel);
+    });
 
     this.channelMessages = this.pusher.subscribe("channel_messages");
     this.channelMessages.bind("message_created", function(data) {
@@ -99,6 +102,9 @@ class ChannelSideBar extends React.Component {
 
   componentWillUnmount() {
     this.pusher.unsubscribe("sidebar_channel");
+    this.pusher.unsubscribe("channel_messages");
+    this.pusher.unsubscribe("sidebar_dm");
+    this.puhser.unsubscribe("direct_messages");
   }
 
   componentWillReceiveProps(newProps) {
