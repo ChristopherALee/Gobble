@@ -10,6 +10,7 @@ import {
   fetchSingleDirectMessageChannel
 } from "../../../actions/direct_messaging/direct_message_channel_actions";
 import { fetchCurrentUser } from "../../../actions/session/session_actions";
+import { hideMenu } from "../../../actions/ui/menu_actions";
 
 const mapStateToProps = (state, ownProps) => {
   let currentUser;
@@ -49,7 +50,8 @@ const mapStateToProps = (state, ownProps) => {
     currentDmChannel,
     membership,
     messages,
-    memberCount
+    memberCount,
+    gobbleMenuShown: state.ui.menu
   };
 };
 
@@ -62,7 +64,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(fetchDirectMessageChannelMessages(id)),
     fetchSingleDirectMessageChannel: channel =>
       dispatch(fetchSingleDirectMessageChannel(channel)),
-    fetchCurrentUser: userId => dispatch(fetchCurrentUser(userId))
+    fetchCurrentUser: userId => dispatch(fetchCurrentUser(userId)),
+    hideMenu: () => dispatch(hideMenu())
   };
 };
 

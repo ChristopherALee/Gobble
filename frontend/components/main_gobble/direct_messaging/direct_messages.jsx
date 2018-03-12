@@ -19,6 +19,7 @@ class DirectMessages extends React.Component {
     this.renderMessages = this.renderMessages.bind(this);
     this.dateTimeConversion = this.dateTimeConversion.bind(this);
     this.scrollToBottom = this.scrollToBottom.bind(this);
+    this.hideAllMenus = this.hideAllMenus.bind(this);
   }
 
   componentDidMount() {
@@ -209,6 +210,12 @@ class DirectMessages extends React.Component {
     return messages;
   }
 
+  hideAllMenus() {
+    if (this.props.gobbleMenuShown) {
+      this.props.hideMenu();
+    }
+  }
+
   render() {
     if (this.props.currentDmChannel && this.props.currentUser) {
       let currentUser = this.props.currentUser.username;
@@ -222,22 +229,13 @@ class DirectMessages extends React.Component {
       }
 
       return (
-        <div id="direct-messages-container">
+        <div id="direct-messages-container" onClick={this.hideAllMenus}>
           <section id="direct-messages-header">
             <div className="direct-messages-header-left">
               <div className="direct-message-recipients">{recipients}</div>
               <div className="direct-message-recipient-status">
                 <div className="active-circle" />
                 <p>Online</p>
-              </div>
-            </div>
-            <div className="direct-messages-header-right">
-              <div className={`direct-message-detail-button`}>
-                <i className="fas fa-info-circle" />
-              </div>
-
-              <div className={`direct-message-settings`}>
-                <i className="fas fa-cog" />
               </div>
             </div>
           </section>
