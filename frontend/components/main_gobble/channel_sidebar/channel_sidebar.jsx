@@ -104,7 +104,7 @@ class ChannelSideBar extends React.Component {
     this.pusher.unsubscribe("sidebar_channel");
     this.pusher.unsubscribe("channel_messages");
     this.pusher.unsubscribe("sidebar_dm");
-    this.puhser.unsubscribe("direct_messages");
+    this.pusher.unsubscribe("direct_messages");
   }
 
   componentWillReceiveProps(newProps) {
