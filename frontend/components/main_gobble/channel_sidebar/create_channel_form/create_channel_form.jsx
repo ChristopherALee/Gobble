@@ -10,6 +10,7 @@ class CreateChannelForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.close = this.close.bind(this);
   }
 
   handleChange(field) {
@@ -38,6 +39,14 @@ class CreateChannelForm extends React.Component {
     } else {
       return null;
     }
+  }
+
+  close() {
+    this.props.removeCreateChannelMenu();
+    this.setState({
+      name: "",
+      purpose: ""
+    });
   }
 
   handleSubmit(e) {
@@ -71,10 +80,7 @@ class CreateChannelForm extends React.Component {
     if (this.props.createChannelMenuShown) {
       return (
         <div className="create-channel-menu">
-          <div
-            className="close-create-channel-menu"
-            onClick={this.props.removeCreateChannelMenu}
-          >
+          <div className="close-create-channel-menu" onClick={this.close}>
             <i className="fas fa-times" />
             <p>esc</p>
           </div>
