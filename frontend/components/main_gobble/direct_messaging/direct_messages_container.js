@@ -34,7 +34,7 @@ const mapStateToProps = (state, ownProps) => {
       return membership["channelId"] === currentDmChannel.id;
     });
     let messageIds = currentDmChannel.directMessages;
-    debugger;
+
     if (messageIds) {
       messages = Object.values(
         state.entities.directMessaging.directMessagingMessages

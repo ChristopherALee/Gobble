@@ -6,14 +6,49 @@ class DirectMessages extends React.Component {
 
     this.state = {
       body: "",
+      newMessages: false,
+      newMessageBannerShown: "hidden",
+      channelDetailShown: false,
       currentUserMessaged: false
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.getDmChannelMessages = this.getDmChannelMessages.bind(this);
 
     this.renderMessages = this.renderMessages.bind(this);
     this.dateTimeConversion = this.dateTimeConversion.bind(this);
+    this.scrollToBottom = this.scrollToBottom.bind(this);
+  }
+
+  componentDidMount() {
+    let that = this;
+
+    this.pusher = new Pusher("416ebb2d74bf61955f19", {
+      cluster: "us2",
+      encrypted: true
+    });
+
+    this.dmChannelMessages = this.pusher.subscribe("direct_messages");
+    this.dmChannelMessages.bind("message_created", function(data) {
+      that.getDmChannelMessages(data.directMessageChannelId);
+    });
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (this.props.location.pathname !== newProps.location.pathname) {
+      this.setState({ ["newMessages"]: false });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      if (this.props.currentDmChannel) {
+        document.getElementById("scroll-identifier").scrollIntoView({
+          behavior: "instant"
+        });
+      }
+    }
   }
 
   handleChange(field) {
@@ -40,6 +75,61 @@ class DirectMessages extends React.Component {
           behavior: "smooth"
         });
       });
+  }
+
+  getDmChannelMessages(channel) {
+    if (this.state.currentUserMessaged && this.state.body === "") {
+      document.getElementById("scroll-identifier").scrollIntoView({
+        behavior: "smooth"
+      });
+    } else {
+      this.props.fetchDirectMessageChannelMessages(channel).then(success => {
+        const scrollHeight = document.getElementById("direct-messages-section")
+          .scrollHeight;
+        const scrollTop = document.getElementById("direct-messages-section")
+          .scrollTop;
+        const bottomHeight = scrollHeight - scrollTop;
+        const containerHeight =
+          document.getElementById("direct-messages-section").clientHeight + 500;
+
+        if (
+          this.state.body === "" &&
+          bottomHeight > containerHeight &&
+          !this.state.currentUserMessaged
+        ) {
+          this.setState({ ["newMessages"]: true });
+          this.setState({ ["newMessageBannerShown"]: "shown" });
+        } else if (this.state.body === "") {
+          document.getElementById("scroll-identifier").scrollIntoView({
+            behavior: "smooth"
+          });
+        }
+
+        this.setState({ ["currentUserMessaged"]: false });
+      });
+    }
+  }
+
+  renderNewMessageBanner() {
+    if (this.state.newMessages) {
+      return (
+        <div id="new-message-banner">
+          <p>New messages (click here to scroll down)</p>
+        </div>
+      );
+    } else {
+      return null;
+    }
+  }
+
+  scrollToBottom() {
+    document.getElementById("scroll-identifier").scrollIntoView({
+      behavior: "instant"
+    });
+    this.setState({
+      ["newMessages"]: false,
+      ["newMessageBannerShown"]: "hidden"
+    });
   }
 
   dateTimeConversion(dateTime) {
@@ -154,7 +244,14 @@ class DirectMessages extends React.Component {
 
           <section id="direct-messages">
             <div className="direct-messages-root-container">
-              <div className="direct-messages-container">
+              <div
+                id="new-message-banner-container"
+                className={this.state.newMessageBannerShown}
+                onClick={this.scrollToBottom}
+              >
+                {this.renderNewMessageBanner()}
+              </div>
+              <div id="direct-messages-section">
                 <ul>
                   {this.renderMessages()}
                   <div id="scroll-identifier" />
