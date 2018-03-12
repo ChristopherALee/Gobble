@@ -36,6 +36,10 @@ class DirectMessages extends React.Component {
     });
   }
 
+  componentWillUnmount() {
+    this.pusher.unsubscribe("direct_messages");
+  }
+
   componentWillReceiveProps(newProps) {
     if (this.props.location.pathname !== newProps.location.pathname) {
       this.setState({ ["newMessages"]: false });
