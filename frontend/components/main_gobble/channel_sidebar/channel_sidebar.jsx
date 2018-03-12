@@ -69,14 +69,31 @@ class ChannelSideBar extends React.Component {
     });
 
     this.channel = this.pusher.subscribe("sidebar_channel");
-    this.dmChannel = this.pusher.subscribe("sidebar_dm");
-
     this.channel.bind("membership_created", function(data) {
       that.props.fetchSingleChannel(data.channel);
     });
 
+    this.channelMessages = this.pusher.subscribe("channel_messages");
+    this.channelMessages.bind("message_created", function(data) {
+      that.props
+        .fetchSingleChannel(data.channelName)
+        .then(that.props.fetchChannelMessages(data.channelName));
+    });
+
+    this.dmChannel = this.pusher.subscribe("sidebar_dm");
     this.dmChannel.bind("membership_created", function(data) {
       that.props.fetchSingleDirectMessageChannel(data.channel);
+    });
+
+    this.dmChannelMessages = this.pusher.subscribe("direct_messages");
+    this.dmChannelMessages.bind("message_created", function(data) {
+      that.props
+        .fetchSingleDirectMessageChannel(data.directMessageChannelId)
+        .then(
+          that.props.fetchDirectMessageChannelMessages(
+            data.directMessageChannelId
+          )
+        );
     });
   }
 

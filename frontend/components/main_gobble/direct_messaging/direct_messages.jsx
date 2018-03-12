@@ -29,7 +29,7 @@ class DirectMessages extends React.Component {
         .fetchSingleDirectMessageChannel(data.directMessageChannelId)
         .then(
           that.props.fetchDirectMessageChannelMessages(
-            that.props.currentDmChannel.id
+            data.directMessageChannelId
           )
         );
     });

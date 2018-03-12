@@ -53,8 +53,8 @@ class ChannelMessages extends React.Component {
     this.channelMessages = this.pusher.subscribe("channel_messages");
     let that = this;
     this.channelMessages.bind("message_created", function(data) {
-      that.fetchSingleChannel(data.channelName);
-      that.getChannelMessages(that.props.currentChannel.name);
+      that.props.fetchSingleChannel(data.channelName);
+      that.props.fetchChannelMessages(that.props.currentChannel.name);
     });
   }
 
