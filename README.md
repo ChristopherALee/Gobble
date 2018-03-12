@@ -18,7 +18,7 @@
 4. **[DONE]** Channels
 5. **[DONE]** Channel Search
 6. **[DONE]** Channel Group Messages
-7. Direct Messages
+7. **[DONE]** Direct Messages
 8. Online/Offline User Activity
 9. Paperclip Implementation
 10. User profile photo
