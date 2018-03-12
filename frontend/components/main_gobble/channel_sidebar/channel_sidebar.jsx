@@ -118,11 +118,21 @@ class ChannelSideBar extends React.Component {
         );
       } else if (newPath !== "") {
         if (newPath.includes("dm")) {
-          this.getDirectMessages(parseInt(newPath.slice(3)));
-          this.props.updateUser({
-            username: this.props.currentUser,
-            last_visited_channel: newPath
-          });
+          if (
+            !this.props.currentUser.directMessageChannels.includes(
+              parseInt(newPath.slice(3))
+            )
+          ) {
+            this.props.history.push(
+              `/messages/${this.props.currentUser.lastVisitedChannel}`
+            );
+          } else {
+            this.getDirectMessages(parseInt(newPath.slice(3)));
+            this.props.updateUser({
+              username: this.props.currentUser,
+              last_visited_channel: newPath
+            });
+          }
         } else {
           let newChannel = newProps.location.pathname.slice(10);
           this.getChannelMessages(newChannel);
