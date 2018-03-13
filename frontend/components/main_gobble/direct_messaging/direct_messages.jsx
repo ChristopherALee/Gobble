@@ -203,6 +203,7 @@ class DirectMessages extends React.Component {
               <div className="message-author-name">
                 <strong>{message.authorName}</strong>
               </div>
+              <div className="message-timestamp">{timeStamp}</div>
             </div>
 
             <div className="message-body">{message.body}</div>
