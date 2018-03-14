@@ -359,12 +359,16 @@ class ChannelSideBar extends React.Component {
 
             <div className="side-bar-dms">
               <div className="dms-header">
-                <p
+                <div
                   className="dms-header-content"
                   onClick={this.renderDirectMessageMenu}
                 >
-                  Direct Messages
-                </p>
+                  <p>Direct Messages</p>
+                  <div className="search-dm-hover">
+                    <p>Open a direct message</p>
+                    <div className="triangle-down" />
+                  </div>
+                </div>
                 <div
                   className="create-dm-button"
                   onClick={this.renderDirectMessageMenu}

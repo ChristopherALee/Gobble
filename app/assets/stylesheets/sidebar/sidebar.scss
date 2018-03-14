@@ -250,6 +250,34 @@
 
         &:hover {
           color: #f1f7f6;
+
+          .search-dm-hover {
+            visibility: visible;
+            opacity: 1;
+          }
+        }
+
+        .search-dm-hover {
+          visibility: hidden;
+          opacity: 0;
+          transition: visibility 0s, opacity 0.2s linear;
+          background-color: #2c2d30;
+          color: white;
+          position: absolute;
+          padding: 10px;
+          border-radius: 6px;
+          top: 318px;
+          z-index: 5;
+
+          .triangle-down {
+            width: 10px;
+            height: 10px;
+            background-color: #2c2d30;
+            position: absolute;
+            border: 1px solid #2c2d30;
+            left: 22px;
+            transform: rotate(45deg);
+          }
         }
       }
 
