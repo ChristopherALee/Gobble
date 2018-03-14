@@ -182,22 +182,28 @@
       display: flex;
       flex-direction: column-reverse;
       overflow-y: scroll;
-      padding: 0 20px;
+      // padding: 0 20px;
 
       ul {
         text-decoration: none;
 
         li:first-child {
-          margin-top: 20px;
+          // margin-top: 20px;
         }
 
         li {
           display: flex;
-          margin-bottom: 20px;
+          // margin-bottom: 20px;
+          padding: 10px 0;
+
+          &:hover {
+            background-color: #f9f9f9;
+          }
 
           .user-profile-pic {
             display: flex;
             align-items: center;
+            margin-left: 20px;
 
             // temp until paperclip
             background-image: image_url("logos/gobble-logo-left.png");
@@ -215,6 +221,7 @@
             width: 100%;
             word-break: break-word;
             margin-left: 10px;
+            margin-right: 20px;
 
             .message-author-timestamp {
               display: flex;
