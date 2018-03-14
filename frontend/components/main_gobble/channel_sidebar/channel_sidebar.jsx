@@ -374,6 +374,10 @@ class ChannelSideBar extends React.Component {
                   onClick={this.renderDirectMessageMenu}
                 >
                   <i className="fas fa-plus-circle" />
+                  <div className="create-dm-hover">
+                    <p>Open a direct message</p>
+                    <div className="triangle-down" />
+                  </div>
                 </div>
               </div>
 
