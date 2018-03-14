@@ -129,7 +129,7 @@
           visibility: hidden;
           opacity: 0;
           transition: visibility 0s, opacity 0.2s linear;
-          background-color: black;
+          background-color: #2c2d30;
           color: white;
           position: absolute;
           top: 40px;
@@ -139,17 +139,50 @@
           .triangle-down {
             width: 10px;
             height: 10px;
-            background-color: black;
+            background-color: #2c2d30;
             position: absolute;
-            border: 1px solid black;
+            border: 1px solid #2c2d30;
             left: 22px;
             transform: rotate(45deg);
           }
         }
       }
 
-      .fa-plus-circle:hover {
-        color: #f1f7f6;
+      .create-channel-button {
+        &:hover {
+          .create-channel-hover {
+            visibility: visible;
+            opacity: 1;
+          }
+        }
+
+        .fa-plus-circle:hover {
+          color: #f1f7f6;
+        }
+
+        .create-channel-hover {
+          visibility: hidden;
+          opacity: 0;
+          transition: visibility 0s, opacity 0.2s linear;
+          background-color: #2c2d30;
+          color: white;
+          position: absolute;
+          padding: 10px;
+          border-radius: 6px;
+          top: 40px;
+          left: 255px;
+          z-index: 5;
+
+          .triangle-down {
+            width: 10px;
+            height: 10px;
+            background-color: #2c2d30;
+            position: absolute;
+            border: 1px solid #2c2d30;
+            left: 56px;
+            transform: rotate(45deg);
+          }
+        }
       }
     }
 
