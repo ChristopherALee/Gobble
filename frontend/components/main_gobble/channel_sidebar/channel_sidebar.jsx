@@ -329,12 +329,15 @@ class ChannelSideBar extends React.Component {
 
             <div className="side-bar-channels">
               <div className="channels-header">
-                <p
+                <div
                   className="channels-header-content"
                   onClick={this.renderChannelSearchMenu}
                 >
-                  Channels
-                </p>
+                  <p>Channels</p>
+                  <div className="search-channels-hover">
+                    <p>Browse all channels</p>
+                  </div>
+                </div>
                 <div
                   className="create-channel-button"
                   onClick={this.renderCreateChannelMenu}

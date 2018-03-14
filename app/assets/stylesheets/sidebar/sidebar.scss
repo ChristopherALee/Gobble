@@ -118,6 +118,23 @@
 
         &:hover {
           color: #f1f7f6;
+
+          .search-channels-hover {
+            visibility: visible;
+            opacity: 1;
+          }
+        }
+
+        .search-channels-hover {
+          visibility: hidden;
+          opacity: 0;
+          transition: visibility 0s, opacity 0.2s linear;
+          background-color: black;
+          color: white;
+          position: absolute;
+          top: 40px;
+          padding: 10px;
+          border-radius: 6px;
         }
       }
 
