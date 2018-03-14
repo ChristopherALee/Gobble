@@ -135,6 +135,16 @@
           top: 40px;
           padding: 10px;
           border-radius: 6px;
+
+          .triangle-down {
+            width: 10px;
+            height: 10px;
+            background-color: black;
+            position: absolute;
+            border: 1px solid black;
+            left: 22px;
+            transform: rotate(45deg);
+          }
         }
       }
 

@@ -336,6 +336,7 @@ class ChannelSideBar extends React.Component {
                   <p>Channels</p>
                   <div className="search-channels-hover">
                     <p>Browse all channels</p>
+                    <div className="triangle-down" />
                   </div>
                 </div>
                 <div
@@ -343,6 +344,10 @@ class ChannelSideBar extends React.Component {
                   onClick={this.renderCreateChannelMenu}
                 >
                   <i className="fas fa-plus-circle" />
+                  <div className="create-channel-hover">
+                    <p>Create a channel</p>
+                    <div className="triangle-down" />
+                  </div>
                 </div>
               </div>
 
