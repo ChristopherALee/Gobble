@@ -94,11 +94,6 @@
     }
   }
 
-  .messages {
-    // for scrollbar styling
-    width: 99.5%;
-  }
-
   .channel-messages-settings-menu {
     width: 200px;
     height: 43px;
@@ -193,6 +188,7 @@
     }
 
     #messages-container {
+      width: 99.5%;
       height: 100%;
       display: flex;
       flex-direction: column-reverse;
