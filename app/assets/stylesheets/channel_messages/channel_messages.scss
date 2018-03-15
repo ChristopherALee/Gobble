@@ -1,3 +1,13 @@
+#messages-container::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+#messages-container::-webkit-scrollbar-thumb {
+  background-color: #dadada;
+  border-radius: 4px;
+}
+
 #channel-messages {
   overflow-x: hidden;
   overflow-y: hidden;
@@ -82,6 +92,11 @@
         }
       }
     }
+  }
+
+  .messages {
+    // for scrollbar styling
+    width: 99.5%;
   }
 
   .channel-messages-settings-menu {
