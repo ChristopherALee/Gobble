@@ -1,4 +1,6 @@
 import React from "react";
+import { Route } from "react-router-dom";
+import DirectMessageDetailContainer from "./dm_detail/dm_detail_container";
 
 class DirectMessages extends React.Component {
   constructor(props) {
@@ -20,6 +22,8 @@ class DirectMessages extends React.Component {
     this.dateTimeConversion = this.dateTimeConversion.bind(this);
     this.scrollToBottom = this.scrollToBottom.bind(this);
     this.hideAllMenus = this.hideAllMenus.bind(this);
+    this.toggleChannelDetail = this.toggleChannelDetail.bind(this);
+    this.renderChannelDetail = this.renderChannelDetail.bind(this);
   }
 
   componentDidMount() {
@@ -221,6 +225,24 @@ class DirectMessages extends React.Component {
     }
   }
 
+  toggleChannelDetail() {
+    if (this.state.channelDetailShown) {
+      this.setState({ ["channelDetailShown"]: false });
+    } else {
+      this.setState({ ["channelDetailShown"]: true });
+    }
+  }
+
+  renderChannelDetail() {
+    if (this.state.channelDetailShown) {
+      return (
+        <Route path="/messages/dm" component={DirectMessageDetailContainer} />
+      );
+    } else {
+      return null;
+    }
+  }
+
   render() {
     if (this.props.currentDmChannel && this.props.currentUser) {
       let currentUser = this.props.currentUser.username;
@@ -233,6 +255,11 @@ class DirectMessages extends React.Component {
         recipients = recipients.join("");
       }
 
+      let activeDetailButton;
+      if (this.state.channelDetailShown) {
+        activeDetailButton = "activeButton";
+      }
+
       return (
         <div id="direct-messages-container" onClick={this.hideAllMenus}>
           <section id="direct-messages-header">
@@ -241,6 +268,15 @@ class DirectMessages extends React.Component {
               <div className="direct-message-recipient-status">
                 <div className="active-circle" />
                 <p>Online</p>
+              </div>
+            </div>
+
+            <div className="direct-messages-header-right">
+              <div
+                className={`channel-detail-button ${activeDetailButton}`}
+                onClick={this.toggleChannelDetail}
+              >
+                <i className="fas fa-info-circle" />
               </div>
             </div>
           </section>
@@ -273,6 +309,8 @@ class DirectMessages extends React.Component {
                 </div>
               </div>
             </div>
+
+            {this.renderChannelDetail()}
           </section>
         </div>
       );

@@ -2,6 +2,7 @@
   width: 500px;
   min-width: 300px;
   user-select: none;
+  height: 105%;
 
   .channel-detail-container {
     border-left: 1px solid #e8e8e8;
@@ -15,7 +16,6 @@
       padding-left: 15px;
       font-size: 18px;
       font-weight: 800;
-      border-left: 1px solid #e8e8e8;
       border-bottom: 1px solid #e8e8e8;
 
       h2 {
