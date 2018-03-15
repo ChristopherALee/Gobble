@@ -132,9 +132,9 @@
           background-color: #2c2d30;
           color: white;
           position: absolute;
-          top: 40px;
           padding: 10px;
           border-radius: 6px;
+          margin-top: -60px;
 
           .triangle-down {
             width: 10px;
@@ -142,7 +142,7 @@
             background-color: #2c2d30;
             position: absolute;
             border: 1px solid #2c2d30;
-            left: 22px;
+            left: 26px;
             transform: rotate(45deg);
           }
         }
@@ -169,7 +169,7 @@
           position: absolute;
           padding: 10px;
           border-radius: 6px;
-          top: 40px;
+          margin-top: -60px;
           left: 255px;
           z-index: 5;
 
@@ -258,6 +258,7 @@
         }
 
         .search-dm-hover {
+          margin-top: -60px;
           visibility: hidden;
           opacity: 0;
           transition: visibility 0s, opacity 0.2s linear;
@@ -266,7 +267,6 @@
           position: absolute;
           padding: 10px;
           border-radius: 6px;
-          top: 318px;
           z-index: 5;
 
           .triangle-down {
@@ -275,7 +275,7 @@
             background-color: #2c2d30;
             position: absolute;
             border: 1px solid #2c2d30;
-            left: 22px;
+            left: 46px;
             transform: rotate(45deg);
           }
         }
@@ -290,6 +290,7 @@
         }
 
         .create-dm-hover {
+          margin-top: -63px;
           visibility: hidden;
           opacity: 0;
           transition: visibility 0s, opacity 0.2s linear;
@@ -298,7 +299,6 @@
           position: absolute;
           padding: 10px;
           border-radius: 6px;
-          top: 318px;
           left: 235px;
           z-index: 5;
 
