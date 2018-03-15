@@ -121,7 +121,6 @@ class DirectMessageDetail extends React.Component {
           <div className="channel-detail-container">
             <section className="channel-detail-about-banner">
               <h2>About this conversation</h2>
-              <p>X</p>
             </section>
 
             <section
