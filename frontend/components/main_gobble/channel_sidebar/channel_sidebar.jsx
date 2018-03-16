@@ -154,7 +154,12 @@ class ChannelSideBar extends React.Component {
   }
 
   logOut() {
-    this.props.logout();
+    this.props
+      .updateUserOnlineStatus({
+        username: this.props.currentUser,
+        is_online: false
+      })
+      .then(success => this.props.logout());
   }
 
   gobbleMenu() {

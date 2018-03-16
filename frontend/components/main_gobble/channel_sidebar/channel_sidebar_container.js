@@ -29,7 +29,8 @@ import {
 import {
   logout,
   updateUser,
-  fetchCurrentUser
+  fetchCurrentUser,
+  updateUserOnlineStatus
 } from "../../../actions/session/session_actions";
 import { fetchAllUsers } from "../../../actions/user/user_actions";
 
@@ -102,7 +103,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     logout: () => dispatch(logout()),
     updateUser: user => dispatch(updateUser(user)),
     fetchCurrentUser: username => dispatch(fetchCurrentUser(username)),
-    fetchAllUsers: () => dispatch(fetchAllUsers())
+    fetchAllUsers: () => dispatch(fetchAllUsers()),
+    updateUserOnlineStatus: user => dispatch(updateUserOnlineStatus(user))
   };
 };
 

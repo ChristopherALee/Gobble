@@ -82,6 +82,7 @@ export const logout = () => dispatch => {
   return SessionApiUtil.logout().then(response => {
     dispatch(resetState());
     dispatch(receiveCurrentUser(null));
+    debugger;
     return response;
   });
 };
