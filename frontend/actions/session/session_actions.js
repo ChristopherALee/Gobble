@@ -55,7 +55,8 @@ export const deleteAllErrors = () => dispatch => {
 export const signUp = user => dispatch => {
   return SessionApiUtil.signUp(user).then(
     user => {
-      return dispatch(receiveCurrentUser(user));
+      dispatch(receiveCurrentUser(user));
+      return user;
     },
     errors => {
       dispatch(receiveSignUpErrors(errors.responseJSON));
@@ -100,7 +101,9 @@ export const updateUser = user => dispatch => {
 };
 
 export const updateUserOnlineStatus = user => dispatch => {
+  debugger;
   return UserApiUtil.updateUser(user).then(user => {
+    debugger;
     dispatch(receiveUserOnlineStatus(user));
     return user;
   });
