@@ -45,8 +45,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   def update
     @user = User.find_by(username: params[:username][:username])
-
-    user_params = { last_visited_channel: params[:last_visited_channel] }
+    debugger
+    if params[:last_visited_channel]
+      user_params = { last_visited_channel: params[:last_visited_channel] }
+    elsif params[:is_online]
+      user_params = { is_online: params[:is_online] }
+    end
 
     if @user.update(user_params)
       render '/api/users/show'

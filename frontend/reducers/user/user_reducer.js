@@ -1,9 +1,12 @@
 import {
   RECEIVE_ALL_USERS,
-  RECEIVE_SINGLE_USER } from '../../actions/user/user_actions';
+  RECEIVE_SINGLE_USER
+} from "../../actions/user/user_actions";
 import {
   LOG_OUT,
-  RECEIVE_CURRENT_USER } from '../../actions/session/session_actions';
+  RECEIVE_CURRENT_USER,
+  RECEIVE_USER_ONLINE_STATUS
+} from "../../actions/session/session_actions";
 
 const userReducer = (state = {}, action) => {
   let newState;
@@ -14,15 +17,23 @@ const userReducer = (state = {}, action) => {
       newState = Object.assign({}, state, action.users);
       return newState;
     case RECEIVE_SINGLE_USER:
-      newState = Object.assign({}, state, {[action.user.username]: action.user});
+      newState = Object.assign({}, state, {
+        [action.user.username]: action.user
+      });
       return newState;
     case RECEIVE_CURRENT_USER:
       if (action.currentUser) {
-        newState = Object.assign({}, state, {[action.currentUser.username]: action.currentUser});
+        newState = Object.assign({}, state, {
+          [action.currentUser.username]: action.currentUser
+        });
       } else {
         newState = Object.assign({}, state);
       }
-      
+      return newState;
+    case RECEIVE_USER_ONLINE_STATUS:
+      newState = Object.assign({}, state, {
+        [action.user.username]: action.user
+      });
       return newState;
     case LOG_OUT:
       newState = {};

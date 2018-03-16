@@ -1,14 +1,14 @@
-import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import Typed from 'typed.js';
+import React from "react";
+import { Link, withRouter } from "react-router-dom";
+import Typed from "typed.js";
 
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      username: '',
-      password: '',
+      username: "",
+      password: "",
       usernameValidInput: "valid",
       passwordValidInput: "valid"
     };
@@ -20,20 +20,20 @@ class SessionForm extends React.Component {
   }
 
   componentWillUnmount() {
-    this.setState({['validInput']: 'valid'});
+    this.setState({ ["validInput"]: "valid" });
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.loggedIn) {
-      this.props.history.push('/messages');
+      this.props.history.push("/messages");
     } else {
-      this.setState({['usernameValidInput']: 'valid'});
-      this.setState({['passwordValidInput']: 'valid'});
+      this.setState({ ["usernameValidInput"]: "valid" });
+      this.setState({ ["passwordValidInput"]: "valid" });
     }
   }
 
   handleChange(field) {
-    return (e) => {
+    return e => {
       this.setState({ [field]: e.target.value });
     };
   }
@@ -42,31 +42,34 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     let that = this;
-    this.props.processForm(user).then(
-      success => {
-
-      }
-    ).fail(
-      error => {
+    this.props
+      .processForm(user)
+      .then(success => {
+        debugger;
+        this.props.updateUserOnlineStatus({
+          username: success.user.username,
+          is_online: true
+        });
+      })
+      .fail(error => {
         if (error.responseJSON.username) {
-          this.setState({['usernameValidInput']: 'invalid'});
+          this.setState({ ["usernameValidInput"]: "invalid" });
         } else {
-          this.setState({['usernameValidInput']: 'valid'});
+          this.setState({ ["usernameValidInput"]: "valid" });
         }
 
         if (error.responseJSON.password) {
-          this.setState({['passwordValidInput']: 'invalid'});
+          this.setState({ ["passwordValidInput"]: "invalid" });
         } else {
-          this.setState({['passwordValidInput']: 'valid'});
+          this.setState({ ["passwordValidInput"]: "valid" });
         }
-      }
-    );
+      });
   }
 
   deleteErrors() {
     this.setState({
-      ['username']: '',
-      ['password']: ''
+      ["username"]: "",
+      ["password"]: ""
     });
     this.props.deleteAllErrors();
   }
@@ -77,20 +80,12 @@ class SessionForm extends React.Component {
     if (this.props.errors instanceof Array) {
       return null;
     } else if (this.props.errors.username) {
-      usernameErrors = this.props.errors.username.map( (error, idx) => {
-        return (
-          <li key={`${idx}`}>
-            {error}
-          </li>
-        );
+      usernameErrors = this.props.errors.username.map((error, idx) => {
+        return <li key={`${idx}`}>{error}</li>;
       });
     }
 
-    return (
-      <ul>
-        {usernameErrors}
-      </ul>
-    );
+    return <ul>{usernameErrors}</ul>;
   }
 
   renderPasswordErrors() {
@@ -99,38 +94,30 @@ class SessionForm extends React.Component {
     if (this.props.errors instanceof Array) {
       return null;
     } else if (this.props.errors.password) {
-      passwordErrors = this.props.errors.password.map( (error, idx) => {
-        return (
-          <li key={`${idx}`}>
-            {error}
-          </li>
-        );
+      passwordErrors = this.props.errors.password.map((error, idx) => {
+        return <li key={`${idx}`}>{error}</li>;
       });
     }
 
-    return (
-      <ul>
-        {passwordErrors}
-      </ul>
-    );
+    return <ul>{passwordErrors}</ul>;
   }
 
   demoLogin(e) {
     e.preventDefault();
-    if (this.props.location.pathname === '/signup') {
-      this.props.history.push('/login');
+    if (this.props.location.pathname === "/signup") {
+      this.props.history.push("/login");
     }
 
     const login = this;
 
     this.state = {
-      username: '',
-      password: '',
+      username: "",
+      password: "",
       usernameValidInput: "valid",
       passwordValidInput: "valid"
     };
 
-    const guest = { username: 'guest', password: 'password123' };
+    const guest = { username: "guest", password: "password123" };
     const username = {
       strings: [guest.username],
       typeSpeed: 30
@@ -142,91 +129,109 @@ class SessionForm extends React.Component {
 
     this.setState({
       typeUsername: setTimeout(() => {
-        new Typed('.session-form-username-input', username);
+        new Typed(".session-form-username-input", username);
       }, 50),
       typePassword: setTimeout(() => {
-        new Typed('.session-form-password-input', password);
+        new Typed(".session-form-password-input", password);
       }, 400),
       typeSubmit: setTimeout(() => {
-        login.props.login(guest);
+        login.props.login(guest).then(success => {
+          this.props.updateUserOnlineStatus({
+            username: success,
+            is_online: true
+          });
+        });
       }, 1000)
     });
   }
 
   demoLoginButton() {
     return (
-      <a href='#' className='demo-login' onClick={this.demoLogin}>Demo Log In</a>
+      <a href="#" className="demo-login" onClick={this.demoLogin}>
+        Demo Log In
+      </a>
     );
   }
 
   demoLoginButtonOnSignUp() {
     return (
-      <a href='#' className='demo-login' onClick={this.demoLogin}>Demo Log In</a>
+      <a href="#" className="demo-login" onClick={this.demoLogin}>
+        Demo Log In
+      </a>
     );
   }
 
   render() {
-    const processFormText = this.props.formType === 'signup' ? 'Join a' : 'Log in to your';
-    const altProcessFormText = this.props.formType === 'signup' ? 'Log In' : 'Sign Up';
-    const buttonText = this.props.formType === 'signup' ? 'Sign Up' : 'Log In';
+    const processFormText =
+      this.props.formType === "signup" ? "Join a" : "Log in to your";
+    const altProcessFormText =
+      this.props.formType === "signup" ? "Log In" : "Sign Up";
+    const buttonText = this.props.formType === "signup" ? "Sign Up" : "Log In";
 
     let link;
     let altText;
-    if (this.props.formType === 'signup') {
-      link = '/login';
-      altText = 'Already have an account? ';
+    if (this.props.formType === "signup") {
+      link = "/login";
+      altText = "Already have an account? ";
     } else {
-      link = '/signup';
-     altText = "Don't have an account? ";
+      link = "/signup";
+      altText = "Don't have an account? ";
     }
 
     return (
-      <div id='session-form'>
+      <div id="session-form">
+        <div className="session-form-contents">
+          <p>{processFormText} Gobble</p>
 
-      <div className='session-form-contents'>
-        <p>{processFormText} Gobble</p>
+          <form className="session-form" onSubmit={this.handleSubmit}>
+            <div className="session-form-username">
+              <label>Username</label>
+              <input
+                type="text"
+                value={this.state.username}
+                onChange={this.handleChange("username")}
+                className={`${
+                  this.state.usernameValidInput
+                } session-form-username-input`}
+              />
+              <div className="session-form-username-errors">
+                {this.renderUsernameErrors()}
+              </div>
+            </div>
 
-        <form className='session-form' onSubmit={this.handleSubmit}>
-          <div className='session-form-username'>
-            <label>Username</label>
-            <input
-              type='text'
-              value={this.state.username}
-              onChange={this.handleChange('username')}
-              className={`${this.state.usernameValidInput} session-form-username-input`}
-            />
-            <div className='session-form-username-errors'>{this.renderUsernameErrors()}</div>
-          </div>
+            <div className="session-form-password">
+              <label>Password</label>
+              <input
+                type="password"
+                value={this.state.password}
+                onChange={this.handleChange("password")}
+                className={`${
+                  this.state.passwordValidInput
+                } session-form-password-input`}
+              />
+              <div className="session-form-password-errors">
+                {this.renderPasswordErrors()}
+              </div>
+            </div>
 
-          <div className='session-form-password'>
-            <label>Password</label>
-            <input
-              type='password'
-              value={this.state.password}
-              onChange={this.handleChange('password')}
-              className={`${this.state.passwordValidInput} session-form-password-input`}
-            />
-            <div className='session-form-password-errors'>{this.renderPasswordErrors()}</div>
-          </div>
+            <input type="submit" value={buttonText} />
+          </form>
 
-          <input type='submit' value={buttonText}/>
-        </form>
-
-        <div className='alt-signup-login'>
-          <div>
-            {altText}
-            <Link
-              to={link}
-              className='alt-signup-login-link'
-              onClick={this.deleteErrors}
+          <div className="alt-signup-login">
+            <div>
+              {altText}
+              <Link
+                to={link}
+                className="alt-signup-login-link"
+                onClick={this.deleteErrors}
               >
                 {altProcessFormText}
               </Link>
+            </div>
+            {this.demoLoginButton()}
           </div>
-          {this.demoLoginButton()}
         </div>
       </div>
-    </div>
     );
   }
 }

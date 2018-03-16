@@ -1,27 +1,28 @@
-import * as SessionApiUtil from '../../util/session/session_api_util';
-import * as UserApiUtil from '../../util/users/users_api_util';
+import * as SessionApiUtil from "../../util/session/session_api_util";
+import * as UserApiUtil from "../../util/users/users_api_util";
 
-export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
-export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
-export const RECEIVE_SIGNUP_ERRORS = 'RECEIVE_SIGNUP_ERRORS';
-export const DELETE_ERRORS = 'DELETE_ERRORS';
-export const LOG_OUT = 'LOG_OUT';
+export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
+export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
+export const RECEIVE_SIGNUP_ERRORS = "RECEIVE_SIGNUP_ERRORS";
+export const DELETE_ERRORS = "DELETE_ERRORS";
+export const RECEIVE_USER_ONLINE_STATUS = "RECEIVE_USER_ONLINE_STATUS";
+export const LOG_OUT = "LOG_OUT";
 
-export const receiveCurrentUser = (currentUser) => {
+export const receiveCurrentUser = currentUser => {
   return {
     type: RECEIVE_CURRENT_USER,
     currentUser
   };
 };
 
-export const receiveErrors = (errors) => {
+export const receiveErrors = errors => {
   return {
     type: RECEIVE_SESSION_ERRORS,
     errors
   };
 };
 
-export const receiveSignUpErrors = (errors) => {
+export const receiveSignUpErrors = errors => {
   return {
     type: RECEIVE_SIGNUP_ERRORS,
     errors
@@ -40,74 +41,67 @@ export const deleteErrors = () => {
   };
 };
 
+export const receiveUserOnlineStatus = user => {
+  return {
+    type: RECEIVE_USER_ONLINE_STATUS,
+    user
+  };
+};
+
 export const deleteAllErrors = () => dispatch => {
-  return (
-    dispatch(deleteErrors())
-  );
+  return dispatch(deleteErrors());
 };
 
 export const signUp = user => dispatch => {
-  return (
-    SessionApiUtil.signUp(user).then(
-      user => {
-        return (
-          dispatch(receiveCurrentUser(user))
-        );
-      },
-      errors => {
-        dispatch(receiveSignUpErrors(errors.responseJSON));
-        return errors;
-      }
-    )
+  return SessionApiUtil.signUp(user).then(
+    user => {
+      return dispatch(receiveCurrentUser(user));
+    },
+    errors => {
+      dispatch(receiveSignUpErrors(errors.responseJSON));
+      return errors;
+    }
   );
 };
 
 export const login = user => dispatch => {
-
-  return (
-    SessionApiUtil.login(user).then(
-      currentUser => {
-        dispatch(receiveCurrentUser(currentUser));
-        return currentUser;
-      },
-      errors => {
-        dispatch(receiveErrors(errors.responseJSON));
-        return errors;
-      }
-    )
+  return SessionApiUtil.login(user).then(
+    currentUser => {
+      dispatch(receiveCurrentUser(currentUser));
+      return currentUser;
+    },
+    errors => {
+      dispatch(receiveErrors(errors.responseJSON));
+      return errors;
+    }
   );
 };
 
 export const logout = () => dispatch => {
-  return (
-    SessionApiUtil.logout().then(
-      (response) => {
-        dispatch(resetState());
-        dispatch(receiveCurrentUser(null));
-        return response;
-      }
-    )
-  );
+  return SessionApiUtil.logout().then(response => {
+    dispatch(resetState());
+    dispatch(receiveCurrentUser(null));
+    return response;
+  });
 };
 
-export const fetchCurrentUser = (userId) => dispatch => {
-  return (
-    UserApiUtil.fetchSingleUser(userId).then(
-      (user) => {
-        dispatch(receiveCurrentUser(user));
-        return user;
-      }
-    )
-  );
+export const fetchCurrentUser = userId => dispatch => {
+  return UserApiUtil.fetchSingleUser(userId).then(user => {
+    dispatch(receiveCurrentUser(user));
+    return user;
+  });
 };
 
-export const updateUser = (user) => dispatch => {
-  return (
-    UserApiUtil.updateUser(user).then(
-      (user) => {
-        dispatch(receiveCurrentUser(user));
-        return user;
-      }
-    )
-  );
+export const updateUser = user => dispatch => {
+  return UserApiUtil.updateUser(user).then(user => {
+    dispatch(receiveCurrentUser(user));
+    return user;
+  });
+};
+
+export const updateUserOnlineStatus = user => dispatch => {
+  return UserApiUtil.updateUser(user).then(user => {
+    dispatch(receiveUserOnlineStatus(user));
+    return user;
+  });
 };
