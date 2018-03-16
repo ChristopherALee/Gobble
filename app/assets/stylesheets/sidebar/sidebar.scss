@@ -70,6 +70,10 @@
         font-weight: 300;
         letter-spacing: 0.2px;
       }
+
+      .angle-down-icon {
+        color: white !important;
+      }
     }
 
     .channel-name {
@@ -78,6 +82,8 @@
       justify-content: space-between;
 
       .angle-down-icon {
+        color: #bfb8be;
+
         .fa-angle-down {
           width: 10px;
         }
