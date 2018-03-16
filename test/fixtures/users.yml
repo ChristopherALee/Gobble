@@ -14,6 +14,7 @@
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
 #  last_visited_channel   :string           default("")
+#  is_online              :boolean          default(FALSE)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
