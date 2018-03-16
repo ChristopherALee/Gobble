@@ -226,13 +226,13 @@ class ChannelSideBar extends React.Component {
                 <div className="channel-name-text">
                   Gobble - We Gobblin' Here!
                 </div>
-                <div className="angle-down-icon">
+                <div className="angle-down-icon active-angle-down-icon">
                   <i className="fas fa-angle-down" />
                 </div>
               </div>
               <div className="current-username">
                 <div className="active-circle" />
-                <div className="username">{currentUser}</div>
+                <div className="username active-username">{currentUser}</div>
               </div>
             </div>
 
