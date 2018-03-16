@@ -139,6 +139,24 @@
           align-items: center;
           margin-bottom: 12px;
 
+          .circle-online {
+            margin-right: 8px;
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            background-color: #93cc93;
+            box-sizing: border-box;
+          }
+
+          .circle-offline {
+            margin-right: 8px;
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            border: 1px solid #bfb8be;
+            box-sizing: border-box;
+          }
+
           .channel-member-picture {
             // background-image: image_url("chicken_images/goofy-chicken.png");
             background-image: image_url("logos/gobble-logo-left.png");
