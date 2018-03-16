@@ -43,12 +43,22 @@
         display: flex;
         align-items: center;
 
-        .active-circle {
+        .online-circle {
           margin-right: 8px;
           height: 10px;
           width: 10px;
           border-radius: 50%;
           background-color: #93cc93;
+          box-sizing: border-box;
+        }
+
+        .offline-circle {
+          margin-right: 8px;
+          height: 10px;
+          width: 10px;
+          border-radius: 50%;
+          border: 1px solid #bfb8be;
+          box-sizing: border-box;
         }
 
         p {
