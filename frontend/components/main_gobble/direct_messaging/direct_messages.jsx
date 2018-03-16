@@ -48,6 +48,7 @@ class DirectMessages extends React.Component {
 
   componentWillUnmount() {
     this.pusher.unsubscribe("direct_messages");
+    this.pusher.unsubscribe("user_presence");
   }
 
   componentWillReceiveProps(newProps) {
