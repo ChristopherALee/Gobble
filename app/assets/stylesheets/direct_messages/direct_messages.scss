@@ -42,6 +42,7 @@
       .direct-message-recipient-status {
         display: flex;
         align-items: center;
+        color: #717274;
 
         .online-circle {
           margin-right: 8px;
@@ -65,6 +66,11 @@
           font-size: 12px;
           color: #717274;
           letter-spacing: 0.3px;
+
+          &:hover {
+            color: #0576b9;
+            cursor: pointer;
+          }
         }
       }
     }

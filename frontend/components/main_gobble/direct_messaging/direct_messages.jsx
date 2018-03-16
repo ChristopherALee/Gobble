@@ -259,7 +259,10 @@ class DirectMessages extends React.Component {
       });
 
       return (
-        <div className="direct-message-recipient-status">
+        <div
+          className="direct-message-recipient-status"
+          onClick={this.toggleChannelDetail}
+        >
           <p>
             {onlineCount}/{totalMemberCount} Online
           </p>
