@@ -88,10 +88,17 @@ class DirectMessageDetail extends React.Component {
     );
 
     return currentDmChannelMembers.map(member => {
+      let isOnline;
+      if (member.isOnline) {
+        isOnline = "circle-online";
+      } else {
+        isOnline = "circle-offline";
+      }
+
       if (member.username === currentUser.username) {
         return (
           <li key={member.id}>
-            <div className="channel-member-status" />
+            <div className={isOnline} />
             <div className="channel-member-picture" />
             <div className="channel-member-username">
               {member.username}{" "}
@@ -102,7 +109,7 @@ class DirectMessageDetail extends React.Component {
       } else {
         return (
           <li key={member.id}>
-            <div className="channel-member-status" />
+            <div className={isOnline} />
             <div className="channel-member-picture" />
             <div className="channel-member-username">{member.username}</div>
           </li>
