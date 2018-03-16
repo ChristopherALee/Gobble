@@ -82,7 +82,6 @@ export const logout = () => dispatch => {
   return SessionApiUtil.logout().then(response => {
     dispatch(resetState());
     dispatch(receiveCurrentUser(null));
-    debugger;
     return response;
   });
 };
@@ -102,9 +101,7 @@ export const updateUser = user => dispatch => {
 };
 
 export const updateUserOnlineStatus = user => dispatch => {
-  debugger;
   return UserApiUtil.updateUser(user).then(user => {
-    debugger;
     dispatch(receiveUserOnlineStatus(user));
     return user;
   });

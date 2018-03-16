@@ -17,6 +17,8 @@ const DirectMessageList = props => {
   };
 
   if (props.directMessagingChannels.length) {
+    const allUsers = props.allUsers;
+
     directMessages = props.directMessagingChannels.sort((a, b) => {
       let sortedMembersA = regSort(a.members);
       let sortedMembersB = regSort(b.members);
@@ -46,8 +48,21 @@ const DirectMessageList = props => {
         recipients = recipients.join(", ");
       }
 
+      let currentRecipient;
+
       if (channel.id === parseInt(props.pathname.slice(13))) {
         if (recipientCount === 1) {
+          currentRecipient = props.allUsers.filter(user => {
+            return user.username === recipients;
+          });
+
+          let isActiveRecipient;
+          if (currentRecipient[0] && currentRecipient[0].is_online) {
+            isActiveRecipient = "hovered-active-circle-online";
+          } else {
+            isActiveRecipient = "hovered-active-circle-offline";
+          }
+
           return (
             <Link
               to={`/messages/dm/${channel.id}`}
@@ -55,7 +70,7 @@ const DirectMessageList = props => {
               key={idx}
             >
               <li>
-                <div className="hovered-active-circle" />
+                <div className={isActiveRecipient} />
                 <div className="recipients">{recipients}</div>
               </li>
             </Link>
@@ -78,10 +93,21 @@ const DirectMessageList = props => {
         }
       } else {
         if (recipientCount === 1) {
+          currentRecipient = props.allUsers.filter(user => {
+            return user.username === recipients;
+          });
+
+          let isActiveRecipient;
+          if (currentRecipient[0] && currentRecipient[0].is_online) {
+            isActiveRecipient = "active-circle-online";
+          } else {
+            isActiveRecipient = "active-circle-offline";
+          }
+
           return (
             <Link to={`/messages/dm/${channel.id}`} key={idx}>
               <li>
-                <div className="active-circle" />
+                <div className={isActiveRecipient} />
                 <div className="recipients">{recipients}</div>
               </li>
             </Link>

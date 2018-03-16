@@ -17,17 +17,18 @@ const sessionReducer = (state = { currentUser: null }, action) => {
       if (state.currentUser.username === action.user.username) {
         newState = Object.assign({}, state, { currentUser: action.user });
         return newState;
+      } else {
+        return state;
       }
-      break;
     case RECEIVE_USER_ONLINE_STATUS:
-      debugger;
       if (state.currentUser.username === action.user.username) {
         newState = Object.assign({}, state, {
           currentUser: action.user
         });
         return newState;
+      } else {
+        return state;
       }
-      break;
     case LOG_OUT:
       newState = {};
       return newState;

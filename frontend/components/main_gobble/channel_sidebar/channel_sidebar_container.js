@@ -32,7 +32,10 @@ import {
   fetchCurrentUser,
   updateUserOnlineStatus
 } from "../../../actions/session/session_actions";
-import { fetchAllUsers } from "../../../actions/user/user_actions";
+import {
+  fetchAllUsers,
+  fetchSingleUser
+} from "../../../actions/user/user_actions";
 
 const mapStateToProps = (state, ownProps) => {
   let currentUser;
@@ -104,6 +107,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     updateUser: user => dispatch(updateUser(user)),
     fetchCurrentUser: username => dispatch(fetchCurrentUser(username)),
     fetchAllUsers: () => dispatch(fetchAllUsers()),
+    fetchSingleUser: user => dispatch(fetchSingleUser(user)),
     updateUserOnlineStatus: user => dispatch(updateUserOnlineStatus(user))
   };
 };

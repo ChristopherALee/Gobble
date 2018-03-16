@@ -45,7 +45,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   def update
     @user = User.find_by(username: params[:username][:username])
-    debugger
+    
     if params[:last_visited_channel]
       user_params = { last_visited_channel: params[:last_visited_channel] }
     elsif params[:is_online]
@@ -53,6 +53,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
 
     if @user.update(user_params)
+      if user_params[:is_online]
+        Pusher.trigger('user_presence', 'user_online', { user: @user })
+      end
+
       render '/api/users/show'
     else
       render json: @user.errors.messages, status: 422

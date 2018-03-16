@@ -45,7 +45,6 @@ class SessionForm extends React.Component {
     this.props
       .processForm(user)
       .then(success => {
-        debugger;
         this.props.updateUserOnlineStatus({
           username: success,
           is_online: true

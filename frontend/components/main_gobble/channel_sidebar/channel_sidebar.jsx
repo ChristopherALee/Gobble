@@ -68,6 +68,12 @@ class ChannelSideBar extends React.Component {
       encrypted: true
     });
 
+    this.userPresence = this.pusher.subscribe("user_presence");
+    this.userPresence.bind("user_online", function(data) {
+      debugger;
+      that.props.fetchSingleUser(data.user.username);
+    });
+
     this.channel = this.pusher.subscribe("sidebar_channel");
     this.channel.bind("membership_created", function(data) {
       that.props.fetchSingleChannel(data.channel);
@@ -265,6 +271,7 @@ class ChannelSideBar extends React.Component {
 
               <DirectMessageList
                 currentUser={this.props.currentUser.username}
+                allUsers={this.props.allUsers}
                 directMessagingChannels={this.props.directMessagingChannels}
                 pathname={this.props.location.pathname}
               />
@@ -388,6 +395,7 @@ class ChannelSideBar extends React.Component {
 
               <DirectMessageList
                 currentUser={this.props.currentUser.username}
+                allUsers={this.props.allUsers}
                 directMessagingChannels={this.props.directMessagingChannels}
                 pathname={this.props.location.pathname}
               />
