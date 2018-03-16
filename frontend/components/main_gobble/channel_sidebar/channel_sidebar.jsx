@@ -70,7 +70,6 @@ class ChannelSideBar extends React.Component {
 
     this.userPresence = this.pusher.subscribe("user_presence");
     this.userPresence.bind("user_online", function(data) {
-      debugger;
       that.props.fetchSingleUser(data.user.username);
     });
 

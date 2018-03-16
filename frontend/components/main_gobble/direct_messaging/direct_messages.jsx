@@ -17,6 +17,7 @@ class DirectMessages extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.getDmChannelMessages = this.getDmChannelMessages.bind(this);
+    this.memberOnlineStatus = this.memberOnlineStatus.bind(this);
 
     this.renderMessages = this.renderMessages.bind(this);
     this.dateTimeConversion = this.dateTimeConversion.bind(this);
@@ -37,6 +38,11 @@ class DirectMessages extends React.Component {
     this.dmChannelMessages = this.pusher.subscribe("direct_messages");
     this.dmChannelMessages.bind("message_created", function(data) {
       that.getDmChannelMessages(data.directMessageChannelId);
+    });
+
+    this.userPresence = this.pusher.subscribe("user_presence");
+    this.userPresence.bind("user_online", function(data) {
+      that.props.fetchSingleUser(data.user.username);
     });
   }
 
@@ -243,9 +249,58 @@ class DirectMessages extends React.Component {
     }
   }
 
+  memberOnlineStatus(totalMemberCount, members) {
+    if (totalMemberCount > 2) {
+      let onlineCount = 0;
+      members.forEach(member => {
+        if (member.isOnline) {
+          onlineCount += 1;
+        }
+      });
+
+      return (
+        <div className="direct-message-recipient-status">
+          <p>
+            {onlineCount}/{totalMemberCount} Online
+          </p>
+        </div>
+      );
+    } else {
+      let recipient = members.filter(
+        member => member.username !== this.props.currentUser.username
+      );
+
+      if (recipient.length && recipient[0].isOnline) {
+        return (
+          <div className="direct-message-recipient-status">
+            <div className="online-circle" />
+            <p>Online</p>
+          </div>
+        );
+      } else {
+        return (
+          <div className="direct-message-recipient-status">
+            <div className="offline-circle" />
+            <p>Offline</p>
+          </div>
+        );
+      }
+    }
+  }
+
   render() {
-    if (this.props.currentDmChannel && this.props.currentUser) {
+    if (
+      this.props.currentDmChannel &&
+      this.props.currentUser &&
+      this.props.allUsers
+    ) {
       let currentUser = this.props.currentUser.username;
+      let membersFull = this.props.allUsers.filter(user => {
+        return user.directMessageChannels.includes(
+          this.props.currentDmChannel.id
+        );
+      });
+
       let recipients = this.props.currentDmChannel.members.filter(
         member => member !== currentUser
       );
@@ -265,10 +320,7 @@ class DirectMessages extends React.Component {
           <section id="direct-messages-header">
             <div className="direct-messages-header-left">
               <div className="direct-message-recipients">{recipients}</div>
-              <div className="direct-message-recipient-status">
-                <div className="active-circle" />
-                <p>Online</p>
-              </div>
+              {this.memberOnlineStatus(this.props.memberCount, membersFull)}
             </div>
 
             <div className="direct-messages-header-right">
