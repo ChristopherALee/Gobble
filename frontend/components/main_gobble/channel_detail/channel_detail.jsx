@@ -89,6 +89,8 @@ class ChannelDetail extends React.Component {
     );
 
     return currentChannelMembers.map(member => {
+      let isOnline;
+
       if (member.username === currentUser.username) {
         return (
           <li key={member.id}>

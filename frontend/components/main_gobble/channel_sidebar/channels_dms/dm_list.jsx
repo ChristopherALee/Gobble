@@ -57,7 +57,7 @@ const DirectMessageList = props => {
           });
 
           let isActiveRecipient;
-          if (currentRecipient[0] && currentRecipient[0].is_online) {
+          if (currentRecipient[0] && currentRecipient[0].isOnline) {
             isActiveRecipient = "hovered-active-circle-online";
           } else {
             isActiveRecipient = "hovered-active-circle-offline";
@@ -98,7 +98,7 @@ const DirectMessageList = props => {
           });
 
           let isActiveRecipient;
-          if (currentRecipient[0] && currentRecipient[0].is_online) {
+          if (currentRecipient[0] && currentRecipient[0].isOnline) {
             isActiveRecipient = "active-circle-online";
           } else {
             isActiveRecipient = "active-circle-offline";
