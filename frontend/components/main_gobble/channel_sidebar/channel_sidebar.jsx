@@ -103,10 +103,6 @@ class ChannelSideBar extends React.Component {
           )
         );
     });
-
-    window.onclose = () => {
-      this.logOut();
-    };
   }
 
   componentWillUnmount() {
