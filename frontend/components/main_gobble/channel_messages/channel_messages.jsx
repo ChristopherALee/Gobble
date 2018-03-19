@@ -66,6 +66,7 @@ class ChannelMessages extends React.Component {
   componentWillReceiveProps(newProps) {
     if (this.props.location.pathname !== newProps.location.pathname) {
       this.setState({ ["newMessages"]: false });
+      this.setState({ ["body"]: "" });
     }
   }
 
