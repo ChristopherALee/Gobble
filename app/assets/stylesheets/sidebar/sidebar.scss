@@ -443,11 +443,19 @@
             margin-right: 8px;
           }
 
-          .recipients {
+          .recipients-online {
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
             width: calc(100% - 102px);
+          }
+
+          .recipients-offline {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: calc(100% - 102px);
+            opacity: 0.5;
           }
         }
       }

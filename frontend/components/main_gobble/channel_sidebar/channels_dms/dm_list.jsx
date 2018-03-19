@@ -56,11 +56,13 @@ const DirectMessageList = props => {
             return user.username === recipients;
           });
 
-          let isActiveRecipient;
+          let isActiveRecipient, isActiveRecipientUsername;
           if (currentRecipient[0] && currentRecipient[0].isOnline) {
             isActiveRecipient = "hovered-active-circle-online";
+            isActiveRecipientUsername = "recipients-online";
           } else {
             isActiveRecipient = "hovered-active-circle-offline";
+            isActiveRecipientUsername = "recipients-offline";
           }
 
           return (
@@ -71,7 +73,7 @@ const DirectMessageList = props => {
             >
               <li>
                 <div className={isActiveRecipient} />
-                <div className="recipients">{recipients}</div>
+                <div className={isActiveRecipientUsername}>{recipients}</div>
               </li>
             </Link>
           );
@@ -97,18 +99,20 @@ const DirectMessageList = props => {
             return user.username === recipients;
           });
 
-          let isActiveRecipient;
+          let isActiveRecipient, isActiveRecipientUsername;
           if (currentRecipient[0] && currentRecipient[0].isOnline) {
             isActiveRecipient = "active-circle-online";
+            isActiveRecipientUsername = "recipients-online";
           } else {
             isActiveRecipient = "active-circle-offline";
+            isActiveRecipientUsername = "recipients-offline";
           }
 
           return (
             <Link to={`/messages/dm/${channel.id}`} key={idx}>
               <li>
                 <div className={isActiveRecipient} />
-                <div className="recipients">{recipients}</div>
+                <div className={isActiveRecipientUsername}>{recipients}</div>
               </li>
             </Link>
           );
