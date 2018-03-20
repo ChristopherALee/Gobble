@@ -23,6 +23,36 @@
 
 Users can use the demo-login provided to sign into Gobble. Authentication is implemented using the Devise gem.
 
+```ruby
+class Users::SessionsController < Devise::SessionsController
+  def create
+    @user = User.find_for_database_authentication(username: params[:user][:username])
+    errors = {}
+
+    if @user && @user.valid_password?(params[:user][:password])
+      sign_in @user
+      render 'api/users/show'
+    else
+      if User.find_by(username: params[:user][:username]) == nil
+        errors[:username] = ['Invalid Username.']
+      end
+
+      errors[:password] = ['Invalid Password.']
+      render json: errors, status: 401
+    end
+  end
+
+  def destroy
+    if current_user
+      render json: current_user
+      sign_out current_user
+    else
+      render json: ["No one is logged in!"], status: 404
+    end
+  end
+end
+```
+
 ### Live-Messaging
 
 Using Pusher to interact with WebSockets, live-messaging between users in channels, direct messages, and group messages are seamless and intuitive.
