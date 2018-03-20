@@ -12,12 +12,12 @@
 
 ## Features
 
-*   User Authentication with automated demo-login using Devise
-*   Live-Messaging
-*   Channels
-*   Direct Messages
-*   Group Messages
-*   User Presence (Online, Offline)
+* User Authentication with automated demo-login using Devise
+* Live-Messaging
+* Channels
+* Direct Messages
+* Group Messages
+* User Presence (Online, Offline)
 
 ### User Authentication with automated demo-login using Devise
 
@@ -56,6 +56,8 @@ end
 ### Live-Messaging
 
 Using Pusher to interact with WebSockets, live-messaging between users in channels, direct messages, and group messages are seamless and intuitive.
+
+![Live-Messaging](https://i.imgur.com/ZynGli5.gif)
 
 ### Notifications
 
