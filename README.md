@@ -10,17 +10,38 @@
   <img src="./readme_images/gobble-ss-final.png"></img>
 </div>
 
+## Features
+
+*   User Authentication with automated demo-login using Devise
+*   Live-Messaging
+*   Channels
+*   Direct Messages
+*   Group Messages
+*   User Presence (Online, Offline)
+
+### User Authentication with automated demo-login using Devise
+
+Users can use the demo-login provided to sign into Gobble. Authentication is implemented using the Devise gem.
+
+### Live-Messaging
+
+Using Pusher to interact with WebSockets, live-messaging between users in channels, direct messages, and group messages are seamless and intuitive.
+
+### Notifications
+
+When the user is viewing a current channel, direct message, or group message, and an incoming message is delivered, the messages component renders a "new messages" banner or automatically scrolls down to the most recent message depending on where the current user is viewing messages. If the "new messages" banner is rendered, the user can click on it to view the new message(s).
+
 ## Development Timeline
 
-1. **[DONE]** User Authentication
-2. **[DONE]** Landing Page
-3. **[DONE]** Pusher Implementation
-4. **[DONE]** Channels
-5. **[DONE]** Channel Search
-6. **[DONE]** Channel Group Messages
-7. **[DONE]** Direct Messages
-8. Online/Offline User Activity
-9. Notifications
+1.  **[DONE]** User Authentication
+2.  **[DONE]** Landing Page
+3.  **[DONE]** Pusher Implementation
+4.  **[DONE]** Channels
+5.  **[DONE]** Channel Search
+6.  **[DONE]** Channel Group Messages
+7.  **[DONE]** Direct Messages
+8.  **[DONE]** Online/Offline User Activity
+9.  Notifications
 10. Paperclip Implementation
 11. User profile photo
 12. User photo messaging
