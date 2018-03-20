@@ -57,7 +57,7 @@ end
 
 Using Pusher to interact with WebSockets, live-messaging between users in channels, direct messages, and group messages are seamless and intuitive.
 
-<!-- ![Live-Messaging](./readme_images/gobble-live-messaging.gif) -->
+![Live-Messaging](./readme_images/gobble-live-messaging.gif)
 
 ### Notifications
 
