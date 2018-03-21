@@ -57,7 +57,7 @@ end
 
 Using Pusher to interact with WebSockets, live-messaging between users in channels, direct messages, and group messages are seamless and intuitive.
 
-Pusher triggers an action for a specified channel whenver a new message is created:
+Pusher triggers an action for a specified channel whenever a new message is created:
 
 ```ruby
   def create
