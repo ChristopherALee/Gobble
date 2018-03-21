@@ -57,6 +57,32 @@ end
 
 Using Pusher to interact with WebSockets, live-messaging between users in channels, direct messages, and group messages are seamless and intuitive.
 
+Pusher triggers an action for a specified channel whenver a new message is created:
+
+```ruby
+  def create
+    @message = Message.new(message_params)
+    @message.author_id = current_user.id
+
+    if @message.save
+      Pusher.trigger('channel_messages', 'message_created', {channelName: @message.channel.name})
+      render 'api/messages/show'
+    else
+      render json: @message.errors.messages, status: 422
+    end
+  end
+```
+
+The messages components then subscribe to these actions on mounting and respond accordingly:
+
+```javascript
+let that = this;
+this.channelMessages = this.pusher.subscribe("channel_messages");
+this.channelMessages.bind("message_created", function(data) {
+  that.getChannelMessages(that.props.currentChannel.name);
+});
+```
+
 ![Live-Messaging](./readme_images/gobble-live-messaging.gif)
 
 ### Notifications
