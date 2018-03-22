@@ -2,7 +2,7 @@
   <img src="./app/assets/images/logos/gobble_readme_logo3.png"></img>
 </div>
 
-## Background
+# Background
 
 **Gobble** is a full-stack single page messaging application inspired by Slack. It uses Ruby on Rails on the backend to produce a 'RESTful' API and React/Redux on the frontend. It also features Pusher to implement WebSockets seamlessly.
 
@@ -10,7 +10,7 @@
   <img src="./readme_images/gobble-ss-final.png"></img>
 </div>
 
-## Features
+# Features
 
 * User Authentication with automated demo-login using Devise
 * Live-Messaging
@@ -19,7 +19,7 @@
 * Group Messages
 * User Presence (Online, Offline)
 
-### User Authentication with automated demo-login using Devise
+## User Authentication with automated demo-login using Devise
 
 Users can use the demo-login provided to sign into Gobble. Authentication is implemented using the Devise gem.
 
@@ -53,7 +53,7 @@ class Users::SessionsController < Devise::SessionsController
 end
 ```
 
-### Live-Messaging
+## Live-Messaging
 
 Using Pusher to interact with WebSockets, live-messaging between users in channels, direct messages, and group messages are seamless and intuitive.
 
@@ -85,13 +85,23 @@ this.channelMessages.bind("message_created", function(data) {
 
 ![Live-Messaging](./readme_images/gobble-live-messaging.gif)
 
-### Notifications
+## Notifications
 
 When the user is viewing a current channel, direct message, or group message, and an incoming message is delivered, the messages component renders a "new messages" banner or automatically scrolls down to the most recent message depending on the current user's scroll height when viewing messages. If the "new messages" banner is rendered, the user can click on it to view the new message(s).
 
 ![Current-Channel-Notifications](./readme_images/gobble-current-channel-notifications.gif)
 
-## Development Timeline
+## Channels / Direct Messages / Group Messages
+
+### Channel Search
+
+Users can browse existing channels via live-search. In the same component, they can also see which channels they currently belong to and those they can join. Viewing any channel from the channel search component is as simple as a click of a button.
+
+### Channel Creation
+
+Users can create their own channel from the channel creation form. Error handling is done on the front-end for immediate feedback on whether or not the current channel parameters are valid. If invalid, the applicable input fields will render a red border around themselves and the 'Create Channel' button will be disabled and 'greyed out' for the user to visibly be notified that their input is invalid.
+
+# Development Timeline
 
 1.  **[DONE]** User Authentication
 2.  **[DONE]** Landing Page
