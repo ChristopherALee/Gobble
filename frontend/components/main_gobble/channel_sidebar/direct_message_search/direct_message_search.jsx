@@ -64,27 +64,30 @@ class DirectMessageSearch extends React.Component {
           }
         })
         .then(success => {
-          this.props
-            .createDirectMessageChannelMembership({
-              direct_message_channel_membership: {
-                direct_message_channel_id: success.id,
-                member_id: this.props.currentUser.id
-              }
-            })
-            .then(success2 => {
-              this.props.history.push(`/messages/dm/${success.id}`);
-            });
+          let allUserPromises = [];
+          let authorPromise = this.props.createDirectMessageChannelMembership({
+            direct_message_channel_membership: {
+              direct_message_channel_id: success.id,
+              member_id: this.props.currentUser.id
+            }
+          });
+          allUserPromises.push(authorPromise);
 
           users.forEach(user => {
-            this.props.createDirectMessageChannelMembership({
+            let userPromise = this.props.createDirectMessageChannelMembership({
               direct_message_channel_membership: {
                 direct_message_channel_id: success.id,
                 member_id: user.id
               }
             });
+
+            allUserPromises.push(userPromise);
           });
 
-          this.closeReset();
+          Promise.all(allUserPromises).then(success2 => {
+            this.props.history.push(`/messages/dm/${success.id}`);
+            this.closeReset();
+          });
         });
     }
   }
