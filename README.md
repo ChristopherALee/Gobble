@@ -97,9 +97,13 @@ When the user is viewing a current channel, direct message, or group message, an
 
 Users can browse existing channels via live-search. In the same component, they can also see which channels they currently belong to and those they can join. Viewing any channel from the channel search component is as simple as a click of a button.
 
+![Browse-Channel](./readme_images/gobble-browse-channel.gif)
+
 ### Channel Creation
 
 Users can create their own channel from the channel creation form. Error handling is done on the front-end for immediate feedback on whether or not the current channel parameters are valid. If invalid, the applicable input fields will render a red border around themselves and the 'Create Channel' button will be disabled and 'greyed out' for the user to visibly be notified that their input is invalid.
+
+![Create-Channel](./readme_images/gobble-channel-creation.gif)
 
 ### Direct Messaging and Group Messaging
 
