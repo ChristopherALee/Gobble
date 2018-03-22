@@ -64,12 +64,16 @@ class DirectMessageSearch extends React.Component {
           }
         })
         .then(success => {
-          this.props.createDirectMessageChannelMembership({
-            direct_message_channel_membership: {
-              direct_message_channel_id: success.id,
-              member_id: this.props.currentUser.id
-            }
-          });
+          this.props
+            .createDirectMessageChannelMembership({
+              direct_message_channel_membership: {
+                direct_message_channel_id: success.id,
+                member_id: this.props.currentUser.id
+              }
+            })
+            .then(success2 => {
+              this.props.history.push(`/messages/dm/${success.id}`);
+            });
 
           users.forEach(user => {
             this.props.createDirectMessageChannelMembership({
@@ -80,7 +84,6 @@ class DirectMessageSearch extends React.Component {
             });
           });
 
-          this.props.history.push(`/messages/dm/${success.id}`);
           this.closeReset();
         });
     }
