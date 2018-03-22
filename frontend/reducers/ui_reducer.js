@@ -8,7 +8,9 @@ import {
   RENDER_CHANNEL_SETTINGS_MENU,
   REMOVE_CHANNEL_SETTINGS_MENU,
   RENDER_DIRECT_MESSAGE_MENU,
-  REMOVE_DIRECT_MESSAGE_MENU
+  REMOVE_DIRECT_MESSAGE_MENU,
+  RENDER_LOADING,
+  REMOVE_LOADING
 } from "../actions/ui/menu_actions";
 import { LOG_OUT } from "../actions/session/session_actions";
 
@@ -53,6 +55,16 @@ const uiReducer = (state = {}, action) => {
     case REMOVE_DIRECT_MESSAGE_MENU:
       newState = Object.assign({}, state, {
         directMessageMenu: action.render
+      });
+      return newState;
+    case RENDER_LOADING:
+      newState = Object.assign({}, state, {
+        loading: true
+      });
+      return newState;
+    case REMOVE_LOADING:
+      newState = Object.assign({}, state, {
+        loading: false
       });
       return newState;
     case LOG_OUT:
