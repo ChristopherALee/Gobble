@@ -87,7 +87,7 @@ this.channelMessages.bind("message_created", function(data) {
 
 ### Notifications
 
-When the user is viewing a current channel, direct message, or group message, and an incoming message is delivered, the messages component renders a "new messages" banner or automatically scrolls down to the most recent message depending on where the current user is viewing messages. If the "new messages" banner is rendered, the user can click on it to view the new message(s).
+When the user is viewing a current channel, direct message, or group message, and an incoming message is delivered, the messages component renders a "new messages" banner or automatically scrolls down to the most recent message depending on the current user's scroll height when viewing messages. If the "new messages" banner is rendered, the user can click on it to view the new message(s).
 
 ![Current-Channel-Notifications](./readme_images/gobble-current-channel-notifications.gif)
 
