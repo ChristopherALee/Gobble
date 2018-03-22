@@ -19,25 +19,22 @@ class Loading extends React.Component {
 							<div className="loading-channel-header" />
 							<ul className="loading-channel-list">
 								<li className="loading-channel-list-item" />
-								<li className="loading-channel-list-item" />
-								<li className="loading-channel-list-item" />
-								<li className="loading-channel-list-item" />
-								<li className="loading-channel-list-item" />
+								<li className="loading-channel-list-item3" />
+								<li className="loading-channel-list-item2" />
+								<li className="loading-channel-list-item2" />
+								<li className="loading-channel-list-item3" />
 							</ul>
 						</div>
 
 						<div className="loading-channel-list-container">
 							<div className="loading-channel-header" />
 							<ul className="loading-channel-list">
+								<li className="loading-channel-list-item2" />
 								<li className="loading-channel-list-item" />
+								<li className="loading-channel-list-item3" />
+								<li className="loading-channel-list-item2" />
 								<li className="loading-channel-list-item" />
-								<li className="loading-channel-list-item" />
-								<li className="loading-channel-list-item" />
-								<li className="loading-channel-list-item" />
-								<li className="loading-channel-list-item" />
-								<li className="loading-channel-list-item" />
-								<li className="loading-channel-list-item" />
-								<li className="loading-channel-list-item" />
+								<li className="loading-channel-list-item2" />
 								<li className="loading-channel-list-item" />
 							</ul>
 						</div>

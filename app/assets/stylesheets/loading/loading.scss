@@ -14,12 +14,58 @@
 		.loading-sidebar-container {
 			padding: 12px;
 
-			.loading-header {
+			.loading-title {
 				background-color: white;
 				width: 300px;
 				height: 30px;
 				border-radius: 20px;
+				opacity: 0.7;
 			}
+
+			.loading-username {
+				margin-top: 10px;
+				background-color: white;
+				width: 150px;
+				height: 10px;
+				border-radius: 20px;
+				opacity: 0.3;
+			}
+		}
+
+		.loading-channel-header {
+			margin-top: 40px;
+			background-color: white;
+			width: 150px;
+			height: 15px;
+			border-radius: 20px;
+			opacity: 0.5;
+		}
+
+		.loading-channel-list-item {
+			margin: 10px 20px;
+			background-color: white;
+			width: 50px;
+			height: 10px;
+			border-radius: 20px;
+			opacity: 0.5;
+		}
+
+		.loading-channel-list-item2 {
+			margin: 10px 20px;
+			background-color: white;
+			width: 100px;
+			height: 10px;
+			border-radius: 20px;
+			opacity: 0.5;
+		}
+
+		.loading-channel-list-item3 {
+			margin: 10px 20px;
+			background-color: white;
+			width: 150px;
+			height: 10px;
+			border-radius: 20px;
+			opacity: 0.5;
 		}
 	}
 }
