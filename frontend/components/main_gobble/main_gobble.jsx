@@ -4,6 +4,7 @@ import ChannelSideBarContainer from "./channel_sidebar/channel_sidebar_container
 import ChannelMessagesContainer from "./channel_messages/channel_messages_container";
 import ChannelDetailContainer from "./channel_detail/channel_detail_container";
 import DirectMessagesContainer from "./direct_messaging/direct_messages_container";
+import LoadingContainer from "../loading/loading_container";
 
 class MainGobble extends React.Component {
   constructor(props) {
@@ -27,6 +28,7 @@ class MainGobble extends React.Component {
   render() {
     return (
       <div id="we-gobblin-here">
+        <Route path="/" component={LoadingContainer} />
         <Route path="/messages" component={ChannelSideBarContainer} />
 
         <Switch>
