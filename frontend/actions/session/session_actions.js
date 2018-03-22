@@ -58,8 +58,13 @@ export const signUp = user => dispatch => {
 
   return SessionApiUtil.signUp(user).then(
     user => {
+      const actions = () => {
+        dispatch(hideLoading());
+      };
+
+      setTimeout(actions, 2000);
+
       dispatch(receiveCurrentUser(user));
-      dispatch(hideLoading());
       return user;
     },
     errors => {
