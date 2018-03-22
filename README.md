@@ -111,6 +111,8 @@ Direct messages and group messages can be created under the same 'create direct 
 
 To prevent other users from viewing direct messages that they aren't associated with via an ID enumeration attack, a validation is done to check if the current user actually belongs to the direct message they are trying to access. If they aren't, the user is redirected to their last visited channel.
 
+![Create-DM](./readme_images/gobble-dm-creation.gif)
+
 # Development Timeline
 
 1.  **[DONE]** User Authentication
