@@ -9,6 +9,7 @@ export const REMOVE_CHANNEL_SETTINGS_MENU = "REMOVE_CHANNEL_SETTINGS_MENU";
 export const RENDER_DIRECT_MESSAGE_MENU = "RENDER_DIRECT_MESSAGE_MENU";
 export const REMOVE_DIRECT_MESSAGE_MENU = "REMOVE_DIRECT_MESSAGE_MENU";
 export const RENDER_LOADING = "RENDER_LOADING";
+export const REMOVE_LOADING = "REMOVE_LOADING";
 
 const renderMenu = () => {
   return {
@@ -89,7 +90,7 @@ const renderLoading = () => {
 
 const removeLoading = () => {
   return {
-    type: RENDER_LOADING,
+    type: REMOVE_LOADING,
     render: false
   };
 };

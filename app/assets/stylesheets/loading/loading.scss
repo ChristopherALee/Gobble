@@ -1,71 +1,96 @@
 #loading-screen {
-	z-index: 10;
-	position: absolute;
-	width: 100%;
-	height: 100%;
+  display: flex;
+  z-index: 10;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 
-	.loading-sidebar {
-		height: 100%;
-		min-width: 340px;
-		width: 340px;
-		background-color: #4d394b;
-		user-select: none;
+  .loading-sidebar {
+    height: 100%;
+    min-width: 340px;
+    width: 340px;
+    background-color: #4d394b;
+    user-select: none;
 
-		.loading-sidebar-container {
-			padding: 12px;
+    .loading-sidebar-container {
+      padding: 12px;
 
-			.loading-title {
-				background-color: white;
-				width: 300px;
-				height: 30px;
-				border-radius: 20px;
-				opacity: 0.7;
-			}
+      .loading-title {
+        background-color: white;
+        width: 300px;
+        height: 30px;
+        border-radius: 20px;
+        opacity: 0.7;
+      }
 
-			.loading-username {
-				margin-top: 10px;
-				background-color: white;
-				width: 150px;
-				height: 10px;
-				border-radius: 20px;
-				opacity: 0.3;
-			}
-		}
+      .loading-username {
+        margin-top: 10px;
+        background-color: white;
+        width: 150px;
+        height: 10px;
+        border-radius: 20px;
+        opacity: 0.3;
+      }
+    }
 
-		.loading-channel-header {
-			margin-top: 40px;
-			background-color: white;
-			width: 150px;
-			height: 15px;
-			border-radius: 20px;
-			opacity: 0.5;
-		}
+    .loading-channel-header {
+      margin-top: 40px;
+      background-color: white;
+      width: 150px;
+      height: 15px;
+      border-radius: 20px;
+      opacity: 0.5;
+    }
 
-		.loading-channel-list-item {
-			margin: 10px 20px;
-			background-color: white;
-			width: 50px;
-			height: 10px;
-			border-radius: 20px;
-			opacity: 0.5;
-		}
+    .loading-channel-list-item {
+      margin: 10px 20px;
+      background-color: white;
+      width: 50px;
+      height: 10px;
+      border-radius: 20px;
+      opacity: 0.5;
+    }
 
-		.loading-channel-list-item2 {
-			margin: 10px 20px;
-			background-color: white;
-			width: 100px;
-			height: 10px;
-			border-radius: 20px;
-			opacity: 0.5;
-		}
+    .loading-channel-list-item2 {
+      margin: 10px 20px;
+      background-color: white;
+      width: 100px;
+      height: 10px;
+      border-radius: 20px;
+      opacity: 0.5;
+    }
 
-		.loading-channel-list-item3 {
-			margin: 10px 20px;
-			background-color: white;
-			width: 150px;
-			height: 10px;
-			border-radius: 20px;
-			opacity: 0.5;
-		}
-	}
+    .loading-channel-list-item3 {
+      margin: 10px 20px;
+      background-color: white;
+      width: 150px;
+      height: 10px;
+      border-radius: 20px;
+      opacity: 0.5;
+    }
+  }
+
+  .loading-messages {
+    width: 100%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    #loading-duck {
+      background-image: image_url("loading.gif");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 300px;
+      height: 500px;
+      margin: 0 auto;
+    }
+
+    .loading-text {
+      text-align: center;
+      font-weight: 600;
+      font-size: 30px;
+    }
+  }
 }
