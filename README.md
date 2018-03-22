@@ -101,6 +101,12 @@ Users can browse existing channels via live-search. In the same component, they 
 
 Users can create their own channel from the channel creation form. Error handling is done on the front-end for immediate feedback on whether or not the current channel parameters are valid. If invalid, the applicable input fields will render a red border around themselves and the 'Create Channel' button will be disabled and 'greyed out' for the user to visibly be notified that their input is invalid.
 
+### Direct Messaging and Group Messaging
+
+Direct messages and group messages can be created under the same 'create direct message' menu. Before opening a direct/group channel, a validation checks if that particular direct/group channel relationship currently exists in the database. If it does, the user is re-routed to the URL path of that direct/group channel. If not, the direct/group channel is created in the database and then the user is routed to the URL path of the newly created channel.
+
+To prevent other users from viewing direct messages that they aren't associated with via an ID enumeration attack, a validation is done to check if the current user actually belongs to the direct message they are trying to access. If they aren't, the user is redirected to their last visited channel.
+
 # Development Timeline
 
 1.  **[DONE]** User Authentication
