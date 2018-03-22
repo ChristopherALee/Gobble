@@ -1,5 +1,6 @@
 import * as SessionApiUtil from "../../util/session/session_api_util";
 import * as UserApiUtil from "../../util/users/users_api_util";
+import { showLoading, hideLoading } from "../ui/menu_actions";
 
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
@@ -53,26 +54,39 @@ export const deleteAllErrors = () => dispatch => {
 };
 
 export const signUp = user => dispatch => {
+  dispatch(showLoading());
+
   return SessionApiUtil.signUp(user).then(
     user => {
       dispatch(receiveCurrentUser(user));
+      dispatch(hideLoading());
       return user;
     },
     errors => {
       dispatch(receiveSignUpErrors(errors.responseJSON));
+      dispatch(hideLoading());
       return errors;
     }
   );
 };
 
 export const login = user => dispatch => {
+  dispatch(showLoading());
+
   return SessionApiUtil.login(user).then(
     currentUser => {
+      const actions = () => {
+        dispatch(hideLoading());
+      };
+
+      setTimeout(actions, 2000);
+
       dispatch(receiveCurrentUser(currentUser));
       return currentUser;
     },
     errors => {
       dispatch(receiveErrors(errors.responseJSON));
+      dispatch(hideLoading());
       return errors;
     }
   );
