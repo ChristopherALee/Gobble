@@ -443,6 +443,13 @@
             margin-right: 8px;
           }
 
+          .recipients {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: calc(100% - 102px);
+          }
+
           .recipients-online {
             white-space: nowrap;
             overflow: hidden;
