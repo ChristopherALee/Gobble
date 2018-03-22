@@ -56,7 +56,8 @@ const mapStateToProps = (state, ownProps) => {
     memberCount: memberCount,
     purpose: purpose,
     gobbleMenuShown: state.ui.menu,
-    channelSettingsMenuShown: state.ui.channelSettingsMenu
+    channelSettingsMenuShown: state.ui.channelSettingsMenu,
+    loading: state.ui.loading
   };
 };
 

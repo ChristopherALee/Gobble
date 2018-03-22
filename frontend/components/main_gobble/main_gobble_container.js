@@ -3,9 +3,7 @@ import MainGobble from "./main_gobble";
 import { fetchAllUsers } from "../../actions/user/user_actions";
 
 const mapStateToProps = (state, ownProps) => {
-  return {
-    loading: state.ui.loading
-  };
+  return {};
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
@@ -14,4 +12,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainGobble);
+export default connect(null, mapDispatchToProps)(MainGobble);

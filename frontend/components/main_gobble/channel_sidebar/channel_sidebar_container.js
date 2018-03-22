@@ -24,7 +24,9 @@ import {
   showChannelSearchMenu,
   hideChannelSearchMenu,
   showDirectMessageMenu,
-  hideDirectMessageMenu
+  hideDirectMessageMenu,
+  showLoading,
+  hideLoading
 } from "../../../actions/ui/menu_actions";
 import {
   logout,
@@ -108,7 +110,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     fetchCurrentUser: username => dispatch(fetchCurrentUser(username)),
     fetchAllUsers: () => dispatch(fetchAllUsers()),
     fetchSingleUser: user => dispatch(fetchSingleUser(user)),
-    updateUserOnlineStatus: user => dispatch(updateUserOnlineStatus(user))
+    updateUserOnlineStatus: user => dispatch(updateUserOnlineStatus(user)),
+    showLoading: () => dispatch(showLoading()),
+    hideLoading: () => dispatch(hideLoading())
   };
 };
 

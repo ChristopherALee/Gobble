@@ -482,7 +482,10 @@ class ChannelMessages extends React.Component {
           {this.joinChannelFooter(channel)}
         </div>
       );
-    } else if (this.props.currentUser.lastVisitedChannel === "") {
+    } else if (
+      this.props.currentUser.lastVisitedChannel === "" &&
+      !this.props.loading
+    ) {
       return this.renderBlankChannel();
     } else {
       return null;

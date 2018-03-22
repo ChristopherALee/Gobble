@@ -319,6 +319,8 @@ class ChannelSideBar extends React.Component {
               this.props.createDirectMessageChannelMembership
             }
             history={this.props.history}
+            showLoading={this.props.showLoading}
+            hideLoading={this.props.hideLoading}
           />
 
           {this.gobbleMenu()}

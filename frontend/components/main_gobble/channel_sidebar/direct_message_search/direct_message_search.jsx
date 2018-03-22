@@ -35,6 +35,7 @@ class DirectMessageSearch extends React.Component {
     const users = Array.from(this.state.selectedUsers);
     const usernames = users.map(user => user.username);
     usernames.push(this.props.currentUser.username);
+    this.props.showLoading();
 
     if (
       this.props.directMessagingChannels.some(channel => {
@@ -56,6 +57,7 @@ class DirectMessageSearch extends React.Component {
 
       this.props.history.push(`/messages/dm/${existingDm}`);
       this.closeReset();
+      this.props.hideLoading();
     } else {
       this.props
         .createDirectMessageChannel({
@@ -87,6 +89,7 @@ class DirectMessageSearch extends React.Component {
           Promise.all(allUserPromises).then(success2 => {
             this.props.history.push(`/messages/dm/${success.id}`);
             this.closeReset();
+            this.props.hideLoading();
           });
         });
     }
