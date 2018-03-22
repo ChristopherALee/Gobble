@@ -482,10 +482,7 @@ class ChannelMessages extends React.Component {
           {this.joinChannelFooter(channel)}
         </div>
       );
-    } else if (
-      this.props.location.pathname === "/messages" ||
-      this.props.location.pathname === "/messages/"
-    ) {
+    } else if (this.props.currentUser.lastVisitedChannel === "") {
       return this.renderBlankChannel();
     } else {
       return null;

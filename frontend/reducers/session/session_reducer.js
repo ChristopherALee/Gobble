@@ -14,7 +14,10 @@ const sessionReducer = (state = { currentUser: null }, action) => {
       newState = Object.assign({}, state, { currentUser: action.currentUser });
       return newState;
     case RECEIVE_SINGLE_USER:
-      if (state.currentUser.username === action.user.username) {
+      if (
+        state.currentUser &&
+        state.currentUser.username === action.user.username
+      ) {
         newState = Object.assign({}, state, { currentUser: action.user });
         return newState;
       } else {

@@ -26,17 +26,24 @@ class MainGobble extends React.Component {
   }
 
   render() {
-    return (
-      <div id="we-gobblin-here">
-        <Route path="/" component={LoadingContainer} />
-        <Route path="/messages" component={ChannelSideBarContainer} />
+    if (this.props.loading) {
+      return (
+        <div id="we-gobblin-here">
+          <Route path="/" component={LoadingContainer} />
+        </div>
+      );
+    } else {
+      return (
+        <div id="we-gobblin-here">
+          <Route path="/messages" component={ChannelSideBarContainer} />
 
-        <Switch>
-          <Route path="/messages/dm" component={DirectMessagesContainer} />
-          <Route path="/messages" component={ChannelMessagesContainer} />
-        </Switch>
-      </div>
-    );
+          <Switch>
+            <Route path="/messages/dm" component={DirectMessagesContainer} />
+            <Route path="/messages" component={ChannelMessagesContainer} />
+          </Switch>
+        </div>
+      );
+    }
   }
 }
 
