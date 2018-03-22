@@ -8,6 +8,7 @@ export const RENDER_CHANNEL_SETTINGS_MENU = "RENDER_CHANNEL_SETTINGS_MENU";
 export const REMOVE_CHANNEL_SETTINGS_MENU = "REMOVE_CHANNEL_SETTINGS_MENU";
 export const RENDER_DIRECT_MESSAGE_MENU = "RENDER_DIRECT_MESSAGE_MENU";
 export const REMOVE_DIRECT_MESSAGE_MENU = "REMOVE_DIRECT_MESSAGE_MENU";
+export const RENDER_LOADING = "RENDER_LOADING";
 
 const renderMenu = () => {
   return {
@@ -79,6 +80,20 @@ const removeDirectMessageMenu = () => {
   };
 };
 
+const renderLoading = () => {
+  return {
+    type: RENDER_LOADING,
+    render: true
+  };
+};
+
+const removeLoading = () => {
+  return {
+    type: RENDER_LOADING,
+    render: false
+  };
+};
+
 export const showMenu = () => dispatch => {
   return dispatch(renderMenu());
 };
@@ -117,4 +132,12 @@ export const showDirectMessageMenu = () => dispatch => {
 
 export const hideDirectMessageMenu = () => dispatch => {
   return dispatch(removeDirectMessageMenu());
+};
+
+export const showLoading = () => dispatch => {
+  return dispatch(renderLoading());
+};
+
+export const hideLoading = () => dispatch => {
+  return dispatch(removeLoading());
 };
