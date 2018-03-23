@@ -19,9 +19,9 @@
       .loading-title {
         background-color: white;
         width: 300px;
-        height: 30px;
+        height: 20px;
         border-radius: 20px;
-        opacity: 0.7;
+        opacity: 0.6;
       }
 
       .loading-username {
@@ -40,7 +40,7 @@
       width: 150px;
       height: 15px;
       border-radius: 20px;
-      opacity: 0.5;
+      opacity: 0.3;
     }
 
     .loading-channel-list-item {
@@ -49,7 +49,7 @@
       width: 50px;
       height: 10px;
       border-radius: 20px;
-      opacity: 0.5;
+      opacity: 0.3;
     }
 
     .loading-channel-list-item2 {
@@ -58,7 +58,7 @@
       width: 100px;
       height: 10px;
       border-radius: 20px;
-      opacity: 0.5;
+      opacity: 0.3;
     }
 
     .loading-channel-list-item3 {
@@ -67,37 +67,95 @@
       width: 150px;
       height: 10px;
       border-radius: 20px;
-      opacity: 0.5;
+      opacity: 0.3;
     }
   }
 
   .loading-messages {
     width: 100%;
     background-color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
-    #loading-duck {
-      background-image: image_url("loading.gif");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      width: 300px;
-      height: 500px;
-      margin: 0 auto;
+    .loading-messages-header {
+      display: flex;
+      justify-content: space-between;
+      height: 50px;
+      padding: 15px 20px;
+
+      .loading-messages-header-left {
+        .loading-messages-header-title {
+          width: 200px;
+          height: 10px;
+          background-color: grey;
+          border-radius: 20px;
+          opacity: 0.4;
+        }
+
+        .loading-messages-header-description {
+          margin-top: 10px;
+          width: 100px;
+          height: 10px;
+          background-color: grey;
+          border-radius: 20px;
+          opacity: 0.2;
+        }
+      }
+
+      .loading-messages-header-right {
+        display: flex;
+
+        .loading-messages-header-right-item1 {
+          width: 30px;
+          height: 10px;
+          background-color: grey;
+          border-radius: 20px;
+          opacity: 0.2;
+          margin-right: 10px;
+
+          &:last-child {
+            margin: 0;
+          }
+        }
+
+        .loading-messages-header-right-item2 {
+          width: 288px;
+          height: 10px;
+          background-color: grey;
+          border-radius: 20px;
+          opacity: 0.2;
+          margin-right: 10px;
+        }
+      }
     }
 
-    .loading-text {
-      text-align: center;
-      font-weight: 600;
-      font-size: 30px;
-    }
+    .loading-container {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-    .loading-quote-author {
-      font-size: 20px;
-      margin: 15px 0 0 200px;
-      font-style: italic;
+      .loading-content {
+        #loading-duck {
+          background-image: image_url("loading.gif");
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          width: 300px;
+          height: 500px;
+          margin: 0 auto;
+        }
+
+        .loading-text {
+          text-align: center;
+          font-weight: 600;
+          font-size: 30px;
+
+          .loading-quote-author {
+            font-size: 20px;
+            margin: 15px 0 0 200px;
+            font-style: italic;
+          }
+        }
+      }
     }
   }
 }
