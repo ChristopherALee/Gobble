@@ -53,6 +53,7 @@ class CreateChannelForm extends React.Component {
     e.preventDefault();
 
     if (this.activeSubmit()) {
+      this.props.showLoading();
       const channel = Object.assign({}, this.state);
       const currentUser = this.props.currentUser;
 
@@ -71,6 +72,7 @@ class CreateChannelForm extends React.Component {
               ["name"]: "",
               ["purpose"]: ""
             });
+            this.props.hideLoading();
           });
       });
     }

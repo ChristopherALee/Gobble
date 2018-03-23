@@ -50,7 +50,10 @@ const DirectMessageList = props => {
 
       let currentRecipient;
 
-      if (channel.id === parseInt(props.pathname.slice(13))) {
+      if (
+        channel.id === parseInt(props.pathname.slice(13)) &&
+        props.pathname.includes("dm")
+      ) {
         if (recipientCount === 1) {
           currentRecipient = props.allUsers.filter(user => {
             return user.username === recipients;

@@ -296,6 +296,8 @@ class ChannelSideBar extends React.Component {
             createMembership={this.props.createMembership}
             fetchSingleChannel={this.props.fetchSingleChannel}
             history={this.props.history}
+            showLoading={this.props.showLoading}
+            hideLoading={this.props.hideLoading}
           />
 
           <ChannelSearch
