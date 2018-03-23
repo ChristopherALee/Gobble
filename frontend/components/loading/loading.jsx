@@ -12,8 +12,15 @@ class Loading extends React.Component {
         <section className="loading-sidebar">
           <div className="loading-sidebar-container">
             <div className="loading-header">
-              <div className="loading-title" />
-              <div className="loading-username" />
+              <div className="loading-title-menu">
+                <div className="loading-title" />
+                <div className="loading-menu-button" />
+              </div>
+
+              <div className="loading-status-username">
+                <div className="loading-status" />
+                <div className="loading-username" />
+              </div>
             </div>
 
             <div className="loading-channel-list-container">
