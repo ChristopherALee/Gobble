@@ -30,6 +30,16 @@ class DirectMessages extends React.Component {
   componentDidMount() {
     let that = this;
 
+    if (this.props.currentDmChannel) {
+      let members = this.props.currentDmChannel.members.filter(member => {
+        return member !== this.props.currentUser.username;
+      });
+
+      for (let i = 0; i < members.length; i++) {
+        this.props.fetchSingleUser(members[i]);
+      }
+    }
+
     this.pusher = new Pusher("416ebb2d74bf61955f19", {
       cluster: "us2",
       encrypted: true
@@ -55,6 +65,16 @@ class DirectMessages extends React.Component {
     if (this.props.location.pathname !== newProps.location.pathname) {
       this.setState({ ["newMessages"]: false });
       this.setState({ ["body"]: "" });
+
+      if (newProps.currentDmChannel) {
+        let members = newProps.currentDmChannel.members.filter(member => {
+          return member !== newProps.currentUser.username;
+        });
+
+        for (let i = 0; i < members.length; i++) {
+          newProps.fetchSingleUser(members[i]);
+        }
+      }
     }
   }
 
