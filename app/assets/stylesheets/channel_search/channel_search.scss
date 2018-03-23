@@ -111,6 +111,21 @@
         color: #717274;
       }
 
+      .channel-lists::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+
+      .channel-lists::-webkit-scrollbar-track {
+        background-color: #f3f3f3;
+        border-radius: 4px;
+      }
+
+      .channel-lists::-webkit-scrollbar-thumb {
+        background-color: #d9d9de;
+        border-radius: 4px;
+      }
+
       .channel-search-list,
       .channel-search-belonged-list,
       .channel-lists {
@@ -118,6 +133,7 @@
         height: calc(100% - 156px);
         width: 100%;
         overflow-y: scroll;
+        padding-right: 5px;
 
         ul a {
           text-decoration: none;
