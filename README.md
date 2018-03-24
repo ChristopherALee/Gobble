@@ -113,6 +113,10 @@ To prevent other users from viewing direct messages that they aren't associated 
 
 ![Create-DM](./readme_images/gobble-dm-creation.gif)
 
+### User Presence
+
+Users can view if other users are online or offline either through the direct messages portion of the sidebar, the header in the direct message component, or the channel/group detail that can be accessed within those respective channel components.
+
 # Development Timeline
 
 1.  **[DONE]** User Authentication
