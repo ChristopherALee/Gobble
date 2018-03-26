@@ -361,7 +361,7 @@ class ChannelMessages extends React.Component {
   }
 
   formatMessage(message) {
-    let regex = /(?=[*~])/g;
+    let regex = /(?=[*~ ])/g;
     let formattedMessage = message.body.split(regex);
     formattedMessage = formattedMessage.map((chars, idx) => {
       debugger;
@@ -441,84 +441,65 @@ class ChannelMessages extends React.Component {
         lastMessage = "last-message";
       }
 
-      const formattedMessage = this.formatMessage(message);
+      let formattedCt = {
+        "*": 0,
+        "`": 0
+      };
+      for (let i = 0; i < message.body.length; i++) {
+        if (message.body[i] === "*") {
+          formattedCt["*"] += 1;
+        } else if (message.body[i] === "`") {
+          formattedCt["`"] += 1;
+        }
+      }
 
-      // let regex = /(\W+)[\w\s]+\1/;
-      // let formattedMessage;
-      // debugger;
-      // if (message.body.match(regex) && message.body.match(regex).input) {
-      //   formattedMessage = message.body.match(regex).input.split(" ");
-      //   debugger;
-      //   formattedMessage = formattedMessage.map((char, idx) => {
-      //     debugger;
+      let regularMessage;
+      let formattedMessage;
+      debugger;
+      if (
+        (formattedCt["*"] !== 0 && formattedCt["*"] % 2 === 0) ||
+        (formattedCt["`"] !== 0 && formattedCt["`"] % 2 === 0) ||
+        message.body.includes(">")
+      ) {
+        formattedMessage = this.formatMessage(message);
+      } else {
+        regularMessage = message.body;
+      }
 
-      //     if (char[0] === "*" && char[char.length - 1] === "*") {
-      //       return (
-      //         <div key={idx} className="bold-message">
-      //           {char.slice(1, char.length - 1)}
-      //         </div>
-      //       );
-      //     } else if (char[0] === "~" && char[char.length - 1] === "~") {
-      //       return (
-      //         <div key={idx} className="strikethrough-message">
-      //           {char.slice(1, char.length - 1)}
-      //         </div>
-      //       );
-      //     } else if (
-      //       char[0] + char[1] + char[2] === "```" &&
-      //       char[char.length - 1] +
-      //         char[char.length - 2] +
-      //         char[char.length - 3] ===
-      //         "```"
-      //     ) {
-      //       <div key={idx} className="triple-codeblock-message">
-      //         {char.slice(3, char.length - 3)}
-      //       </div>;
-      //     } else if (char[0] === "`" && char[char.length - 1] === "`") {
-      //       <div key={idx} className="single-codeblock-message">
-      //         {char.slice(1, char.length - 1)}
-      //       </div>;
-      //     } else {
-      //       return <p key={idx}>{char}</p>;
-      //     }
-      //   });
-      // } else if (
-      //   message.body[0] + message.body[1] + message.body[2] ===
-      //   ">>>"
-      // ) {
-      //   if (message.body[3] === " ") {
-      //     formattedMessage = (
-      //       <div key={idx} className="blockquote-message">
-      //         {message.body.slice(4)}
-      //       </div>
-      //     );
-      //   } else {
-      //     formattedMessage = (
-      //       <div key={idx} className="blockquote-message">
-      //         {message.body.slice(3)}
-      //       </div>
-      //     );
-      //   }
-      // } else {
-      //   formattedMessage = <p>{message.body}</p>;
-      // }
-
-      return (
-        <li id={lastMessage} key={idx}>
-          <div className="user-profile-pic" />
-          <div className="message-content">
-            <div className="message-author-timestamp">
-              <div className="message-author-name">
-                <strong>{message.authorName}</strong>
+      if (regularMessage) {
+        return (
+          <li id={lastMessage} key={idx}>
+            <div className="user-profile-pic" />
+            <div className="message-content">
+              <div className="message-author-timestamp">
+                <div className="message-author-name">
+                  <strong>{message.authorName}</strong>
+                </div>
+                <div className="message-timestamp">{timeStamp}</div>
               </div>
-              <div className="message-timestamp">{timeStamp}</div>
-            </div>
 
-            {/* <div className="message-body">{message.body}</div> */}
-            <div className="message-body">{formattedMessage}</div>
-          </div>
-        </li>
-      );
+              {/* <div className="message-body">{message.body}</div> */}
+              <div className="message-body">{regularMessage}</div>
+            </div>
+          </li>
+        );
+      } else if (formattedMessage) {
+        return (
+          <li id={lastMessage} key={idx}>
+            <div className="user-profile-pic" />
+            <div className="message-content">
+              <div className="message-author-timestamp">
+                <div className="message-author-name">
+                  <strong>{message.authorName}</strong>
+                </div>
+                <div className="message-timestamp">{timeStamp}</div>
+              </div>
+
+              <div className="formatted-message-body">{formattedMessage}</div>
+            </div>
+          </li>
+        );
+      }
     });
 
     return messages;

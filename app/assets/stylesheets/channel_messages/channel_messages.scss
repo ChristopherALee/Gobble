@@ -251,6 +251,14 @@
             }
 
             .message-body {
+              margin-top: 6px;
+              color: #2c2d30;
+              line-height: 1.4;
+              word-wrap: break-word;
+              display: inline-block;
+            }
+
+            .formatted-message-body {
               width: 100%;
               margin-top: 6px;
               color: #2c2d30;
