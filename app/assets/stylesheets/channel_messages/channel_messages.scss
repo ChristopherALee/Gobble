@@ -251,11 +251,42 @@
             }
 
             .message-body {
+              width: 100%;
               margin-top: 6px;
               color: #2c2d30;
               line-height: 1.4;
               word-wrap: break-word;
               display: inline-block;
+
+              .bold-message {
+                font-weight: 800;
+              }
+
+              .strikethrough-message {
+                text-decoration: line-through;
+              }
+
+              .blockquote-message {
+                padding-left: 5px;
+                border-left: 5px solid #e3e4e6;
+              }
+
+              .multiline-block-message {
+                width: 97%;
+                background-color: #f9f9f9;
+                border: 1px solid #d4d4d4;
+                padding: 10px;
+                border-radius: 4px;
+              }
+
+              .singleline-block-message {
+                width: fit-content;
+                background-color: #f9f9f9;
+                border: 1px solid #d4d4d4;
+                padding: 0 5px;
+                border-radius: 3px;
+                color: #d72b3f;
+              }
             }
           }
         }

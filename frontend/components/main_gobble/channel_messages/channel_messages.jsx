@@ -360,6 +360,76 @@ class ChannelMessages extends React.Component {
     return `${month} ${day}, ${year} at ${hour}:${minutes}${amOrPm}`;
   }
 
+  formatMessage(message) {
+    let regex = /(?=[*~])/g;
+    let formattedMessage = message.body.split(regex);
+    formattedMessage = formattedMessage.map((chars, idx) => {
+      debugger;
+      if (chars[0] === "*" && formattedMessage[idx + 1] === "*") {
+        return (
+          <div key={idx} className="bold-message">
+            {chars.slice(1)}
+          </div>
+        );
+      } else if (
+        (chars[0] === "~" && formattedMessage[idx + 1] === "~") ||
+        (chars[0] === "~" && formattedMessage[idx + 1] === "~ ")
+      ) {
+        return (
+          <div key={idx} className="strikethrough-message">
+            {chars.slice(1)}
+          </div>
+        );
+      } else if (chars.slice(0, 3) === ">>>") {
+        return (
+          <div key={idx} className="blockquote-message">
+            {chars.slice(3)}
+          </div>
+        );
+      } else if (
+        chars[0] + chars[1] + chars[2] === "```" &&
+        chars[chars.length - 1] +
+          chars[chars.length - 2] +
+          chars[chars.length - 3] ===
+          "```"
+      ) {
+        return (
+          <div key={idx} className="multiline-block-message">
+            {chars.slice(3, chars.length - 3)}
+          </div>
+        );
+      } else if (
+        chars[0] + chars[1] + chars[2] === "```" &&
+        chars[chars.length - 2] +
+          chars[chars.length - 3] +
+          chars[chars.length - 4] ===
+          "```"
+      ) {
+        return (
+          <div key={idx} className="multiline-block-message">
+            {chars.slice(3, chars.length - 4)}
+          </div>
+        );
+      } else if (chars[0] === "`" && chars[chars.length - 1] === "`") {
+        return (
+          <div key={idx} className="singleline-block-message">
+            {chars.slice(1, chars.length - 1)}
+          </div>
+        );
+      } else if (chars[0] === "`" && formattedMessage[idx + 1] === "`") {
+        return (
+          <div key={idx} className="singleline-block-message">
+            {chars.slice(1, chars.length - 1)}
+          </div>
+        );
+      } else if (chars[0] !== "*" && chars[0] !== "~") {
+        return <p key={idx}>{chars}</p>;
+      }
+    });
+
+    return formattedMessage;
+  }
+
   renderMessages() {
     let messages = this.props.messages;
 
@@ -371,60 +441,7 @@ class ChannelMessages extends React.Component {
         lastMessage = "last-message";
       }
 
-      let regex = /(?=[*~])/g;
-      let formattedMessage = message.body.split(regex);
-      debugger;
-      formattedMessage = formattedMessage.map((chars, idx) => {
-        debugger;
-        if (chars[0] === "*" && formattedMessage[idx + 1] === "*") {
-          return (
-            <div key={idx} className="bold-message">
-              {chars.slice(1)}
-            </div>
-          );
-        } else if (
-          (chars[0] === "~" && formattedMessage[idx + 1] === "~") ||
-          (chars[0] === "~" && formattedMessage[idx + 1] === "~ ")
-        ) {
-          return (
-            <div key={idx} className="strikethrough-message">
-              {chars.slice(1)}
-            </div>
-          );
-        } else if (chars.slice(0, 3) === ">>>") {
-          return (
-            <div key={idx} className="blockquote-message">
-              {chars.slice(3)}
-            </div>
-          );
-        } else if (
-          chars[0] + chars[1] + chars[2] === "```" &&
-          chars[chars.length - 1] +
-            chars[chars.length - 2] +
-            chars[chars.length - 3] ===
-            "```"
-        ) {
-          return (
-            <div key={idx} className="multiline-block-message">
-              {chars.slice(3, chars.length - 3)}
-            </div>
-          );
-        } else if (
-          chars[0] + chars[1] + chars[2] === "```" &&
-          chars[chars.length - 2] +
-            chars[chars.length - 3] +
-            chars[chars.length - 4] ===
-            "```"
-        ) {
-          return (
-            <div key={idx} className="multiline-block-message">
-              {chars.slice(3, chars.length - 4)}
-            </div>
-          );
-        } else if (chars[0] !== "*" && chars[0] !== "~") {
-          return <p key={idx}>{chars}</p>;
-        }
-      });
+      const formattedMessage = this.formatMessage(message);
 
       // let regex = /(\W+)[\w\s]+\1/;
       // let formattedMessage;
