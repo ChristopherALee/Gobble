@@ -416,13 +416,19 @@ class ChannelMessages extends React.Component {
             {chars.slice(1, chars.length - 1)}
           </div>
         );
+      } else if (chars[1] === "`" && chars[chars.length - 1] === "`") {
+        return (
+          <div key={idx} className="singleline-block-message">
+            {chars.slice(2, chars.length - 1)}
+          </div>
+        );
       } else if (chars[0] === "`" && formattedMessage[idx + 1] === "`") {
         return (
           <div key={idx} className="singleline-block-message">
             {chars.slice(1, chars.length - 1)}
           </div>
         );
-      } else if (chars[0] !== "*" && chars[0] !== "~") {
+      } else if (chars[0] !== "*" && chars[0] !== "~" && chars[0] !== " ") {
         return <p key={idx}>{chars}</p>;
       }
     });

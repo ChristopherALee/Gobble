@@ -264,7 +264,14 @@
               color: #2c2d30;
               line-height: 1.4;
               word-wrap: break-word;
-              display: inline-block;
+              display: flex;
+              flex-wrap: wrap;
+              align-items: center;
+
+              & > div,
+              p {
+                margin-right: 5px;
+              }
 
               .bold-message {
                 font-weight: 800;
@@ -285,6 +292,7 @@
                 border: 1px solid #d4d4d4;
                 padding: 10px;
                 border-radius: 4px;
+                margin-bottom: 5px;
               }
 
               .singleline-block-message {
