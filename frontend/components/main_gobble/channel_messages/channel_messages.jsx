@@ -371,54 +371,120 @@ class ChannelMessages extends React.Component {
         lastMessage = "last-message";
       }
 
-      let formats = {
-        "*": 0,
-        "~": 0,
-        ">": 0,
-        ">>>": 0,
-        "`": 0,
-        "```": 0
-      };
-
-      for (let i = 0; i < message.body.length; i++) {
-        let j = i + 1;
-        let k = j + 1;
-
-        if (formats[message[i] + message[j] + message[k]]) {
-          formats[message[i] + message[j] + message[k]] += 1;
-          i += 2;
-        } else if (formats[message[i]]) {
-          formats[message[i]] += 1;
-        }
-      }
-
-      let regex = /(\W+)[\w\s]+\1/;
+      let regex = /(?=[*~])/g;
+      let formattedMessage = message.body.split(regex);
       debugger;
-      let formattedMessage;
-      if (message.body.match(regex) && message.body.match(regex).input) {
-        formattedMessage = message.body.match(regex).input.split(" ");
+      formattedMessage = formattedMessage.map((chars, idx) => {
         debugger;
-        formattedMessage = formattedMessage.map((char, idx) => {
-          if (char[0] === "*" && char[char.length - 1] === "*") {
-            debugger;
-            return (
-              <div key={idx} className="bold-message">
-                {char.slice(1, char.length - 1)}
-              </div>
-            );
-          } else if (char[0] === "~" && char[char.length - 1] === "~") {
-            return (
-              <div key={idx} className="strikethrough-message">
-                {char.slice(1, char.length - 1)}
-              </div>
-            );
-          } else {
-            return <p key={idx}>{char}</p>;
-          }
-        });
-      } else {
-        formattedMessage = <p>{message.body}</p>;
-      }
+        if (chars[0] === "*" && formattedMessage[idx + 1] === "*") {
+          return (
+            <div key={idx} className="bold-message">
+              {chars.slice(1)}
+            </div>
+          );
+        } else if (
+          (chars[0] === "~" && formattedMessage[idx + 1] === "~") ||
+          (chars[0] === "~" && formattedMessage[idx + 1] === "~ ")
+        ) {
+          return (
+            <div key={idx} className="strikethrough-message">
+              {chars.slice(1)}
+            </div>
+          );
+        } else if (chars.slice(0, 3) === ">>>") {
+          return (
+            <div key={idx} className="blockquote-message">
+              {chars.slice(3)}
+            </div>
+          );
+        } else if (
+          chars[0] + chars[1] + chars[2] === "```" &&
+          chars[chars.length - 1] +
+            chars[chars.length - 2] +
+            chars[chars.length - 3] ===
+            "```"
+        ) {
+          return (
+            <div key={idx} className="multiline-block-message">
+              {chars.slice(3, chars.length - 3)}
+            </div>
+          );
+        } else if (
+          chars[0] + chars[1] + chars[2] === "```" &&
+          chars[chars.length - 2] +
+            chars[chars.length - 3] +
+            chars[chars.length - 4] ===
+            "```"
+        ) {
+          return (
+            <div key={idx} className="multiline-block-message">
+              {chars.slice(3, chars.length - 4)}
+            </div>
+          );
+        } else if (chars[0] !== "*" && chars[0] !== "~") {
+          return <p key={idx}>{chars}</p>;
+        }
+      });
+
+      // let regex = /(\W+)[\w\s]+\1/;
+      // let formattedMessage;
+      // debugger;
+      // if (message.body.match(regex) && message.body.match(regex).input) {
+      //   formattedMessage = message.body.match(regex).input.split(" ");
+      //   debugger;
+      //   formattedMessage = formattedMessage.map((char, idx) => {
+      //     debugger;
+
+      //     if (char[0] === "*" && char[char.length - 1] === "*") {
+      //       return (
+      //         <div key={idx} className="bold-message">
+      //           {char.slice(1, char.length - 1)}
+      //         </div>
+      //       );
+      //     } else if (char[0] === "~" && char[char.length - 1] === "~") {
+      //       return (
+      //         <div key={idx} className="strikethrough-message">
+      //           {char.slice(1, char.length - 1)}
+      //         </div>
+      //       );
+      //     } else if (
+      //       char[0] + char[1] + char[2] === "```" &&
+      //       char[char.length - 1] +
+      //         char[char.length - 2] +
+      //         char[char.length - 3] ===
+      //         "```"
+      //     ) {
+      //       <div key={idx} className="triple-codeblock-message">
+      //         {char.slice(3, char.length - 3)}
+      //       </div>;
+      //     } else if (char[0] === "`" && char[char.length - 1] === "`") {
+      //       <div key={idx} className="single-codeblock-message">
+      //         {char.slice(1, char.length - 1)}
+      //       </div>;
+      //     } else {
+      //       return <p key={idx}>{char}</p>;
+      //     }
+      //   });
+      // } else if (
+      //   message.body[0] + message.body[1] + message.body[2] ===
+      //   ">>>"
+      // ) {
+      //   if (message.body[3] === " ") {
+      //     formattedMessage = (
+      //       <div key={idx} className="blockquote-message">
+      //         {message.body.slice(4)}
+      //       </div>
+      //     );
+      //   } else {
+      //     formattedMessage = (
+      //       <div key={idx} className="blockquote-message">
+      //         {message.body.slice(3)}
+      //       </div>
+      //     );
+      //   }
+      // } else {
+      //   formattedMessage = <p>{message.body}</p>;
+      // }
 
       return (
         <li id={lastMessage} key={idx}>
