@@ -371,6 +371,55 @@ class ChannelMessages extends React.Component {
         lastMessage = "last-message";
       }
 
+      let formats = {
+        "*": 0,
+        "~": 0,
+        ">": 0,
+        ">>>": 0,
+        "`": 0,
+        "```": 0
+      };
+
+      for (let i = 0; i < message.body.length; i++) {
+        let j = i + 1;
+        let k = j + 1;
+
+        if (formats[message[i] + message[j] + message[k]]) {
+          formats[message[i] + message[j] + message[k]] += 1;
+          i += 2;
+        } else if (formats[message[i]]) {
+          formats[message[i]] += 1;
+        }
+      }
+
+      let regex = /(\W+)[\w\s]+\1/;
+      debugger;
+      let formattedMessage;
+      if (message.body.match(regex) && message.body.match(regex).input) {
+        formattedMessage = message.body.match(regex).input.split(" ");
+        debugger;
+        formattedMessage = formattedMessage.map((char, idx) => {
+          if (char[0] === "*" && char[char.length - 1] === "*") {
+            debugger;
+            return (
+              <div key={idx} className="bold-message">
+                {char.slice(1, char.length - 1)}
+              </div>
+            );
+          } else if (char[0] === "~" && char[char.length - 1] === "~") {
+            return (
+              <div key={idx} className="strikethrough-message">
+                {char.slice(1, char.length - 1)}
+              </div>
+            );
+          } else {
+            return <p key={idx}>{char}</p>;
+          }
+        });
+      } else {
+        formattedMessage = <p>{message.body}</p>;
+      }
+
       return (
         <li id={lastMessage} key={idx}>
           <div className="user-profile-pic" />
@@ -382,7 +431,8 @@ class ChannelMessages extends React.Component {
               <div className="message-timestamp">{timeStamp}</div>
             </div>
 
-            <div className="message-body">{message.body}</div>
+            {/* <div className="message-body">{message.body}</div> */}
+            <div className="message-body">{formattedMessage}</div>
           </div>
         </li>
       );
