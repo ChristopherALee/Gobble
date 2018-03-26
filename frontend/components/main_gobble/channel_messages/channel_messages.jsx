@@ -363,77 +363,152 @@ class ChannelMessages extends React.Component {
   formatMessage(message) {
     let regex = /(?=[*~ ])/g;
     let formattedMessage = message.body.split(regex);
-    formattedMessage = formattedMessage.map((chars, idx) => {
-      debugger;
-      if (chars[0] === "*" && formattedMessage[idx + 1] === "*") {
-        return (
-          <div key={idx} className="bold-message">
-            {chars.slice(1)}
-          </div>
-        );
+
+    let final = [];
+    let currentFormat = null;
+    let formatted = [];
+    formattedMessage.forEach((chars, idx) => {
+      if (chars.includes("*")) {
+        if (currentFormat === "*") {
+          formatted.push(chars);
+          final.push(formatted.join(""));
+          formatted = [];
+          currentFormat = null;
+        } else {
+          currentFormat = "*";
+          formatted.push(chars);
+        }
+      } else if (chars.includes("~")) {
+        if (currentFormat === "~") {
+          formatted.push(chars);
+          final.push(formatted.join(""));
+          formatted = [];
+          currentFormat = null;
+        } else {
+          currentFormat = "~";
+          formatted.push(chars);
+        }
+      } else if (chars.includes("```")) {
+        if (currentFormat === "```") {
+          formatted.push(chars);
+          final.push(formatted.join(""));
+          formatted = [];
+          currentFormat = null;
+        } else {
+          currentFormat = "```";
+          formatted.push(chars);
+        }
+      } else if (chars.includes("`")) {
+        if (currentFormat === "`") {
+          formatted.push(chars);
+          final.push(formatted.join(""));
+          formatted = [];
+          currentFormat = null;
+        } else {
+          currentFormat = "`";
+          formatted.push(chars);
+        }
+      } else if (chars.includes(">>>")) {
+        currentFormat = ">>>";
+        formatted.push(chars);
       } else if (
-        (chars[0] === "~" && formattedMessage[idx + 1] === "~") ||
-        (chars[0] === "~" && formattedMessage[idx + 1] === "~ ")
+        currentFormat === ">>>" &&
+        idx !== formattedMessage.length - 1
       ) {
-        return (
-          <div key={idx} className="strikethrough-message">
-            {chars.slice(1)}
-          </div>
-        );
-      } else if (chars.slice(0, 3) === ">>>") {
-        return (
-          <div key={idx} className="blockquote-message">
-            {chars.slice(3)}
-          </div>
-        );
+        formatted.push(chars);
       } else if (
-        chars[0] + chars[1] + chars[2] === "```" &&
-        chars[chars.length - 1] +
-          chars[chars.length - 2] +
-          chars[chars.length - 3] ===
-          "```"
+        currentFormat === ">>>" &&
+        idx === formattedMessage.length - 1
       ) {
-        return (
-          <div key={idx} className="multiline-block-message">
-            {chars.slice(3, chars.length - 3)}
-          </div>
-        );
-      } else if (
-        chars[0] + chars[1] + chars[2] === "```" &&
-        chars[chars.length - 2] +
-          chars[chars.length - 3] +
-          chars[chars.length - 4] ===
-          "```"
-      ) {
-        return (
-          <div key={idx} className="multiline-block-message">
-            {chars.slice(3, chars.length - 4)}
-          </div>
-        );
-      } else if (chars[0] === "`" && chars[chars.length - 1] === "`") {
-        return (
-          <div key={idx} className="singleline-block-message">
-            {chars.slice(1, chars.length - 1)}
-          </div>
-        );
-      } else if (chars[1] === "`" && chars[chars.length - 1] === "`") {
-        return (
-          <div key={idx} className="singleline-block-message">
-            {chars.slice(2, chars.length - 1)}
-          </div>
-        );
-      } else if (chars[0] === "`" && formattedMessage[idx + 1] === "`") {
-        return (
-          <div key={idx} className="singleline-block-message">
-            {chars.slice(1, chars.length - 1)}
-          </div>
-        );
-      } else if (chars[0] !== "*" && chars[0] !== "~" && chars[0] !== " ") {
-        return <p key={idx}>{chars}</p>;
+        debugger;
+        formatted.push(chars);
+        final.push(formatted.join(" "));
+        formatted = [];
+        currentFormat = null;
+        final.join(" ");
+      } else if (currentFormat === null) {
+        formatted.push(chars);
+        final.push(formatted.join(""));
+        formatted = [];
+        currentFormat = null;
+      } else {
+        formatted.push(chars);
       }
     });
 
-    return formattedMessage;
+    final.push(formatted.join(" "));
+    formatted = [];
+    currentFormat = null;
+
+    return final.map((formattedMessage, idx) => {
+      debugger;
+      if (formattedMessage[0] === "*") {
+        return (
+          <div key={idx} className="bold-message">
+            {formattedMessage.slice(1, formattedMessage.length - 1)}
+          </div>
+        );
+      } else if (formattedMessage[1] === "*") {
+        return (
+          <div key={idx} className="bold-message">
+            {formattedMessage.slice(2, formattedMessage.length - 1)}
+          </div>
+        );
+      } else if (formattedMessage[0] === "~") {
+        return (
+          <div key={idx} className="strikethrough-message">
+            {formattedMessage.slice(1, formattedMessage.length - 1)}
+          </div>
+        );
+      } else if (formattedMessage[1] === "~") {
+        return (
+          <div key={idx} className="strikethrough-message">
+            {formattedMessage.slice(2, formattedMessage.length - 1)}
+          </div>
+        );
+      } else if (
+        formattedMessage[0] + formattedMessage[1] + formattedMessage[2] ===
+        "```"
+      ) {
+        return (
+          <div key={idx} className="multiline-block-message">
+            {formattedMessage.slice(3, formattedMessage.length - 3)}
+          </div>
+        );
+      } else if (
+        formattedMessage[1] + formattedMessage[2] + formattedMessage[3] ===
+        "```"
+      ) {
+        return (
+          <div key={idx} className="multiline-block-message">
+            {formattedMessage.slice(4, formattedMessage.length - 3)}
+          </div>
+        );
+      } else if (formattedMessage[0] === "`") {
+        return (
+          <div key={idx} className="singleline-block-message">
+            {formattedMessage.slice(1, formattedMessage.length - 1)}
+          </div>
+        );
+      } else if (formattedMessage[1] === "`") {
+        return (
+          <div key={idx} className="singleline-block-message">
+            {formattedMessage.slice(2, formattedMessage.length - 1)}
+          </div>
+        );
+      } else if (
+        formattedMessage[0] + formattedMessage[1] + formattedMessage[2] ===
+        ">>>"
+      ) {
+        return (
+          <div key={idx} className="blockquote-message">
+            {formattedMessage.slice(3)}
+          </div>
+        );
+      } else {
+        return;
+      }
+    });
   }
 
   renderMessages() {
@@ -449,22 +524,26 @@ class ChannelMessages extends React.Component {
 
       let formattedCt = {
         "*": 0,
-        "`": 0
+        "`": 0,
+        "~": 0
       };
       for (let i = 0; i < message.body.length; i++) {
         if (message.body[i] === "*") {
           formattedCt["*"] += 1;
         } else if (message.body[i] === "`") {
           formattedCt["`"] += 1;
+        } else if (message.body[i] === "~") {
+          formattedCt["~"] += 1;
         }
       }
 
       let regularMessage;
       let formattedMessage;
-      debugger;
+      // debugger;
       if (
         (formattedCt["*"] !== 0 && formattedCt["*"] % 2 === 0) ||
         (formattedCt["`"] !== 0 && formattedCt["`"] % 2 === 0) ||
+        (formattedCt["~"] !== 0 && formattedCt["~"] % 2 === 0) ||
         message.body.includes(">")
       ) {
         formattedMessage = this.formatMessage(message);
@@ -484,7 +563,6 @@ class ChannelMessages extends React.Component {
                 <div className="message-timestamp">{timeStamp}</div>
               </div>
 
-              {/* <div className="message-body">{message.body}</div> */}
               <div className="message-body">{regularMessage}</div>
             </div>
           </li>
