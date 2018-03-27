@@ -361,7 +361,7 @@ class ChannelMessages extends React.Component {
   }
 
   formatMessage(message) {
-    let regex = /(?=[*~ ])/g;
+    let regex = /(?=[*~^ ])/g;
     let formattedMessage = message.body.split(regex);
 
     let final = [];
@@ -377,6 +377,16 @@ class ChannelMessages extends React.Component {
           currentFormat = null;
         } else {
           currentFormat = "*";
+          formatted.push(chars);
+        }
+      } else if (chars.includes("^")) {
+        if (currentFormat === "^") {
+          formatted.push(chars);
+          final.push(formatted.join(""));
+          formatted = [];
+          currentFormat = null;
+        } else {
+          currentFormat = "^";
           formatted.push(chars);
         }
       } else if (chars.includes("~")) {
@@ -411,7 +421,10 @@ class ChannelMessages extends React.Component {
           formatted.push(chars);
         }
       } else if (chars.includes("`")) {
-        if (chars[0] === "`" && chars[chars.length - 1] === "`") {
+        if (
+          (chars[0] === "`" || chars[1] === "`") &&
+          chars[chars.length - 1] === "`"
+        ) {
           formatted.push(chars);
           final.push(formatted.join(""));
           formatted = [];
@@ -456,7 +469,18 @@ class ChannelMessages extends React.Component {
     currentFormat = null;
 
     const formattedFinal = final.map((formattedMessage, idx) => {
-      if (formattedMessage[0] === "*") {
+      if (
+        formattedMessage[0] + formattedMessage[1] === "**" ||
+        formattedMessage[1] + formattedMessage[2] === "**" ||
+        (formattedMessage[0] + formattedMessage[1] === "^^" ||
+          formattedMessage[1] + formattedMessage[2] === "^^") ||
+        (formattedMessage[0] + formattedMessage[1] === "~~" ||
+          formattedMessage[1] + formattedMessage[2] === "~~") ||
+        (formattedMessage[0] + formattedMessage[1] === "``" ||
+          formattedMessage[1] + formattedMessage[2] === "``")
+      ) {
+        return <p key={idx}>{formattedMessage}</p>;
+      } else if (formattedMessage[0] === "*") {
         return (
           <div key={idx} className="bold-message">
             {formattedMessage.slice(1, formattedMessage.length - 1)}
@@ -465,6 +489,18 @@ class ChannelMessages extends React.Component {
       } else if (formattedMessage[1] === "*") {
         return (
           <div key={idx} className="bold-message">
+            {formattedMessage.slice(2, formattedMessage.length - 1)}
+          </div>
+        );
+      } else if (formattedMessage[0] === "^") {
+        return (
+          <div key={idx} className="italics-message">
+            {formattedMessage.slice(1, formattedMessage.length - 1)}
+          </div>
+        );
+      } else if (formattedMessage[1] === "^") {
+        return (
+          <div key={idx} className="italics-message">
             {formattedMessage.slice(2, formattedMessage.length - 1)}
           </div>
         );
@@ -545,7 +581,9 @@ class ChannelMessages extends React.Component {
       let formattedCt = {
         "*": 0,
         "`": 0,
-        "~": 0
+        "~": 0,
+        "^": 0,
+        ">": 0
       };
       for (let i = 0; i < message.body.length; i++) {
         if (message.body[i] === "*") {
@@ -554,6 +592,10 @@ class ChannelMessages extends React.Component {
           formattedCt["`"] += 1;
         } else if (message.body[i] === "~") {
           formattedCt["~"] += 1;
+        } else if (message.body[i] === "^") {
+          formattedCt["^"] += 1;
+        } else if (message.body[i] === ">") {
+          formattedCt[">"] += 1;
         }
       }
 
@@ -563,7 +605,8 @@ class ChannelMessages extends React.Component {
         formattedCt["*"] > 1 ||
         formattedCt["`"] > 1 ||
         formattedCt["~"] > 1 ||
-        message.body.includes(">>>")
+        formattedCt["^"] > 1 ||
+        (message.body.includes(">>>") && formattedCt[">"] === 3)
       ) {
         formattedMessage = this.formatMessage(message);
       } else {
@@ -693,7 +736,7 @@ class ChannelMessages extends React.Component {
 
                 <div className="message-formatting-description">
                   <div className="bold-format-template">*bold*</div>
-                  <div className="italics-format-template">_italics_</div>
+                  <div className="italics-format-template">^italics^</div>
                   <div className="strike-format-template">~strike~</div>
                   <div className="code-format-template">`code`</div>
                   <div className="preformatted-format-template">

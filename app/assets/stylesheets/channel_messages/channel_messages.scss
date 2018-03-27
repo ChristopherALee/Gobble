@@ -277,6 +277,10 @@
                 font-weight: 800;
               }
 
+              .italics-message {
+                font-style: italic;
+              }
+
               .strikethrough-message {
                 text-decoration: line-through;
               }
@@ -356,6 +360,10 @@
 
       & > div {
         margin-right: 5px;
+      }
+
+      .bold-format-template {
+        font-weight: 800;
       }
     }
   }
