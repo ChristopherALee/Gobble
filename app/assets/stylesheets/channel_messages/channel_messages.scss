@@ -282,8 +282,14 @@
               }
 
               .blockquote-message {
+                display: flex;
                 padding-left: 5px;
                 border-left: 5px solid #e3e4e6;
+
+                & > div,
+                p {
+                  margin-right: 5px;
+                }
               }
 
               .multiline-block-message {

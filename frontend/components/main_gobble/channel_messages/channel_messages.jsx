@@ -366,6 +366,7 @@ class ChannelMessages extends React.Component {
 
     let final = [];
     let currentFormat = null;
+    let isBlockQuote = false;
     let formatted = [];
     formattedMessage.forEach((chars, idx) => {
       if (chars.includes("*")) {
@@ -425,21 +426,20 @@ class ChannelMessages extends React.Component {
           formatted.push(chars);
         }
       } else if (chars.includes(">>>")) {
-        currentFormat = ">>>";
-        formatted.push(chars);
+        // currentFormat = ">>>";
+        isBlockQuote = true;
+        // formatted.push(chars);
       } else if (
-        currentFormat === ">>>" &&
-        idx !== formattedMessage.length - 1
+        isBlockQuote &&
+        idx !== formattedMessage.length - 1 &&
+        currentFormat !== null
       ) {
         formatted.push(chars);
-      } else if (
-        currentFormat === ">>>" &&
-        idx === formattedMessage.length - 1
-      ) {
+      } else if (isBlockQuote && idx === formattedMessage.length - 1) {
         formatted.push(chars);
         final.push(formatted.join(" "));
         formatted = [];
-        currentFormat = null;
+        // currentFormat = null;
         final.join(" ");
       } else if (currentFormat === null) {
         formatted.push(chars);
@@ -455,7 +455,7 @@ class ChannelMessages extends React.Component {
     formatted = [];
     currentFormat = null;
 
-    return final.map((formattedMessage, idx) => {
+    const formattedFinal = final.map((formattedMessage, idx) => {
       if (formattedMessage[0] === "*") {
         return (
           <div key={idx} className="bold-message">
@@ -523,6 +523,12 @@ class ChannelMessages extends React.Component {
         return <p key={idx}>{formattedMessage}</p>;
       }
     });
+
+    if (isBlockQuote) {
+      return <div className="blockquote-message">{formattedFinal}</div>;
+    } else {
+      return formattedFinal;
+    }
   }
 
   renderMessages() {
