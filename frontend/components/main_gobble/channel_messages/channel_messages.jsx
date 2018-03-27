@@ -389,7 +389,18 @@ class ChannelMessages extends React.Component {
           formatted.push(chars);
         }
       } else if (chars.includes("```")) {
-        if (currentFormat === "```") {
+        if (
+          chars[0] + chars[1] + chars[2] === "```" &&
+          chars[chars.length - 1] +
+            chars[chars.length - 2] +
+            chars[chars.length - 3] ===
+            "```"
+        ) {
+          formatted.push(chars);
+          final.push(formatted.join(""));
+          formatted = [];
+          currentFormat = null;
+        } else if (currentFormat === "```") {
           formatted.push(chars);
           final.push(formatted.join(""));
           formatted = [];
@@ -399,7 +410,12 @@ class ChannelMessages extends React.Component {
           formatted.push(chars);
         }
       } else if (chars.includes("`")) {
-        if (currentFormat === "`") {
+        if (chars[0] === "`" && chars[chars.length - 1] === "`") {
+          formatted.push(chars);
+          final.push(formatted.join(""));
+          formatted = [];
+          currentFormat = null;
+        } else if (currentFormat === "`") {
           formatted.push(chars);
           final.push(formatted.join(""));
           formatted = [];
@@ -420,7 +436,6 @@ class ChannelMessages extends React.Component {
         currentFormat === ">>>" &&
         idx === formattedMessage.length - 1
       ) {
-        debugger;
         formatted.push(chars);
         final.push(formatted.join(" "));
         formatted = [];
@@ -441,7 +456,6 @@ class ChannelMessages extends React.Component {
     currentFormat = null;
 
     return final.map((formattedMessage, idx) => {
-      debugger;
       if (formattedMessage[0] === "*") {
         return (
           <div key={idx} className="bold-message">
@@ -505,8 +519,8 @@ class ChannelMessages extends React.Component {
             {formattedMessage.slice(3)}
           </div>
         );
-      } else {
-        return;
+      } else if (formattedMessage !== " ") {
+        return <p key={idx}>{formattedMessage}</p>;
       }
     });
   }
@@ -539,7 +553,6 @@ class ChannelMessages extends React.Component {
 
       let regularMessage;
       let formattedMessage;
-      // debugger;
       if (
         (formattedCt["*"] !== 0 && formattedCt["*"] % 2 === 0) ||
         (formattedCt["`"] !== 0 && formattedCt["`"] % 2 === 0) ||
