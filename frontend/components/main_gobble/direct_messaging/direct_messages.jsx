@@ -216,6 +216,214 @@ class DirectMessages extends React.Component {
     return `${month} ${day}, ${year} at ${hour}:${minutes}${amOrPm}`;
   }
 
+  formatMessage(message) {
+    let regex = /(?=[*~^ ])/g;
+    let formattedMessage = message.body.split(regex);
+
+    let final = [];
+    let currentFormat = null;
+    let isBlockQuote = false;
+    let formatted = [];
+    formattedMessage.forEach((chars, idx) => {
+      if (chars.includes("*")) {
+        if (currentFormat === "*") {
+          formatted.push(chars);
+          final.push(formatted.join(""));
+          formatted = [];
+          currentFormat = null;
+        } else {
+          currentFormat = "*";
+          formatted.push(chars);
+        }
+      } else if (chars.includes("^")) {
+        if (currentFormat === "^") {
+          formatted.push(chars);
+          final.push(formatted.join(""));
+          formatted = [];
+          currentFormat = null;
+        } else {
+          currentFormat = "^";
+          formatted.push(chars);
+        }
+      } else if (chars.includes("~")) {
+        if (currentFormat === "~") {
+          formatted.push(chars);
+          final.push(formatted.join(""));
+          formatted = [];
+          currentFormat = null;
+        } else {
+          currentFormat = "~";
+          formatted.push(chars);
+        }
+      } else if (chars.includes("```")) {
+        if (
+          chars[0] + chars[1] + chars[2] === "```" &&
+          chars[chars.length - 1] +
+            chars[chars.length - 2] +
+            chars[chars.length - 3] ===
+            "```"
+        ) {
+          formatted.push(chars);
+          final.push(formatted.join(""));
+          formatted = [];
+          currentFormat = null;
+        } else if (currentFormat === "```") {
+          formatted.push(chars);
+          final.push(formatted.join(""));
+          formatted = [];
+          currentFormat = null;
+        } else {
+          currentFormat = "```";
+          formatted.push(chars);
+        }
+      } else if (chars.includes("`")) {
+        if (
+          (chars[0] === "`" || chars[1] === "`") &&
+          chars[chars.length - 1] === "`"
+        ) {
+          formatted.push(chars);
+          final.push(formatted.join(""));
+          formatted = [];
+          currentFormat = null;
+        } else if (currentFormat === "`") {
+          formatted.push(chars);
+          final.push(formatted.join(""));
+          formatted = [];
+          currentFormat = null;
+        } else {
+          currentFormat = "`";
+          formatted.push(chars);
+        }
+      } else if (chars.includes(">>>")) {
+        // currentFormat = ">>>";
+        isBlockQuote = true;
+        // formatted.push(chars);
+      } else if (
+        isBlockQuote &&
+        idx !== formattedMessage.length - 1 &&
+        currentFormat !== null
+      ) {
+        formatted.push(chars);
+      } else if (isBlockQuote && idx === formattedMessage.length - 1) {
+        formatted.push(chars);
+        final.push(formatted.join(" "));
+        formatted = [];
+        // currentFormat = null;
+        final.join(" ");
+      } else if (currentFormat === null) {
+        formatted.push(chars);
+        final.push(formatted.join(""));
+        formatted = [];
+        currentFormat = null;
+      } else {
+        formatted.push(chars);
+      }
+    });
+
+    final.push(formatted.join(" "));
+    formatted = [];
+    currentFormat = null;
+
+    const formattedFinal = final.map((formattedMessage, idx) => {
+      if (
+        formattedMessage.slice(0, 2) === "**" ||
+        formattedMessage.slice(1, 3) === "**" ||
+        (formattedMessage.slice(0, 2) === "^^" ||
+          formattedMessage.slice(1, 3) === "^^") ||
+        (formattedMessage.slice(0, 2) === "~~" ||
+          formattedMessage.slice(1, 3) === "~~") ||
+        (formattedMessage === "``" ||
+          formattedMessage === " ``" ||
+          (formattedMessage === "```" || formattedMessage === " ```"))
+      ) {
+        return <p key={idx}>{formattedMessage}</p>;
+      } else if (formattedMessage[0] === "*") {
+        return (
+          <div key={idx} className="bold-message">
+            {formattedMessage.slice(1, formattedMessage.length - 1)}
+          </div>
+        );
+      } else if (formattedMessage[1] === "*") {
+        return (
+          <div key={idx} className="bold-message">
+            {formattedMessage.slice(2, formattedMessage.length - 1)}
+          </div>
+        );
+      } else if (formattedMessage[0] === "^") {
+        return (
+          <div key={idx} className="italics-message">
+            {formattedMessage.slice(1, formattedMessage.length - 1)}
+          </div>
+        );
+      } else if (formattedMessage[1] === "^") {
+        return (
+          <div key={idx} className="italics-message">
+            {formattedMessage.slice(2, formattedMessage.length - 1)}
+          </div>
+        );
+      } else if (formattedMessage[0] === "~") {
+        return (
+          <div key={idx} className="strikethrough-message">
+            {formattedMessage.slice(1, formattedMessage.length - 1)}
+          </div>
+        );
+      } else if (formattedMessage[1] === "~") {
+        return (
+          <div key={idx} className="strikethrough-message">
+            {formattedMessage.slice(2, formattedMessage.length - 1)}
+          </div>
+        );
+      } else if (
+        formattedMessage[0] + formattedMessage[1] + formattedMessage[2] ===
+        "```"
+      ) {
+        return (
+          <div key={idx} className="multiline-block-message">
+            {formattedMessage.slice(3, formattedMessage.length - 3)}
+          </div>
+        );
+      } else if (
+        formattedMessage[1] + formattedMessage[2] + formattedMessage[3] ===
+        "```"
+      ) {
+        return (
+          <div key={idx} className="multiline-block-message">
+            {formattedMessage.slice(4, formattedMessage.length - 3)}
+          </div>
+        );
+      } else if (formattedMessage[0] === "`") {
+        return (
+          <div key={idx} className="singleline-block-message">
+            {formattedMessage.slice(1, formattedMessage.length - 1)}
+          </div>
+        );
+      } else if (formattedMessage[1] === "`") {
+        return (
+          <div key={idx} className="singleline-block-message">
+            {formattedMessage.slice(2, formattedMessage.length - 1)}
+          </div>
+        );
+      } else if (
+        formattedMessage[0] + formattedMessage[1] + formattedMessage[2] ===
+        ">>>"
+      ) {
+        return (
+          <div key={idx} className="blockquote-message">
+            {formattedMessage.slice(3)}
+          </div>
+        );
+      } else if (formattedMessage !== " ") {
+        return <p key={idx}>{formattedMessage}</p>;
+      }
+    });
+
+    if (isBlockQuote) {
+      return <div className="blockquote-message">{formattedFinal}</div>;
+    } else {
+      return formattedFinal;
+    }
+  }
+
   renderMessages() {
     let messages = this.props.messages;
 
@@ -227,21 +435,74 @@ class DirectMessages extends React.Component {
         lastMessage = "last-message";
       }
 
-      return (
-        <li id={lastMessage} key={message.id}>
-          <div className="user-profile-pic" />
-          <div className="message-content">
-            <div className="message-author-timestamp">
-              <div className="message-author-name">
-                <strong>{message.authorName}</strong>
-              </div>
-              <div className="message-timestamp">{timeStamp}</div>
-            </div>
+      let formattedCt = {
+        "*": 0,
+        "`": 0,
+        "~": 0,
+        "^": 0,
+        ">": 0
+      };
+      for (let i = 0; i < message.body.length; i++) {
+        if (message.body[i] === "*") {
+          formattedCt["*"] += 1;
+        } else if (message.body[i] === "`") {
+          formattedCt["`"] += 1;
+        } else if (message.body[i] === "~") {
+          formattedCt["~"] += 1;
+        } else if (message.body[i] === "^") {
+          formattedCt["^"] += 1;
+        } else if (message.body[i] === ">") {
+          formattedCt[">"] += 1;
+        }
+      }
 
-            <div className="message-body">{message.body}</div>
-          </div>
-        </li>
-      );
+      let regularMessage;
+      let formattedMessage;
+      if (
+        formattedCt["*"] > 1 ||
+        formattedCt["`"] > 1 ||
+        formattedCt["~"] > 1 ||
+        formattedCt["^"] > 1 ||
+        (message.body.includes(">>>") && formattedCt[">"] === 3)
+      ) {
+        formattedMessage = this.formatMessage(message);
+      } else {
+        regularMessage = message.body;
+      }
+
+      if (regularMessage) {
+        return (
+          <li id={lastMessage} key={message.id}>
+            <div className="user-profile-pic" />
+            <div className="message-content">
+              <div className="message-author-timestamp">
+                <div className="message-author-name">
+                  <strong>{message.authorName}</strong>
+                </div>
+                <div className="message-timestamp">{timeStamp}</div>
+              </div>
+
+              <div className="message-body">{regularMessage}</div>
+            </div>
+          </li>
+        );
+      } else if (formattedMessage) {
+        return (
+          <li id={lastMessage} key={message.id}>
+            <div className="user-profile-pic" />
+            <div className="message-content">
+              <div className="message-author-timestamp">
+                <div className="message-author-name">
+                  <strong>{message.authorName}</strong>
+                </div>
+                <div className="message-timestamp">{timeStamp}</div>
+              </div>
+
+              <div className="formatted-message-body">{formattedMessage}</div>
+            </div>
+          </li>
+        );
+      }
     });
 
     return messages;
@@ -383,6 +644,17 @@ class DirectMessages extends React.Component {
                       onChange={this.handleChange("body")}
                     />
                   </form>
+                </div>
+
+                <div className="message-formatting-description">
+                  <div className="bold-format-template">*bold*</div>
+                  <div className="italics-format-template">^italics^</div>
+                  <div className="strike-format-template">~strike~</div>
+                  <div className="code-format-template">`code`</div>
+                  <div className="preformatted-format-template">
+                    ```preformatted```
+                  </div>
+                  <div className="quote-format-template">>>>quote</div>
                 </div>
               </div>
             </div>
