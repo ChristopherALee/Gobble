@@ -690,6 +690,17 @@ class ChannelMessages extends React.Component {
                     />
                   </form>
                 </div>
+
+                <div className="message-formatting-description">
+                  <div className="bold-format-template">*bold*</div>
+                  <div className="italics-format-template">_italics_</div>
+                  <div className="strike-format-template">~strike~</div>
+                  <div className="code-format-template">`code`</div>
+                  <div className="preformatted-format-template">
+                    ```preformatted```
+                  </div>
+                  <div className="quote-format-template">>>>quote</div>
+                </div>
               </div>
             </div>
 
