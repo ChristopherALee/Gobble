@@ -353,9 +353,11 @@
 
     .message-formatting-description {
       font-size: 12px;
+      color: #717274;
       margin-top: 6px;
       padding: 0 27px;
       display: flex;
+      align-items: center;
       justify-content: flex-end;
 
       & > div {
@@ -364,6 +366,29 @@
 
       .bold-format-template {
         font-weight: 800;
+      }
+
+      .italics-format-template {
+        font-style: italic;
+      }
+
+      .strike-format-template {
+        text-decoration: line-through;
+      }
+
+      .code-format-template {
+        width: fit-content;
+        background-color: #f9f9f9;
+        border: 1px solid #d4d4d4;
+        padding: 0 5px;
+        border-radius: 3px;
+        color: #d72b3f;
+      }
+
+      .preformatted-format-template {
+        background-color: #f9f9f9;
+        border: 1px solid #d4d4d4;
+        border-radius: 4px;
       }
     }
   }
