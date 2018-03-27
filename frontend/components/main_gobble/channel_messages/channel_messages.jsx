@@ -470,14 +470,15 @@ class ChannelMessages extends React.Component {
 
     const formattedFinal = final.map((formattedMessage, idx) => {
       if (
-        formattedMessage[0] + formattedMessage[1] === "**" ||
-        formattedMessage[1] + formattedMessage[2] === "**" ||
-        (formattedMessage[0] + formattedMessage[1] === "^^" ||
-          formattedMessage[1] + formattedMessage[2] === "^^") ||
-        (formattedMessage[0] + formattedMessage[1] === "~~" ||
-          formattedMessage[1] + formattedMessage[2] === "~~") ||
-        (formattedMessage[0] + formattedMessage[1] === "``" ||
-          formattedMessage[1] + formattedMessage[2] === "``")
+        formattedMessage.slice(0, 2) === "**" ||
+        formattedMessage.slice(1, 3) === "**" ||
+        (formattedMessage.slice(0, 2) === "^^" ||
+          formattedMessage.slice(1, 3) === "^^") ||
+        (formattedMessage.slice(0, 2) === "~~" ||
+          formattedMessage.slice(1, 3) === "~~") ||
+        (formattedMessage === "``" ||
+          formattedMessage === " ``" ||
+          (formattedMessage === "```" || formattedMessage === " ```"))
       ) {
         return <p key={idx}>{formattedMessage}</p>;
       } else if (formattedMessage[0] === "*") {
