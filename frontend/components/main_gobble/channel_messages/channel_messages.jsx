@@ -554,10 +554,10 @@ class ChannelMessages extends React.Component {
       let regularMessage;
       let formattedMessage;
       if (
-        (formattedCt["*"] !== 0 && formattedCt["*"] % 2 === 0) ||
-        (formattedCt["`"] !== 0 && formattedCt["`"] % 2 === 0) ||
-        (formattedCt["~"] !== 0 && formattedCt["~"] % 2 === 0) ||
-        message.body.includes(">")
+        formattedCt["*"] > 1 ||
+        formattedCt["`"] > 1 ||
+        formattedCt["~"] > 1 ||
+        message.body.includes(">>>")
       ) {
         formattedMessage = this.formatMessage(message);
       } else {
