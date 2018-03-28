@@ -55,6 +55,8 @@ end
 
 ## Live-Messaging
 
+### Pusher & WebSockets
+
 Using Pusher to interact with WebSockets, live-messaging between users in channels, direct messages, and group messages are seamless and intuitive.
 
 Pusher triggers an action for a specified channel whenever a new message is created:
@@ -84,6 +86,19 @@ this.channelMessages.bind("message_created", function(data) {
 ```
 
 ![Live-Messaging](./readme_images/gobble-live-messaging.gif)
+
+### Message Formatting
+
+Gobble currently supports the following message formats:
+
+* Bold (wrapping text in \*'s)
+* Italics (wrapping text in ^'s)
+* Strikethroughs (wrapping text in ~'s)
+* Code Snippet (wrapping text in " ' "s)
+* Preformatted Snippet (wrapping text in " ``` "'s)
+* Quotes (starting text with ">>>")
+
+![Message-Formatting](./readme_images/gobble-message-formatting.png)
 
 ## Notifications
 
@@ -127,7 +142,8 @@ Users can view if other users are online or offline either through the direct me
 6.  **[DONE]** Channel Group Messages
 7.  **[DONE]** Direct Messages
 8.  **[DONE]** Online/Offline User Activity
-9.  Notifications
-10. Paperclip Implementation
-11. User profile photo
-12. User photo messaging
+9.  **[DONE]** Message Formatting
+10. Notifications
+11. Paperclip Implementation
+12. User profile photo
+13. User photo messaging
