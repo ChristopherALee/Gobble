@@ -94,7 +94,7 @@ Gobble currently supports the following message formats:
 * Bold (wrapping text in \*'s)
 * Italics (wrapping text in ^'s)
 * Strikethroughs (wrapping text in ~'s)
-* Code Snippet (wrapping text in " ' "s)
+* Code Snippet (wrapping text in " ` "s)
 * Preformatted Snippet (wrapping text in " ``` "'s)
 * Quotes (starting text with ">>>")
 
