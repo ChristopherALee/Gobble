@@ -182,6 +182,15 @@
               line-height: 1.4;
               word-wrap: break-word;
               display: inline-block;
+
+              .youtube-video-message {
+                display: flex;
+                flex-direction: column;
+
+                iframe {
+                  margin-top: 5px;
+                }
+              }
             }
 
             .formatted-message-body {

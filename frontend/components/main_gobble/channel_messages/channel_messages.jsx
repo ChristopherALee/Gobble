@@ -572,7 +572,12 @@ class ChannelMessages extends React.Component {
     const videoId = message.body.slice(32);
     const embeddedLink = `https://www.youtube.com/embed/${videoId}?controls=1`;
 
-    return <iframe width="500" height="315" src={embeddedLink} />;
+    return (
+      <div className="youtube-video-message">
+        <a href={message.body}>{message.body}</a>
+        <iframe width="520" height="315" src={embeddedLink} />
+      </div>
+    );
   }
 
   processMessage(message) {
