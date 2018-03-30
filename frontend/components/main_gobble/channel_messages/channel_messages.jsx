@@ -568,6 +568,59 @@ class ChannelMessages extends React.Component {
     }
   }
 
+  formatYouTubeMessage(message) {
+    const videoId = message.body.slice(32);
+    const embeddedLink = `https://www.youtube.com/embed/${videoId}?controls=1`;
+
+    return <iframe width="500" height="315" src={embeddedLink} />;
+  }
+
+  processMessage(message) {
+    let formattedCt = {
+      "*": 0,
+      "`": 0,
+      "~": 0,
+      "^": 0,
+      ">": 0
+    };
+    for (let i = 0; i < message.body.length; i++) {
+      if (message.body[i] === "*") {
+        formattedCt["*"] += 1;
+      } else if (message.body[i] === "`") {
+        formattedCt["`"] += 1;
+      } else if (message.body[i] === "~") {
+        formattedCt["~"] += 1;
+      } else if (message.body[i] === "^") {
+        formattedCt["^"] += 1;
+      } else if (message.body[i] === ">") {
+        formattedCt[">"] += 1;
+      }
+    }
+
+    let regularMessage, formattedMessage, youTubeMessage;
+    if (message.body.includes("www.youtube.com/watch")) {
+      youTubeMessage = this.formatYouTubeMessage(message);
+    } else if (
+      formattedCt["*"] > 1 ||
+      formattedCt["`"] > 1 ||
+      formattedCt["~"] > 1 ||
+      formattedCt["^"] > 1 ||
+      (message.body.includes(">>>") && formattedCt[">"] === 3)
+    ) {
+      formattedMessage = this.formatMessage(message);
+    } else {
+      regularMessage = message.body;
+    }
+
+    if (regularMessage) {
+      return <div className="message-body">{regularMessage}</div>;
+    } else if (formattedMessage) {
+      return <div className="formatted-message-body">{formattedMessage}</div>;
+    } else if (youTubeMessage) {
+      return <div className="message-body">{youTubeMessage}</div>;
+    }
+  }
+
   renderMessages() {
     let messages = this.props.messages;
 
@@ -579,74 +632,23 @@ class ChannelMessages extends React.Component {
         lastMessage = "last-message";
       }
 
-      let formattedCt = {
-        "*": 0,
-        "`": 0,
-        "~": 0,
-        "^": 0,
-        ">": 0
-      };
-      for (let i = 0; i < message.body.length; i++) {
-        if (message.body[i] === "*") {
-          formattedCt["*"] += 1;
-        } else if (message.body[i] === "`") {
-          formattedCt["`"] += 1;
-        } else if (message.body[i] === "~") {
-          formattedCt["~"] += 1;
-        } else if (message.body[i] === "^") {
-          formattedCt["^"] += 1;
-        } else if (message.body[i] === ">") {
-          formattedCt[">"] += 1;
-        }
-      }
+      let processedMessage = this.processMessage(message);
 
-      let regularMessage;
-      let formattedMessage;
-      if (
-        formattedCt["*"] > 1 ||
-        formattedCt["`"] > 1 ||
-        formattedCt["~"] > 1 ||
-        formattedCt["^"] > 1 ||
-        (message.body.includes(">>>") && formattedCt[">"] === 3)
-      ) {
-        formattedMessage = this.formatMessage(message);
-      } else {
-        regularMessage = message.body;
-      }
-
-      if (regularMessage) {
-        return (
-          <li id={lastMessage} key={idx}>
-            <div className="user-profile-pic" />
-            <div className="message-content">
-              <div className="message-author-timestamp">
-                <div className="message-author-name">
-                  <strong>{message.authorName}</strong>
-                </div>
-                <div className="message-timestamp">{timeStamp}</div>
+      return (
+        <li id={lastMessage} key={idx}>
+          <div className="user-profile-pic" />
+          <div className="message-content">
+            <div className="message-author-timestamp">
+              <div className="message-author-name">
+                <strong>{message.authorName}</strong>
               </div>
-
-              <div className="message-body">{regularMessage}</div>
+              <div className="message-timestamp">{timeStamp}</div>
             </div>
-          </li>
-        );
-      } else if (formattedMessage) {
-        return (
-          <li id={lastMessage} key={idx}>
-            <div className="user-profile-pic" />
-            <div className="message-content">
-              <div className="message-author-timestamp">
-                <div className="message-author-name">
-                  <strong>{message.authorName}</strong>
-                </div>
-                <div className="message-timestamp">{timeStamp}</div>
-              </div>
 
-              <div className="formatted-message-body">{formattedMessage}</div>
-            </div>
-          </li>
-        );
-      }
+            {processedMessage}
+          </div>
+        </li>
+      );
     });
 
     return messages;
