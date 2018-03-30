@@ -100,11 +100,11 @@ Gobble currently supports the following message formats:
 
 ![Message-Formatting](./readme_images/gobble-message-formatting.png)
 
-<!-- ### Video Links
+### Video Links
 
 Message will render an embedded video player for users to view within the application (currently only supports YouTube)
 
-![Video-Message](./readme_images/gobble-video-messages.gif) -->
+![Video-Message](./readme_images/gobble-video-messages.gif)
 
 ## Notifications
 
