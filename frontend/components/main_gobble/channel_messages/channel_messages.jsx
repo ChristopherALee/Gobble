@@ -603,7 +603,10 @@ class ChannelMessages extends React.Component {
     }
 
     let regularMessage, formattedMessage, youTubeMessage;
-    if (message.body.includes("www.youtube.com/watch")) {
+    if (
+      message.body.includes("www.youtube.com/watch") &&
+      !message.body.includes(" ")
+    ) {
       youTubeMessage = this.formatYouTubeMessage(message);
     } else if (
       formattedCt["*"] > 1 ||
