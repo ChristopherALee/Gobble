@@ -157,7 +157,6 @@ message9 = Message.create({author_id: user3.id, channel_id: channel1.id, body: "
 message10 = Message.create({author_id: user1.id, channel_id: channel1.id, body: "Butter was meant to be spread."})
 message11 = Message.create({author_id: user2.id, channel_id: channel1.id, body: "We need four things to survive life: bread, water, oxygen, and dreams!"})
 message12 = Message.create({author_id: user3.id, channel_id: channel1.id, body: "A man needs only his daily bread."})
-
 message13 = Message.create({author_id: user1.id, channel_id: channel1.id, body: "Bubbles enters with a plate overflowing with rugelach.
 The three of us fall silent as we indulge in the small snail-shaped pastries of tender cream-cheese-infused dough wrapped around various fillings: one with walnuts and cinnamon, one bursting with chocolate, one with a thick, sweet poppy seed paste, and one with apricot jam that has been bumped up with some chewy bits of diced dried apricots."})
 message14 = Message.create({author_id: user2.id, channel_id: channel1.id, body: "Don't eat the bread unless you want to leave bread crumbs."})
@@ -165,8 +164,25 @@ message15 = Message.create({author_id: user3.id, channel_id: channel1.id, body: 
 message16 = Message.create({author_id: user1.id, channel_id: channel1.id, body: "Whoever hungers for living Bread, shall be filled."})
 message17 = Message.create({author_id: user2.id, channel_id: channel1.id, body: "People who eat white bread have no dreams."})
 message18 = Message.create({author_id: user3.id, channel_id: channel1.id, body: "You believe stealing is wrong, but if your family was starving and could not afford bread, wouldn't you say it’s okay to steal a loaf to feed them?"})
-message19 = Message.create({author_id: user1.id, channel_id: channel1.id, body: "With bread and wine you can walk your road."})
-message20 = Message.create({author_id: user2.id, channel_id: channel1.id, body: "If you run out of dough, all you knead is love."})
+message19 = Message.create({author_id: user1.id, channel_id: channel1.id, body: "If you run out of dough, all you knead is love."})
+message20 = Message.create({author_id: user2.id, channel_id: channel1.id, body: "https://www.youtube.com/watch?v=l3Zmn__a1ng"})
+
+message21 = Message.create({author_id: user1.id, channel_id: channel6.id, body: "I was eating in a Chinese restaurant downtown. There was a dish called Mother and Child Reunion. It's chicken and eggs. And I said, I gotta use that one."})
+message22 = Message.create({author_id: user2.id, channel_id: channel6.id, body: "There are two different things: there's grilling, and there's barbecue. Grilling is when people say, 'We're going to turn up the heat, make it really hot and sear a steak, sear a burger, cook a chicken.' Barbecue is going low and slow."})
+message23 = Message.create({author_id: user22.id, channel_id: channel6.id, body: "https://www.youtube.com/watch?v=M6XiFKB7j0w"})
+message24 = Message.create({author_id: user21.id, channel_id: channel6.id, body: "I'm just a pigeon."})
+message25 = Message.create({author_id: user3.id, channel_id: channel6.id, body: "I thought I saw a pooty tat!"})
+
+message26 = Message.create({author_id: user1.id, channel_id: channel7.id, body: "I've always had a duck personality. Calm above water, feet going crazy below."})
+message27 = Message.create({author_id: user9.id, channel_id: channel7.id, body: "My dear Mama, you are definitely the hen who hatched a famous duck."})
+message28 = Message.create({author_id: user5.id, channel_id: channel7.id, body: "I fantasize and idealize myself as Bugs Bunny, but I know deep down I'm Daffy Duck."})
+message29 = Message.create({author_id: user20.id, channel_id: channel7.id, body: "Being born in a duck yard does not matter, if only you are hatched from a swan's egg."})
+message30 = Message.create({author_id: user6.id, channel_id: channel7.id, body: "https://www.youtube.com/watch?v=cITJq9-Lly8"})
+message31 = Message.create({author_id: user9.id, channel_id: channel7.id, body: "I loved that episode!"})
+message32 = Message.create({author_id: user18.id, channel_id: channel7.id, body: "Me too!"})
+message33 = Message.create({author_id: user19.id, channel_id: channel7.id, body: "Oh boy, oh boy, oh boy..."})
+message34 = Message.create({author_id: user20.id, channel_id: channel7.id, body: "Aw, phooey!"})
+message35 = Message.create({author_id: user6.id, channel_id: channel7.id, body: "https://www.youtube.com/watch?v=1A4j6a-1xuQ"})
 
 # Direct Messaging
 direct_message_channel1 = DirectMessageChannel.create({creator_id: user1.id})

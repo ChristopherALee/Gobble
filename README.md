@@ -97,9 +97,14 @@ Gobble currently supports the following message formats:
 * Code Snippet (wrapping text in " ` "s)
 * Preformatted Snippet (wrapping text in " ``` "'s)
 * Quotes (starting text with ">>>")
-* Video Links - message will provide an embedded video player for users to view within the application (currently only supports YouTube)
 
 ![Message-Formatting](./readme_images/gobble-message-formatting.png)
+
+<!-- ### Video Links
+
+Message will render an embedded video player for users to view within the application (currently only supports YouTube)
+
+![Video-Message](./readme_images/gobble-video-messages.gif) -->
 
 ## Notifications
 
