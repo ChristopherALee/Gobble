@@ -187,6 +187,18 @@
                 display: flex;
                 flex-direction: column;
 
+                a {
+                  color: #08c;
+
+                  &:visited {
+                    color: #0576b9;
+                  }
+
+                  &:hover {
+                    color: #005e99;
+                  }
+                }
+
                 iframe {
                   margin-top: 10px;
                   padding-left: 10px;
