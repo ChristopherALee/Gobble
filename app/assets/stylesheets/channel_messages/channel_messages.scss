@@ -262,7 +262,9 @@
                 flex-direction: column;
 
                 iframe {
-                  margin-top: 5px;
+                  margin-top: 10px;
+                  padding-left: 10px;
+                  border-left: 5px solid #e3e4e6;
                 }
               }
             }
