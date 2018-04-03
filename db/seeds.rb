@@ -192,7 +192,7 @@ message39 = Message.create({author_id: user13.id, channel_id: channel2.id, body:
 message40 = Message.create({author_id: user14.id, channel_id: channel2.id, body: "Well, gee, Skipper. I think to be a meaningful and valued member of this team."})
 message41 = Message.create({author_id: user15.id, channel_id: channel2.id, body: "Oh, well, we got you something else."})
 message42 = Message.create({author_id: user14.id, channel_id: channel2.id, body: "Cheezy Dibbles!"})
-message43 = Message.create({author_id: user16.id, channel_id: channel2.id, body: "https://www.youtube.com/watch?v=AWxy9C5svFU&"})
+message43 = Message.create({author_id: user16.id, channel_id: channel2.id, body: "https://www.youtube.com/watch?v=AWxy9C5svFU"})
 message44 = Message.create({author_id: user14.id, channel_id: channel2.id, body: "Hello! Are you my family?"})
 
 message45 = Message.create({author_id: user11.id, channel_id: channel8.id, body: "```Migration can take very different forms in different species, and as such there is no simple accepted definition of migration. Migratory behavior is persistent and straightened out movement effected by the animal’s own locomotory exertions or by its active embarkation upon a vehicle. It depends on some temporary inhibition of station keeping responses but promotes their eventual disinhibition and recurrence. Migration encompasses four related concepts: persistent straight movement; relocation of an individual on a greater scale (both spatially and temporally) than its normal daily activities; seasonal to-and-fro movement of a population between two areas; and movement leading to the redistribution of individuals within a population. Migration can be either obligate, meaning individuals must migrate, or facultative, meaning individuals can 'choose' to migrate or not. Within a migratory species or even within a single population, often not all individuals migrate. Complete migration is when all individuals migrate, partial migration is when some individuals migrate while others do not, and differential migration is when the difference between migratory and non-migratory individuals is based on age or sex (for example). While most migratory movements occur on an annual cycle, some daily movements are also referred to as migration. Many aquatic animals make a Diel vertical migration, travelling a few hundred meters up and down the water column, while some jellyfish make daily horizontal migrations, traveling a few hundred meters across a lake. Irregular (non-cyclical) migrations such as irruptions can occur under pressure of famine, overpopulation of a locality, or some more obscure influence.```"})
@@ -200,10 +200,11 @@ message46 = Message.create({author_id: user5.id, channel_id: channel8.id, body: 
 message47 = Message.create({author_id: user7.id, channel_id: channel8.id, body: "specifically `a distance of at least 19,000 km (12,000 mi)`"})
 message48 = Message.create({author_id: user2.id, channel_id: channel8.id, body: "*SO COOL!*"})
 
-message49 = Message.create({author_id: user14.id, channel_id: channel5.id, body: "https://www.youtube.com/watch?v=tssxPLon8P8"})
-message50 = Message.create({author_id: user13.id, channel_id: channel5.id, body: "*HAH* seagulls - such simpletons"})
+message49 = Message.create({author_id: user14.id, channel_id: channel4.id, body: "https://www.youtube.com/watch?v=tssxPLon8P8"})
 
-message51 = Message.create({author_id: user19.id, channel_id: channel5.id, body: "Who is ^Windex^ and *how* do we beat him!"})
+message50 = Message.create({author_id: user19.id, channel_id: channel3.id, body: "Who is ^Windex^ and *how* do we beat him!"})
+
+message51 = Message.create({author_id: user21.id, channel_id: channel5.id, body: "https://www.youtube.com/watch?v=H4BNbHBcnDI"})
 
 # Direct Messaging
 direct_message_channel1 = DirectMessageChannel.create({creator_id: user1.id})
