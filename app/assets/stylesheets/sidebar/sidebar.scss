@@ -491,8 +491,8 @@
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        width: 66px;
-        height: 41px;
+        width: 77px;
+        height: 48px;
 
         &:hover {
           background-image: image_url("logos/CAL_Logo_url_purple.png");
@@ -503,7 +503,6 @@
       .fa-github {
         width: 50px;
         height: 50px;
-        // color: #6d6f7b;
         color: #f1f7f6;
         margin: 0 0 1px 20px;
 
@@ -516,7 +515,6 @@
       .fa-linkedin-in {
         width: 50px;
         height: 50px;
-        // color: #6d6f7b;
         color: #f1f7f6;
         margin: 0 0 1px 20px;
 
@@ -530,7 +528,7 @@
     p {
       margin-top: 20px;
       color: #f1f7f6;
-      font-size: 16px;
+      font-size: 26px;
     }
   }
 }

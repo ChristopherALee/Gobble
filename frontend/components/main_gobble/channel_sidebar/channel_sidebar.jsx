@@ -242,7 +242,7 @@ class ChannelSideBar extends React.Component {
           </a>
         </div>
 
-        <p>Created by Christopher Adam Lee</p>
+        <p>Christopher Adam Lee</p>
       </section>
     );
   }
