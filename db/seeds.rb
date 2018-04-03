@@ -184,6 +184,10 @@ message33 = Message.create({author_id: user19.id, channel_id: channel7.id, body:
 message34 = Message.create({author_id: user20.id, channel_id: channel7.id, body: "Aw, phooey!"})
 message35 = Message.create({author_id: user6.id, channel_id: channel7.id, body: "https://www.youtube.com/watch?v=1A4j6a-1xuQ"})
 
+message36 = Message.create({author_id: user2.id, channel_id: channel9.id, body: "An egg today is better than a hen to-morrow."})
+message37 = Message.create({author_id: user17.id, channel_id: channel9.id, body: "https://www.youtube.com/watch?v=X5oD_thIk3c"})
+message38 = Message.create({author_id: user8.id, channel_id: channel9.id, body: "I usually eat six times a day, small meals. For breakfast, an egg and a corn tortilla, salsa and cilantro, and some ham. For snacks, I'll have an apple, some string cheese, a yogurt. For lunch I'll have salad with protein in it and for dinner usually steamed vegetables and chicken or fish."})
+
 # Direct Messaging
 direct_message_channel1 = DirectMessageChannel.create({creator_id: user1.id})
 
