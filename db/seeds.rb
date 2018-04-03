@@ -188,6 +188,13 @@ message36 = Message.create({author_id: user2.id, channel_id: channel9.id, body: 
 message37 = Message.create({author_id: user17.id, channel_id: channel9.id, body: "https://www.youtube.com/watch?v=X5oD_thIk3c"})
 message38 = Message.create({author_id: user8.id, channel_id: channel9.id, body: "I usually eat six times a day, small meals. For breakfast, an egg and a corn tortilla, salsa and cilantro, and some ham. For snacks, I'll have an apple, some string cheese, a yogurt. For lunch I'll have salad with protein in it and for dinner usually steamed vegetables and chicken or fish."})
 
+message39 = Message.create({author_id: user13.id, channel_id: channel2.id, body: "Private, if you could have anything you wanted in the whole wide world, what would it be?"})
+message40 = Message.create({author_id: user14.id, channel_id: channel2.id, body: "Well, gee, Skipper. I think to be a meaningful and valued member of this team."})
+message41 = Message.create({author_id: user15.id, channel_id: channel2.id, body: "Oh, well, we got you something else."})
+message42 = Message.create({author_id: user14.id, channel_id: channel2.id, body: "Cheezy Dibbles!"})
+message43 = Message.create({author_id: user16.id, channel_id: channel2.id, body: "https://www.youtube.com/watch?v=AWxy9C5svFU&"})
+message44 = Message.create({author_id: user14.id, channel_id: channel2.id, body: "Hello! Are you my family?"})
+
 # Direct Messaging
 direct_message_channel1 = DirectMessageChannel.create({creator_id: user1.id})
 
