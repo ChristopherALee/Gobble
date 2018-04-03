@@ -223,6 +223,30 @@ class ChannelSideBar extends React.Component {
     this.props.hideDirectMessageMenu();
   }
 
+  creatorLinks() {
+    return (
+      <section id="creator-links">
+        <div className="creator-link-container">
+          <a href="http://www.christopheradamlee.com/" target="_blank">
+            <div className="cal-logo" />
+          </a>
+
+          <a href="https://github.com/ChristopherALee" target="_blank">
+            <i className="fab fa-github" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/christopheradamlee/"
+            target="_blank"
+          >
+            <i className="fab fa-linkedin-in" />
+          </a>
+        </div>
+
+        <p>Created by Christopher Adam Lee</p>
+      </section>
+    );
+  }
+
   render() {
     let currentUser;
     if (this.props.currentUser) {
@@ -279,6 +303,8 @@ class ChannelSideBar extends React.Component {
                 pathname={this.props.location.pathname}
               />
             </div>
+
+            {this.creatorLinks()}
           </div>
         </div>
       );
@@ -407,6 +433,8 @@ class ChannelSideBar extends React.Component {
                 pathname={this.props.location.pathname}
               />
             </div>
+
+            {this.creatorLinks()}
           </div>
         </div>
       );

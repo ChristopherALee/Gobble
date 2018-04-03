@@ -15,7 +15,7 @@
     text-decoration: none;
 
     .home-navbar-logo {
-      background-image: image_url('logos/gobble-logo-left.png');
+      background-image: image_url("logos/gobble-logo-left.png");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -42,7 +42,7 @@
       align-items: center;
 
       .cal-logo {
-        background-image: image_url('logos/CAL_Logo_url_home_navbar.png');
+        background-image: image_url("logos/CAL_Logo_url_home_navbar.png");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -50,7 +50,7 @@
         height: 41px;
 
         &:hover {
-          background-image: image_url('logos/CAL_Logo_url_purple.png');
+          background-image: image_url("logos/CAL_Logo_url_purple.png");
           cursor: pointer;
         }
       }

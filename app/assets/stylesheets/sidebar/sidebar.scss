@@ -469,4 +469,68 @@
       }
     }
   }
+
+  #creator-links {
+    position: absolute;
+    bottom: 0;
+    width: 340px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .creator-link-container {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      width: 100%;
+
+      .cal-logo {
+        background-image: image_url("logos/CAL_Logo_url_home_navbar.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 66px;
+        height: 41px;
+
+        &:hover {
+          background-image: image_url("logos/CAL_Logo_url_purple.png");
+          cursor: pointer;
+        }
+      }
+
+      .fa-github {
+        width: 50px;
+        height: 50px;
+        // color: #6d6f7b;
+        color: #f1f7f6;
+        margin: 0 0 1px 20px;
+
+        &:hover {
+          color: #57c49f;
+          cursor: pointer;
+        }
+      }
+
+      .fa-linkedin-in {
+        width: 50px;
+        height: 50px;
+        // color: #6d6f7b;
+        color: #f1f7f6;
+        margin: 0 0 1px 20px;
+
+        &:hover {
+          color: #ec5b1b;
+          cursor: pointer;
+        }
+      }
+    }
+
+    p {
+      margin-top: 20px;
+      color: #f1f7f6;
+      font-size: 16px;
+    }
+  }
 }
