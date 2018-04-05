@@ -176,7 +176,7 @@ class ChannelSideBar extends React.Component {
       return (
         <div className="gobble-menu">
           <div className="gobble-menu-username">
-            {/* <div className="gobble-menu-username-profile-photo">*(picture)</div> */}
+            <div className="gobble-menu-username-profile-photo" />
             <div className="gobble-menu-username-text">
               {this.props.currentUser.username}
             </div>
