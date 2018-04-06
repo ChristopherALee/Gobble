@@ -717,6 +717,11 @@ class ChannelMessages extends React.Component {
                 onClick={this.toggleChannelSettingsMenu}
               >
                 <i className="fas fa-cog" />
+
+                <div className="channel-settings-hover">
+                  <p>Channel Settings</p>
+                  <div className="triangle-up" />
+                </div>
               </div>
             </div>
           </div>
