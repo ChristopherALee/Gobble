@@ -662,6 +662,24 @@ class ChannelMessages extends React.Component {
     return messages;
   }
 
+  toggleChannelDetailToolTip(activeDetailButton) {
+    if (activeDetailButton === "activeButton") {
+      return (
+        <div className="channel-details-hover">
+          <p>Hide Channel Details</p>
+          <div className="triangle-up" />
+        </div>
+      );
+    } else {
+      return (
+        <div className="channel-details-hover">
+          <p>Show Channel Details</p>
+          <div className="triangle-up" />
+        </div>
+      );
+    }
+  }
+
   render() {
     const channel = this.props.currentChannel;
     const memberCount = this.props.memberCount;
@@ -710,6 +728,8 @@ class ChannelMessages extends React.Component {
                 onClick={this.toggleChannelDetail}
               >
                 <i className="fas fa-info-circle" />
+
+                {this.toggleChannelDetailToolTip(activeDetailButton)}
               </div>
 
               <div
