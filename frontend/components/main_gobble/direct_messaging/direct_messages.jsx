@@ -584,6 +584,24 @@ class DirectMessages extends React.Component {
     }
   }
 
+  toggleChannelDetailToolTip(activeDetailButton) {
+    if (activeDetailButton === "activeButton") {
+      return (
+        <div className="channel-details-hover">
+          <p>Hide Conversation Details</p>
+          <div className="triangle-up" />
+        </div>
+      );
+    } else {
+      return (
+        <div className="channel-details-hover">
+          <p>Show Conversation Details</p>
+          <div className="triangle-up" />
+        </div>
+      );
+    }
+  }
+
   render() {
     if (
       this.props.currentDmChannel &&
@@ -625,6 +643,8 @@ class DirectMessages extends React.Component {
                 onClick={this.toggleChannelDetail}
               >
                 <i className="fas fa-info-circle" />
+
+                {this.toggleChannelDetailToolTip(activeDetailButton)}
               </div>
             </div>
           </section>
