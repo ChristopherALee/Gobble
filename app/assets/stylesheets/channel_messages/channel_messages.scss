@@ -53,6 +53,35 @@
           &:hover {
             color: #0576b9;
             cursor: pointer;
+
+            .view-member-list-hover {
+              visibility: visible;
+              opacity: 1;
+            }
+          }
+
+          .view-member-list-hover {
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.2s linear;
+            background-color: #2c2d30;
+            color: white;
+            position: absolute;
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 10px;
+            left: 5px;
+
+            .triangle-up {
+              width: 10px;
+              height: 10px;
+              background-color: #2c2d30;
+              position: absolute;
+              border: 1px solid #2c2d30;
+              left: 11px;
+              top: -3px;
+              transform: rotate(45deg);
+            }
           }
         }
 

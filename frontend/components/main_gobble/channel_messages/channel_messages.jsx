@@ -691,6 +691,11 @@ class ChannelMessages extends React.Component {
                 >
                   <i className="far fa-user" />
                   {memberCount}
+
+                  <div className="view-member-list-hover">
+                    <p>View Member List</p>
+                    <div className="triangle-up" />
+                  </div>
                 </div>
 
                 <div className="divider">|</div>
