@@ -689,10 +689,8 @@ class ChannelMessages extends React.Component {
         return (
           <li id={lastMessage} key={idx} className="grouped-author-message">
             <div className="message-content">
-              <div className="message-author-timestamp">
-                <div className="message-timestamp">
-                  {this.timeConversion(message.created_at)}
-                </div>
+              <div className="message-timestamp">
+                {this.timeConversion(message.created_at)}
               </div>
 
               {processedMessage}

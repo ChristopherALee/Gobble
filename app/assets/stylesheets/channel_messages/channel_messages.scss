@@ -297,7 +297,6 @@
 
         .grouped-author-message {
           margin: 6px 0 0 0;
-          padding: 0 0 0 0px;
           box-sizing: border-box;
 
           &:hover {
@@ -307,13 +306,10 @@
 
               .message-author-timestamp {
                 visibility: visible;
-                min-width: fit-content;
-                margin: 0 10px 0 15px;
+              }
 
-                .message-timestamp {
-                  margin: 0;
-                  font-size: 10px;
-                }
+              .message-timestamp {
+                visibility: visible;
               }
             }
           }
@@ -321,12 +317,12 @@
           .message-content {
             display: flex;
             height: 100%;
-            margin-left: 11px;
+            margin-left: 20px;
 
             .message-author-timestamp {
               visibility: hidden;
-              min-width: fit-content;
-              margin: 0 10px 0 15px;
+              min-width: 50px;
+              margin: 0 4px 0 8px;
 
               .message-timestamp {
                 margin: 0;
@@ -334,9 +330,21 @@
               }
             }
 
+            .message-timestamp {
+              visibility: hidden;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              min-width: 50px;
+              width: 50px;
+              font-size: 10px;
+              margin: 0 10px 0 0;
+            }
+
             .message-body {
               height: 100%;
               margin: 0;
+              // margin: 0 0 0 10px;
             }
           }
         }
@@ -426,9 +434,11 @@
             }
 
             .formatted-message-body {
+              // padding: 5px 0 0 0;
               height: calc(100% - 21px);
               width: 100%;
               // margin-top: 6px;
+              // margin: 0 0 0 10px;
               color: #2c2d30;
               line-height: 1.4;
               word-wrap: break-word;

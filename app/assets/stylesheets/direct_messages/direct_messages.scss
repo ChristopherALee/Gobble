@@ -155,19 +155,55 @@
       display: flex;
       flex-direction: column-reverse;
       overflow-y: scroll;
-      // padding: 0 20px;
 
       ul {
         text-decoration: none;
 
-        li:first-child {
-          // margin-top: 20px;
+        .grouped-author-message {
+          margin: 6px 0 0 0;
+          box-sizing: border-box;
+
+          &:hover {
+            .message-content {
+              display: flex;
+              height: 100%;
+
+              .message-author-timestamp {
+                visibility: visible;
+              }
+            }
+          }
+
+          .message-content {
+            display: flex;
+            height: 100%;
+            margin-left: 20px;
+
+            .message-author-timestamp {
+              visibility: hidden;
+              min-width: fit-content;
+              margin: 0 4px 0 8px;
+
+              .message-timestamp {
+                margin: 0;
+                font-size: 10px;
+              }
+            }
+
+            .message-body {
+              height: 100%;
+              margin: 0 0 0 10px;
+            }
+          }
+        }
+
+        #last-message {
+          margin-bottom: 10px;
         }
 
         li {
           display: flex;
-          // margin-bottom: 20px;
-          padding: 10px 0;
+          margin: 20px 0 0 0;
 
           &:hover {
             background-color: #f9f9f9;
@@ -210,11 +246,13 @@
             }
 
             .message-body {
+              height: calc(100% - 21px);
               margin-top: 6px;
               color: #2c2d30;
               line-height: 1.4;
               word-wrap: break-word;
-              display: inline-block;
+              display: flex;
+              align-items: flex-end;
 
               .youtube-video-message {
                 display: flex;
@@ -241,14 +279,15 @@
             }
 
             .formatted-message-body {
+              height: calc(100% - 21px);
               width: 100%;
-              margin-top: 6px;
+              // margin-top: 6px;
               color: #2c2d30;
               line-height: 1.4;
               word-wrap: break-word;
               display: flex;
               flex-wrap: wrap;
-              align-items: center;
+              align-items: flex-end;
 
               & > div,
               p {
