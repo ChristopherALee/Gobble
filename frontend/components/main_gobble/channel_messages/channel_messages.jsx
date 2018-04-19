@@ -646,17 +646,14 @@ class ChannelMessages extends React.Component {
       }
 
       let processedMessage = this.processMessage(message);
-      debugger;
+
       if (prevMessage && prevMessage.authorName === message.authorName) {
         return (
           <li id={lastMessage} key={idx} className="grouped-author-message">
             <div className="message-content">
-              {/* <div className="message-author-timestamp">
-                <div className="message-author-name">
-                  <strong>{message.authorName}</strong>
-                </div>
-                <div className="message-timestamp">{timeStamp}</div>
-              </div> */}
+              <div className="message-author-timestamp">
+                <div className="message-timestamp">{timeStamp.slice(18)}</div>
+              </div>
 
               {processedMessage}
             </div>
