@@ -297,14 +297,27 @@
       ul {
         text-decoration: none;
 
-        li:first-child {
-          // margin-top: 20px;
+        .grouped-author-message {
+          margin: 0;
+          padding: 0 0 0 70px;
+          box-sizing: border-box;
+
+          .message-content {
+            height: 100%;
+
+            .message-body {
+              height: 100%;
+            }
+          }
+        }
+
+        #last-message {
+          margin-bottom: 10px;
         }
 
         li {
           display: flex;
-          // margin-bottom: 20px;
-          padding: 10px 0;
+          margin: 20px 0 0 0;
 
           &:hover {
             background-color: #f9f9f9;
@@ -350,11 +363,13 @@
             }
 
             .message-body {
+              height: calc(100% - 21px);
               margin-top: 6px;
               color: #2c2d30;
               line-height: 1.4;
               word-wrap: break-word;
-              display: inline-block;
+              display: flex;
+              align-items: center;
 
               .youtube-video-message {
                 display: flex;
@@ -381,14 +396,15 @@
             }
 
             .formatted-message-body {
+              height: calc(100% - 21px);
               width: 100%;
-              margin-top: 6px;
+              // margin-top: 6px;
               color: #2c2d30;
               line-height: 1.4;
               word-wrap: break-word;
               display: flex;
               flex-wrap: wrap;
-              align-items: center;
+              align-items: flex-end;
 
               & > div,
               p {
