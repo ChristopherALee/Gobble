@@ -216,6 +216,40 @@ class DirectMessages extends React.Component {
     return `${month} ${day}, ${year} at ${hour}:${minutes}${amOrPm}`;
   }
 
+  timeConversion(dateTime) {
+    let hour;
+    let minutes = dateTime.slice(14, 16);
+    let amOrPm;
+    const hourInt = parseInt(dateTime.slice(11, 13));
+
+    if (hourInt < 12) {
+      amOrPm = "am";
+      if (hourInt === 0) {
+        hour = "12";
+      } else if (hourInt < 10) {
+        hour = dateTime.slice(12, 13);
+      } else {
+        hour = dateTime.slice(11, 13);
+      }
+    } else {
+      amOrPm = "pm";
+      if (hourInt === 12) {
+        hour = String(hourInt);
+      } else {
+        hour = String(hourInt) - 12;
+      }
+    }
+
+    return `${hour}:${minutes}${amOrPm}`;
+  }
+
+  isMessageWithinSameDay(prevMessageTime, nextMessageTime) {
+    let prevDay = parseInt(prevMessageTime.slice(8, 10));
+    let nextDay = parseInt(nextMessageTime.slice(8, 10));
+
+    return prevDay === nextDay;
+  }
+
   formatMessage(message) {
     let regex = /(?=[*~^ ])/g;
     let formattedMessage = message.body.split(regex);
@@ -489,6 +523,11 @@ class DirectMessages extends React.Component {
     let messages = this.props.messages;
 
     messages = messages.map((message, idx) => {
+      let prevMessage;
+      if (idx > 0) {
+        prevMessage = messages[idx - 1];
+      }
+
       let timeStamp = this.dateTimeConversion(message.created_at);
       let lastMessage;
 
@@ -498,6 +537,25 @@ class DirectMessages extends React.Component {
 
       let processedMessage = this.processMessage(message);
 
+      if (
+        prevMessage &&
+        prevMessage.authorName === message.authorName &&
+        this.isMessageWithinSameDay(prevMessage.created_at, message.created_at)
+      ) {
+        return (
+          <li id={lastMessage} key={idx} className="grouped-author-message">
+            <div className="message-content">
+              <div className="message-author-timestamp">
+                <div className="message-timestamp">
+                  {this.timeConversion(message.created_at)}
+                </div>
+              </div>
+
+              {processedMessage}
+            </div>
+          </li>
+        );
+      }
       return (
         <li id={lastMessage} key={idx}>
           <div className="user-profile-pic" />
