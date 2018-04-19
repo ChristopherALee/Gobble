@@ -260,7 +260,7 @@
               line-height: 1.4;
               word-wrap: break-word;
               display: flex;
-              align-items: flex-end;
+              align-items: center;
 
               .youtube-video-message {
                 display: flex;
@@ -289,7 +289,6 @@
             .formatted-message-body {
               height: calc(100% - 21px);
               width: 100%;
-              // margin-top: 6px;
               color: #2c2d30;
               line-height: 1.4;
               word-wrap: break-word;

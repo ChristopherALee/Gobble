@@ -382,9 +382,6 @@
               min-width: 350px;
               cursor: default;
 
-              .message-author-name {
-              }
-
               .message-timestamp {
                 margin-left: 8px;
                 color: #717274;
@@ -426,11 +423,8 @@
             }
 
             .formatted-message-body {
-              // padding: 5px 0 0 0;
               height: calc(100% - 21px);
               width: 100%;
-              // margin-top: 6px;
-              // margin: 0 0 0 10px;
               color: #2c2d30;
               line-height: 1.4;
               word-wrap: break-word;
