@@ -105,6 +105,10 @@ Gobble currently supports the following message formats:
 
 ![Message-Formatting](./readme_images/gobble-message-formatting.png)
 
+### Grouped Messages
+
+When a user messages in a channel consecutively, those messages are grouped so that the user's avatar isn't always being displayed at each message. The time threshold to group these messages is between 1 day.
+
 ### Video Links
 
 Message will render an embedded video player for users to view within the application (currently only supports YouTube)
