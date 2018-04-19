@@ -301,13 +301,6 @@
 
           &:hover {
             .message-content {
-              display: flex;
-              height: 100%;
-
-              .message-author-timestamp {
-                visibility: visible;
-              }
-
               .message-timestamp {
                 visibility: visible;
               }
@@ -344,7 +337,6 @@
             .message-body {
               height: 100%;
               margin: 0;
-              // margin: 0 0 0 10px;
             }
           }
         }

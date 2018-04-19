@@ -165,10 +165,7 @@
 
           &:hover {
             .message-content {
-              display: flex;
-              height: 100%;
-
-              .message-author-timestamp {
+              .message-timestamp {
                 visibility: visible;
               }
             }
@@ -181,7 +178,7 @@
 
             .message-author-timestamp {
               visibility: hidden;
-              min-width: fit-content;
+              min-width: 50px;
               margin: 0 4px 0 8px;
 
               .message-timestamp {
@@ -190,9 +187,20 @@
               }
             }
 
+            .message-timestamp {
+              visibility: hidden;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              min-width: 50px;
+              width: 50px;
+              font-size: 10px;
+              margin: 0 10px 0 0;
+            }
+
             .message-body {
               height: 100%;
-              margin: 0 0 0 10px;
+              margin: 0;
             }
           }
         }
