@@ -387,6 +387,13 @@ class ChannelMessages extends React.Component {
     return `${hour}:${minutes}${amOrPm}`;
   }
 
+  isMessageWithinSameDay(prevMessageTime, nextMessageTime) {
+    let prevDay = parseInt(prevMessageTime.slice(8, 10));
+    let nextDay = parseInt(nextMessageTime.slice(8, 10));
+
+    return prevDay === nextDay;
+  }
+
   formatMessage(message) {
     let regex = /(?=[*~^ ])/g;
     let formattedMessage = message.body.split(regex);
@@ -674,7 +681,11 @@ class ChannelMessages extends React.Component {
 
       let processedMessage = this.processMessage(message);
 
-      if (prevMessage && prevMessage.authorName === message.authorName) {
+      if (
+        prevMessage &&
+        prevMessage.authorName === message.authorName &&
+        this.isMessageWithinSameDay(prevMessage.created_at, message.created_at)
+      ) {
         return (
           <li id={lastMessage} key={idx} className="grouped-author-message">
             <div className="message-content">
