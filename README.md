@@ -4,7 +4,7 @@
 
 # Background
 
-**Gobble** is a full-stack single page messaging application inspired by Slack. It uses Ruby on Rails on the backend to produce a RESTful API and React/Redux on the frontend. It also features Pusher to implement WebSockets seamlessly.
+**Gobble** is a full-stack single-page messaging application inspired by Slack. It uses Ruby on Rails on the backend to produce a RESTful API, React/Redux on the frontend, and Pusher to implement WebSockets seamlessly.
 
 [Gobble Live-Demo](https://gobble-gobble.herokuapp.com/#/)
 
