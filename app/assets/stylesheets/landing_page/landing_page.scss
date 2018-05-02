@@ -11,7 +11,7 @@
     margin-top: 80px;
 
     .landing-page-image {
-      background-image: image_url('landing_page/landing_page_image.png');
+      background-image: image_url("landing_page/landing_page_image.png");
       width: 700px;
       height: 700px;
       background-size: cover;
@@ -32,6 +32,15 @@
       }
 
       .intro-text {
+        color: #5b5e6d;
+        font-size: 20px;
+        font-weight: 300;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+        line-height: 30px;
+      }
+
+      .intro-text2 {
         color: #5b5e6d;
         font-size: 20px;
         font-weight: 300;
