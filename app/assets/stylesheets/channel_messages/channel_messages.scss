@@ -294,6 +294,7 @@
 
       ul {
         text-decoration: none;
+        padding: 10px 0;
 
         .grouped-author-message {
           padding: 5px 0;
@@ -328,10 +329,11 @@
               display: flex;
               justify-content: center;
               align-items: center;
-              min-width: 50px;
-              width: 50px;
+              min-width: 45px;
+              width: 45px;
               font-size: 10px;
               margin: 0 10px 0 0;
+              color: #717274;
             }
 
             .message-body {
@@ -342,12 +344,13 @@
         }
 
         #last-message {
-          margin-bottom: 10px;
+          // margin-bottom: 10px;
         }
 
         li {
           display: flex;
-          padding: 10px 0 1px 0;
+          padding: 5px 0;
+          margin: 5px 0;
 
           &:hover {
             background-color: #f9f9f9;
@@ -364,10 +367,10 @@
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
-            width: 50px;
-            min-width: 50px;
-            height: 50px;
-            min-height: 50px;
+            width: 45px;
+            min-width: 45px;
+            height: 45px;
+            min-height: 45px;
           }
 
           .message-content {
@@ -381,6 +384,7 @@
               align-items: center;
               min-width: 350px;
               cursor: default;
+              margin-top: 5px;
 
               .message-timestamp {
                 margin-left: 8px;
@@ -391,7 +395,7 @@
 
             .message-body {
               height: calc(100% - 21px);
-              margin-top: 6px;
+              margin-top: 7px;
               color: #2c2d30;
               line-height: 1.4;
               word-wrap: break-word;
@@ -480,6 +484,11 @@
               }
             }
           }
+        }
+
+        li:first-child,
+        li:last-child {
+          padding: 0 0 10px 0;
         }
       }
     }
