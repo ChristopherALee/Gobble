@@ -341,6 +341,10 @@
               height: 100%;
               margin: 0;
             }
+
+            .formatted-message-body {
+              margin: 0;
+            }
           }
         }
 
@@ -396,7 +400,7 @@
 
             .message-body {
               height: calc(100% - 21px);
-              margin-top: 7px;
+              margin-top: 6px;
               color: #2c2d30;
               line-height: 1.4;
               word-wrap: break-word;
@@ -436,6 +440,7 @@
               display: flex;
               flex-wrap: wrap;
               align-items: flex-end;
+              margin-top: 5px;
 
               & > div,
               p {

@@ -205,6 +205,10 @@
               height: 100%;
               margin: 0;
             }
+
+            .formatted-message-body {
+              margin: 0;
+            }
           }
         }
 
@@ -300,6 +304,7 @@
               display: flex;
               flex-wrap: wrap;
               align-items: flex-end;
+              margin-top: 5px;
 
               & > div,
               p {
