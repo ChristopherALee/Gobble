@@ -117,7 +117,7 @@ class ChannelSideBar extends React.Component {
     if (this.props.location.pathname !== newProps.location.pathname) {
       let newPath = newProps.location.pathname.slice(10);
       let allChannels = this.props.allChannels.map(channel => channel.name);
-
+      debugger;
       if (!allChannels.includes(newPath) && !newPath.includes("dm")) {
         this.props.history.push(
           `/messages/${this.props.currentUser.lastVisitedChannel}`
@@ -127,10 +127,7 @@ class ChannelSideBar extends React.Component {
           if (
             !this.props.currentUser.directMessageChannels.includes(
               parseInt(newPath.slice(3))
-            ) &&
-            !this.props.directMessagingChannels.filter(
-              channel => channel.id === parseInt(newPath.slice(3))
-            ).creatorName === this.props.currentUser.username
+            )
           ) {
             this.props.history.push(
               `/messages/${this.props.currentUser.lastVisitedChannel}`
