@@ -117,7 +117,7 @@ class ChannelSideBar extends React.Component {
     if (this.props.location.pathname !== newProps.location.pathname) {
       let newPath = newProps.location.pathname.slice(10);
       let allChannels = this.props.allChannels.map(channel => channel.name);
-      debugger;
+
       if (!allChannels.includes(newPath) && !newPath.includes("dm")) {
         this.props.history.push(
           `/messages/${this.props.currentUser.lastVisitedChannel}`
